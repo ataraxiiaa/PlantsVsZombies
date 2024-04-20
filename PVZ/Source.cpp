@@ -8,5 +8,6 @@ int main()
 	cout << "check now" << endl;
 	cout << "change something again" << endl;
 	cout << "Stfu gay retard" << endl;
+	testing();
 	return 0;
 }
