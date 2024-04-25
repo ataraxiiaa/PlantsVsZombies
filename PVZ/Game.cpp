@@ -24,6 +24,17 @@ void Game::createMap(RenderWindow& window) {
 	s_map.setTexture(map);
 	s_map.setPosition(300, 160);
 }
+void Game::createGrid(RenderWindow& window)
+{
+	// Adding Grid
+	Texture GridT;
+	GridT.loadFromFile("../Images/grid.png");
+	Sprite Grid;
+	Grid.setTexture(GridT);
+	Grid.setPosition(250, 155);
+	window.draw(Grid);
+
+}
 void Game::Start_Game()
 {
 	//Create a window, n*n
@@ -70,11 +81,12 @@ void Game::Start_Game()
 			if (event.type == Event::Closed)
 				window.close();
 		}
-
 		//Create a background
 		createBack(window);
 		createMap(window);
-
+		// Create the grid
+		createGrid(window);
+		
 		window.setSize(sf::Vector2u(550, 340));
 		window.display();
 	}

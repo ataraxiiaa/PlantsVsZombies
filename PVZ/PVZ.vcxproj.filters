@@ -27,9 +27,6 @@
     <ClCompile Include="Coordinates.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="Plants.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">

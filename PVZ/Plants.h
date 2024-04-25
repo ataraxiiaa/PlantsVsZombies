@@ -4,11 +4,11 @@
 #define Plants_H 
 
 #include "Entity.h" // Include necessary header files
-class Plants
+class Plants : public Entity
 {
 protected:
 	float CoolDown; // Cool down between plants being used after one is placed
-	//int Currency; // Currency would be sun so leaving this for now
+	int Cost; // Cost for buying plants
 public:
 
 };

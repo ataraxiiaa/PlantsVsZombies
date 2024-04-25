@@ -13,6 +13,7 @@ public:
 	// Function prototypes that are defined in Game.cpp
 	void createBack(RenderWindow& window); // Creating Backgrund
 	void createMap(RenderWindow& window); // Creating window
+	void createGrid(RenderWindow& window); // Creating a grid
 	void Start_Game(); // Starts the Game window when called
 };
 
