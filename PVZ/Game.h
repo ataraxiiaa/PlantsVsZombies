@@ -9,14 +9,10 @@ using namespace std;
 class Game
 {
 public:
-
-	Game()
-	{
-		
-	}
-	//Function prototypes that are defined in Game.cpp
-	void createBack(RenderWindow& window);
-	void createMap(RenderWindow& window);
-	void Start_Game();
+	Game() = default; // (Default for now will change later on)
+	// Function prototypes that are defined in Game.cpp
+	void createBack(RenderWindow& window); // Creating Backgrund
+	void createMap(RenderWindow& window); // Creating window
+	void Start_Game(); // Starts the Game window when called
 };
 
