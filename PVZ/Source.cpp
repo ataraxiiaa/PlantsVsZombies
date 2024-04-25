@@ -1,7 +1,6 @@
-﻿﻿#include "SFML/Graphics.hpp"
+﻿#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <ctime>
-
-//#include"../SFML/Images/"
 using namespace sf;
 using namespace std;
 
@@ -17,7 +16,7 @@ struct coordinats {
 void createBack(RenderWindow& window) {
 	//Drawing the background
 	Image map_image;
-	map_image.loadFromFile("../SFML/Images/backwindow.jpg");
+	map_image.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg");
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -30,7 +29,7 @@ void createBack(RenderWindow& window) {
 void createMap(RenderWindow& window) {
 	//Drawing a map
 	Image map_image;//объект изображения для карты
-	map_image.loadFromFile("../SFML/Images/grid.png");//load the file for the map
+	map_image.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg");//load the file for the map
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -47,7 +46,7 @@ int main()
 	RenderWindow window(VideoMode(1200, 700), "Plants Vs Zombies");
 	//Game icon
 	Image icon;
-	if (!icon.loadFromFile("../SFML/Images/icon.png"))
+	if (!icon.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg"))
 	{
 		return 1;
 	}
