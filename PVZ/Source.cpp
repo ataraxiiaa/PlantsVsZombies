@@ -17,7 +17,7 @@ void createBack(RenderWindow& window) {
 	//Drawing the background
 	Image map_image;
 	//Will have to change the path to run it properly ig for this too
-	map_image.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg"); 
+	map_image.loadFromFile("../Images/backwindow.jpg"); 
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -31,7 +31,7 @@ void createMap(RenderWindow& window) {
 	//Drawing a map
 	Image map_image;
 	//Will have to change the path to run it properly ig for this too
-	map_image.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg");//load the file for the map
+	map_image.loadFromFile("../Images/backwindow.jpg");//load the file for the map
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -49,7 +49,7 @@ int main()
 	//Game icon
 	Image icon;
 	//Will have to change the path to run it properly ig
-	if (!icon.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg")) 
+	if (!icon.loadFromFile("../Images/backwindow.jpg")) 
 	{
 		return 1;
 	}
