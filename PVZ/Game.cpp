@@ -14,7 +14,7 @@ void Game::createBack(RenderWindow& window)
 	window.draw(s_map);
 	sf::Sprite sprite;
 	sf::Texture texture;
-	texture.loadFromFile("C:/Users/Basit Junaid/Source/Repos/ataraxiiaa/PlantsVsZombies/Images/img2.jpg");
+	texture.loadFromFile("../Images/img2.jpg");
 	sprite.setPosition(400, 400);
 	sprite.setTexture(texture);
 	window.draw(sprite);
