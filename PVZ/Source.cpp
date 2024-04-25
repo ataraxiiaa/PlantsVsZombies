@@ -5,7 +5,7 @@ using namespace sf;
 using namespace std;
 
 
-struct coordinats {
+struct Coordinates {
 	int x;
 	int y;
 };
@@ -16,7 +16,8 @@ struct coordinats {
 void createBack(RenderWindow& window) {
 	//Drawing the background
 	Image map_image;
-	map_image.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg");
+	//Will have to change the path to run it properly ig for this too
+	map_image.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg"); 
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -28,7 +29,8 @@ void createBack(RenderWindow& window) {
 //Drawing the map
 void createMap(RenderWindow& window) {
 	//Drawing a map
-	Image map_image;//объект изображения для карты
+	Image map_image;
+	//Will have to change the path to run it properly ig for this too
 	map_image.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg");//load the file for the map
 	Texture map;
 	map.loadFromImage(map_image);
@@ -46,7 +48,8 @@ int main()
 	RenderWindow window(VideoMode(1200, 700), "Plants Vs Zombies");
 	//Game icon
 	Image icon;
-	if (!icon.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg"))
+	//Will have to change the path to run it properly ig
+	if (!icon.loadFromFile("C:/Users/Ali Abdullah/Desktop/PlantsVsZombies/Images/backwindow.jpg")) 
 	{
 		return 1;
 	}
