@@ -25,7 +25,7 @@ void Animation::SetSheet(float Delay, int totalFrames,Texture& spriteSheet, int 
 }
 void Animation::Update()
 {
-	timer += 0.1f;
+	timer += 0.2f;
 	if (timer >= animationDelay)
 	{
 		if (currFrame < imagesPerRow)
