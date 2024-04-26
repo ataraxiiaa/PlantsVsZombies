@@ -3,11 +3,13 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <ctime>
+#include "Menu.h"
 using namespace sf;
 using namespace std;
 
 class Game
 {
+	MainMenu menu;
 public:
 	Game() = default; // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp

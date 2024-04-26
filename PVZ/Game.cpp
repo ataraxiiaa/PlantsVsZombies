@@ -69,25 +69,33 @@ void Game::Start_Game()
 
 	while (window.isOpen())
 	{
-		float time = clock.getElapsedTime().asMicroseconds();
-		float moneyTime = timeMoney.getElapsedTime().asSeconds();
-
-		clock.restart();
-		time = time / 800;
-
-		Event event;
-		while (window.pollEvent(event))
+	
+		if (menu.ShowState() == true)
 		{
-			if (event.type == Event::Closed)
-				window.close();
+			menu.DisplayMain(window);
 		}
-		//Create a background
-		createBack(window);
-		createMap(window);
-		// Create the grid
-		createGrid(window);
-		
-		window.setSize(sf::Vector2u(550, 340));
+		if (!menu.ShowState())
+		{
+			float time = clock.getElapsedTime().asMicroseconds();
+			float moneyTime = timeMoney.getElapsedTime().asSeconds();
+
+			clock.restart();
+			time = time / 800;
+
+			Event event;
+			while (window.pollEvent(event))
+			{
+				if (event.type == Event::Closed)
+					window.close();
+			}
+			//Create a background
+			createBack(window);
+			createMap(window);
+			// Create the grid
+			createGrid(window);
+
+			window.setSize(sf::Vector2u(1100, 680));
+		}
 		window.display();
 	}
 }
