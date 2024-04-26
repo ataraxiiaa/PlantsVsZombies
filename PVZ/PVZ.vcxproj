@@ -36,10 +36,12 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="NormalZombie.h" />
     <ClInclude Include="Pea.h" />
     <ClInclude Include="PeaShooter.h" />
     <ClInclude Include="Plants.h" />
     <ClInclude Include="Shooter.h" />
+    <ClInclude Include="Zombies.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
