@@ -15,7 +15,7 @@ PeaShooter::PeaShooter()
 }
 void PeaShooter::DrawPeaShooter(sf::RenderWindow& window)
 {
-	sprite.setPosition(500, 500);
+	sprite.setPosition(800, 800);
 	animate->Update();
 	animate->DrawAnimation(window);
 }
