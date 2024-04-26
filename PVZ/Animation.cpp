@@ -43,6 +43,6 @@ void Animation::Update()
 			currFrame++;
 		}
 	}
-	if (currFrame == totalFrames - 1)
+	if (currFrame == totalFrames)
 		currFrame = 0;
 }
