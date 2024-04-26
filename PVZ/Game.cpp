@@ -93,6 +93,8 @@ void Game::Start_Game()
 			// Create the grid
 			createGrid(window);
 			peaShooter.DrawPeaShooter(window);
+			normal.DrawNormalZombie(window);
+			normal.moveZombie();
 			//peaShooter.animate->DrawAnimation(window);
 			window.setSize(sf::Vector2u(1100, 680));
 		}
