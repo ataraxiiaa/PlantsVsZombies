@@ -69,7 +69,6 @@ void Game::Start_Game()
 
 	while (window.isOpen())
 	{
-	
 		if (menu.ShowState() == true)
 		{
 			menu.DisplayMain(window);
@@ -93,7 +92,8 @@ void Game::Start_Game()
 			createMap(window);
 			// Create the grid
 			createGrid(window);
-
+			peaShooter.DrawPeaShooter(window);
+			//peaShooter.animate->DrawAnimation(window);
 			window.setSize(sf::Vector2u(1100, 680));
 		}
 		window.display();

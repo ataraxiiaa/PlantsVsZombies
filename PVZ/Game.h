@@ -4,12 +4,14 @@
 #include <iostream>
 #include <ctime>
 #include "Menu.h"
+#include "PeaShooter.h"
 using namespace sf;
 using namespace std;
 
 class Game
 {
 	MainMenu menu;
+	PeaShooter peaShooter;
 public:
 	Game() = default; // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp

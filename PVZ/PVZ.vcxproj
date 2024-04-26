@@ -19,18 +19,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Coordinates.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Pea.cpp" />
+    <ClCompile Include="PeaShooter.cpp" />
+    <ClCompile Include="Plants.cpp" />
+    <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Coordinates.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Pea.h" />
+    <ClInclude Include="PeaShooter.h" />
     <ClInclude Include="Plants.h" />
+    <ClInclude Include="Shooter.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
