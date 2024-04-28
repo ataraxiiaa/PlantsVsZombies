@@ -1,23 +1,19 @@
 #pragma once
 #include "Zombies.h"
-#include "Animation.h"
 
-class NormalZombie :public Zombie {
-	Animation* animate;
+class FootballZombie :public Zombie {
 public:
-	NormalZombie()
+	FootballZombie()
 	{
 		srand((unsigned)time(0));
-		this->speed = 5;
+		rand();
+		this->speed = 10;
 		this->damage = 5;
 		this->texture.loadFromFile("../Images/Zombie2.png");
 		this->sprite.setTexture(this->texture);
 		sprite.setTextureRect(IntRect(0, 0, texture.getSize().x / 8, texture.getSize().y / 1));
 		this->exists = true;
 		this->position.SetX(700);
-		//this->position.SetY((600 - (rand() % 5) * 110));
-		this->position.SetY(600);
+		this->position.SetY((600 - (rand() % 5) * 110));
 	}
-	
-	
 };

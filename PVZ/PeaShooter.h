@@ -11,6 +11,18 @@ class PeaShooter : public Shooter
 public:
 	PeaShooter();
 	void DrawPeaShooter(sf::RenderWindow& window);
+	int GetX()
+	{
+		return this->position.GetX();
+	}
+	int GetY()
+	{
+		return this->position.GetY();
+	}
+	bool GetExistence()
+	{
+		return this->exists;
+	}
 };
 
 

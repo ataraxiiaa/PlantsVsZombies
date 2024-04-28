@@ -33,7 +33,11 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Coordinates.h" />
+    <ClInclude Include="DancingZombie.h" />
+    <ClInclude Include="DolphinRiderZombie.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="FlyingZombie.h" />
+    <ClInclude Include="FootballZombie.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="NormalZombie.h" />

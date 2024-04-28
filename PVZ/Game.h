@@ -6,6 +6,10 @@
 #include "Menu.h"
 #include "PeaShooter.h"
 #include "NormalZombie.h"
+#include "FootballZombie.h"
+#include "FlyingZombie.h"
+#include "DancingZombie.h"
+#include "DolphinRiderZombie.h"
 using namespace sf;
 using namespace std;
 
@@ -14,6 +18,11 @@ class Game
 	MainMenu menu;
 	PeaShooter peaShooter;
 	NormalZombie normal;
+	FootballZombie football;
+	FlyingZombie flying;
+	DancingZombie dancing;
+	DolphinRiderZombie dolphin;
+	Plants* ptr = &peaShooter;
 public:
 	Game() = default; // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp
