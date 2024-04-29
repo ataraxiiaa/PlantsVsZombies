@@ -28,11 +28,11 @@ class Game
 	DolphinRiderZombie dolphin;
 	Plants* ptr = &peaShooter;
 	Sun sun;
-	int money = 0;
+	int money;
 	Font font;
 	Text text;
 public:
-	Game() = default; // (Default for now will change later on)
+	Game(); // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp
 	void createBack(RenderWindow& window); // Creating Backgrund
 	void createMap(RenderWindow& window); // Creating window

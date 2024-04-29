@@ -3,11 +3,15 @@
 Sun::Sun()
 {
 	// Setting up Sun graphics to represent amount
-	sunTextureShop.loadFromFile("../Images/Sunshop.png");
+	sunTextureShop.loadFromFile("../Images/button2.png");
 	sunSpriteShop.setTexture(sunTextureShop);
-	sunSpriteShop.setPosition(50, -10);
+	sunSpriteShop.setPosition(80, 5);
 	// Setting Graphics For Sun
 	sunTexture.loadFromFile("../Images/Sun.png");
+	sunTexture2.loadFromFile("../Images/Sun2.png");
+	sunSprite2.setTexture(sunTexture2);
+	sunSprite2.setPosition(90, 17);
+	sunSprite2.setTextureRect(sf::IntRect(0, 0, 75, 77));
 	sunSprite.setTexture(sunTexture);
 	sunSprite.setTextureRect(sf::IntRect(0, 0, 75, 77));
 	exist = false;
@@ -35,7 +39,7 @@ void Sun::DrawSun(sf::RenderWindow& window, int& money)
 	}
 	// Drawing Sun at the shop
 	window.draw(sunSpriteShop);
-
+	window.draw(sunSprite2);
 }
 void Sun::DropSun()
 {

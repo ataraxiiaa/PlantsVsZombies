@@ -1,5 +1,9 @@
 #include "Game.h"
 
+Game::Game()
+{
+	money = 0;
+}
 void Game::createBack(RenderWindow& window)
 {
 	//Drawing the background
@@ -87,10 +91,14 @@ void Game::Start_Game()
 				if (event.type == Event::Closed)
 					window.close();
 			}
-			font.loadFromFile("../fonts/logofont.otf");
+			// Currency Text
+			font.loadFromFile("../fonts/comicsans.ttf");
 			text.setFont(font);
-			text.setString("Sun: " + to_string(money));
-			text.setPosition(0, 0);
+			text.setCharacterSize(40);
+			text.setString(to_string(money));
+			text.setFillColor(sf::Color::Yellow);
+			text.setPosition(160, 8);
+
 			//Create a background
 			createBack(window);
 			createMap(window);
@@ -111,6 +119,7 @@ void Game::Start_Game()
 			// Drawing Sun
 			sun.DrawSun(window, money);
 			shop.DrawShop(window);
+			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
 		}
 		window.display();

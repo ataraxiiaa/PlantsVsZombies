@@ -9,8 +9,8 @@ using namespace sf;
 
 class Sun
 {
-	Sprite sunSprite;
-	Texture sunTexture;
+	Sprite sunSprite,sunSprite2;
+	Texture sunTexture, sunTexture2;
 	Sprite sunSpriteShop;
 	Texture sunTextureShop;
 	bool exist;
