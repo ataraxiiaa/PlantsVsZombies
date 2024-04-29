@@ -2,6 +2,10 @@
 #include <iostream>
 Sun::Sun()
 {
+	// Setting up Sun graphics to represent amount
+	sunTextureShop.loadFromFile("../Images/Sunshop.png");
+	sunSpriteShop.setTexture(sunTextureShop);
+	sunSpriteShop.setPosition(50, -10);
 	// Setting Graphics For Sun
 	sunTexture.loadFromFile("../Images/Sun.png");
 	sunSprite.setTexture(sunTexture);
@@ -29,6 +33,9 @@ void Sun::DrawSun(sf::RenderWindow& window, int& money)
 			window.draw(sunSprite); // Drawing Sun
 		DropSun();
 	}
+	// Drawing Sun at the shop
+	window.draw(sunSpriteShop);
+
 }
 void Sun::DropSun()
 {

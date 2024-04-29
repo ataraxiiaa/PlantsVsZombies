@@ -5,7 +5,7 @@ void Game::createBack(RenderWindow& window)
 	//Drawing the background
 	Image map_image;
 	//Will have to change the path to run it properly ig for this too
-	map_image.loadFromFile("../Images/backwindow2.jpg");
+	map_image.loadFromFile("../Images/Background.png");
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -28,10 +28,10 @@ void Game::createGrid(RenderWindow& window)
 {
 	// Adding Grid
 	Texture GridT;
-	GridT.loadFromFile("../Images/grid.png");
+	GridT.loadFromFile("../Images/grid2.png");
 	Sprite Grid;
 	Grid.setTexture(GridT);
-	Grid.setPosition(250, 155);
+	Grid.setPosition(280, 50);
 	window.draw(Grid);
 
 }
@@ -110,7 +110,7 @@ void Game::Start_Game()
 			//peaShooter.animate->DrawAnimation(window);
 			// Drawing Sun
 			sun.DrawSun(window, money);
-			window.draw(text);
+			shop.DrawShop(window);
 			window.setSize(sf::Vector2u(1100, 680));
 		}
 		window.display();

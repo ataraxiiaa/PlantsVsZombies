@@ -11,6 +11,7 @@
 #include "DancingZombie.h"
 #include "DolphinRiderZombie.h"
 #include "Sun.h"
+#include "Shop.h"
 #include <string>
 using namespace sf;
 using namespace std;
@@ -23,6 +24,7 @@ class Game
 	FootballZombie football;
 	FlyingZombie flying;
 	DancingZombie dancing;
+	Shop shop;
 	DolphinRiderZombie dolphin;
 	Plants* ptr = &peaShooter;
 	Sun sun;

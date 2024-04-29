@@ -11,6 +11,8 @@ class Sun
 {
 	Sprite sunSprite;
 	Texture sunTexture;
+	Sprite sunSpriteShop;
+	Texture sunTextureShop;
 	bool exist;
 	float fallSpeed;
 	Coordinates position;
