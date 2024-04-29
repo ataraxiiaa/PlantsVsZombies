@@ -36,9 +36,10 @@ void Sun::CollectSun(sf::RenderWindow& window)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
+		sf::FloatRect sunBounds(position.GetX(), position.GetY(),75,77);
 		// IDk what to do with this 
 		// will need a discussion on this leaving it just like this for now
-		if (sunSprite.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+		if (sunBounds.contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
 		{
 			exist = false;
 		}
