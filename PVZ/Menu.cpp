@@ -53,7 +53,7 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 		{
 			if (option == 0) // Enters into the game
 			{
-				currentState = false; // Exists menu into the game
+				this->currentState = false; // Exists menu into the game
 			}
 		}
 		if (option == 0) 

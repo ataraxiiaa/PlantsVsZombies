@@ -17,6 +17,7 @@ protected:
 	bool currentState; // For tracking what Menu is open right now
 public:
 	bool ShowState()const { return currentState; } // Getter for state
+	void setState(bool state) { this->currentState = state; } //setter for state
 
 };
 

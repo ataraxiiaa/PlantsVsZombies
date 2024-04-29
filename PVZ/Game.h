@@ -12,6 +12,7 @@
 #include "DolphinRiderZombie.h"
 #include "Sun.h"
 #include "Shop.h"
+#include "Paused.h"
 #include <string>
 using namespace sf;
 using namespace std;
@@ -19,6 +20,7 @@ using namespace std;
 class Game
 {
 	MainMenu menu;
+	Paused pause;
 	PeaShooter peaShooter;
 	NormalZombie normal;
 	FootballZombie football;
@@ -31,10 +33,11 @@ class Game
 	int money;
 	Font font;
 	Text text;
+
 public:
 	Game(); // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp
-	void createBack(RenderWindow& window); // Creating Backgrund
+	void createBack(RenderWindow& window); // Creating Background
 	void createMap(RenderWindow& window); // Creating window
 	void createGrid(RenderWindow& window); // Creating a grid
 	void Start_Game(); // Starts the Game window when called

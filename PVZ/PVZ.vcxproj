@@ -45,6 +45,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="NormalZombie.h" />
+    <ClInclude Include="Paused.h" />
     <ClInclude Include="Pea.h" />
     <ClInclude Include="PeaShooter.h" />
     <ClInclude Include="Plants.h" />

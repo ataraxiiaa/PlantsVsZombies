@@ -76,8 +76,10 @@ void Game::Start_Game()
 		if (menu.ShowState() == true)
 		{
 			menu.DisplayMain(window);
+			pause.setState(false);
 		}
-		if (!menu.ShowState())
+		
+		if (!menu.ShowState() && !pause.ShowState())
 		{
 			float time = clock.getElapsedTime().asMicroseconds();
 			float moneyTime = timeMoney.getElapsedTime().asSeconds();
@@ -90,6 +92,11 @@ void Game::Start_Game()
 			{
 				if (event.type == Event::Closed)
 					window.close();
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			{
+				cout << "pressed" << endl;
+				pause.setState(true);
 			}
 			// Currency Text
 			font.loadFromFile("../fonts/comicsans.ttf");
@@ -121,6 +128,11 @@ void Game::Start_Game()
 			shop.DrawShop(window);
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
+		}
+		else if (!menu.ShowState() && pause.ShowState())
+		{
+			cout << "called" << endl;
+			pause.displayPausedMenu(window);
 		}
 		window.display();
 	}
