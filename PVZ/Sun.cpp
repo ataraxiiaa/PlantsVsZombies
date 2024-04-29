@@ -6,16 +6,22 @@ Sun::Sun()
 	sunTexture.loadFromFile("../Images/Sun.png");
 	sunSprite.setTexture(sunTexture);
 	sunSprite.setTextureRect(sf::IntRect(0, 0, 75, 77));
-	// Handling Movement of Sun
-	this->position.SetY(0); // Start from the top of the screen
-	srand(time(0));
-	int RandomNum = rand() % 700 + 200;
-	this->position.SetX(RandomNum);
-	exist = true;
-	fallSpeed = 5.0f;
+	exist = false;
+	fallSpeed = 5.0f; // Speed by which sun falls down the screen
 }
 void Sun::DrawSun(sf::RenderWindow& window)
 {
+	srand(time(0));
+	int randomTime = rand() % 5 + 1; // Set accordingly 
+	if (clock.getElapsedTime().asSeconds() >= randomTime) {
+		this->exist = true;
+		// Handling random movement of position
+		this->position.SetY(0);
+		int RandomNum = rand() % 700 + 200; // Random number to decide where on the screen sun drops
+		this->position.SetX(RandomNum);
+		clock.restart();
+	}
+
 	if (exist) {
 		CollectSun(window);
 		sunSprite.setPosition(this->position.GetX(), this->position.GetY());

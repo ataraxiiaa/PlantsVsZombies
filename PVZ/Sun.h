@@ -14,6 +14,7 @@ class Sun
 	bool exist;
 	float fallSpeed;
 	Coordinates position;
+	Clock clock;
 protected:
 	
 public:
