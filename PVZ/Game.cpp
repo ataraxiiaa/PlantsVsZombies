@@ -89,15 +89,12 @@ void Game::Start_Game()
 
 			Event event;
 			while (window.pollEvent(event))
-			{
 				if (event.type == Event::Closed)
 					window.close();
-			}
+
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-			{
-				cout << "pressed" << endl;
 				pause.setState(true);
-			}
+
 			// Currency Text
 			font.loadFromFile("../fonts/comicsans.ttf");
 			text.setFont(font);
@@ -130,10 +127,8 @@ void Game::Start_Game()
 			window.setSize(sf::Vector2u(1100, 680));
 		}
 		else if (!menu.ShowState() && pause.ShowState())
-		{
-			cout << "called" << endl;
 			pause.displayPausedMenu(window);
-		}
+
 		window.display();
 	}
 }

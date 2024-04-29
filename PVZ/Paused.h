@@ -65,7 +65,7 @@ public:
 		{
 			text[1].setFillColor(sf::Color::Red);
 		}
-		text[1].setPosition(300, 400);
+		text[1].setPosition(260, 400);
 		text[2].setString("Exit");
 		text[2].setPosition(470, 500);
 
