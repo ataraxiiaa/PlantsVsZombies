@@ -7,6 +7,7 @@ class NormalZombie :public Zombie {
 public:
 	NormalZombie()
 	{
+		animate = nullptr;
 		srand((unsigned)time(0));
 		this->speed = 5;
 		this->damage = 5;
@@ -18,6 +19,4 @@ public:
 		//this->position.SetY((600 - (rand() % 5) * 110));
 		this->position.SetY(600);
 	}
-	
-	
 };

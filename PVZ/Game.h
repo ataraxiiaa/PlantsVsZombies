@@ -10,6 +10,7 @@
 #include "FlyingZombie.h"
 #include "DancingZombie.h"
 #include "DolphinRiderZombie.h"
+#include "Sun.h"
 using namespace sf;
 using namespace std;
 
@@ -23,6 +24,7 @@ class Game
 	DancingZombie dancing;
 	DolphinRiderZombie dolphin;
 	Plants* ptr = &peaShooter;
+	Sun sun;
 public:
 	Game() = default; // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp

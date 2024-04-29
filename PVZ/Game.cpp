@@ -5,7 +5,7 @@ void Game::createBack(RenderWindow& window)
 	//Drawing the background
 	Image map_image;
 	//Will have to change the path to run it properly ig for this too
-	map_image.loadFromFile("../Images/backwindow.jpg");
+	map_image.loadFromFile("../Images/backwindow2.jpg");
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -17,7 +17,7 @@ void Game::createMap(RenderWindow& window) {
 	//Drawing a map
 	Image map_image;
 	//Will have to change the path to run it properly ig for this too
-	map_image.loadFromFile("../Images/backwindow.jpg");//load the file for the map
+	map_image.loadFromFile("../Images/backwindow2.jpg");//load the file for the map
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -104,6 +104,8 @@ void Game::Start_Game()
 			//dancing.moveZombie();
 			//dolphin.moveZombie();
 			//peaShooter.animate->DrawAnimation(window);
+			// Drawing Sun
+			sun.DrawSun(window);
 			window.setSize(sf::Vector2u(1100, 680));
 		}
 		window.display();

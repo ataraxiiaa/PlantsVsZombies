@@ -45,6 +45,15 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="SunFlower.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Repeater.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sun.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -90,6 +99,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DolphinRiderZombie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SunFlower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Repeater.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

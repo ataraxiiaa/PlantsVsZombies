@@ -9,20 +9,11 @@ class PeaShooter : public Shooter
 {
 	Animation* animate;
 public:
-	PeaShooter();
-	void DrawPeaShooter(sf::RenderWindow& window);
-	int GetX()
-	{
-		return this->position.GetX();
-	}
-	int GetY()
-	{
-		return this->position.GetY();
-	}
-	bool GetExistence()
-	{
-		return this->exists;
-	}
+	PeaShooter(); // Default constructor 
+	void DrawPeaShooter(sf::RenderWindow& window); // draws peashooter
+	int GetX() { return this->position.GetX(); } // Getting X coordinates
+	int GetY() { return this->position.GetY(); } // Getting Y coordinates
+	bool GetExistence() { return this->exists; }; // Checks if plants exist or not
 };
 
 

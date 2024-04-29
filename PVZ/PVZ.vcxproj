@@ -27,8 +27,11 @@
     <ClCompile Include="Pea.cpp" />
     <ClCompile Include="PeaShooter.cpp" />
     <ClCompile Include="Plants.cpp" />
+    <ClCompile Include="Repeater.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Sun.cpp" />
+    <ClCompile Include="SunFlower.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -44,7 +47,10 @@
     <ClInclude Include="Pea.h" />
     <ClInclude Include="PeaShooter.h" />
     <ClInclude Include="Plants.h" />
+    <ClInclude Include="Repeater.h" />
     <ClInclude Include="Shooter.h" />
+    <ClInclude Include="Sun.h" />
+    <ClInclude Include="SunFlower.h" />
     <ClInclude Include="Zombies.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
