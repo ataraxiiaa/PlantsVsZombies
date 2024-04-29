@@ -107,12 +107,12 @@ void Game::Start_Game()
 			peaShooter.DrawPeaShooter(window);
 			normal.drawZombie(window);
 			//football.drawZombie(window);
-			flying.drawZombie(window);
+			//flying.drawZombie(window);
 			//dancing.drawZombie(window);
 			//dolphin.drawZombie(window);
 			normal.moveZombie(ptr);
 			//football.moveZombie();
-			flying.moveZombie();
+			//flying.moveZombie();
 			//dancing.moveZombie();
 			//dolphin.moveZombie();
 			//peaShooter.animate->DrawAnimation(window);

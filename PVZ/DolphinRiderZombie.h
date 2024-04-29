@@ -17,6 +17,6 @@ public:
 		sprite.setTextureRect(IntRect(32, 0, texture.getSize().x / 8, texture.getSize().y / 1));
 		this->exists = true;
 		this->position.SetX(700);
-		this->position.SetY((600 - (rand() % 5) * 110));
+		this->position.SetY((550 - (rand() % 5) * 110));
 	}
 };
