@@ -19,9 +19,9 @@ protected:
 	
 public:
 	Sun();
-	void DrawSun(sf::RenderWindow& window);
+	void DrawSun(sf::RenderWindow& window, int& money);
 	void DropSun(); // For Spawning Sun at random positions
-	void CollectSun(sf::RenderWindow& window);
+	void CollectSun(sf::RenderWindow& window, int& money);
 };
 
 

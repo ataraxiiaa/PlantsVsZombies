@@ -11,6 +11,7 @@
 #include "DancingZombie.h"
 #include "DolphinRiderZombie.h"
 #include "Sun.h"
+#include <string>
 using namespace sf;
 using namespace std;
 
@@ -25,6 +26,9 @@ class Game
 	DolphinRiderZombie dolphin;
 	Plants* ptr = &peaShooter;
 	Sun sun;
+	int money = 0;
+	Font font;
+	Text text;
 public:
 	Game() = default; // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp

@@ -20,8 +20,11 @@ PeaShooter::PeaShooter()
 }
 void PeaShooter::DrawPeaShooter(sf::RenderWindow& window)
 {
-	sprite.setPosition(this->position.GetX(), this->position.GetY());
-	window.draw(sprite);
+	if (exists)
+	{
+		sprite.setPosition(this->position.GetX(), this->position.GetY());
+		window.draw(sprite);
+	}
 	//animate->Update();
 	//animate->DrawAnimation(window);
 }

@@ -87,6 +87,10 @@ void Game::Start_Game()
 				if (event.type == Event::Closed)
 					window.close();
 			}
+			font.loadFromFile("../fonts/logofont.otf");
+			text.setFont(font);
+			text.setString("Sun: " + to_string(money));
+			text.setPosition(0, 0);
 			//Create a background
 			createBack(window);
 			createMap(window);
@@ -105,7 +109,8 @@ void Game::Start_Game()
 			//dolphin.moveZombie();
 			//peaShooter.animate->DrawAnimation(window);
 			// Drawing Sun
-			sun.DrawSun(window);
+			sun.DrawSun(window, money);
+			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
 		}
 		window.display();

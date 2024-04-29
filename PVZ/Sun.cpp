@@ -9,7 +9,7 @@ Sun::Sun()
 	exist = false;
 	fallSpeed = 5.0f; // Speed by which sun falls down the screen
 }
-void Sun::DrawSun(sf::RenderWindow& window)
+void Sun::DrawSun(sf::RenderWindow& window, int& money)
 {
 	srand(time(0));
 	int randomTime = rand() % 5 + 1; // Set accordingly 
@@ -23,7 +23,7 @@ void Sun::DrawSun(sf::RenderWindow& window)
 	}
 
 	if (exist) {
-		CollectSun(window);
+		CollectSun(window, money);
 		sunSprite.setPosition(this->position.GetX(), this->position.GetY());
 		if (this->exist)
 			window.draw(sunSprite); // Drawing Sun
@@ -38,7 +38,7 @@ void Sun::DropSun()
 				exist = false;
 	}
 }
-void Sun::CollectSun(sf::RenderWindow& window)
+void Sun::CollectSun(sf::RenderWindow& window, int& money)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
@@ -48,6 +48,7 @@ void Sun::CollectSun(sf::RenderWindow& window)
 		if (sunBounds.contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
 		{
 			exist = false;
+			money += 25;
 		}
 	}
 }
