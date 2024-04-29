@@ -25,7 +25,7 @@ public:
 		else
 			ptr->SetExistence(false);
 	}
-	void moveZombie(Plants*& ptr)
+	virtual void moveZombie(Plants*& ptr)
 	{
 		if (!checkIfPlantAhead(ptr))
 		{

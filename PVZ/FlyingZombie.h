@@ -8,7 +8,7 @@ public:
 		srand((unsigned)time(0));
 		rand();
 		rand();
-		this->speed = 15;
+		this->speed = 5;
 		this->damage = 5;
 		this->texture.loadFromFile("../Images/Zombie2.png");
 		this->sprite.setTexture(this->texture);
@@ -16,5 +16,13 @@ public:
 		this->exists = true;
 		this->position.SetX(700);
 		this->position.SetY((600 - (rand() % 5) * 110));
+		this->position.SetY(600);
+	}
+	void moveZombie()
+	{
+		if (position.GetX() > 0)
+		{
+			this->position.SetX(position.GetX() - speed);
+		}
 	}
 };
