@@ -9,12 +9,13 @@
 class Shooter : public Plants
 {
 protected:
-	Pea bullet;
+	Pea* bullet;
 	Clock clock;
+
 public:
-	Shooter();
+	Shooter(int totalBullets=1);
 	//void SetBullet();
-	void Fire(sf::RenderWindow& window, Coordinates PlantCoords);
+	void Fire(sf::RenderWindow& window, Coordinates PlantCoords,int index=0);
 };
 
 

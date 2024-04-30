@@ -23,9 +23,9 @@ void Animation::SetSheet(float Delay, int totalFrames,Texture& spriteSheet, int 
 	sprite.setTexture(spriteSheet);
 	sprite.setTextureRect(sf::IntRect(0, 0, frameWidth, frameHeight));
 }
-void Animation::Update()
+void Animation::Update(bool end)
 {
-	timer += 0.2f;
+	timer += 0.1f;
 	if (timer >= animationDelay)
 	{
 		if (currFrame < imagesPerRow)
@@ -43,6 +43,11 @@ void Animation::Update()
 			currFrame++;
 		}
 	}
-	if (currFrame == totalFrames)
+	if (currFrame == totalFrames && end==false) 
 		currFrame = 0;
+}
+void Animation::DrawAnimation(sf::RenderWindow& window, Coordinates positon)
+{
+	sprite.setPosition(positon.GetX(), positon.GetY());
+	window.draw(sprite);
 }

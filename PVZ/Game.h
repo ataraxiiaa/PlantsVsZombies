@@ -13,6 +13,8 @@
 #include "Sun.h"
 #include "Shop.h"
 #include "Paused.h"
+#include "CherryBomb.h"
+#include "Repeater.h"
 #include <string>
 using namespace sf;
 using namespace std;
@@ -29,6 +31,8 @@ class Game
 	Shop shop;
 	DolphinRiderZombie dolphin;
 	Plants* ptr = &peaShooter;
+	CherryBomb bomb;
+	Repeater repeat;
 	Sun sun;
 	int money;
 	Font font;

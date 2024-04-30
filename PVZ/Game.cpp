@@ -70,7 +70,6 @@ void Game::Start_Game()
 
 	Clock timeMoney;
 	Clock clock;
-
 	while (window.isOpen())
 	{
 		if (menu.ShowState() == true)
@@ -121,6 +120,7 @@ void Game::Start_Game()
 			//dolphin.moveZombie();
 			//peaShooter.animate->DrawAnimation(window);
 			// Drawing Sun
+			repeat.DrawRepeater(window);
 			sun.DrawSun(window, money);
 			shop.DrawShop(window);
 			window.draw(text);

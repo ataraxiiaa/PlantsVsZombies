@@ -2,6 +2,7 @@
 #ifndef Animation_H
 #define Animation_H
 
+#include "Coordinates.h" // Include neceassary header file(s)
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
@@ -22,8 +23,9 @@ public:
 	Animation(float animationDelay=10); // Default constructor
 
 	void SetSheet(float Delay,int totalFrames,Texture& spriteSheet, int imagesPerRow,int imagesPerCol);
-	void Update();
-	void DrawAnimation(sf::RenderWindow& window) { window.draw(sprite); }
+	void Update(bool end = false);
+	void DrawAnimation(sf::RenderWindow& window, Coordinates positon);
+	int GetCurrFrame()const { return currFrame; }
 };
 
 

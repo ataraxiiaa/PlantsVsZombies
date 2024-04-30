@@ -3,7 +3,7 @@
 Pea::Pea() // Default constructor
 {
 	fire = false; // WHenever a peashooter is created it fires
-	speed = 8.0f; // Speed set to default
+	speed = 10.0f; // Speed set to default
 	bulletTexture.loadFromFile("../Images/pea.png");
 	bulletSprite.setTexture(bulletTexture);
 
