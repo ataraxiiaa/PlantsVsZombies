@@ -1,7 +1,8 @@
 #include "Repeater.h"
 
-Repeater::Repeater() : Shooter(2)
+Repeater::Repeater() : Shooter(2) // A repeater would shoot 2 bullets so set that
 {
+	// Loading up graphics and setting stuff for Repeater
 	exists = true;
 	this->texture.loadFromFile("../Images/Repeater.png");
 	animate = new Animation;
@@ -11,11 +12,12 @@ Repeater::Repeater() : Shooter(2)
 }
 void Repeater::action(RenderWindow& window)
 {
-	Fire(window, this->position,0);
+	Fire(window, this->position,0); // Finding bullets for both bullet index's
 	Fire(window, this->position, 1);
 }
 void Repeater::DrawRepeater(RenderWindow& window)
 {
+	// Drawing repeater and performing fire action
 	if (exists) {
 		this->action(window);
 		animate->Update();

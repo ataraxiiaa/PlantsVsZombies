@@ -1,11 +1,11 @@
 #include "Shooter.h"
 
-Shooter::Shooter(int totalBullets)
+Shooter::Shooter(int totalBullets) // Will change depending on plant
 {
-    bullet = new Pea[totalBullets];
+    bullet = new Pea[totalBullets]; // Array of bullets 
 
 }
-void Shooter::Fire(sf::RenderWindow& window,Coordinates PlantCoords,int index)
+void Shooter::Fire(sf::RenderWindow& window,Coordinates PlantCoords,int index) // Fire function
 {
     // Check if enough time has passed to allow firing
     if (clock.getElapsedTime().asSeconds() >= 3 && !bullet[index].ShowFire())

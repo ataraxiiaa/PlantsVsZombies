@@ -8,11 +8,11 @@
 class Repeater : public Shooter
 {
 	Animation* animate;
-	Clock clock;
+	Clock clock; // to handle stuff 
 public:
-	Repeater();
-	void DrawRepeater(RenderWindow& window);
-	void action(RenderWindow& window);
+	Repeater(); // Default construcotr
+	void DrawRepeater(RenderWindow& window); // drawing repeater 
+	void action(RenderWindow& window); // firing 
 };
 
 
