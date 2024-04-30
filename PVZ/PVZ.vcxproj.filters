@@ -66,6 +66,9 @@
     <ClCompile Include="SnowPea.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="WallNut.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -135,6 +138,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SnowPea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WallNut.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

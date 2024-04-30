@@ -16,6 +16,7 @@
 #include "CherryBomb.h"
 #include "Repeater.h"
 #include "SnowPea.h"
+#include "WallNut.h"
 #include <string>
 using namespace sf;
 using namespace std;
@@ -34,7 +35,7 @@ class Game
 	Plants* ptr = &peaShooter;
 	CherryBomb bomb;
 	Repeater repeat;
-	SnowPea sp;
+	WallNut nutty;
 	Sun sun;
 	int money;
 	Font font;
