@@ -8,7 +8,8 @@ WallNut::WallNut()
 	animate = new Animation;
 	animate->SetSheet(0.15, 3, texture, 5, 1);
 	exists = true;
-
+	Coordinates pos(400, 200);
+	this->position = pos;
 }
 void WallNut::DrawWallNut(RenderWindow& window)
 {
