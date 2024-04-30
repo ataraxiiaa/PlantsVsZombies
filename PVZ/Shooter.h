@@ -10,10 +10,11 @@ class Shooter : public Plants
 {
 protected:
 	Pea bullet;
+	Clock clock;
 public:
 	Shooter();
-	void SetBullet();
-	void Fire();
+	//void SetBullet();
+	void Fire(sf::RenderWindow& window, Coordinates PlantCoords);
 };
 
 

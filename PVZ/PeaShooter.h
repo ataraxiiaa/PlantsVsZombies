@@ -14,6 +14,7 @@ public:
 	int GetX() { return this->position.GetX(); } // Getting X coordinates
 	int GetY() { return this->position.GetY(); } // Getting Y coordinates
 	bool GetExistence() { return this->exists; }; // Checks if plants exist or not
+
 };
 
 

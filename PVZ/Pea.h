@@ -17,10 +17,16 @@ protected:
 	Coordinates position;
 public:
 	Pea();
-	void MovePea();
 	Coordinates GetPosition()const { return position; }
-	void SetPoition(Coordinates pos) { this->position = pos; }
-	
+	void SetPosition(Coordinates pos) { this->position = pos; }
+
+	bool ShowFire()const { return fire; }
+	float GetSpeed()const { return speed; }
+
+	void SetFire(bool firing) { fire = firing; }
+	void setSpeed(float speed) { this->speed = speed; }
+
+	void DrawPea(sf::RenderWindow& window);
 };
 
 
