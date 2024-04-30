@@ -114,6 +114,7 @@ void Game::Start_Game()
 			//dancing.drawZombie(window);
 			//dolphin.drawZombie(window);
 			normal.moveZombie(ptr);
+			sp.DrawSnowPea(window);
 			//football.moveZombie();
 			//flying.moveZombie();
 			//dancing.moveZombie();

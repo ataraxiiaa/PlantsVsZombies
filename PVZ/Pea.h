@@ -4,8 +4,10 @@
 
 #include <SFML/Graphics.hpp> // Include necassary header file(s)
 #include <SFML/Audio.hpp>
+#include <string>
 #include "Coordinates.h"
 using namespace sf;
+using namespace std;
 
 class Pea
 {
@@ -25,7 +27,8 @@ public:
 
 	void SetFire(bool firing) { fire = firing; }
 	void setSpeed(float speed) { this->speed = speed; }
-
+	
+	void SetTexture(Texture texture) {this->bulletTexture = texture; }
 	void DrawPea(sf::RenderWindow& window);
 };
 

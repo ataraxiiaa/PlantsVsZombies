@@ -32,6 +32,7 @@
     <ClCompile Include="Repeater.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="SnowPea.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="SunFlower.cpp" />
@@ -56,6 +57,7 @@
     <ClInclude Include="Repeater.h" />
     <ClInclude Include="Shooter.h" />
     <ClInclude Include="Shop.h" />
+    <ClInclude Include="SnowPea.h" />
     <ClInclude Include="Sun.h" />
     <ClInclude Include="SunFlower.h" />
     <ClInclude Include="Zombies.h" />
