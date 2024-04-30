@@ -9,7 +9,7 @@ void Game::createBack(RenderWindow& window)
 	//Drawing the background
 	Image map_image;
 	//Will have to change the path to run it properly ig for this too
-	map_image.loadFromFile("../Images/Background.png");
+	map_image.loadFromFile("../Images/Backgorund.png");
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;

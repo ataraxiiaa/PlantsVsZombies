@@ -8,3 +8,7 @@ void Shooter::Fire()
 {
 
 }
+void Shooter::SetBullet()
+{
+
+}

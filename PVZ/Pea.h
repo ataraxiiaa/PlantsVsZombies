@@ -18,7 +18,9 @@ protected:
 public:
 	Pea();
 	void MovePea();
-
+	Coordinates GetPosition()const { return position; }
+	void SetPoition(Coordinates pos) { this->position = pos; }
+	
 };
 
 
