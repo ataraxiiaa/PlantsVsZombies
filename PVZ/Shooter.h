@@ -11,7 +11,7 @@ class Shooter : public Plants
 protected:
 	Pea bullet;
 public:
-	Shooter(Coordinates position);
+	Shooter();
 	void SetBullet();
 	void Fire();
 };
