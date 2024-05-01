@@ -11,7 +11,8 @@ PeaShooter::PeaShooter()
 	this->position.SetX(700);
 	this->position.SetY(500);
 	this->lives = 10;
-	//sprite.setTexture(texture);
+	sprite.setTexture(texture);
+	sprite.setTextureRect(sf::IntRect(0, 0, 70, 100));
 	//Animation::SetSheet(Texture& spriteSheet, int imagesPerRow, int imagesPerCol,int totalFrames)
 	//SetSheet(float Delay, int totalFrames,Texture& spriteSheet, int imagesPerRow, int imagesPerCol)
 

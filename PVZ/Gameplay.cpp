@@ -62,6 +62,8 @@ void Gameplay::dropToGrid(RenderWindow& window, Plants** ptr)
 			k++;
 			if (id[index] == "sunflower")
 				ptr[k] = new SunFlower;
+			else if (id[index] == "peashooter")
+				ptr[k] = new PeaShooter;
 			selected = false;
 			//}
 		}

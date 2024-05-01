@@ -16,7 +16,7 @@ public:
 		this->texture.loadFromFile("../Images/SunFlower.png");
 		this->sprite.setTexture(texture);
 		this->sprite.setTextureRect(sf::IntRect(0, 0, 67, 100));
-		this->position.SetX(300);
+		this->position.SetX(700);
 		this->position.SetY(200);
 		this->lives = 10;
 	}

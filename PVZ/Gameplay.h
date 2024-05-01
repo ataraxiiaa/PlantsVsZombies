@@ -6,6 +6,7 @@
 #include "Zombies.h"
 #include "Shop.h"
 #include "SunFlower.h"
+#include "PeaShooter.h"
 #include <iostream>
 
 class Gameplay
