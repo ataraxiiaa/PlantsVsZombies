@@ -8,7 +8,8 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
 	{
 		FIELD_GAME_STATUS[i] = new bool[gridCols];
 	}
-
+	Pptr = nullptr; 
+	Zptr = nullptr;
 }
 Gameplay::~Gameplay() {
 	for (int i = 0; i < gridRows; ++i)
