@@ -110,6 +110,10 @@ void Game::Start_Game()
 			createMap(window);
 			// Create the grid
 			createGrid(window);
+			if (pause.getCollect())
+				sun.SetAutoCollect(true);
+			else
+				sun.SetAutoCollect(false);
 			shop.DrawShop(window);
 			game.checkShopClick(window);
 			game.dropToGrid(window, ptr);

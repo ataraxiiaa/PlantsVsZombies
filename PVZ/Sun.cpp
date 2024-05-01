@@ -62,4 +62,10 @@ void Sun::CollectSun(sf::RenderWindow& window, int& money)
 			money += 25;
 		}
 	}
+	if (autoCollect)
+		if (position.GetY() > 300)
+		{
+			exist = false;
+			money += 25;
+		}
 }
