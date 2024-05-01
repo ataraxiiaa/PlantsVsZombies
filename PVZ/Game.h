@@ -17,6 +17,7 @@
 #include "Repeater.h"
 #include "SnowPea.h"
 #include "WallNut.h"
+#include "Gameplay.h"
 #include <string>
 using namespace sf;
 using namespace std;
@@ -40,6 +41,7 @@ class Game
 	int money;
 	Font font;
 	Text text;
+	Gameplay game;
 public:
 	Game(); // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp

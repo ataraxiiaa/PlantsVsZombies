@@ -107,7 +107,10 @@ void Game::Start_Game()
 			createMap(window);
 			// Create the grid
 			createGrid(window);
-			peaShooter.DrawPeaShooter(window);
+			shop.DrawShop(window);
+			game.checkShopClick(window);
+			game.dropToGrid(window);
+			//peaShooter.DrawPeaShooter(window);
 			normal.drawZombie(window);
 			//football.drawZombie(window);
 			//flying.drawZombie(window);
@@ -122,13 +125,10 @@ void Game::Start_Game()
 			//peaShooter.animate->DrawAnimation(window);
 			// Drawing Sun
 			//bomb.DrawCherryBomb(window);
-			nutty.DrawWallNut(window);
 			repeat.DrawRepeater(window);
 			sun.DrawSun(window, money);
-			shop.DrawShop(window);
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
-			cout << nutty.getY() << endl;
 		}
 		else if (!menu.ShowState() && pause.ShowState())
 			pause.displayPausedMenu(window);

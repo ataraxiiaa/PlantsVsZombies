@@ -17,11 +17,15 @@ public:
 	int GetY() { return this->position.GetY(); }
 	float GetLives() { return this->lives; }
 	bool GetExistence() { return this->exists; }
+	Sprite getSprite() { return this->sprite; }
 	// Setters
 	void SetCoolDown(float coolDown) { this->coolDown = coolDown; }
 	void SetCost(int cost) { this->cost = cost; }
 	void SetLives(float lives) { this->lives = lives; }
 	void SetExistence(bool exists) { this->exists = exists; }
+	virtual void drawPlant(RenderWindow& window);
+	void setX(int x) { this->position.SetX(x); }
+	void setY(int y) { this->position.SetY(y); }
 };
 
 

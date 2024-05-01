@@ -8,7 +8,14 @@ class SunFlower : public Plants
 {
 
 public:
-
+	SunFlower()
+	{
+		this->exists = true;
+		this->coolDown = 10;
+		this->cost = 50;
+		this->position.SetX(300);
+		this->position.SetY(200);
+	}
 };
 
 

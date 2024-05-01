@@ -13,7 +13,13 @@ Shop::Shop() // Initiallizes every sprite
 	sprite[0].setTexture(texture[1]);
 	sprite[0].setTextureRect(sf::IntRect(0, 0, 125, 101));
 	sprite[0].setPosition(-10, 50);
-
+	ids = new string[6];
+	ids[0] = "sunflower";
+	ids[1] = "peashooter";
+	ids[2] = "repeater";
+	ids[3] = "wallnut";
+	ids[4] = "cherrybomb";
+	ids[5] = "snowpea";
 }
 void Shop::DrawShop(sf::RenderWindow& window)
 {
