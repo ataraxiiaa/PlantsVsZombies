@@ -22,7 +22,7 @@ public:
 	~Gameplay(); // Destructor 
 	// Creating functions for Gameplay
 	void checkShopClick(RenderWindow& window);
-	void dropToGrid(RenderWindow& window);
+	void dropToGrid(RenderWindow& window, Plants** ptr);
 };
 
 

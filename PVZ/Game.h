@@ -33,7 +33,8 @@ class Game
 	DancingZombie dancing;
 	Shop shop;
 	DolphinRiderZombie dolphin;
-	Plants* ptr = &nutty;
+	Plants** ptr;
+
 	CherryBomb bomb;
 	Repeater repeat;
 	WallNut nutty;

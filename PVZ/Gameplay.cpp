@@ -40,45 +40,34 @@ void Gameplay::checkShopClick(RenderWindow& window)
 				index = i;
 			}
 		}
-		if (selected)
-		{
-			cout << "sel" << endl;
-			sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-			{
-				//if (sf::Mouse::getPosition().x > 200 && sf::Mouse::getPosition().y > 110)
-				//{
-				int k = -1;
-				for (int i = 0; i < 45; i++)
-				{
-					if (Pptr[i] != NULL)
-						k = i;
-					else
-						break;
-				}
-				string* id = shop.getIds();
-				k++;
-				if (id[index] == "sunflower")
-					Pptr[k] = new SunFlower;
-				selected = false;
-				//}
-				for (int i = 0; Pptr[i] != NULL; i++)
-				{
-					Sprite x;
-					cout << Pptr[i][0].GetX() << ", " << Pptr[i][0].GetY() << endl;
-					x = Pptr[i][0].getSprite();
-					x.setPosition(Pptr[i][0].GetX(), Pptr[i][0].GetY());
-					window.draw(x);
-				}
-			}
-		}
 
 	}
 }
 
-void Gameplay::dropToGrid(RenderWindow& window)
+void Gameplay::dropToGrid(RenderWindow& window, Plants** ptr)
 {
-
-	
-	
+	if (selected)
+	{
+		cout << "sel" << endl;
+		sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			//if (sf::Mouse::getPosition().x > 200 && sf::Mouse::getPosition().y > 110)
+			//{
+			int k = -1;
+			for (int i = 0; i < 45; i++)
+			{
+				if (Pptr[i] != NULL)
+					k = i;
+				else
+					break;
+			}
+			string* id = shop.getIds();
+			k++;
+			if (id[index] == "sunflower")
+				ptr[k] = new SunFlower;
+			selected = false;
+			//}
+		}
+	}
 }

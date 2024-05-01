@@ -3,6 +3,9 @@
 Game::Game()
 {
 	money = 0;
+	ptr = new Plants * [45];
+	for (int i = 0; i < 45; i++)
+		ptr[i] = nullptr;
 }
 void Game::createBack(RenderWindow& window)
 {
@@ -109,7 +112,7 @@ void Game::Start_Game()
 			createGrid(window);
 			shop.DrawShop(window);
 			game.checkShopClick(window);
-			game.dropToGrid(window);
+			game.dropToGrid(window, ptr);
 			//peaShooter.DrawPeaShooter(window);
 			normal.drawZombie(window);
 			//football.drawZombie(window);
@@ -129,6 +132,8 @@ void Game::Start_Game()
 			sun.DrawSun(window, money);
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
+			for (int i = 0; i < 45, ptr[i]!=nullptr; i++)
+				ptr[i]->drawPlant(window);
 		}
 		else if (!menu.ShowState() && pause.ShowState())
 			pause.displayPausedMenu(window);
