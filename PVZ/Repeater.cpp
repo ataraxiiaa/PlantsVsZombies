@@ -13,7 +13,7 @@ Repeater::Repeater() : Shooter(2) // A repeater would shoot 2 bullets so set tha
 void Repeater::action(RenderWindow& window)
 {
 	Fire(window, this->position,0); // Finding bullets for both bullet index's
-	Fire(window, this->position, 1);
+	//Fire(window, this->position, 1);
 }
 void Repeater::DrawRepeater(RenderWindow& window)
 {

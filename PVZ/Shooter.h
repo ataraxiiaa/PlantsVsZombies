@@ -11,7 +11,8 @@ class Shooter : public Plants
 protected:
 	Pea* bullet;
 	Clock clock;
-
+	int totalBullets;
+	float delay;
 public:
 	Shooter(int totalBullets=1);
 	//void SetBullet();
