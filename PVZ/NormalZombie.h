@@ -17,6 +17,7 @@ public:
 		this->exists = true;
 		this->position.SetX(1170);
 		this->position.SetY((550 - (rand() % 5) * 110));
+		this->position.SetY(200);
 		
 	}
 };

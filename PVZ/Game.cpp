@@ -128,6 +128,7 @@ void Game::Start_Game()
 			shop.DrawShop(window);
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
+			cout << nutty.getY() << endl;
 		}
 		else if (!menu.ShowState() && pause.ShowState())
 			pause.displayPausedMenu(window);

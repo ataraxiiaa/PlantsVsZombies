@@ -32,7 +32,7 @@ class Game
 	DancingZombie dancing;
 	Shop shop;
 	DolphinRiderZombie dolphin;
-	Plants* ptr = &peaShooter;
+	Plants* ptr = &nutty;
 	CherryBomb bomb;
 	Repeater repeat;
 	WallNut nutty;
@@ -40,7 +40,6 @@ class Game
 	int money;
 	Font font;
 	Text text;
-
 public:
 	Game(); // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp

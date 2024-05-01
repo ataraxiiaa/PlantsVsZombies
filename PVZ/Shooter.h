@@ -17,8 +17,6 @@ public:
 	Shooter(int totalBullets=1);
 	//void SetBullet();
 	void Fire(sf::RenderWindow& window, Coordinates PlantCoords,int index=0);
-
-	
 };
 
 

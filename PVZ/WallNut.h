@@ -11,8 +11,11 @@ class WallNut : public Plants // Inherit plant class
 public:
 	WallNut(); // Default constructor 
 	void DrawWallNut(RenderWindow& window); // For drawing window
+
+int getY()
+{
+	return this->position.GetY();
+}
 };
-
-
 
 #endif // WallNut_H

@@ -9,7 +9,7 @@
 class Gameplay
 {
 	Shop shop;
-	Plants* Pptr; // Plant pointer
+	Plants** Pptr; // Plant pointer
 	Zombie* Zptr; // Zombie plant
 	const int gridCols, gridRows; // Making Grid
 	bool** FIELD_GAME_STATUS; // Bool to track Grid movement
@@ -23,3 +23,4 @@ public:
 
 
 #endif // Gameplay_H
+

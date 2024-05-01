@@ -10,6 +10,7 @@ WallNut::WallNut()
 	exists = true;
 	Coordinates pos(400, 200);
 	this->position = pos;
+	this->lives = 4;
 }
 void WallNut::DrawWallNut(RenderWindow& window)
 {
