@@ -2,10 +2,6 @@
 
 Gameplay::Gameplay(): gridCols(9), gridRows(5)
 {
-	// Used to set up the grid 
-	Pptr = new Plants * [45];
-	for (int i = 0; i < 45; i++)
-		Pptr[i] = nullptr;
 	FIELD_GAME_STATUS = new bool*[gridRows];
 	for (int i = 0; i < gridRows; ++i)
 	{
@@ -57,7 +53,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Plants** ptr)
 			int k = -1;
 			for (int i = 0; i < 45; i++)
 			{
-				if (Pptr[i] != NULL)
+				if (ptr[i] != NULL)
 					k = i;
 				else
 					break;
