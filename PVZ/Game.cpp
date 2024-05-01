@@ -121,6 +121,7 @@ void Game::Start_Game()
 			//dolphin.moveZombie();
 			//peaShooter.animate->DrawAnimation(window);
 			// Drawing Sun
+			//bomb.DrawCherryBomb(window);
 			nutty.DrawWallNut(window);
 			repeat.DrawRepeater(window);
 			sun.DrawSun(window, money);
