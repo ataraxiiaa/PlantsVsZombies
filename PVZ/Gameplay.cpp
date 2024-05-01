@@ -10,6 +10,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
 	for (int i = 0; i < gridRows; i++)
 		for (int j = 0; j < gridCols; j++)
 			FIELD_GAME_STATUS[i][j] = false;
+	firstClick = true;
 }
 Gameplay::~Gameplay() {
 	for (int i = 0; i < gridRows; ++i)
@@ -32,19 +33,16 @@ void Gameplay::checkShopClick(RenderWindow& window)
 			if (bounds[i].contains(mouse))
 			{
 				selected = true;
-				cout << "hit" << endl;
 				index = i;
 			}
 		}
 
 	}
 }
-
 void Gameplay::dropToGrid(RenderWindow& window, Plants** ptr)
 {
 	if (selected)
 	{
-		cout << "sel" << endl;
 		sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
@@ -62,8 +60,6 @@ void Gameplay::dropToGrid(RenderWindow& window, Plants** ptr)
 			k++;
 			if (id[index] == "sunflower")
 				ptr[k] = new SunFlower;
-			else if (id[index] == "peashooter")
-				ptr[k] = new PeaShooter;
 			selected = false;
 			//}
 		}

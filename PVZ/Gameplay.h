@@ -17,6 +17,7 @@ class Gameplay
 	bool** FIELD_GAME_STATUS; // Bool to track Grid movement
 	bool selected;
 	int index;
+	bool firstClick;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
