@@ -18,6 +18,7 @@ public:
 		this->sprite.setTextureRect(sf::IntRect(0, 0, 67, 100));
 		this->position.SetX(300);
 		this->position.SetY(200);
+		this->lives = 10;
 	}
 };
 

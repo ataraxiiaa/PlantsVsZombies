@@ -17,9 +17,8 @@ public:
 		{
 			if (this->position.GetX() - 50 == plant[i]->GetX() && this->position.GetY() == plant[i]->GetY() && plant[i]->GetExistence())
 				return true;
-			else
-				return false;
 		}
+			return false;
 	}
 	void doDamage(Plants** ptr)
 	{
