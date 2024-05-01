@@ -1,11 +1,13 @@
 #pragma once
-#include "Entity.h"
+#include "Entity.h" // Include neceassary header file(s)
 #include "Plants.h"
+#include "Animation.h"
 
 class Zombie : public Entity {
 protected:
 	float damage;
 	float speed;
+	Animation* animate;
 public:
 	float getDamage() { return this->damage; }
 	float getSpeed() { return this->speed; }
@@ -42,7 +44,7 @@ public:
 		else
 			doDamage(ptr);
 	}
-	void drawZombie(sf::RenderWindow& window)
+	virtual void drawZombie(sf::RenderWindow& window)
 	{
 		this->sprite.setPosition(this->position.GetX(), this->position.GetY());
 		window.draw(this->sprite);

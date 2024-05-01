@@ -72,6 +72,9 @@
     <ClCompile Include="Gameplay.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="FootballZombie.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">

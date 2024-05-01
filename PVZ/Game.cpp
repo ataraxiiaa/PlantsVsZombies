@@ -119,6 +119,8 @@ void Game::Start_Game()
 			game.dropToGrid(window, ptr);
 			//peaShooter.DrawPeaShooter(window);
 			normal.drawZombie(window);
+			football.drawZombie(window);
+			football.moveZombie(ptr);
 			//football.drawZombie(window);
 			//flying.drawZombie(window);
 			//dancing.drawZombie(window);
