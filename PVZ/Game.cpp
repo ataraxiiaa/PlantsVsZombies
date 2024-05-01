@@ -57,7 +57,7 @@ void Game::Start_Game()
 	//Game field (5*9)
 	//Point 137*79 - leftmost point
 	//length 41; width 53
-	const int ROWS = 5;
+	/*const int ROWS = 5;
 	const int COLS = 9;
 
 	bool FIELD_GAME_STATUS[ROWS][COLS];
@@ -66,7 +66,7 @@ void Game::Start_Game()
 		for (int j = 0; j < COLS; j++) {
 			FIELD_GAME_STATUS[i][j] = true;
 		}
-	}
+	}*/
 
 	Clock timeMoney;
 	Clock clock;
