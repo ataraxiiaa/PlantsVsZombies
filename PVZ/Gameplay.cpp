@@ -11,9 +11,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
 	{
 		FIELD_GAME_STATUS[i] = new bool[gridCols];
 	}
-	for (int i = 0; i < gridRows; i++)
-		for (int j = 0; j < gridCols; j++)
-			FIELD_GAME_STATUS[i][j] = false;
+
 }
 Gameplay::~Gameplay() {
 	for (int i = 0; i < gridRows; ++i)
