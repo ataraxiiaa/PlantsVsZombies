@@ -46,24 +46,34 @@ void Gameplay::dropToGrid(RenderWindow& window, Plants** ptr)
 		sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			//if (sf::Mouse::getPosition().x > 200 && sf::Mouse::getPosition().y > 110)
-			//{
-			int k = -1;
-			for (int i = 0; i < 45; i++)
+			if (firstClick)
 			{
-				if (ptr[i] != NULL)
-					k = i;
-				else
-					break;
+				firstClick = false;
 			}
-			string* id = shop.getIds();
-			k++;
-			if (id[index] == "sunflower")
-				ptr[k] = new SunFlower;
-			else if (id[index] == "peashooter")
-				ptr[k] = new PeaShooter;
-			selected = false;
-			//}
+			else {
+				int k = -1;
+				for (int i = 0; i < 45; i++)
+				{
+					if (ptr[i] != NULL)
+						k = i;
+					else
+						break;
+				}
+				string* id = shop.getIds();
+				k++;
+				if (id[index] == "sunflower") {
+					ptr[k] = new SunFlower;
+					ptr[k]->setX(mouse.x);
+					ptr[k]->setY(mouse.y);
+				}
+				else if (id[index] == "peashooter") {
+					ptr[k] = new PeaShooter;
+					ptr[k]->setX(mouse.x);
+					ptr[k]->setY(mouse.y);
+				}
+				selected = false;
+				firstClick = true;
+			}
 		}
 	}
 }

@@ -4,11 +4,14 @@
 #define Plants_H 
 
 #include "Entity.h" // Include necessary header files
+#include "Animation.h"
+
 class Plants : public Entity
 {
 protected:
 	float coolDown; // Cool down between plants being used after one is placed
 	int cost; // Cost for buying plants
+	Animation* animate;
 public:
 	// Getters
 	float GetCoolDown()const { return coolDown; }

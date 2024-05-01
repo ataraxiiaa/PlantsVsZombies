@@ -17,7 +17,7 @@ PeaShooter::PeaShooter()
 	//SetSheet(float Delay, int totalFrames,Texture& spriteSheet, int imagesPerRow, int imagesPerCol)
 
 }
-void PeaShooter::DrawPeaShooter(sf::RenderWindow& window)
+void PeaShooter::drawPlant(sf::RenderWindow& window)
 {
 	if (exists)
 	{
