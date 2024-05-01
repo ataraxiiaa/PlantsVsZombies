@@ -43,5 +43,6 @@ public:
 		window.draw(this->sprite);
 	}
 	
+	Coordinates GetPosition()const { return this->position; }
 	
 };

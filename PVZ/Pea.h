@@ -6,6 +6,7 @@
 #include <SFML/Audio.hpp>
 #include <string>
 #include "Coordinates.h"
+#include "Zombies.h"
 using namespace sf;
 using namespace std;
 
@@ -30,6 +31,8 @@ public:
 	
 	void SetTexture(Texture texture) {this->bulletTexture = texture; }
 	void DrawPea(sf::RenderWindow& window);
+
+	bool CheckForCollision(Zombie*& ptr);
 };
 
 

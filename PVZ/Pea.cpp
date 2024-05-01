@@ -14,3 +14,9 @@ void Pea::DrawPea(sf::RenderWindow& window) {
 		window.draw(bulletSprite);
 	}
 }
+bool Pea::CheckForCollision(Zombie*& Zptr) {
+	if (this->position.GetX() - 50 == Zptr->GetPosition().GetX() && this->position.GetY() == Zptr->GetPosition().GetY() && Zptr->CheckExistance())
+		return true;
+	else
+		return false;
+}
