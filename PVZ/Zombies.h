@@ -2,6 +2,7 @@
 #include "Entity.h" // Include neceassary header file(s)
 #include "Plants.h"
 #include "Animation.h"
+#include "Vector.h"
 
 class Zombie : public Entity {
 protected:
@@ -13,18 +14,18 @@ public:
 	float getSpeed() { return this->speed; }
 	void setDamage(float damage) { this->damage = damage; }
 	void setSpeed(float speed) { this->speed = speed; }
-	bool checkIfPlantAhead(Plants**& plant)
+	bool checkIfPlantAhead(Vector<Plants*>& plant)
 	{
-		for (int i = 0; i < 45 && plant[i] != NULL; i++)
+		for (int i = 0; i < plant.GetSize(); i++)
 		{
 			if (this->position.GetX() - 50 == plant[i]->GetX() && this->position.GetY() == plant[i]->GetY() && plant[i]->GetExistence())
 				return true;
 		}
 			return false;
 	}
-	void doDamage(Plants** ptr)
+	void doDamage(Vector<Plants*>& ptr)
 	{
-		for (int i = 0; i < 45 && ptr[i] != NULL; i++)
+		for (int i = 0; i < ptr.GetSize(); i++)
 		{
 			if (ptr[i]->GetLives() > 0)
 				ptr[i]->SetLives(ptr[i]->GetLives() - 0.1);
@@ -32,7 +33,7 @@ public:
 				ptr[i]->SetExistence(false);
 		}
 	}
-	virtual void moveZombie(Plants**& ptr)
+	virtual void moveZombie(Vector<Plants*>& ptr)
 	{
 		if (!checkIfPlantAhead(ptr))
 		{
