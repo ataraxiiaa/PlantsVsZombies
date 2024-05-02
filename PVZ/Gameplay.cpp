@@ -19,7 +19,7 @@ Gameplay::~Gameplay() {
 	delete[] FIELD_GAME_STATUS;
 }
 
-void Gameplay::checkShopClick(RenderWindow& window)
+void Gameplay::checkShopClick(RenderWindow& window, Sun& sun)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
@@ -34,12 +34,13 @@ void Gameplay::checkShopClick(RenderWindow& window)
 			{
 				selected = true;
 				index = i;
+				cout << "1" << endl;
 			}
 		}
 
 	}
 }
-void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr)
+void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, Sun& sun)
 {
 	if (selected)
 	{
@@ -61,15 +62,46 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr)
 				}*/
 				string* id = shop.getIds();
 				//k++;
+				//each box is 90x100 
 				if (id[index] == "sunflower") {
-					ptr.push_back(new SunFlower);
-					ptr[ptr.GetSize()-1]->setX(mouse.x);
-					ptr[ptr.GetSize()-1]->setY(mouse.y);
+					if (mouse.x > 270 && mouse.x < 1050 && mouse.y > 80 && mouse.y < 650)
+					{
+						sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+						ptr.push_back(new SunFlower);						
+						for (int i = 270; i < 1100; i += 92)
+						{
+							sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+							if (mouse.x >= i && mouse.x <= i + 92)
+								ptr[ptr.GetSize() - 1]->setX((2 * i + 80)/2);
+						}
+						for (int i = 80; i < 650; i += 106)
+						{
+							sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+							if (mouse.y >= i && mouse.y <= i + 106)
+								ptr[ptr.GetSize() - 1]->setY((2 * i + 95) / 2);
+						}
+						cout << "spawned" << endl;
+					}
 				}
 				else if (id[index] == "peashooter") {
-					ptr.push_back(new PeaShooter);
-					ptr[ptr.GetSize()-1]->setX(mouse.x);
-					ptr[ptr.GetSize()-1]->setY(mouse.y);
+					if (mouse.x > 270 && mouse.x < 1050 && mouse.y > 80 && mouse.y < 650)
+					{
+						sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+						ptr.push_back(new PeaShooter);
+						for (int i = 270; i < 1100; i += 92)
+						{
+							sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+							if (mouse.x >= i && mouse.x <= i + 92)
+								ptr[ptr.GetSize() - 1]->setX((2 * i + 80) / 2);
+						}
+						for (int i = 80; i < 650; i += 106)
+						{
+							sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+							if (mouse.y >= i && mouse.y <= i + 106)
+								ptr[ptr.GetSize() - 1]->setY((2 * i + 95) / 2);
+						}
+						cout << "spawned" << endl;
+					}
 				}
 				selected = false;
 				firstClick = true;

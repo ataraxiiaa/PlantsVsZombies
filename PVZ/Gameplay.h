@@ -23,8 +23,8 @@ public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
 	// Creating functions for Gameplay
-	void checkShopClick(RenderWindow& window);
-	void dropToGrid(RenderWindow& window, Vector<Plants*> &ptr);
+	void checkShopClick(RenderWindow& window, Sun& sun);
+	void dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, Sun& sun);
 };
 
 
