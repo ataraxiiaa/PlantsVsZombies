@@ -18,6 +18,7 @@ class Sun
 	Coordinates position;
 	Clock clock;
 	bool autoCollect;
+	int money;
 protected:
 	
 public:
@@ -26,6 +27,8 @@ public:
 	void DropSun(); // For Spawning Sun at random positions
 	void CollectSun(sf::RenderWindow& window, int& money);
 	void SetAutoCollect(bool check) { autoCollect = check; }
+
+	void SetPosition(Coordinates position) { this->position = position; }
 };
 
 

@@ -17,6 +17,10 @@ void SunFlower::drawPlant(sf::RenderWindow& window)
 		Plants::drawPlant(window);
 	}
 }
+void SunFlower::ProduceSun(RenderWindow& window,Sun sun) {
+	sun.SetPosition(this->position);
+	//sun.DrawSun();
+}
 void SunFlower::Action(RenderWindow& window)
 {
 	// Pass
