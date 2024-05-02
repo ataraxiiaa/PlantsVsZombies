@@ -39,7 +39,7 @@ void Gameplay::checkShopClick(RenderWindow& window)
 
 	}
 }
-void Gameplay::dropToGrid(RenderWindow& window, Plants** ptr)
+void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr)
 {
 	if (selected)
 	{
@@ -51,25 +51,25 @@ void Gameplay::dropToGrid(RenderWindow& window, Plants** ptr)
 				firstClick = false;
 			}
 			else {
-				int k = -1;
+				/*int k = -1;
 				for (int i = 0; i < 45; i++)
 				{
 					if (ptr[i] != NULL)
 						k = i;
 					else
 						break;
-				}
+				}*/
 				string* id = shop.getIds();
-				k++;
+				//k++;
 				if (id[index] == "sunflower") {
-					ptr[k] = new SunFlower;
-					ptr[k]->setX(mouse.x);
-					ptr[k]->setY(mouse.y);
+					ptr.push_back(new SunFlower);
+					ptr[ptr.GetSize()-1]->setX(mouse.x);
+					ptr[ptr.GetSize()-1]->setY(mouse.y);
 				}
 				else if (id[index] == "peashooter") {
-					ptr[k] = new PeaShooter;
-					ptr[k]->setX(mouse.x);
-					ptr[k]->setY(mouse.y);
+					ptr.push_back(new PeaShooter);
+					ptr[ptr.GetSize()-1]->setX(mouse.x);
+					ptr[ptr.GetSize()-1]->setY(mouse.y);
 				}
 				selected = false;
 				firstClick = true;

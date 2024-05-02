@@ -18,6 +18,7 @@
 #include "SnowPea.h"
 #include "WallNut.h"
 #include "Gameplay.h"
+#include "Vector.h"
 #include <string>
 using namespace sf;
 using namespace std;
@@ -33,8 +34,8 @@ class Game
 	DancingZombie dancing;
 	Shop shop;
 	DolphinRiderZombie dolphin;
-	Plants** ptr;
-
+	//Plants** ptr;
+	Vector<Plants*> ptr;
 	CherryBomb bomb;
 	Repeater repeat;
 	WallNut nutty;

@@ -7,6 +7,7 @@
 #include "Shop.h"
 #include "SunFlower.h"
 #include "PeaShooter.h"
+#include "Vector.h"
 #include <iostream>
 
 class Gameplay
@@ -23,7 +24,7 @@ public:
 	~Gameplay(); // Destructor 
 	// Creating functions for Gameplay
 	void checkShopClick(RenderWindow& window);
-	void dropToGrid(RenderWindow& window, Plants** ptr);
+	void dropToGrid(RenderWindow& window, Vector<Plants*> &ptr);
 };
 
 
