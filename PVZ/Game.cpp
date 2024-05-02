@@ -135,13 +135,13 @@ void Game::Start_Game()
 			//peaShooter.animate->DrawAnimation(window);
 			// Drawing Sun
 			//bomb.DrawCherryBomb(window);
-			repeat.DrawRepeater(window);
 			sun.DrawSun(window, money);
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
-			for (int i = 0; i < ptr.GetSize(); i++)
-				//if(ptr[i]!=nullptr)
-					ptr[i]->drawPlant(window);
+			for (int i = 0; i < ptr.GetSize(); i++) {
+				ptr[i]->Action(window);
+				ptr[i]->drawPlant(window);
+			}
 		}
 		else if (!menu.ShowState() && pause.ShowState())
 			pause.displayPausedMenu(window);

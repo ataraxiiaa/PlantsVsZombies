@@ -11,8 +11,8 @@ class Repeater : public Shooter
 	Clock clock; // to handle stuff 
 public:
 	Repeater(); // Default construcotr
-	void DrawRepeater(RenderWindow& window); // drawing repeater 
-	void action(RenderWindow& window); // firing 
+	//void DrawRepeater(RenderWindow& window); // drawing repeater 
+	virtual void Action(RenderWindow& window); // firing 
 };
 
 

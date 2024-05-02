@@ -10,6 +10,7 @@ class SunFlower : public Plants
 public:
 	SunFlower();
 	virtual void drawPlant(sf::RenderWindow& window);
+	virtual void Action(RenderWindow& window);
 };
 
 

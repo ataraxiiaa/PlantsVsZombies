@@ -16,12 +16,10 @@ SnowPea::SnowPea()
 	this->position = pos;
 	Ice = true;
 }
-void SnowPea::DrawSnowPea(RenderWindow& window)
+void SnowPea::Action(RenderWindow& window)
 {
 	if (exists)
 	{
 		Fire(window, this->position);
-		animate->Update();
-		animate->DrawAnimation(window, this->position);
 	}
 }

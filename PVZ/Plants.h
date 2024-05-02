@@ -6,7 +6,7 @@
 #include "Entity.h" // Include necessary header files
 #include "Animation.h"
 
-class Plants : public Entity
+class Plants : public Entity // Abstract Class
 {
 protected:
 	float coolDown; // Cool down between plants being used after one is placed
@@ -29,6 +29,10 @@ public:
 	virtual void drawPlant(RenderWindow& window);
 	void setX(int x) { this->position.SetX(x); }
 	void setY(int y) { this->position.SetY(y); }
+
+	// Action each plant performs
+	virtual void Action(RenderWindow& window) = 0; // Abstract function
+
 };
 
 

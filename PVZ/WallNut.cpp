@@ -12,11 +12,7 @@ WallNut::WallNut()
 	this->position = pos;
 	this->lives = 4;
 }
-void WallNut::DrawWallNut(RenderWindow& window)
+void Action(RenderWindow& window)
 {
-	if (exists)
-	{
-		animate->Update();
-		animate->DrawAnimation(window, this->position);
-	}
+	// Pass
 }

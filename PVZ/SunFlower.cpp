@@ -14,7 +14,10 @@ SunFlower::SunFlower()
 void SunFlower::drawPlant(sf::RenderWindow& window)
 {
 	if (exists) {
-		animate->Update();
-		animate->DrawAnimation(window, this->position);
+		Plants::drawPlant(window);
 	}
+}
+void SunFlower::Action(RenderWindow& window)
+{
+	// Pass
 }

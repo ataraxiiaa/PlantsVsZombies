@@ -10,16 +10,6 @@ CherryBomb::CherryBomb()
 	Coordinates pos(500, 500);
 	this->position = pos;
 }
-void CherryBomb::DrawCherryBomb(RenderWindow& window) {
-	if (exists) {
-		if (animate->GetCurrFrame() <= 6) { 
-			animate->Update(true);
-			animate->DrawAnimation(window, position);
-		}
-	}
-	if (animate->GetCurrFrame() >= 6) {
-		DrawExplosion(window, this->position);
-		exists = false;
-	}
-
+void CherryBomb::Action(RenderWindow& window) {
+	// Pass
 }

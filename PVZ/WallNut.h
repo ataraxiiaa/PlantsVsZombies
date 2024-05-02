@@ -7,15 +7,11 @@
 
 class WallNut : public Plants // Inherit plant class
 {
-	Animation* animate;
 public:
 	WallNut(); // Default constructor 
-	void DrawWallNut(RenderWindow& window); // For drawing window
-
-int getY()
-{
-	return this->position.GetY();
-}
+	
+	virtual void Action(RenderWindow& window); // Declared virtual in Plant calss
+	
 };
 
 #endif // WallNut_H

@@ -10,17 +10,8 @@ Repeater::Repeater() : Shooter(2) // A repeater would shoot 2 bullets so set tha
 	this->position = pos;
 	animate->SetSheet(0.15, 3, texture, 5, 1);
 }
-void Repeater::action(RenderWindow& window)
+void Repeater::Action(RenderWindow& window)
 {
 	Fire(window, this->position,0); // Finding bullets for both bullet index's
 	//Fire(window, this->position, 1);
-}
-void Repeater::DrawRepeater(RenderWindow& window)
-{
-	// Drawing repeater and performing fire action
-	if (exists) {
-		this->action(window);
-		animate->Update();
-		animate->DrawAnimation(window, this->position);
-	}
 }
