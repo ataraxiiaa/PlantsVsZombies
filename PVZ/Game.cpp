@@ -116,8 +116,8 @@ void Game::Start_Game()
 			else
 				sun.SetAutoCollect(false);
 			shop.DrawShop(window);
-			game.checkShopClick(window, sun);
-			game.dropToGrid(window, ptr, sun);
+			game.checkShopClick(window, money);
+			game.dropToGrid(window, ptr, money);
 			//peaShooter.DrawPeaShooter(window);
 			normal.drawZombie(window);
 			football.drawZombie(window);

@@ -19,7 +19,7 @@ Gameplay::~Gameplay() {
 	delete[] FIELD_GAME_STATUS;
 }
 
-void Gameplay::checkShopClick(RenderWindow& window, Sun& sun)
+void Gameplay::checkShopClick(RenderWindow& window, int& money)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
@@ -34,13 +34,12 @@ void Gameplay::checkShopClick(RenderWindow& window, Sun& sun)
 			{
 				selected = true;
 				index = i;
-				cout << "1" << endl;
 			}
 		}
 
 	}
 }
-void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, Sun& sun)
+void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, int& money)
 {
 	if (selected)
 	{
@@ -64,8 +63,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, Sun& sun)
 				//k++;
 				//each box is 90x100 
 				if (id[index] == "sunflower") {
-					if (mouse.x > 270 && mouse.x < 1050 && mouse.y > 80 && mouse.y < 650)
-					{
+					if (mouse.x > 270 && mouse.x < 1050 && mouse.y > 80 && mouse.y < 650) {
 						sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 						ptr.push_back(new SunFlower);						
 						for (int i = 270; i < 1100; i += 92)
@@ -80,7 +78,6 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, Sun& sun)
 							if (mouse.y >= i && mouse.y <= i + 106)
 								ptr[ptr.GetSize() - 1]->setY((2 * i + 95) / 2);
 						}
-						cout << "spawned" << endl;
 					}
 				}
 				else if (id[index] == "peashooter") {
@@ -100,7 +97,6 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, Sun& sun)
 							if (mouse.y >= i && mouse.y <= i + 106)
 								ptr[ptr.GetSize() - 1]->setY((2 * i + 95) / 2);
 						}
-						cout << "spawned" << endl;
 					}
 				}
 				selected = false;
