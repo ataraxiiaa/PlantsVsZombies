@@ -87,6 +87,9 @@
     <ClCompile Include="NormalZombie.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Zombies.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
