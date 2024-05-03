@@ -78,6 +78,9 @@
     <ClCompile Include="Vector.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="MovePlant.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -156,6 +159,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MovePlant.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
