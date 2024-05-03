@@ -8,8 +8,7 @@ NormalZombie::NormalZombie() {
 	this->animate = new Animation;
 	this->animate->SetSheet(0.125, 5, texture, 7, 1);
 	this->exists = true;
-	this->position.SetX(1010);
+	this->position.SetX(1150);
 	this->position.SetY((550 - (rand() % 5) * 110));
-	this->position.SetY(200);
 
 }
