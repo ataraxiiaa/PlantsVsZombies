@@ -24,11 +24,13 @@ protected:
 public:
 	Sun();
 	void DrawSun(sf::RenderWindow& window, int& money);
+	void DrawSun(sf::RenderWindow& window);
 	void DropSun(); // For Spawning Sun at random positions
 	void CollectSun(sf::RenderWindow& window, int& money);
 	void SetAutoCollect(bool check) { autoCollect = check; }
-
+	void setExists(bool exists) { this->exist = exists; }
 	void SetPosition(Coordinates position) { this->position = position; }
+	bool getExists() { return this->exist; }
 };
 
 

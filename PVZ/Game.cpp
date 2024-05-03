@@ -140,8 +140,9 @@ void Game::Start_Game()
 			//nutty.Action(window);
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
-			for (int i = 0; i < ptr.GetSize(); i++) {
-				ptr[i]->Action(window);
+			for (int i = 0; i < ptr.GetSize(); i++) 
+			{
+				ptr[i]->Action(window, money);
 				ptr[i]->drawPlant(window);
 			}
 		}

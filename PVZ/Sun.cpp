@@ -41,6 +41,12 @@ void Sun::DrawSun(sf::RenderWindow& window, int& money)
 	window.draw(sunSpriteShop);
 	window.draw(sunSprite2);
 }
+
+void Sun::DrawSun(RenderWindow& window)
+{
+	this->sunSprite.setPosition(this->position.GetX(), this->position.GetY());
+	window.draw(sunSprite);
+}
 void Sun::DropSun()
 {
 	if (exist) {

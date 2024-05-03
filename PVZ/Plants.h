@@ -31,7 +31,7 @@ public:
 	void setY(int y) { this->position.SetY(y); }
 
 	// Action each plant performs
-	virtual void Action(RenderWindow& window) = 0; // Abstract function
+	virtual void Action(RenderWindow& window, int& money) {} // Abstract function
 
 };
 

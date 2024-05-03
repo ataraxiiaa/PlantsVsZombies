@@ -1,9 +1,10 @@
 #include "SunFlower.h"
-
+#include <iostream>
 
 SunFlower::SunFlower()
 {
 	this->exists = true;
+	this->time = 10;//placeholder time 
 	this->coolDown = 10;
 	this->cost = 50;
 	this->texture.loadFromFile("../Images/SunFlower.png");
@@ -15,15 +16,34 @@ SunFlower::SunFlower()
 }
 void SunFlower::drawPlant(sf::RenderWindow& window)
 {
-	if (exists) {
+	if (exists)
 		Plants::drawPlant(window);
-	}
 }
-void SunFlower::ProduceSun(RenderWindow& window,Sun sun) {
-	sun.SetPosition(this->position);
-	//sun.DrawSun();
-}
-void SunFlower::Action(RenderWindow& window)
+void SunFlower::ProduceSun(RenderWindow& window, int& money) 
 {
-	// Pass
+	this->sun.setExists(true);
+	Coordinates pos;
+	pos.SetX(this->position.GetX() + 25);
+	pos.SetY(this->position.GetY() - 25);
+	sun.SetPosition(pos);
+	
+}
+void SunFlower::Action(RenderWindow& window, int& money)
+{
+	if (!sun.getExists())
+	{
+		//cout << "nigga" << endl;
+		if (clock.getElapsedTime().asSeconds() >= this->time)
+		{
+			cout << "real" << endl;
+			Sun sun;
+			ProduceSun(window, money);
+		}
+	}
+	else
+	{
+		sun.DrawSun(window);
+		sun.CollectSun(window, money);
+		clock.restart();
+	}
 }
