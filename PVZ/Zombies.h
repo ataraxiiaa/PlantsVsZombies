@@ -47,8 +47,8 @@ public:
 	}
 	virtual void drawZombie(sf::RenderWindow& window)
 	{
-		this->sprite.setPosition(this->position.GetX(), this->position.GetY());
-		window.draw(this->sprite);
+		this->animate->Update();
+		this->animate->DrawAnimation(window, this->position);
 	}
 	
 	Coordinates GetPosition()const { return this->position; }

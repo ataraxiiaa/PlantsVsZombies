@@ -120,15 +120,15 @@ void Game::Start_Game()
 			game.dropToGrid(window, ptr, money);
 			//peaShooter.DrawPeaShooter(window);
 			normal.drawZombie(window);
-			football.drawZombie(window);
+			//football.drawZombie(window);
 			//football.moveZombie(ptr);
 			//football.drawZombie(window);
 			//flying.drawZombie(window);
 			//dancing.drawZombie(window);
 			//dolphin.drawZombie(window);
-			//normal.moveZombie(ptr);
+			normal.moveZombie(ptr);
 			//sp.DrawSnowPea(window);
-			football.moveZombie(ptr);
+			//football.moveZombie(ptr);
 			//flying.moveZombie();
 			//dancing.moveZombie();
 			//dolphin.moveZombie();
@@ -136,8 +136,8 @@ void Game::Start_Game()
 			// Drawing Sun
 			//bomb.DrawCherryBomb(window);
 			sun.DrawSun(window, money);
-			nutty.drawPlant(window);
-			nutty.Action(window);
+			//nutty.drawPlant(window);
+			//nutty.Action(window);
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
 			for (int i = 0; i < ptr.GetSize(); i++) {
