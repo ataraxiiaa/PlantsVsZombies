@@ -7,6 +7,10 @@
 #include "Shop.h"
 #include "SunFlower.h"
 #include "PeaShooter.h"
+#include "WallNut.h"
+#include "Repeater.h"
+#include "CherryBomb.h"
+#include "SnowPea.h"
 #include "Vector.h"
 #include <iostream>
 
@@ -26,6 +30,7 @@ public:
 	void checkShopClick(RenderWindow& window, int& money);
 	void dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, int& money);
 	bool** getFieldStatus() { return FIELD_GAME_STATUS; }
+	void checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse);
 };
 
 

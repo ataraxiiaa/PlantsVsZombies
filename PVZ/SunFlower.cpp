@@ -8,6 +8,8 @@ SunFlower::SunFlower()
 	this->cost = 50;
 	this->texture.loadFromFile("../Images/SunFlower.png");
 	animate = new Animation;
+	this->position.SetX(310);
+	this->position.SetY(127.5);
 	//	animate->SetSheet(0.125, 6, texture, 8, 1);
 	animate->SetSheet(0.125, 5, texture, 6, 1);
 }
