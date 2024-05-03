@@ -98,7 +98,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, int& money
 						if (xPos == 0 && yPos == 0)
 						{
 							xPos = 310;
-							yPos = 127.5;
+							yPos = 100;
 						}
 						ptr[ptr.GetSize() - 1]->setX(xPos);
 						ptr[ptr.GetSize() - 1]->setY(yPos);
