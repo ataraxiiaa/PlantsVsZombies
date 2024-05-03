@@ -25,6 +25,7 @@ public:
 	// Creating functions for Gameplay
 	void checkShopClick(RenderWindow& window, int& money);
 	void dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, int& money);
+	bool** getFieldStatus() { return FIELD_GAME_STATUS; }
 };
 
 
