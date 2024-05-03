@@ -13,6 +13,7 @@ SunFlower::SunFlower()
 	this->position.SetY(127.5);
 	//	animate->SetSheet(0.125, 6, texture, 8, 1);
 	animate->SetSheet(0.125, 5, texture, 6, 1);
+	this->lives = 5;
 }
 void SunFlower::drawPlant(sf::RenderWindow& window)
 {

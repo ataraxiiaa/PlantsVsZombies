@@ -18,19 +18,45 @@ public:
 	{
 		for (int i = 0; i < plant.GetSize(); i++)
 		{
-			if (this->position.GetX() - 50 == plant[i]->GetX() && this->position.GetY() == plant[i]->GetY() && plant[i]->GetExistence())
-				return true;
+			if (plant[i] != nullptr)
+			{
+				if (this->position.GetX() - 50 == plant[i]->GetX() && this->position.GetY() == plant[i]->GetY() && plant[i]->GetExistence())
+				{
+					cout << "plant ahead" << endl;
+					return true;
+				}
+			}
 		}
-			return false;
+		return false;
+	}
+	int findIndex(Vector<Plants*> plant)
+	{
+		for (int i = 0; i < plant.GetSize(); i++)
+		{
+			if (plant[i] != nullptr)
+			{
+				if (this->position.GetX() - 50 == plant[i]->GetX() && this->position.GetY() == plant[i]->GetY() && plant[i]->GetExistence())
+				{
+					cout << "plant ahead" << endl;
+					return i;
+				}
+			}
+		}
+
 	}
 	void doDamage(Vector<Plants*>& ptr)
 	{
-		for (int i = 0; i < ptr.GetSize(); i++)
+		int index = findIndex(ptr);
+
+		if (ptr[index]->GetLives() > 0)
+			ptr[index]->SetLives(ptr[index]->GetLives() - damage);
+		else if (ptr[index]->GetLives()==0)
 		{
-			if (ptr[i]->GetLives() > 0)
-				ptr[i]->SetLives(ptr[i]->GetLives() - 0.1);
-			else
-				ptr[i]->SetExistence(false);
+			ptr[index]->SetExistence(false);
+			ptr[index] = nullptr;
+			//bool** set = game.getFieldStatus();
+			//set[i][j]=false;
+
 		}
 	}
 	virtual void moveZombie(Vector<Plants*>& ptr)
@@ -38,19 +64,19 @@ public:
 		if (!checkIfPlantAhead(ptr))
 		{
 			if (position.GetX() > 0)
-			{
 				this->position.SetX(position.GetX() - speed);
-			}
 		}
 		else
+		{
 			doDamage(ptr);
+		}
 	}
 	virtual void drawZombie(sf::RenderWindow& window)
 	{
 		this->animate->Update();
 		this->animate->DrawAnimation(window, this->position);
 	}
-	
+
 	Coordinates GetPosition()const { return this->position; }
 	
 };

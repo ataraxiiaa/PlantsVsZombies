@@ -36,6 +36,7 @@ class Game
 	DolphinRiderZombie dolphin;
 	//Plants** ptr;
 	Vector<Plants*> ptr;
+	Vector<Zombie*> zptr;
 	CherryBomb bomb;
 	Repeater repeat;
 	WallNut nutty;

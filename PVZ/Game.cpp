@@ -142,8 +142,11 @@ void Game::Start_Game()
 			window.setSize(sf::Vector2u(1100, 680));
 			for (int i = 0; i < ptr.GetSize(); i++) 
 			{
-				ptr[i]->Action(window, money);
-				ptr[i]->drawPlant(window);
+				if (ptr[i] != nullptr)
+				{
+					ptr[i]->Action(window, money);
+					ptr[i]->drawPlant(window);
+				}
 			}
 		}
 		else if (!menu.ShowState() && pause.ShowState())

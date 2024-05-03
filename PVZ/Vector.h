@@ -13,6 +13,7 @@ public:
 	~Vector() { delete ptr; } // Destructor
 
 	void push_back(Type value); // Adding values to the array
+	int getCurr() { return currSize; }
 
 	Type& operator[](int index) { return ptr[index]; } // Accessing address the pointer is pointing to 
 };
@@ -36,7 +37,7 @@ public:
 			delete[] ptr;
 	}*/
 	int GetSize()const { return this->currSize; }
-
+	int getCurr() { return currSize; }
 	void push_back(Type* value) {
 		if (currSize == maxSize) {
 			Type** temp = new Type * [maxSize];
