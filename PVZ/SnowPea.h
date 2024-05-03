@@ -10,6 +10,6 @@ class SnowPea : public Shooter
 public:
 	SnowPea(); // Default constructor 
 	void DrawSnowPea(RenderWindow& window);
-	virtual void Action(RenderWindow& window); // Declared abstract virtual in header file Plant
+	virtual void Action(RenderWindow& window, int& money);// Declared abstract virtual in header file Plant
 };
 

@@ -16,7 +16,7 @@ SnowPea::SnowPea()
 	this->position = pos;
 	Ice = true;
 }
-void SnowPea::Action(RenderWindow& window)
+void SnowPea::Action(RenderWindow& window, int& money)
 {
 	if (exists)
 	{

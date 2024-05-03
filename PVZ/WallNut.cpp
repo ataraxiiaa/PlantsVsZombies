@@ -12,7 +12,7 @@ WallNut::WallNut()
 	this->position = pos;
 	this->lives = 4;
 }
-void WallNut:: Action(RenderWindow& window)
+void WallNut::Action(RenderWindow& window, int& money)
 {
 	MovingPlant();
 }

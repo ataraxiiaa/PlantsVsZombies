@@ -10,7 +10,7 @@ class WallNut : public MovePlant // Inherit plant class
 public:
 	WallNut(); // Default constructor 
 	
-	virtual void Action(RenderWindow& window); // Declared virtual in Plant calss
+	virtual void Action(RenderWindow& window, int& money); // Declared virtual in Plant calss
 	
 };
 

@@ -10,6 +10,6 @@ CherryBomb::CherryBomb()
 	Coordinates pos(500, 500);
 	this->position = pos;
 }
-void CherryBomb::Action(RenderWindow& window) {
+void CherryBomb::Action(RenderWindow& window, int& money) {
 	// Pass
 }
