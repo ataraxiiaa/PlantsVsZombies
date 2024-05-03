@@ -94,6 +94,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, int& money
 					{
 						FIELD_GAME_STATUS[row][col] = true;
 						ptr.push_back(new SunFlower);
+						
 						if (xPos == 0 && yPos == 0)
 						{
 							xPos = 310;

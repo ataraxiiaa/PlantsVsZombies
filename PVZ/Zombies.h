@@ -33,13 +33,10 @@ public:
 	{
 		for (int i = 0; i < plant.GetSize(); i++)
 		{
-			if (plant[i] != nullptr)
+			if (this->position.GetX() - 50 == plant[i]->GetX() && this->position.GetY() == plant[i]->GetY() && plant[i]->GetExistence())
 			{
-				if (this->position.GetX() - 50 == plant[i]->GetX() && this->position.GetY() == plant[i]->GetY() && plant[i]->GetExistence())
-				{
-					cout << "plant ahead" << endl;
-					return i;
-				}
+				cout << "plant ahead" << endl;
+				return i;
 			}
 		}
 
@@ -53,10 +50,9 @@ public:
 		else if (ptr[index]->GetLives()==0)
 		{
 			ptr[index]->SetExistence(false);
-			ptr[index] = nullptr;
+			ptr.Destroy(index);
 			//bool** set = game.getFieldStatus();
 			//set[i][j]=false;
-
 		}
 	}
 	virtual void moveZombie(Vector<Plants*>& ptr)

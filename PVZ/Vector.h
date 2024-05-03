@@ -16,6 +16,8 @@ public:
 	int getCurr() { return currSize; }
 
 	Type& operator[](int index) { return ptr[index]; } // Accessing address the pointer is pointing to 
+
+	void Destroy(int index);
 };
 
 template <typename Type> class Vector<Type*>  // Template of vector created for pointer to pointer
@@ -56,6 +58,17 @@ public:
 	Type*& operator[](int index) 
 	{ 
 		return ptr[index]; 
+	}
+	void Destroy(int index) {
+		if (index == currSize - 1) {
+			currSize--;
+		}
+		else {
+			for (int i = index; i < currSize - 1; ++i) { // Discarding the vakue not required
+				ptr[i] = ptr[i + 1]; // Move the values by 1
+			}
+			currSize--; // Adjust the current Size
+		}
 	}
 
 };

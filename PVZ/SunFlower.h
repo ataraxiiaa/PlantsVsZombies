@@ -11,6 +11,7 @@ class SunFlower : public Plants
 	Sun sun;
 	int time; //time between sun spawning
 	Clock clock;
+	int* money;
 public:
 	SunFlower();
 	virtual void drawPlant(sf::RenderWindow& window);
