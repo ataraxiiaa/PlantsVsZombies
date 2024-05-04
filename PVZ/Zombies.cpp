@@ -29,6 +29,7 @@ int Zombie::findIndex(Vector<Plants*> plant)
 			return i;
 		}
 	}
+	return -1;
 
 }
 void Zombie::doDamage(Vector<Plants*>& ptr, bool** set)
@@ -62,7 +63,7 @@ void Zombie::drawZombie(sf::RenderWindow& window)
 	this->animate->DrawAnimation(window, this->position);
 }
 
-void Zombie::action(sf::RenderWindow& window, Vector<Plants*> ptr, bool** set)
+void Zombie::action(sf::RenderWindow& window, Vector<Plants*>& ptr, bool** set)
 {
 	this->moveZombie(ptr, set);
 	this->drawZombie(window);

@@ -94,14 +94,17 @@ public:
 		return ptr[index]; 
 	}
 	void Destroy(int index) {
+		if (index < 0 || index > currSize)
+			exit(0);
+
 		if (index == currSize - 1) {
-			currSize--;
+			--currSize;
 		}
 		else {
 			for (int i = index; i < currSize - 1; ++i) { // Discarding the vakue not required
 				ptr[i] = ptr[i + 1]; // Move the values by 1
 			}
-			currSize--; // Adjust the current Size
+			--currSize; // Adjust the current Size
 		}
 	}
 	Type*& back() {
