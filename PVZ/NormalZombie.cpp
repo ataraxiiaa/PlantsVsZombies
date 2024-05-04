@@ -9,6 +9,6 @@ NormalZombie::NormalZombie() {
 	this->animate->SetSheet(0.125, 5, texture, 7, 1);
 	this->exists = true;
 	this->position.SetX(1150);
-	this->position.SetY((97.5));
+	this->position.SetY(yPositions[rand() % 5]);
 
 }

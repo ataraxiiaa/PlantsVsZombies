@@ -9,7 +9,16 @@ protected:
 	float damage;
 	float speed;
 	Animation* animate;
+	int yPositions[5];
 public:
+	Zombie() 
+	{
+		yPositions[0] = 97.5 - 40;
+		yPositions[1] = 203 - 40;
+		yPositions[2] = 309 - 40;
+		yPositions[3] = 415 - 40;
+		yPositions[4] = 521 - 40;
+	}
 	float getDamage() { return this->damage; }
 	float getSpeed() { return this->speed; }
 	void setDamage(float damage) { this->damage = damage; }

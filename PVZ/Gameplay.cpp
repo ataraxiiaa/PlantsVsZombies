@@ -92,6 +92,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                 dragging = true;
                 Sprite temp = sprites[index];
                 temp.setTextureRect(sprites[index].getTextureRect());
+                mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
                 temp.setPosition(mouse);
 
                 window.draw(temp);
@@ -111,6 +112,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
         {
             if (dragging)
             {
+                mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
                 // If the left mouse button is released
                 dragging = false;
 
@@ -135,10 +137,11 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                             money -= ptr.back()->GetCost();
                             spawned = true;
                         }
-                        else if (id[index] == "peashooter") {
+                        else if (id[index] == "peashooter" && money>=100) {
                             ptr.push_back(new PeaShooter);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos-30);
+                            money -= ptr.back()->GetCost();
                             spawned = true;
                         }
                         else if (id[index] == "wallnut" && money >= 50) {
