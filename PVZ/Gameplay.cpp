@@ -132,8 +132,6 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                             ptr.push_back(new SunFlower);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos-30);
-                            cout << "Plant : " << ptr.back()->GetY() << endl;
-                            cout << "Plant : " << ptr.back()->GetX() << endl;
                         }
                         else if (id[index] == "peashooter") {
                             ptr.push_back(new PeaShooter);
