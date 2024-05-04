@@ -17,6 +17,8 @@ protected:
 	//sf::Music music; // Whatever sound effects needed etc leaving it for now
 public:
 	bool CheckExistance()const { return exists; }
+	Coordinates GetPosition()const { return position; }
+	bool GetExistance()const { return exists; }
 };
 
 
