@@ -29,7 +29,7 @@ Gameplay::~Gameplay() {
 void Gameplay::checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse)
 {
 	mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-	if (mouse.x > 270 && mouse.x < 1100 && mouse.y > 80 && mouse.y < 650)
+	if (mouse.x > 270 && mouse.x < 1100 && mouse.y > 80 && mouse.y < 680)
 	{
 		mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		for (int i = 270, j = 0; i < 1100 && j < 9; i += 92, j++)
@@ -42,7 +42,7 @@ void Gameplay::checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWin
 				xPos = (2 * i + 80) / 2;
 			}
 		}
-		for (int i = 80, j = 0; i < 650 && j < 5; i += 106, j++)
+		for (int i = 80, j = 0; i < 680 && j < 5; i += 106, j++)
 		{
 			mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 			//check which ith index of grid is selected by mouse
@@ -91,7 +91,6 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                 // Start dragging if the left mouse button is pressed and not already dragging
                 dragging = true;
                 Sprite temp = sprites[index];
-               // SelectedSprite[index].setPosition(sprites[index].getPosition());
                 temp.setTextureRect(sprites[index].getTextureRect());
                 temp.setPosition(mouse);
 
@@ -102,7 +101,6 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
             {
                 Sprite temp = sprites[index];
                 temp.setTextureRect(sprites[index].getTextureRect());
-               // SelectedSprite[index].setPosition(sprites[index].getPosition());
                 temp.setPosition(mouse);
 
                 window.draw(temp);
@@ -121,7 +119,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                 string* id = shop.getIds();
 
                 // Check if the mouse is within the playable grid area
-                if (mouse.x > 270 && mouse.x < 1100 && mouse.y > 80 && mouse.y < 650)
+                if (mouse.x > 270 && mouse.x < 1100 && mouse.y > 80 && mouse.y <= 700)
                 {
                     checkGrid(row, col, xPos, yPos, window, mouse);
                     // Check if the target grid cell is empty
@@ -143,7 +141,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                         else if (id[index] == "wallnut") {
                             ptr.push_back(new WallNut);
                             ptr.back()->setX(xPos);
-                            ptr.back()->setY(yPos-30);
+                            ptr.back()->setY(yPos - 30);
                         }
 
                         cout << "placed" << endl;
