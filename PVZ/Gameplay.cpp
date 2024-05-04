@@ -150,12 +150,12 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                     }
                     else
                     {
-                        cout << "cant" << endl;
+                        cout << "already there" << endl;
                     }
                 }
                 else
                 {
-                    cout << "no access" << endl;
+                    cout << "out of bounds" << endl;
                 }
                 selected = false;
             }
