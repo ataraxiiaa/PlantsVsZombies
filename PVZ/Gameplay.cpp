@@ -181,10 +181,12 @@ void Gameplay::CheckCollision(NormalZombie& ptr) {
 
 void Gameplay::spawnZombies(Vector<Zombie*>& zptr, int level)
 {
-    for (int i = 0; i < level * 5; i++)
+    for (int i = 0, j=0; i < level * 5; i++, j++)
     {
+        if (j == 5)
+            j = 0;
         zptr.push_back(new NormalZombie);
-        zptr[i]->setY(zptr[i]->getYPositions()[i]);
+        zptr[i]->setY(zptr[i]->getYPositions()[j]);
     }
     zptr[0]->setX(1150);
     zptr[1]->setX(1250);
