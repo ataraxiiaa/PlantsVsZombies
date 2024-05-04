@@ -64,11 +64,8 @@ void Zombie::drawZombie(sf::RenderWindow& window)
 	this->animate->DrawAnimation(window, this->position);
 }
 
-void Zombie::action(sf::RenderWindow& window, Vector<Plants*> ptr, bool** set)
+void Zombie::action(sf::RenderWindow& window, Vector<Plants*>& ptr, bool** set)
 {
-	int i = checkShooterType(ptr);
-	if (i != -1)
-		ptr[i]->CheckExistance();
 	this->moveZombie(ptr, set);
 	this->drawZombie(window);
 }

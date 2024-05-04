@@ -33,6 +33,5 @@ public:
 	virtual void setY(int y) { this->position.SetY(y); }
 	virtual void setX(int x) { this->position.SetX(x); }
 	Coordinates GetPosition()const { return this->position; }
-	int checkShooterType(Vector<Plants*> ptr);
 	
 };
