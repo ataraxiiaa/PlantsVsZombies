@@ -24,6 +24,7 @@ class Gameplay
 	int index;
 	bool firstClick;
 	bool hover, dragging;
+	sf::RectangleShape rectangle;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 

@@ -12,6 +12,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
 			FIELD_GAME_STATUS[i][j] = false;
 	firstClick = true;
 	dragging = false;
+    // Setting up rectange
 }
 Gameplay::~Gameplay() {
 	for (int i = 0; i < gridRows; ++i)
@@ -117,7 +118,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                     {
                         FIELD_GAME_STATUS[row][col] = true;
 
-                        // Place the appropriate plant on the grid
+                        // Place the needed plant on the grid
                         if (id[index] == "sunflower") {
                             ptr.push_back(new SunFlower);
                             ptr[ptr.GetSize()-1]->setX(xPos);
@@ -133,7 +134,6 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                             ptr[ptr.GetSize() - 1]->setX(xPos);
                             ptr[ptr.GetSize() - 1]->setY(yPos-30);
                         }
-                        // Add more cases for other plant types...
 
                         cout << "placed" << endl;
                     }
@@ -146,7 +146,6 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                 {
                     cout << "no access" << endl;
                 }
-                // Reset selection state
                 selected = false;
             }
         }
