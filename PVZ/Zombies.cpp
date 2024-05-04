@@ -41,7 +41,7 @@ void Zombie::doDamage(Vector<Plants*>& ptr, bool** set)
 	else if (ptr[index]->GetLives() == 0)
 	{
 		ptr[index]->SetExistence(false);
-		set[ptr.back()->getI()][ptr.back()->getJ()] = false;
+		set[ptr[index]->getI()][ptr[index]->getJ()] = false;
 		ptr.Destroy(index);
 	}
 }
