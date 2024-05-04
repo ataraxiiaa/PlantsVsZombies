@@ -138,6 +138,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                         }
                         else if (id[index] == "peashooter" && money>=100) {
                             ptr.push_back(new PeaShooter);
+                            cout << "1" << endl;
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos-30);
                             money -= ptr.back()->GetCost();

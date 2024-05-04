@@ -76,9 +76,6 @@ void Game::Start_Game()
 	Clock timeMoney;
 	Clock clock;
 	game.spawnZombies(zptr, level);
-	for (int i = 0; i < zptr.GetSize(); i++)
-		cout << zptr[i]->GetExistance() << endl;
-	cout << zptr.GetSize() << endl;
 	while (window.isOpen())
 	{
 		if (menu.ShowState() == true)

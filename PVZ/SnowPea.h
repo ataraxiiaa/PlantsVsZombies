@@ -9,7 +9,6 @@ class SnowPea : public Shooter
 	bool Ice;
 public:
 	SnowPea(); // Default constructor 
-	void DrawSnowPea(RenderWindow& window);
 	virtual void Action(RenderWindow& window, int& money);// Declared abstract virtual in header file Plant
 };
 
