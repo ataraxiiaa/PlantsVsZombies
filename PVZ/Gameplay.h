@@ -23,6 +23,7 @@ class Gameplay
 	bool selected;
 	int index;
 	bool firstClick;
+	bool hover, dragging;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 

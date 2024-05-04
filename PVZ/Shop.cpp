@@ -11,7 +11,7 @@ Shop::Shop() // Initiallizes every sprite
 	sprite[1].setPosition(13, 133);
 	texture[1].loadFromFile("../Images/SunFlowerShop2.png");
 	sprite[0].setTexture(texture[1]);
-	sprite[0].setTextureRect(sf::IntRect(0, 0, 125, 101));
+	sprite[0].setTextureRect(sf::IntRect(0, 0, 114, 101));
 	sprite[0].setPosition(-10, 50);
 	ids = new string[6];
 	ids[0] = "sunflower";

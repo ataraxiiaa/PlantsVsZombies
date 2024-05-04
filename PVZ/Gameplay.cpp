@@ -11,6 +11,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
 		for (int j = 0; j < gridCols; j++)
 			FIELD_GAME_STATUS[i][j] = false;
 	firstClick = true;
+	dragging = false;
 }
 Gameplay::~Gameplay() {
 	for (int i = 0; i < gridRows; ++i)
@@ -69,105 +70,85 @@ void Gameplay::checkShopClick(RenderWindow& window, int& money)
 
 	}
 }
-void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, int& money)
+void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money)
 {
-	if (selected)
-	{
-		sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		{
-			if (firstClick)
-			{
-				firstClick = false;
-			}
-			else 
-			{
-				int row = 0, col = 0;
-				float xPos = 0, yPos = 0;
-				string* id = shop.getIds();
-				//each box is 90x100 
-				if (id[index] == "sunflower") 
-				{
-					checkGrid(row, col, xPos, yPos, window, mouse);
-					//check if any plant exists at that position. if no, then spawn new plant
-					if (!FIELD_GAME_STATUS[row][col])
-					{
-						FIELD_GAME_STATUS[row][col] = true;
-						ptr.push_back(new SunFlower);
-						
-						if (xPos == 0 && yPos == 0)
-						{
-							xPos = 310;
-							yPos = 100;
-						}
-						ptr[ptr.GetSize() - 1]->setX(xPos);
-						ptr[ptr.GetSize() - 1]->setY(yPos);
-						cout << "spaned" << endl;
-					}
-					else
-						cout << "no" << endl;
-				}
-				else if (id[index] == "peashooter") 
-				{
-					checkGrid(row, col, xPos, yPos, window, mouse);
-					//check if any plant exists at that position. if no, then spawn new plant
-					if (!FIELD_GAME_STATUS[row][col])
-					{
-						FIELD_GAME_STATUS[row][col] = true;
-						ptr.push_back(new PeaShooter);
-						ptr[ptr.GetSize() - 1]->setX(xPos);
-						ptr[ptr.GetSize() - 1]->setY(yPos);
-					}
-				}
-				else if (id[index] == "wallnut")
-				{
-					checkGrid(row, col, xPos, yPos, window, mouse);
-					if (!FIELD_GAME_STATUS[row][col])
-					{
-						FIELD_GAME_STATUS[row][col] = true;
-						ptr.push_back(new WallNut);
-						ptr[ptr.GetSize() - 1]->setX(xPos);
-						ptr[ptr.GetSize() - 1]->setY(yPos);
-					}
-				}
-				else if (id[index] == "repeater")
-				{
-					checkGrid(row, col, xPos, yPos, window, mouse);
-					if (!FIELD_GAME_STATUS[row][col])
-					{
-						FIELD_GAME_STATUS[row][col] = true;
-						ptr.push_back(new Repeater);
-						ptr[ptr.GetSize() - 1]->setX(xPos);
-						ptr[ptr.GetSize() - 1]->setY(yPos);
-					}
-				}
-				else if (id[index] == "cherrybomb")
-				{
-					checkGrid(row, col, xPos, yPos, window, mouse);
-					if (!FIELD_GAME_STATUS[row][col])
-					{
-						FIELD_GAME_STATUS[row][col] = true;
-						ptr.push_back(new CherryBomb);
-						ptr[ptr.GetSize() - 1]->setX(xPos);
-						ptr[ptr.GetSize() - 1]->setY(yPos);
-					}
-				}
-				else if (id[index] == "snowpea")
-				{
-					checkGrid(row, col, xPos, yPos, window, mouse);
-					if (!FIELD_GAME_STATUS[row][col])
-					{
-						FIELD_GAME_STATUS[row][col] = true;
-						ptr.push_back(new SnowPea);
-						ptr[ptr.GetSize() - 1]->setX(xPos);
-						ptr[ptr.GetSize() - 1]->setY(yPos);
-					}
-				}
+    Sprite* sprites = shop.getSprite();
 
+    if (selected)
+    {
+        sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
-				selected = false;
-				firstClick = true;
-			}
-		}
-	}
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        {
+            if (!dragging)
+            {
+                // Start dragging if the left mouse button is pressed and not already dragging
+                dragging = true;
+                Sprite temp = sprites[index];
+                temp.setTextureRect(sprites[index].getTextureRect());
+                temp.setPosition(mouse);
+                window.draw(temp);
+            }
+            else
+            {
+                Sprite temp = sprites[index];
+                temp.setTextureRect(sprites[index].getTextureRect());
+                temp.setPosition(mouse);
+                window.draw(temp);
+            }
+        }
+        else
+        {
+            if (dragging)
+            {
+                // If the left mouse button is released
+                dragging = false;
+
+                int row = 0, col = 0;
+                float xPos = 0, yPos = 0;
+                string* id = shop.getIds();
+
+                // Check if the mouse is within the playable grid area
+                if (mouse.x > 270 && mouse.x < 1100 && mouse.y > 80 && mouse.y < 650)
+                {
+                    checkGrid(row, col, xPos, yPos, window, mouse);
+                    // Check if the target grid cell is empty
+                    if (!FIELD_GAME_STATUS[row][col])
+                    {
+                        FIELD_GAME_STATUS[row][col] = true;
+
+                        // Place the appropriate plant on the grid
+                        if (id[index] == "sunflower") {
+                            ptr.push_back(new SunFlower);
+                            ptr[ptr.GetSize()-1]->setX(xPos);
+                            ptr[ptr.GetSize() - 1]->setY(yPos-30);
+                        }
+                        else if (id[index] == "peashooter") {
+                            ptr.push_back(new PeaShooter);
+                            ptr[ptr.GetSize() - 1]->setX(xPos);
+                            ptr[ptr.GetSize() - 1]->setY(yPos-30);
+                        }
+                        else if (id[index] == "wallnut") {
+                            ptr.push_back(new WallNut);
+                            ptr[ptr.GetSize() - 1]->setX(xPos);
+                            ptr[ptr.GetSize() - 1]->setY(yPos-30);
+                        }
+                        // Add more cases for other plant types...
+
+                        cout << "placed" << endl;
+                    }
+                    else
+                    {
+                        cout << "cant" << endl;
+                    }
+                }
+                else
+                {
+                    cout << "no access" << endl;
+                }
+                // Reset selection state
+                selected = false;
+            }
+        }
+    }
 }

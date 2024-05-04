@@ -26,6 +26,8 @@ public:
 	void Update(bool end = false);
 	void DrawAnimation(sf::RenderWindow& window, Coordinates positon);
 	int GetCurrFrame()const { return currFrame; }
+
+	Sprite getSprite()const { return sprite; }
 };
 
 

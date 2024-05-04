@@ -29,7 +29,8 @@ public:
 	virtual void drawPlant(RenderWindow& window);
 	void setX(int x) { this->position.SetX(x); }
 	void setY(int y) { this->position.SetY(y); }
-
+	
+	Animation* getAnimation() { return animate; }
 	// Action each plant performs
 	virtual void Action(RenderWindow& window, int& money) = 0; // Abstract function
 
