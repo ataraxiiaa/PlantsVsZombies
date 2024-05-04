@@ -11,7 +11,6 @@ bool Zombie::checkIfPlantAhead(Vector<Plants*>& plant)
 				this->position.GetY() + 40 == plant[i]->GetY() &&
 				plant[i]->GetExistence())
 			{
-				cout << "plant ahead" << endl;
 				return true;
 			}
 		}
@@ -62,4 +61,10 @@ void Zombie::drawZombie(sf::RenderWindow& window)
 {
 	this->animate->Update();
 	this->animate->DrawAnimation(window, this->position);
+}
+
+void Zombie::action(sf::RenderWindow& window, Vector<Plants*> ptr, bool** set)
+{
+	this->moveZombie(ptr, set);
+	this->drawZombie(window);
 }

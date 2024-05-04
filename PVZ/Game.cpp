@@ -2,10 +2,11 @@
 
 Game::Game()
 {
-	money = 150;
+	money = 10000;
 	//ptr = new Plants * [45];
 	//for (int i = 0; i < 45; i++)
 		//ptr[i] = nullptr;
+	level = 1;
 	
 }
 void Game::createBack(RenderWindow& window)
@@ -74,6 +75,10 @@ void Game::Start_Game()
 
 	Clock timeMoney;
 	Clock clock;
+	game.spawnZombies(zptr, level);
+	for (int i = 0; i < zptr.GetSize(); i++)
+		cout << zptr[i]->GetExistance() << endl;
+	cout << zptr.GetSize() << endl;
 	while (window.isOpen())
 	{
 		if (menu.ShowState() == true)
@@ -118,9 +123,9 @@ void Game::Start_Game()
 			shop.DrawShop(window);
 			game.checkShopClick(window, money);
 			game.dropToGrid(window, ptr, money);
-			game.CheckCollision(normal);
+			//game.CheckCollision(normal);
 			//peaShooter.DrawPeaShooter(window);
-			normal.drawZombie(window);
+			//normal.drawZombie(window);
 			//football.drawZombie(window);
 			//football.moveZombie(ptr);
 			//football.drawZombie(window);
@@ -129,7 +134,7 @@ void Game::Start_Game()
 			//dolphin.drawZombie(window);
 			//dancing.drawZombie(window);
 			//dancing.moveZombie(ptr);
-			normal.moveZombie(ptr, game.getFieldStatus());
+			//normal.moveZombie(ptr, game.getFieldStatus());
 			//sp.DrawSnowPea(window);
 			//football.moveZombie(ptr);
 			//flying.moveZombie();
@@ -148,6 +153,9 @@ void Game::Start_Game()
 				ptr[i]->Action(window);
 				ptr[i]->drawPlant(window);
 			}
+			for (int i = 0; i < zptr.GetSize(); i++)
+				zptr[i]->action(window, ptr, game.getFieldStatus());
+				
 		}
 		else if (!menu.ShowState() && pause.ShowState())
 			pause.displayPausedMenu(window);

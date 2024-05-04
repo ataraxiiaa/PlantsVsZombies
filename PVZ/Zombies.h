@@ -28,7 +28,10 @@ public:
 	void doDamage(Vector<Plants*>& ptr, bool** set);
 	virtual void moveZombie(Vector<Plants*>& ptr, bool** set);
 	virtual void drawZombie(sf::RenderWindow& window);
-
+	virtual void action(sf::RenderWindow& window, Vector<Plants*> ptr, bool** set);
+	int* getYPositions() { return this->yPositions; }
+	virtual void setY(int y) { this->position.SetY(y); }
+	virtual void setX(int x) { this->position.SetX(x); }
 	Coordinates GetPosition()const { return this->position; }
 	
 };

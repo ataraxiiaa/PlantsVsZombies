@@ -11,7 +11,7 @@ void Shooter::Fire(sf::RenderWindow& window,Coordinates PlantCoords,int index) /
     for (int i = 0; i < totalBullets; ++i) {
         float bulletDelay = delay * i; // Used to ensure theres a delay if a plant is a repeater
         // Check if enough time has passed to allow firing
-        if (clock.getElapsedTime().asSeconds() >= bulletDelay && !bullet[i].ShowFire())
+        if (clock.getElapsedTime().asSeconds() >= bulletDelay && !bullet[i].ShowFire() && this->exists)
         {
             // Restart the clock for the next firing interval
             clock.restart();

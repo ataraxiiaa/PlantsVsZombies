@@ -13,7 +13,7 @@ SunFlower::SunFlower(int &money)
 	this->position.SetY(127.5);
 	//	animate->SetSheet(0.125, 6, texture, 8, 1);
 	animate->SetSheet(0.125, 5, texture, 6, 1);
-	this->lives = 5;
+	this->lives = 50;
 	this->moneyPtr = &money;
 }
 void SunFlower::drawPlant(sf::RenderWindow& window)
@@ -32,7 +32,7 @@ void SunFlower::ProduceSun(RenderWindow& window)
 }
 void SunFlower::Action(RenderWindow& window)
 {
-	if (!sun.getExists())
+	if (!sun.getExists() && this->exists)
 	{
 		//cout << "nigga" << endl;
 		if (clock.getElapsedTime().asSeconds() >= this->time)
@@ -42,7 +42,7 @@ void SunFlower::Action(RenderWindow& window)
 			ProduceSun(window);
 		}
 	}
-	else
+	else if (sun.getExists() && this->exists)
 	{
 		sun.DrawSun(window);
 		sun.CollectSun(window, *this->moneyPtr);

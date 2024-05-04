@@ -28,12 +28,12 @@ class Game
 	MainMenu menu;
 	Paused pause;
 	PeaShooter peaShooter;
-	NormalZombie normal;
-	FootballZombie football;
-	FlyingZombie flying;
-	DancingZombie dancing;
+	//NormalZombie normal;
+	//FootballZombie football;
+	//FlyingZombie flying;
+	//DancingZombie dancing;
 	Shop shop;
-	DolphinRiderZombie dolphin;
+	//DolphinRiderZombie dolphin;
 	//Plants** ptr;
 	Vector<Plants*> ptr;
 	Vector<Zombie*> zptr;
@@ -45,6 +45,7 @@ class Game
 	Font font;
 	Text text;
 	Gameplay game;
+	int level;
 public:
 	Game(); // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp

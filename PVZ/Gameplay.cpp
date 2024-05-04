@@ -178,3 +178,22 @@ void Gameplay::CheckCollision(NormalZombie& ptr) {
         shooter[i]->CheckBulletCollision(ptr);
     }
 }
+
+void Gameplay::spawnZombies(Vector<Zombie*>& zptr, int level)
+{
+    zptr.push_back(new NormalZombie);
+    zptr[0]->setX(1150);
+    zptr[0]->setY(zptr[0]->getYPositions()[0]);
+    zptr.push_back(new NormalZombie);
+    zptr[1]->setX(1250);
+    zptr[1]->setY(zptr[0]->getYPositions()[1]);
+    zptr.push_back(new NormalZombie);
+    zptr[2]->setX(1300);
+    zptr[2]->setY(zptr[0]->getYPositions()[2]);
+    zptr.push_back(new NormalZombie);
+    zptr[3]->setX(1350);
+    zptr[3]->setY(zptr[0]->getYPositions()[3]);
+    zptr.push_back(new NormalZombie);
+    zptr[4]->setX(1450);
+    zptr[4]->setY(zptr[0]->getYPositions()[4]);
+}
