@@ -13,7 +13,7 @@ public:
 	int GetY() { return this->position.GetY(); } // Getting Y coordinates
 	bool GetExistence() { return this->exists; }; // Checks if plants exist or not
 	virtual void Action(RenderWindow& window); // Defined vritual in header file Plant
-
+	Pea* getPea() { return this->bullet; }
 };
 
 

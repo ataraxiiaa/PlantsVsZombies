@@ -14,7 +14,9 @@ protected:
 	Animation* animate;
 	int i;
 	int j;
+	bool shooterType;
 public:
+	Plants() { shooterType = false; }
 	// Getters
 	float GetCoolDown()const { return coolDown; }
 	int GetCost()const { return cost; }
@@ -25,6 +27,7 @@ public:
 	Sprite getSprite() { return this->sprite; }
 	int getI() { return i; }
 	int getJ() { return j; }
+	bool getShooterType() { return this->shooterType; }
 	// Setters
 	void SetCoolDown(float coolDown) { this->coolDown = coolDown; }
 	void SetCost(int cost) { this->cost = cost; }

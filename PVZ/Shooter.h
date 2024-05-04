@@ -19,8 +19,8 @@ public:
 	Shooter(int totalBullets=1);
 	//void SetBullet();
 	void Fire(sf::RenderWindow& window, Coordinates PlantCoords,int index=0);
-	void CheckBulletCollision(NormalZombie& Zombie);
-	void Action(RenderWindow& window, int& money)
+	void CheckBulletCollision(Vector<Zombie*> Zombie);
+	void Action(RenderWindow& window)
 	{
 		Fire(window, this->position);
 	}

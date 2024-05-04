@@ -9,10 +9,8 @@ PeaShooter::PeaShooter()
 	animate = new Animation;
 	animate->SetSheet(0.125, 6, texture, 8, 1);
 	this->lives = 10;
-
 }
 void PeaShooter::Action(RenderWindow& window)
 {
 	Fire(window, this->position);
-	//CheckBulletCollision()
 }

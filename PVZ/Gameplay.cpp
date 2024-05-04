@@ -129,18 +129,18 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                         bool spawned = false;
 
                         // Place the needed plant on the grid
-                        if (id[index] == "sunflower" && money>=50) {
+                        if (id[index] == "sunflower" && money >= 50) {
                             ptr.push_back(new SunFlower(money));
                             ptr.back()->setX(xPos);
-                            ptr.back()->setY(yPos-30);
+                            ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
                             spawned = true;
                         }
-                        else if (id[index] == "peashooter" && money>=100) {
+                        else if (id[index] == "peashooter" && money >= 100) {
                             ptr.push_back(new PeaShooter);
                             cout << "1" << endl;
                             ptr.back()->setX(xPos);
-                            ptr.back()->setY(yPos-30);
+                            ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
                             spawned = true;
                         }
@@ -158,17 +158,20 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                             ptr.back()->setJ(col);
                         }
                     }
+                    //else
+                      //  cout << "nigga no" << endl;
                 }
                 selected = false;
             }
         }
     }
 }
-void Gameplay::CheckCollision(NormalZombie& ptr) {
+void Gameplay::CheckCollision(Vector<Zombie*> ptr) {
     for (int i = 0; i < shooter.GetSize(); ++i) {
         shooter[i]->CheckBulletCollision(ptr);
     }
 }
+
 
 void Gameplay::spawnZombies(Vector<Zombie*>& zptr, int level)
 {
