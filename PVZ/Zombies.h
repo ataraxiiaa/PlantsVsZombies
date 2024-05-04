@@ -16,8 +16,8 @@ public:
 	void setSpeed(float speed) { this->speed = speed; }
 	bool checkIfPlantAhead(Vector<Plants*>& plant);
 	int findIndex(Vector<Plants*> plant);
-	void doDamage(Vector<Plants*>& ptr);
-	virtual void moveZombie(Vector<Plants*>& ptr);
+	void doDamage(Vector<Plants*>& ptr, bool** set);
+	virtual void moveZombie(Vector<Plants*>& ptr, bool** set);
 	virtual void drawZombie(sf::RenderWindow& window);
 
 	Coordinates GetPosition()const { return this->position; }

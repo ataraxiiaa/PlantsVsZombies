@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-	money = 0;
+	money = 150;
 	//ptr = new Plants * [45];
 	//for (int i = 0; i < 45; i++)
 		//ptr[i] = nullptr;
@@ -128,7 +128,7 @@ void Game::Start_Game()
 			//dolphin.drawZombie(window);
 			//dancing.drawZombie(window);
 			//dancing.moveZombie(ptr);
-			normal.moveZombie(ptr);
+			normal.moveZombie(ptr, game.getFieldStatus());
 			//sp.DrawSnowPea(window);
 			//football.moveZombie(ptr);
 			//flying.moveZombie();

@@ -33,7 +33,7 @@ int Zombie::findIndex(Vector<Plants*> plant)
 	}
 
 }
-void Zombie::doDamage(Vector<Plants*>& ptr)
+void Zombie::doDamage(Vector<Plants*>& ptr, bool** set)
 {
 	int index = findIndex(ptr);
 
@@ -42,12 +42,11 @@ void Zombie::doDamage(Vector<Plants*>& ptr)
 	else if (ptr[index]->GetLives() == 0)
 	{
 		ptr[index]->SetExistence(false);
+		set[ptr.back()->getI()][ptr.back()->getJ()] = false;
 		ptr.Destroy(index);
-		//bool** set = game.getFieldStatus();
-		//set[i][j]=false;
 	}
 }
-void Zombie::moveZombie(Vector<Plants*>& ptr)
+void Zombie::moveZombie(Vector<Plants*>& ptr, bool** set)
 {
 	if (!checkIfPlantAhead(ptr))
 	{
@@ -56,7 +55,7 @@ void Zombie::moveZombie(Vector<Plants*>& ptr)
 	}
 	else
 	{
-		doDamage(ptr);
+		doDamage(ptr, set);
 	}
 }
 void Zombie::drawZombie(sf::RenderWindow& window)

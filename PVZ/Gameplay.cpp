@@ -125,25 +125,36 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                     // Check if the target grid cell is empty
                     if (!FIELD_GAME_STATUS[row][col])
                     {
-                        FIELD_GAME_STATUS[row][col] = true;
+                        bool spawned = false;
 
                         // Place the needed plant on the grid
-                        if (id[index] == "sunflower") {
+                        if (id[index] == "sunflower" && money>=50) {
                             ptr.push_back(new SunFlower);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos-30);
+                            money -= ptr.back()->GetCost();
+                            spawned = true;
                         }
-                        else if (id[index] == "peashooter") {
+                        else if (id[index] == "peashooter" && money >= 100) {
                             ptr.push_back(new PeaShooter);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos-30);
+                            money -= ptr.back()->GetCost();
+                            spawned = true;
                         }
-                        else if (id[index] == "wallnut") {
+                        else if (id[index] == "wallnut" && money >= 50) {
                             ptr.push_back(new WallNut);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
+                            money -= ptr.back()->GetCost();
+                            spawned = true;
                         }
-
+                        if (spawned)
+                        {
+                            FIELD_GAME_STATUS[row][col] = true;
+                            ptr.back()->setI(row);
+                            ptr.back()->setJ(col);
+                        }
                         cout << "placed" << endl;
                     }
                     else

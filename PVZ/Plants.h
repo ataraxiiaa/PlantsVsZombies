@@ -12,6 +12,8 @@ protected:
 	float coolDown; // Cool down between plants being used after one is placed
 	int cost; // Cost for buying plants
 	Animation* animate;
+	int i;
+	int j;
 public:
 	// Getters
 	float GetCoolDown()const { return coolDown; }
@@ -21,6 +23,8 @@ public:
 	float GetLives() { return this->lives; }
 	bool GetExistence() { return this->exists; }
 	Sprite getSprite() { return this->sprite; }
+	int getI() { return i; }
+	int getJ() { return j; }
 	// Setters
 	void SetCoolDown(float coolDown) { this->coolDown = coolDown; }
 	void SetCost(int cost) { this->cost = cost; }
@@ -29,6 +33,8 @@ public:
 	virtual void drawPlant(RenderWindow& window);
 	void setX(int x) { this->position.SetX(x); }
 	void setY(int y) { this->position.SetY(y); }
+	void setI(int i) { this->i = i; }
+	void setJ(int j) { this->j = j; }
 	
 	Animation* getAnimation() { return animate; }
 	// Action each plant performs
