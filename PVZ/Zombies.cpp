@@ -6,7 +6,13 @@ bool Zombie::checkIfPlantAhead(Vector<Plants*>& plant)
 	{
 		if (plant[i] != nullptr)
 		{
-			if (this->position.GetX() - 50 == plant[i]->GetX() && this->position.GetY() == plant[i]->GetY() && plant[i]->GetExistence())
+			cout << "Zombie X : " << this->position.GetX() << endl;
+			cout << "Zombie Y : " << this->position.GetY() << endl;
+			if (this->position.GetX() - plant[i]->GetX() >= -100 &&
+				this->position.GetX() - plant[i]->GetX() <= 100 &&
+				this->position.GetY() - plant[i]->GetY() >= -100 &&
+				this->position.GetY() - plant[i]->GetY() <= 100 &&
+				plant[i]->GetExistence())
 			{
 				cout << "plant ahead" << endl;
 				return true;
@@ -19,7 +25,11 @@ int Zombie::findIndex(Vector<Plants*> plant)
 {
 	for (int i = 0; i < plant.GetSize(); i++)
 	{
-		if (this->position.GetX() - 50 == plant[i]->GetX() && this->position.GetY() == plant[i]->GetY() && plant[i]->GetExistence())
+		if (this->position.GetX() - plant[i]->GetX() >= -100 &&
+			this->position.GetX() - plant[i]->GetX() <= 100 &&
+			this->position.GetY() - plant[i]->GetY() >= -100 &&
+			this->position.GetY() - plant[i]->GetY() <= 100 &&
+			plant[i]->GetExistence())
 		{
 			cout << "plant ahead" << endl;
 			return i;
