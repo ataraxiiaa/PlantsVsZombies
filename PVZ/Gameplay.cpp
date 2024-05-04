@@ -135,12 +135,10 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                             money -= ptr.back()->GetCost();
                             spawned = true;
                         }
-                        else if (id[index] == "peashooter" && money >= 100) {
+                        else if (id[index] == "peashooter") {
                             ptr.push_back(new PeaShooter);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos-30);
-                            money -= ptr.back()->GetCost();
-                            spawned = true;
                         }
                         else if (id[index] == "wallnut" && money >= 50) {
                             ptr.push_back(new WallNut);
@@ -169,5 +167,10 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                 selected = false;
             }
         }
+    }
+}
+void Gameplay::CheckCollision(NormalZombie& ptr) {
+    for (int i = 0; i < shooter.GetSize(); ++i) {
+        shooter[i]->CheckBulletCollision(ptr);
     }
 }

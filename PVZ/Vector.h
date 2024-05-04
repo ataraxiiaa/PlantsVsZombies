@@ -74,7 +74,6 @@ public:
 			delete[] ptr;
 	}*/
 	int GetSize()const { return this->currSize; }
-	int getCurr() { return currSize; }
 	void push_back(Type* value) {
 		if (currSize == maxSize) {
 			Type** temp = new Type * [maxSize];
@@ -108,6 +107,7 @@ public:
 	Type*& back() {
 		return ptr[currSize - 1];
 	}
+
 
 };
 

@@ -11,6 +11,7 @@
 #include "Repeater.h"
 #include "CherryBomb.h"
 #include "SnowPea.h"
+#include "NormalZombie.h"
 #include "Vector.h"
 #include <iostream>
 
@@ -25,6 +26,7 @@ class Gameplay
 	bool firstClick;
 	bool hover, dragging;
 	sf::RectangleShape rectangle;
+	Vector<Shooter*> shooter;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
@@ -33,6 +35,7 @@ public:
 	void dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, int& money);
 	bool** getFieldStatus() { return FIELD_GAME_STATUS; }
 	void checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse);
+	void CheckCollision(NormalZombie& Zombie);
 };
 
 

@@ -118,6 +118,7 @@ void Game::Start_Game()
 			shop.DrawShop(window);
 			game.checkShopClick(window, money);
 			game.dropToGrid(window, ptr, money);
+			game.CheckCollision(normal);
 			//peaShooter.DrawPeaShooter(window);
 			normal.drawZombie(window);
 			//football.drawZombie(window);
