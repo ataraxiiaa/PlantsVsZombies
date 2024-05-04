@@ -13,6 +13,11 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
 	firstClick = true;
 	dragging = false;
     // Setting up rectange
+    rectangle.setSize(sf::Vector2f(50, 100));
+    rectangle.setOutlineColor(sf::Color::White);
+    rectangle.setFillColor(sf::Color::Transparent);
+    rectangle.setOutlineThickness(5);
+
 }
 Gameplay::~Gameplay() {
 	for (int i = 0; i < gridRows; ++i)
@@ -74,7 +79,7 @@ void Gameplay::checkShopClick(RenderWindow& window, int& money)
 void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money)
 {
     Sprite* sprites = shop.getSprite();
-
+    Vector<Sprite> SelectedSprite = shop.getSelectedSprite();
     if (selected)
     {
         sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
@@ -86,16 +91,22 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                 // Start dragging if the left mouse button is pressed and not already dragging
                 dragging = true;
                 Sprite temp = sprites[index];
+               // SelectedSprite[index].setPosition(sprites[index].getPosition());
                 temp.setTextureRect(sprites[index].getTextureRect());
                 temp.setPosition(mouse);
+
                 window.draw(temp);
+                window.draw(SelectedSprite[index]);
             }
             else
             {
                 Sprite temp = sprites[index];
                 temp.setTextureRect(sprites[index].getTextureRect());
+               // SelectedSprite[index].setPosition(sprites[index].getPosition());
                 temp.setPosition(mouse);
+
                 window.draw(temp);
+                window.draw(SelectedSprite[index]);
             }
         }
         else
@@ -121,18 +132,18 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                         // Place the needed plant on the grid
                         if (id[index] == "sunflower") {
                             ptr.push_back(new SunFlower);
-                            ptr[ptr.GetSize()-1]->setX(xPos);
-                            ptr[ptr.GetSize() - 1]->setY(yPos-30);
+                            ptr.back()->setX(xPos);
+                            ptr.back()->setY(yPos-30);
                         }
                         else if (id[index] == "peashooter") {
                             ptr.push_back(new PeaShooter);
-                            ptr[ptr.GetSize() - 1]->setX(xPos);
-                            ptr[ptr.GetSize() - 1]->setY(yPos-30);
+                            ptr.back()->setX(xPos);
+                            ptr.back()->setY(yPos-30);
                         }
                         else if (id[index] == "wallnut") {
                             ptr.push_back(new WallNut);
-                            ptr[ptr.GetSize() - 1]->setX(xPos);
-                            ptr[ptr.GetSize() - 1]->setY(yPos-30);
+                            ptr.back()->setX(xPos);
+                            ptr.back()->setY(yPos-30);
                         }
 
                         cout << "placed" << endl;
