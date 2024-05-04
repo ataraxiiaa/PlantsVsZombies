@@ -29,6 +29,7 @@ int Zombie::findIndex(Vector<Plants*> plant)
 			return i;
 		}
 	}
+	return -1;
 
 }
 void Zombie::doDamage(Vector<Plants*>& ptr, bool** set)
@@ -40,7 +41,7 @@ void Zombie::doDamage(Vector<Plants*>& ptr, bool** set)
 	else if (ptr[index]->GetLives() == 0)
 	{
 		ptr[index]->SetExistence(false);
-		set[ptr.back()->getI()][ptr.back()->getJ()] = false;
+		set[ptr[index]->getI()][ptr[index]->getJ()] = false;
 		ptr.Destroy(index);
 		cout << "destroyed" << endl;
 	}
@@ -61,14 +62,6 @@ void Zombie::drawZombie(sf::RenderWindow& window)
 {
 	this->animate->Update();
 	this->animate->DrawAnimation(window, this->position);
-}
-
-int Zombie::checkShooterType(Vector<Plants*> ptr)
-{
-	for (int i = 0; i < ptr.GetSize(); i++)
-		if (ptr[i]->getShooterType())
-			return i;
-	return -1;
 }
 
 void Zombie::action(sf::RenderWindow& window, Vector<Plants*> ptr, bool** set)
