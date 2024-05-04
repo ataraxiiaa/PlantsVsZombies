@@ -3,8 +3,7 @@
 
 Shop::Shop() // Initiallizes every sprite
 {
-	// Sprite 0 sunflower
-	// SPrite 1 Peashooter
+
 	sprite = new Sprite[6]; // Adding sprites
 	texture = new Texture[6]; // Adding textures
 	// Sunflower
@@ -15,7 +14,7 @@ Shop::Shop() // Initiallizes every sprite
 	selectedSprite.back().setTextureRect(sf::IntRect(114, 0, 228, 101));
 	selectedSprite.back().setPosition(20, 50);
 	sprite[0].setPosition(-10, 50);
-
+	// PeaShooter
 	texture[1].loadFromFile("../Images/PeaShooterShop2.png"); // Peashooter sprite sheet
 	sprite[1].setTexture(texture[1]);
 	sprite[1].setTextureRect(sf::IntRect(0, 0, 85, 101));
