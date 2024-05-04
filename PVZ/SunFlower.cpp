@@ -37,8 +37,6 @@ void SunFlower::Action(RenderWindow& window)
 		//cout << "nigga" << endl;
 		if (clock.getElapsedTime().asSeconds() >= this->time)
 		{
-			cout << "real" << endl;
-			Sun sun;
 			ProduceSun(window);
 		}
 	}

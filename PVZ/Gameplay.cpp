@@ -70,7 +70,6 @@ void Gameplay::checkShopClick(RenderWindow& window, int& money)
 			{
 				selected = true;
 				index = i;
-				cout << "sel" << endl;
 			}
 		}
 
@@ -157,16 +156,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                             ptr.back()->setI(row);
                             ptr.back()->setJ(col);
                         }
-                        cout << "placed" << endl;
                     }
-                    else
-                    {
-                        cout << "already there" << endl;
-                    }
-                }
-                else
-                {
-                    cout << "out of bounds" << endl;
                 }
                 selected = false;
             }

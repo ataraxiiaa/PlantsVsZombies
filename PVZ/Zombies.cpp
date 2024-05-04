@@ -26,7 +26,6 @@ int Zombie::findIndex(Vector<Plants*> plant)
 			this->position.GetY() + 40 == plant[i]->GetY() &&
 			plant[i]->GetExistence())
 		{
-			cout << "plant ahead" << endl;
 			return i;
 		}
 	}
