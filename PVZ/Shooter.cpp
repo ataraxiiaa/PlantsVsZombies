@@ -41,14 +41,15 @@ void Shooter::Fire(sf::RenderWindow& window,Coordinates PlantCoords,int index) /
 }
 // CHecking collision with bullet of zombie
 void Shooter::CheckBulletCollision(NormalZombie& Zombie) {
+    cout << "function nigga" << endl;
     //for (int i = 0; i < Zombie.GetSize(); ++i) {
         for (int i = 0; i < totalBullets; ++i) {
             if (bullet[i].GetPosition().GetX() - Zombie.GetPosition().GetX() >= -10 &&
                 bullet[i].GetPosition().GetX() - Zombie.GetPosition().GetX() <= 10 &&
-                bullet[i].GetPosition().GetY() - Zombie.GetPosition().GetY() >= -70 &&
-                bullet[i].GetPosition().GetY() - Zombie.GetPosition().GetY() <= 70 &&
+                bullet[i].GetPosition().GetY() == Zombie.GetPosition().GetY() + 40 &&
                 Zombie.GetExistance())
             {
+                cout << "nigga" << endl;
                 Zombie.setDamage(Zombie.getDamage());
                 bullet[i].SetFire(false);
                 break;
