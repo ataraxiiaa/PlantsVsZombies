@@ -38,7 +38,7 @@ public:
 	
 	Animation* getAnimation() { return animate; }
 	// Action each plant performs
-	virtual void Action(RenderWindow& window, int& money) = 0; // Abstract function
+	virtual void Action(RenderWindow& window) = 0; // Abstract function
 
 };
 

@@ -1,7 +1,7 @@
 #include "SunFlower.h"
 #include <iostream>
 
-SunFlower::SunFlower()
+SunFlower::SunFlower(int &money)
 {
 	this->exists = true;
 	this->time = 10;//placeholder time 
@@ -14,13 +14,14 @@ SunFlower::SunFlower()
 	//	animate->SetSheet(0.125, 6, texture, 8, 1);
 	animate->SetSheet(0.125, 5, texture, 6, 1);
 	this->lives = 5;
+	this->moneyPtr = &money;
 }
 void SunFlower::drawPlant(sf::RenderWindow& window)
 {
 	if (exists)
 		Plants::drawPlant(window);
 }
-void SunFlower::ProduceSun(RenderWindow& window, int& money) 
+void SunFlower::ProduceSun(RenderWindow& window) 
 {
 	this->sun.setExists(true);
 	Coordinates pos;
@@ -29,7 +30,7 @@ void SunFlower::ProduceSun(RenderWindow& window, int& money)
 	sun.SetPosition(pos);
 	
 }
-void SunFlower::Action(RenderWindow& window, int& money)
+void SunFlower::Action(RenderWindow& window)
 {
 	if (!sun.getExists())
 	{
@@ -38,13 +39,13 @@ void SunFlower::Action(RenderWindow& window, int& money)
 		{
 			cout << "real" << endl;
 			Sun sun;
-			ProduceSun(window, money);
+			ProduceSun(window);
 		}
 	}
 	else
 	{
 		sun.DrawSun(window);
-		sun.CollectSun(window, money);
+		sun.CollectSun(window, *this->moneyPtr);
 		clock.restart();
 	}
 }

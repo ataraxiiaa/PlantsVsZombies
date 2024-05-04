@@ -11,11 +11,13 @@ class SunFlower : public Plants
 	Sun sun;
 	int time; //time between sun spawning
 	Clock clock;
+	int* moneyPtr;
 public:
-	SunFlower();
+	SunFlower(int &money);
 	virtual void drawPlant(sf::RenderWindow& window);
-	virtual void Action(RenderWindow& window, int& money);
-	void ProduceSun(RenderWindow& window, int& money);
+	virtual void Action(RenderWindow& window);
+	void SetMoney(int& money) { this->moneyPtr = &money; }
+	void ProduceSun(RenderWindow& window);
 };
 
 

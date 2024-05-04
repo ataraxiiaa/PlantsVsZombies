@@ -129,7 +129,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
 
                         // Place the needed plant on the grid
                         if (id[index] == "sunflower" && money>=50) {
-                            ptr.push_back(new SunFlower);
+                            ptr.push_back(new SunFlower(money));
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos-30);
                             money -= ptr.back()->GetCost();
@@ -139,6 +139,7 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                             ptr.push_back(new PeaShooter);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos-30);
+                            spawned = true;
                         }
                         else if (id[index] == "wallnut" && money >= 50) {
                             ptr.push_back(new WallNut);

@@ -12,7 +12,7 @@ class Repeater : public Shooter
 public:
 	Repeater(); // Default construcotr
 	//void DrawRepeater(RenderWindow& window); // drawing repeater 
-	virtual void Action(RenderWindow& window, int& money); // firing 
+	virtual void Action(RenderWindow& window); // firing 
 };
 
 

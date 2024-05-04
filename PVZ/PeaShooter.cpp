@@ -11,7 +11,7 @@ PeaShooter::PeaShooter()
 	this->lives = 10;
 
 }
-void PeaShooter::Action(RenderWindow& window, int& money)
+void PeaShooter::Action(RenderWindow& window)
 {
 	Fire(window, this->position);
 }
