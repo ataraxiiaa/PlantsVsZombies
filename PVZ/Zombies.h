@@ -21,8 +21,11 @@ public:
 	}
 	float getDamage() { return this->damage; }
 	float getSpeed() { return this->speed; }
+	int getLives() { return this->lives; }
 	void setDamage(float damage) { this->damage = damage; }
 	void setSpeed(float speed) { this->speed = speed; }
+	void setLives(int lives) { this->lives = lives; }
+	void setExists(bool exists) { this->exists = exists; }
 	bool checkIfPlantAhead(Vector<Plants*>& plant);
 	int findIndex(Vector<Plants*> plant);
 	void doDamage(Vector<Plants*>& ptr, bool** set);

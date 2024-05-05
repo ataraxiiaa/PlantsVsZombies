@@ -161,8 +161,6 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
                     else {
                         cout << "Cant place there" << endl;
                     }
-                    //else
-                      //  cout << "nigga no" << endl;
                 }
                 selected = false;
             }
