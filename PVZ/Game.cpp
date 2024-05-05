@@ -101,13 +101,7 @@ void Game::Start_Game()
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				pause.setState(true);
 
-			// Currency Text
-			font.loadFromFile("../fonts/comicsans.ttf");
-			text.setFont(font);
-			text.setCharacterSize(40);
-			text.setString(to_string(money));
-			text.setFillColor(sf::Color::Yellow);
-			text.setPosition(160, 8);
+
 
 			//Create a background
 			createBack(window);
@@ -118,17 +112,12 @@ void Game::Start_Game()
 				sun.SetAutoCollect(true);
 			else
 				sun.SetAutoCollect(false);
-			shop.DrawShop(window);
-			gamep.checkShopClick(window, money);
 
-			gamep.dropToGrid(window, money);
+			gamep.StartGamePlay(window);
 
-			sun.DrawSun(window, money);
 
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
-			
-			gamep.StartGamePlay(window);
 				
 				
 		}

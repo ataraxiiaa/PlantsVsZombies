@@ -22,6 +22,9 @@ class Gameplay
 	Shop shop;
 	Vector<Plants*> ptr;
 	Vector<Zombie*> zptr;
+	Sun sun;
+	Font font;
+	Text text;
 	const int gridCols, gridRows; // Making Grid
 	bool** FIELD_GAME_STATUS; // Bool to track Grid movement
 	bool selected;
@@ -29,14 +32,15 @@ class Gameplay
 	bool firstClick;
 	bool hover, dragging;
 	sf::RectangleShape rectangle;
+	int money;
 
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
 	// Creating functions for Gameplay
-	void checkShopClick(RenderWindow& window, int& money);
+	void checkShopClick(RenderWindow& window);
 
-	void dropToGrid(RenderWindow& window, int& money);
+	void dropToGrid(RenderWindow& window);
 
 	bool** getFieldStatus() { return FIELD_GAME_STATUS; }
 

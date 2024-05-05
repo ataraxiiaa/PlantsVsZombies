@@ -17,6 +17,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     rectangle.setOutlineColor(sf::Color::White);
     rectangle.setFillColor(sf::Color::Transparent);
     rectangle.setOutlineThickness(5);
+    this->money = 1000; // Set accordingly
 
 }
 Gameplay::~Gameplay() {
@@ -55,7 +56,7 @@ void Gameplay::checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWin
 	}
 }
 
-void Gameplay::checkShopClick(RenderWindow& window, int& money)
+void Gameplay::checkShopClick(RenderWindow& window)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
@@ -76,6 +77,10 @@ void Gameplay::checkShopClick(RenderWindow& window, int& money)
 	}
 }
 void Gameplay::StartGamePlay(RenderWindow& window) {
+    shop.DrawShop(window);
+    this->checkShopClick(window);
+    this->dropToGrid(window);
+
     for (int i = 0; i < ptr.GetSize(); i++)
     {
         ptr[i]->Action(window);
@@ -85,8 +90,17 @@ void Gameplay::StartGamePlay(RenderWindow& window) {
         zptr[i]->action(window, ptr, this->FIELD_GAME_STATUS);
         this->CheckCollision();
     }
+    sun.DrawSun(window, money);
+    // Currency Text
+    font.loadFromFile("../fonts/comicsans.ttf");
+    text.setFont(font);
+    text.setCharacterSize(40);
+    text.setString(to_string(money));
+    text.setFillColor(sf::Color::Yellow);
+    text.setPosition(160, 8);
+    window.draw(text);
 }
-void Gameplay::dropToGrid(RenderWindow& window,int& money)
+void Gameplay::dropToGrid(RenderWindow& window)
 {
     Sprite* sprites = shop.getSprite();
     Vector<Sprite> SelectedSprite = shop.getSelectedSprite();
