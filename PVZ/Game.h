@@ -44,7 +44,7 @@ class Game
 	int money;
 	Font font;
 	Text text;
-	Gameplay game;
+	Gameplay gamep;
 	int level;
 public:
 	Game(); // (Default for now will change later on)

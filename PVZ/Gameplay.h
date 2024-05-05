@@ -20,7 +20,8 @@
 class Gameplay
 {
 	Shop shop;
-	Zombie* Zptr; // Zombie plant
+	Vector<Plants*> ptr;
+	Vector<Zombie*> zptr;
 	const int gridCols, gridRows; // Making Grid
 	bool** FIELD_GAME_STATUS; // Bool to track Grid movement
 	bool selected;
@@ -28,17 +29,22 @@ class Gameplay
 	bool firstClick;
 	bool hover, dragging;
 	sf::RectangleShape rectangle;
-	Vector<Shooter*> shooter;
+
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
 	// Creating functions for Gameplay
 	void checkShopClick(RenderWindow& window, int& money);
-	void dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, int& money);
+
+	void dropToGrid(RenderWindow& window, int& money);
+
 	bool** getFieldStatus() { return FIELD_GAME_STATUS; }
+
 	void checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse);
-	void CheckCollision(Vector<Zombie*>& zombies, Vector<Plants*>& ptr);
-	void spawnZombies(Vector<Zombie*>& zptr, int level);
+	void CheckCollision();
+	void spawnZombies(int level);
+	void StartGamePlay(RenderWindow& window);
+
 };
 
 

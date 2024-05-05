@@ -75,7 +75,18 @@ void Gameplay::checkShopClick(RenderWindow& window, int& money)
 
 	}
 }
-void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money)
+void Gameplay::StartGamePlay(RenderWindow& window) {
+    for (int i = 0; i < ptr.GetSize(); i++)
+    {
+        ptr[i]->Action(window);
+        ptr[i]->drawPlant(window);
+    }
+    for (int i = 0; i < zptr.GetSize(); i++) {
+        zptr[i]->action(window, ptr, this->FIELD_GAME_STATUS);
+        this->CheckCollision();
+    }
+}
+void Gameplay::dropToGrid(RenderWindow& window,int& money)
 {
     Sprite* sprites = shop.getSprite();
     Vector<Sprite> SelectedSprite = shop.getSelectedSprite();
@@ -167,18 +178,18 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
         }
     }
 }
-void Gameplay::CheckCollision(Vector<Zombie*>& zombies,Vector<Plants*>& ptr) {
+void Gameplay::CheckCollision() {
     for (size_t i = 0; i < ptr.GetSize(); ++i) {
         Plants* plant = ptr[i];
         if (plant->GetType() == "PeaShooter") {
             PeaShooter* shooter = (PeaShooter*)(plant);
-            shooter->CheckBulletCollision(zombies);
+            shooter->CheckBulletCollision(zptr);
         }
     }
 }
 
 
-void Gameplay::spawnZombies(Vector<Zombie*>& zptr, int level)
+void Gameplay::spawnZombies(int level)
 {
     for (int i = 0, j=0; i < level * 5; i++, j++)
     {
@@ -203,6 +214,4 @@ void Gameplay::spawnZombies(Vector<Zombie*>& zptr, int level)
     zptr[10]->setY(zptr[0]->getYPositions()[0]);
     zptr[11]->setX(1200);
     zptr[11]->setY(zptr[0]->getYPositions()[1]);
-
-    
 }

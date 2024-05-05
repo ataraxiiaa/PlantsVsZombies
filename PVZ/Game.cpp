@@ -75,7 +75,8 @@ void Game::Start_Game()
 
 	Clock timeMoney;
 	Clock clock;
-	game.spawnZombies(zptr, level);
+	gamep.spawnZombies(level);
+
 	while (window.isOpen())
 	{
 		if (menu.ShowState() == true)
@@ -118,42 +119,16 @@ void Game::Start_Game()
 			else
 				sun.SetAutoCollect(false);
 			shop.DrawShop(window);
-			game.checkShopClick(window, money);
-			game.dropToGrid(window, ptr, money);
-			//game.CheckCollision(normal);
-			//peaShooter.DrawPeaShooter(window);
-			//normal.drawZombie(window);
-			//football.drawZombie(window);
-			//football.moveZombie(ptr);
-			//football.drawZombie(window);
-			//flying.drawZombie(window);
-			//dancing.drawZombie(window);
-			//dolphin.drawZombie(window);
-			//dancing.drawZombie(window);
-			//dancing.moveZombie(ptr);
-			//normal.moveZombie(ptr, game.getFieldStatus());
-			//sp.DrawSnowPea(window);
-			//football.moveZombie(ptr);
-			//flying.moveZombie();
-			//dancing.moveZombie();
-			//dolphin.moveZombie();
-			//peaShooter.animate->DrawAnimation(window);
-			// Drawing Sun
-			//bomb.DrawCherryBomb(window);
+			gamep.checkShopClick(window, money);
+
+			gamep.dropToGrid(window, money);
+
 			sun.DrawSun(window, money);
-			//nutty.drawPlant(window);
-			//nutty.Action(window);
+
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
-			for (int i = 0; i < ptr.GetSize(); i++) 
-			{
-				ptr[i]->Action(window);
-				ptr[i]->drawPlant(window);
-			}
-			for (int i = 0; i < zptr.GetSize(); i++) {
-				zptr[i]->action(window, ptr, game.getFieldStatus());
-				game.CheckCollision(zptr, ptr);
-			}
+			
+			gamep.StartGamePlay(window);
 				
 				
 		}
