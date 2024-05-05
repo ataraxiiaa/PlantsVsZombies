@@ -15,9 +15,18 @@ void HouseGuardian::CheckCollision(Vector<Zombie*>& Zptr) {
 			GetPosition().GetY() - Zptr[i]->GetPosition().GetY() <= 80 &&
 			Zptr[i]->GetExistance() && this->exists)
 		{
+			for (int j=0; j<Zptr.GetSize(); j++)
+				if (GetPosition().GetY() - Zptr[j]->GetPosition().GetY() >= -80 &&
+					GetPosition().GetY() - Zptr[j]->GetPosition().GetY() <= 80 &&
+					Zptr[j]->GetExistance())
+				{
+					cout << "destroy" << endl;
+					Zptr[j]->setExists(false);
+					Zptr.Destroy(j);
+				}
 			cout << "Collided" << endl;
 			this->exists = false;
-			Zptr.Destroy(i);
+			//Zptr.Destroy(i);
 			//return;
 		}
 	}
