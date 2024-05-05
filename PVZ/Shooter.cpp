@@ -42,16 +42,17 @@ void Shooter::Fire(sf::RenderWindow& window,Coordinates PlantCoords,int index) /
 }
 // CHecking collision with bullet of zombie
 void Shooter::CheckBulletCollision(Vector<Zombie*> Zombie) {
-    for (int i = 0; i < Zombie.GetSize(); ++i) {
-        for (int j = 0; j < totalBullets; ++j) {
-            if (bullet[j].GetPosition().GetX() - Zombie[i]->GetPosition().GetX() >= -10 &&
-                bullet[j].GetPosition().GetX() - Zombie[i]->GetPosition().GetX() <= 10 &&
-                bullet[j].GetPosition().GetY() == Zombie[i]->GetPosition().GetY() + 40 &&
-                Zombie[i]->GetExistance())
+
+    for (int i = 0; i < totalBullets; ++i) {
+        for (int j = 0; j < Zombie.GetSize(); ++j) {
+            if (bullet[i].GetPosition().GetX() - Zombie[j]->GetPosition().GetX() >= -10 &&
+                bullet[i].GetPosition().GetX() - Zombie[j]->GetPosition().GetX() <= 10 &&
+                bullet[i].GetPosition().GetY() == Zombie[j]->GetPosition().GetY() + 40 &&
+                Zombie[j]->GetExistance() && bullet[i].ShowFire())
             {
                 cout << "Collided" << endl;
-                Zombie[i]->setDamage(Zombie[i]->getDamage());
-                bullet[j].SetFire(false);
+                Zombie[j]->setDamage(Zombie[j]->getDamage());
+                bullet[i].SetFire(false);
                 return;
             }
         }
