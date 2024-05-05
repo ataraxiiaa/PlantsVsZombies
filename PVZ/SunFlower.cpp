@@ -15,6 +15,7 @@ SunFlower::SunFlower(int &money)
 	animate->SetSheet(0.125, 5, texture, 6, 1);
 	this->lives = 50;
 	this->moneyPtr = &money;
+	Type = "Sunflower";
 }
 void SunFlower::drawPlant(sf::RenderWindow& window)
 {

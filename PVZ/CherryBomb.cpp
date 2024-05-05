@@ -9,6 +9,7 @@ CherryBomb::CherryBomb()
 	animate->SetSheet(0.2, 6, texture, 6, 1);
 	Coordinates pos(500, 500);
 	this->position = pos;
+	Type = "CherryBomb";
 }
 void CherryBomb::Action(RenderWindow& window) {
 	// Pass

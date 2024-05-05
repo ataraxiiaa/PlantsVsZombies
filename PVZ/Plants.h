@@ -6,6 +6,9 @@
 #include "Entity.h" // Include necessary header files
 #include "Animation.h"
 
+#include <iostream>
+using namespace std;
+
 class Plants : public Entity // Abstract Class
 {
 protected:
@@ -15,6 +18,7 @@ protected:
 	int i;
 	int j;
 	bool shooterType;
+	string Type;
 public:
 	Plants() { shooterType = false; }
 	// Getters
@@ -41,6 +45,7 @@ public:
 	
 	Animation* getAnimation() { return animate; }
 	// Action each plant performs
+	virtual string GetType()const { return Type; }
 	virtual void Action(RenderWindow& window) = 0; // Abstract function
 
 };

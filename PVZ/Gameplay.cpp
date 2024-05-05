@@ -169,9 +169,13 @@ void Gameplay::dropToGrid(RenderWindow& window, Vector<Plants*>& ptr, int& money
         }
     }
 }
-void Gameplay::CheckCollision(Vector<Zombie*> ptr) {
-    for (int i = 0; i < shooter.GetSize(); ++i) {
-        shooter[i]->CheckBulletCollision(ptr);
+void Gameplay::CheckCollision(Vector<Zombie*>& zombies,Vector<Plants*>& ptr) {
+    for (size_t i = 0; i < ptr.GetSize(); ++i) {
+        Plants* plant = ptr[i];
+        if (plant->GetType() == "PeaShooter") {
+            PeaShooter* shooter = (PeaShooter*)(plant);
+            shooter->CheckBulletCollision(zombies);
+        }
     }
 }
 

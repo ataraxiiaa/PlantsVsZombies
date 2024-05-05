@@ -11,6 +11,7 @@ WallNut::WallNut()
 	Coordinates pos(400, 200);
 	this->position = pos;
 	this->lives = 4;
+	Type = "Wallnut";
 }
 void WallNut::Action(RenderWindow& window)
 {

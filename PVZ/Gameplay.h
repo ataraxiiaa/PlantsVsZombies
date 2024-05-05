@@ -35,7 +35,7 @@ public:
 	void dropToGrid(RenderWindow& window, Vector<Plants*> &ptr, int& money);
 	bool** getFieldStatus() { return FIELD_GAME_STATUS; }
 	void checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse);
-	void CheckCollision(Vector<Zombie*> ptr);
+	void CheckCollision(Vector<Zombie*>& zombies, Vector<Plants*>& ptr);
 	void spawnZombies(Vector<Zombie*>& zptr, int level);
 };
 

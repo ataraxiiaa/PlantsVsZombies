@@ -150,8 +150,11 @@ void Game::Start_Game()
 				ptr[i]->Action(window);
 				ptr[i]->drawPlant(window);
 			}
-			for (int i = 0; i < zptr.GetSize(); i++)
+			for (int i = 0; i < zptr.GetSize(); i++) {
 				zptr[i]->action(window, ptr, game.getFieldStatus());
+				game.CheckCollision(zptr, ptr);
+			}
+				
 				
 		}
 		else if (!menu.ShowState() && pause.ShowState())

@@ -15,6 +15,7 @@ SnowPea::SnowPea()
 	Coordinates pos(400, 300);
 	this->position = pos;
 	Ice = true;
+	Type = "Snowpea";
 }
 void SnowPea::Action(RenderWindow& window, int& money)
 {
