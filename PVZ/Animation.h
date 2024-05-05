@@ -18,6 +18,7 @@ class Animation
 	int currFrame; // Tracking current frame
 	int imagesPerCol; // Total number of images in columns
 	int imagesPerRow; // Total number of images in rows
+	bool animationstart;
 
 public:
 	Animation(float animationDelay=10); // Default constructor

@@ -10,6 +10,7 @@ Animation::Animation(float animationDelay)
 	imagesPerCol = 0;
 	this->imagesPerRow = 0;
 	totalFrames = 0;
+	animationstart = true;
 }
 void Animation::SetSheet(float Delay, int totalFrames,Texture& spriteSheet, int imagesPerRow, int imagesPerCol)
 {
@@ -26,25 +27,31 @@ void Animation::SetSheet(float Delay, int totalFrames,Texture& spriteSheet, int 
 void Animation::Update(bool end)
 {
 	timer += 0.1f;
-	if (timer >= animationDelay)
-	{
-		if (currFrame < imagesPerRow)
+	if (animationstart) {
+		if (timer >= animationDelay)
 		{
-			sprite.setTextureRect(sf::IntRect(currFrame * frameWidth, 0, frameWidth, frameHeight));
-			timer = 0.0f;
-			currFrame++;
-		}
-		if (currFrame >= imagesPerRow)
-		{
-			int col = currFrame % imagesPerRow;
-			int row = currFrame / imagesPerRow;
-			sprite.setTextureRect(sf::IntRect(col * frameWidth, row*frameHeight, frameWidth, frameHeight));
-			timer = 0.0f;
-			currFrame++;
+			if (currFrame < imagesPerRow)
+			{
+				sprite.setTextureRect(sf::IntRect(currFrame * frameWidth, 0, frameWidth, frameHeight));
+				timer = 0.0f;
+				currFrame++;
+			}
+			if (currFrame >= imagesPerRow)
+			{
+				int col = currFrame % imagesPerRow;
+				int row = currFrame / imagesPerRow;
+				sprite.setTextureRect(sf::IntRect(col * frameWidth, row * frameHeight, frameWidth, frameHeight));
+				timer = 0.0f;
+				currFrame++;
+			}
 		}
 	}
-	if (currFrame == totalFrames && end==false) 
+	if (currFrame == totalFrames && end == false) {
 		currFrame = 0;
+	}
+	else {
+		animationstart = false;
+	}
 }
 void Animation::DrawAnimation(sf::RenderWindow& window, Coordinates positon)
 {

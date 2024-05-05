@@ -187,6 +187,13 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             money -= ptr.back()->GetCost();
                             spawned = true;
                         }
+                        else if (id[index] == "repeater" && money >= 50) {
+                            ptr.push_back(new Repeater);
+                            ptr.back()->setX(xPos);
+                            ptr.back()->setY(yPos - 30);
+                            money -= ptr.back()->GetCost();
+                            spawned = true;
+                        }
                         if (spawned)
                         {
                             FIELD_GAME_STATUS[row][col] = true;
@@ -206,8 +213,8 @@ void Gameplay::dropToGrid(RenderWindow& window)
 void Gameplay::CheckCollision() {
     for (size_t i = 0; i < ptr.GetSize(); ++i) {
         Plants* plant = ptr[i];
-        if (plant->GetType() == "PeaShooter") {
-            PeaShooter* shooter = (PeaShooter*)(plant);
+        if (plant->GetType() == "PeaShooter" || plant->GetType()=="Repeater" || plant->GetType() == "Snowpea") {
+            Shooter* shooter = (Shooter*)(plant);
             shooter->CheckBulletCollision(zptr);
         }
     }

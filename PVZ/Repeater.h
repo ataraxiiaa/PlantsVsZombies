@@ -7,7 +7,6 @@
 
 class Repeater : public Shooter
 {
-	Animation* animate;
 	Clock clock; // to handle stuff 
 public:
 	Repeater(); // Default construcotr
