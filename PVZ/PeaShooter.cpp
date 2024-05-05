@@ -10,6 +10,7 @@ PeaShooter::PeaShooter()
 	animate->SetSheet(0.125, 6, texture, 8, 1);
 	this->lives = 10;
 	Type = "PeaShooter";
+	this->damage = 0.4;
 }
 void PeaShooter::Action(RenderWindow& window)
 {

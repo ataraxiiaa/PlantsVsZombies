@@ -14,6 +14,7 @@ protected:
 	Pea* bullet;
 	Clock clock;
 	int totalBullets;
+	float damage;
 	float delay;
 public:
 	Shooter(int totalBullets=1);
@@ -24,6 +25,7 @@ public:
 	{
 		Fire(window, this->position);
 	}
+	virtual float getDamage() { return damage; }
 };
 
 

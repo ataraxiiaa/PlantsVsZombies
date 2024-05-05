@@ -12,6 +12,8 @@
 #include "CherryBomb.h"
 #include "SnowPea.h"
 #include "NormalZombie.h"
+#include "FootballZombie.h"
+#include "FlyingZombie.h"
 #include "Vector.h"
 #include <iostream>
 

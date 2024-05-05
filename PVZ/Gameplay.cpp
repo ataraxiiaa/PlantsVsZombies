@@ -187,13 +187,22 @@ void Gameplay::spawnZombies(Vector<Zombie*>& zptr, int level)
         zptr.push_back(new NormalZombie);
         zptr[i]->setY(zptr[i]->getYPositions()[j]);
     }
-    zptr[0]->setX(1150);
-    zptr[1]->setX(1250);
-    
-    zptr[2]->setX(1300);
-   
-    zptr[3]->setX(1350);
-   
-    zptr[4]->setX(1450);
+    zptr.push_back(new FootballZombie);
+    zptr.push_back(new FlyingZombie);
+    zptr[0]->setX(1400);
+    zptr[1]->setX(2000);
+    zptr[2]->setX(2250);
+    zptr[3]->setX(2500);  
+    zptr[4]->setX(2750);
+    zptr[5]->setX(2900);
+    zptr[6]->setX(3100);
+    zptr[7]->setX(3150);
+    zptr[8]->setX(3300);
+    zptr[9]->setX(3350);
+    zptr[10]->setX(1200);
+    zptr[10]->setY(zptr[0]->getYPositions()[0]);
+    zptr[11]->setX(1200);
+    zptr[11]->setY(zptr[0]->getYPositions()[1]);
+
     
 }

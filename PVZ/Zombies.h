@@ -10,6 +10,7 @@ protected:
 	float speed;
 	Animation* animate;
 	int yPositions[5];
+	bool fly;
 public:
 	Zombie() 
 	{
@@ -18,13 +19,15 @@ public:
 		yPositions[2] = 309 - 40;
 		yPositions[3] = 415 - 40;
 		yPositions[4] = 521 - 40;
+		fly = false;
 	}
 	float getDamage() { return this->damage; }
 	float getSpeed() { return this->speed; }
-	int getLives() { return this->lives; }
+	float getLives() { return this->lives; }
+	bool getFly() { return this->fly; }
 	void setDamage(float damage) { this->damage = damage; }
 	void setSpeed(float speed) { this->speed = speed; }
-	void setLives(int lives) { this->lives = lives; }
+	void setLives(float lives) { this->lives = lives; }
 	void setExists(bool exists) { this->exists = exists; }
 	bool checkIfPlantAhead(Vector<Plants*>& plant);
 	int findIndex(Vector<Plants*> plant);

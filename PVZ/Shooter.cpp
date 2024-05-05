@@ -5,6 +5,7 @@ Shooter::Shooter(int totalBullets) // Will change depending on plant
     bullet = new Pea[totalBullets]; // Array of bullets 
     this->totalBullets = totalBullets;
     delay = 2.0f;
+    this->damage = 0;
     this->shooterType = true;
 }
 void Shooter::Fire(sf::RenderWindow& window,Coordinates PlantCoords,int index) // Fire function
@@ -48,11 +49,12 @@ void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie) {
             if (bullet[i].GetPosition().GetX() - Zombie[j]->GetPosition().GetX() >= -10 &&
                 bullet[i].GetPosition().GetX() - Zombie[j]->GetPosition().GetX() <= 10 &&
                 bullet[i].GetPosition().GetY() == Zombie[j]->GetPosition().GetY() + 40 &&
-                Zombie[j]->GetExistance() && bullet[i].ShowFire())
+                Zombie[j]->GetExistance() && bullet[i].ShowFire() && !Zombie[j]->getFly())
             {
                 cout << "Collided" << endl;
+                cout << getDamage() << endl;
                 if (Zombie[j]->getLives()>0)
-                    Zombie[j]->setLives(Zombie[j]->getLives() - 1);
+                    Zombie[j]->setLives(Zombie[j]->getLives() - getDamage());
                 else
                 {
                     Zombie[j]->setExists(false);
