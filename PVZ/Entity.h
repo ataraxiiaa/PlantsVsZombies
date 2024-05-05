@@ -18,7 +18,14 @@ protected:
 public:
 	bool CheckExistance()const { return exists; }
 	Coordinates GetPosition()const { return position; }
+	void SetCoordinates(Coordinates position) { this->position = position; }
 	bool GetExistance()const { return exists; }
+	
+	void SetSprtePos(Coordinates pos) {
+		sprite.setPosition(pos.GetX(), pos.GetY());
+	}
+	Sprite GetSprite()const { return sprite; }
+	Texture GetTexture()const { return texture; }
 };
 
 

@@ -2,7 +2,7 @@
 
 NormalZombie::NormalZombie() {
 	srand((unsigned)time(0));
-	this->speed = 0.5;
+	this->speed = 5;
 	this->lives = 2;
 	this->damage = 0.5;
 	this->texture.loadFromFile("../Images/Zombie2.png");

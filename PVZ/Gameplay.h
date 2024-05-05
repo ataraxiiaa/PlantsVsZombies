@@ -15,6 +15,7 @@
 #include "FootballZombie.h"
 #include "FlyingZombie.h"
 #include "Vector.h"
+#include "HouseGuardian.h"
 #include <iostream>
 
 class Gameplay
@@ -22,6 +23,7 @@ class Gameplay
 	Shop shop;
 	Vector<Plants*> ptr;
 	Vector<Zombie*> zptr;
+	Vector<HouseGuardian*> Guardians;
 	Sun sun;
 	Font font;
 	Text text;
@@ -32,6 +34,7 @@ class Gameplay
 	bool firstClick;
 	bool hover, dragging;
 	sf::RectangleShape rectangle;
+	
 	int money;
 
 public:

@@ -18,6 +18,12 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     rectangle.setFillColor(sf::Color::Transparent);
     rectangle.setOutlineThickness(5);
     this->money = 1000; // Set accordingly
+    for (int i = 0; i < 5; ++i) {
+        Guardians.push_back(new HouseGuardian("../Images/LawnMower.png"));
+        Coordinates pos(200-(i*3), (i * 120) + 80);
+        Guardians.back()->SetSprtePos(pos);
+        Guardians.back()->SetCoordinates(pos);
+    }
 
 }
 Gameplay::~Gameplay() {
@@ -77,10 +83,15 @@ void Gameplay::checkShopClick(RenderWindow& window)
 	}
 }
 void Gameplay::StartGamePlay(RenderWindow& window) {
+    for (int i = 0; i < Guardians.GetSize(); ++i) {
+        if(Guardians[i]->GetExistance())
+            window.draw(Guardians[i]->GetSprite());
+        Guardians[i]->CheckCollision(this->zptr);
+    }
     shop.DrawShop(window);
     this->checkShopClick(window);
     this->dropToGrid(window);
-
+   
     for (int i = 0; i < ptr.GetSize(); i++)
     {
         ptr[i]->Action(window);
