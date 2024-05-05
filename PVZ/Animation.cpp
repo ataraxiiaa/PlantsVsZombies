@@ -27,7 +27,6 @@ void Animation::SetSheet(float Delay, int totalFrames,Texture& spriteSheet, int 
 void Animation::Update(bool end)
 {
 	timer += 0.1f;
-	if (animationstart) {
 		if (timer >= animationDelay)
 		{
 			if (currFrame < imagesPerRow)
@@ -45,12 +44,8 @@ void Animation::Update(bool end)
 				currFrame++;
 			}
 		}
-	}
 	if (currFrame == totalFrames && end == false) {
 		currFrame = 0;
-	}
-	else {
-		animationstart = false;
 	}
 }
 void Animation::DrawAnimation(sf::RenderWindow& window, Coordinates positon)
