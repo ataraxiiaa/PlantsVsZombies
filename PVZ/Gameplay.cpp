@@ -199,7 +199,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
     }
 }
 void Gameplay::CheckCollision() {
-    for (size_t i = 0; i < ptr.GetSize(); ++i) {
+    for (int i = 0; i < ptr.GetSize(); ++i) {
         Plants* plant = ptr[i];
         if (plant->GetType() == "PeaShooter" || plant->GetType()=="Repeater" || plant->GetType() == "Snowpea") {
             Shooter* shooter = (Shooter*)(plant);

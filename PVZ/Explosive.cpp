@@ -21,3 +21,16 @@ void Explosive::DrawExplosion(RenderWindow& window, Coordinates position) // For
 		
 	}
 }
+void Explosive::CheckExplosionCollision(Vector<Zombie*>& Zombie) {
+	if (explode) {
+		for (int j = 0; j < Zombie.GetSize(); ++j) {
+			if (this->position.GetX() - Zombie[j]->GetPosition().GetX() >= -80 &&
+				this->position.GetX() - Zombie[j]->GetPosition().GetX() <= 80 &&
+				this->position.GetY() == Zombie[j]->GetPosition().GetY() + 100 &&
+				Zombie[j]->GetExistance())
+			{
+				Zombie[j]->setExists(false);
+			}
+		}
+	}
+}

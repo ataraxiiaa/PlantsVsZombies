@@ -2,6 +2,9 @@
 
 #include "Plants.h" // Include neceassary header file(s)
 #include "Animation.h"
+#include "Vector.h"
+#include "Zombies.h"
+
 class Explosive : public Plants // Inherit Plant Class
 {
 protected:
@@ -13,5 +16,6 @@ protected:
 public:
 	Explosive(); // Default constructor to load sprties
 	void DrawExplosion(RenderWindow& window, Coordinates position); // Draws the explosions
+	void CheckExplosionCollision(Vector<Zombie*>& Zombie);
 };
 
