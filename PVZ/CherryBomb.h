@@ -6,6 +6,7 @@
 class CherryBomb : public Explosive // Inherit explosive class
 {
 	Clock clock;
+	float scale;
 public:
 	CherryBomb();
 	virtual void Action(RenderWindow& window); // Declared virtual in Plant class
