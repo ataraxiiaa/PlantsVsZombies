@@ -9,7 +9,7 @@ protected:
 	Sprite ExplosionSprite;
 	Texture ExplosionTexture;
 	bool explode;
-	Coordinates position;
+	Clock explosionClock;
 public:
 	Explosive(); // Default constructor to load sprties
 	void DrawExplosion(RenderWindow& window, Coordinates position); // Draws the explosions

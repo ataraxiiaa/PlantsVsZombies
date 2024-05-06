@@ -29,6 +29,14 @@ Shop::Shop() // Initiallizes every sprite
 	selectedSprite.push_back(sprite[2]);
 	selectedSprite.back().setTextureRect(sf::IntRect(100, 0, 200, 84));
 	selectedSprite.back().setPosition(13, 240);
+	// CherryBomb
+	texture[4].loadFromFile("../Images/CherryBombShop.png");
+	sprite[4].setTexture(texture[4]);
+	sprite[4].setTextureRect(sf::IntRect(0, 0, 75, 100));
+	sprite[4].setPosition(15, 300);
+	selectedSprite.push_back(sprite[4]);
+	selectedSprite.back().setTextureRect(sf::IntRect(82, 0, 160, 100));
+	selectedSprite.back().setPosition(20, 300);
 	// Setting up ID pointer to keep track of what item to set 
 	ids = new string[6];
 	ids[0] = "sunflower";
@@ -43,4 +51,5 @@ void Shop::DrawShop(sf::RenderWindow& window)
 	window.draw(sprite[0]); // SunFlower shop image
 	window.draw(sprite[1]); // PeaShooter shop image
 	window.draw(sprite[2]); // Repeater
+	window.draw(sprite[4]);
 }

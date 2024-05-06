@@ -82,35 +82,6 @@ void Gameplay::checkShopClick(RenderWindow& window)
 
 	}
 }
-void Gameplay::StartGamePlay(RenderWindow& window) {
-    for (int i = 0; i < Guardians.GetSize(); ++i) {
-        if(Guardians[i]->GetExistance())
-            window.draw(Guardians[i]->GetSprite());
-        Guardians[i]->CheckCollision(this->zptr);
-    }
-    shop.DrawShop(window);
-    this->checkShopClick(window);
-    this->dropToGrid(window);
-   
-    for (int i = 0; i < ptr.GetSize(); i++)
-    {
-        ptr[i]->Action(window);
-        ptr[i]->drawPlant(window);
-    }
-    for (int i = 0; i < zptr.GetSize(); i++) {
-        zptr[i]->action(window, ptr, this->FIELD_GAME_STATUS);
-        this->CheckCollision();
-    }
-    sun.DrawSun(window, money);
-    // Currency Text
-    font.loadFromFile("../fonts/comicsans.ttf");
-    text.setFont(font);
-    text.setCharacterSize(40);
-    text.setString(to_string(money));
-    text.setFillColor(sf::Color::Yellow);
-    text.setPosition(160, 8);
-    window.draw(text);
-}
 void Gameplay::dropToGrid(RenderWindow& window)
 {
     Sprite* sprites = shop.getSprite();
@@ -194,6 +165,14 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             money -= ptr.back()->GetCost();
                             spawned = true;
                         }
+                        else if (id[index] == "CherryBomb" && money >= 50) {
+                            ptr.push_back(new CherryBomb);
+                            cout << "created" << endl;
+                            ptr.back()->setX(xPos);
+                            ptr.back()->setY(yPos - 30);
+                            money -= ptr.back()->GetCost();
+                            spawned = true;
+                        }
                         if (spawned)
                         {
                             FIELD_GAME_STATUS[row][col] = true;
@@ -219,7 +198,38 @@ void Gameplay::CheckCollision() {
         }
     }
 }
+void Gameplay::StartGamePlay(RenderWindow& window) {
+    for (int i = 0; i < Guardians.GetSize(); ++i) {
+        if (Guardians[i]->GetExistance())
+            window.draw(Guardians[i]->GetSprite());
+        Guardians[i]->CheckCollision(this->zptr);
+    }
+    shop.DrawShop(window);
+    this->checkShopClick(window);
+    this->dropToGrid(window);
 
+    for (int i = 0; i < ptr.GetSize(); i++)
+    {
+        ptr[i]->Action(window);
+        if(ptr[i]->GetType() != "CherryBomb")
+            ptr[i]->drawPlant(window);
+        
+
+    }
+    for (int i = 0; i < zptr.GetSize(); i++) {
+        zptr[i]->action(window, ptr, this->FIELD_GAME_STATUS);
+        this->CheckCollision();
+    }
+    sun.DrawSun(window, money);
+    // Currency Text
+    font.loadFromFile("../fonts/comicsans.ttf");
+    text.setFont(font);
+    text.setCharacterSize(40);
+    text.setString(to_string(money));
+    text.setFillColor(sf::Color::Yellow);
+    text.setPosition(160, 8);
+    window.draw(text);
+}
 
 void Gameplay::spawnZombies(int level)
 {
