@@ -182,9 +182,11 @@ void Gameplay::dropToGrid(RenderWindow& window)
                         }
                         if (spawned)
                         {
-                            FIELD_GAME_STATUS[row][col] = true;
-                            ptr.back()->setI(row);
-                            ptr.back()->setJ(col);
+                            if (ptr.back()->GetType() != "CherryBomb") {
+                                FIELD_GAME_STATUS[row][col] = true;
+                                ptr.back()->setI(row);
+                                ptr.back()->setJ(col);
+                            }
                         }
                     } 
                     else {
@@ -215,17 +217,17 @@ void Gameplay::StartGamePlay(RenderWindow& window) {
     this->checkShopClick(window);
     this->dropToGrid(window);
 
-    for (int i = 0; i < ptr.GetSize(); i++)
-    {
-        ptr[i]->Action(window);
-        if(ptr[i]->GetType() != "CherryBomb")
-            ptr[i]->drawPlant(window);
-        
-
-    }
     for (int i = 0; i < zptr.GetSize(); i++) {
         zptr[i]->action(window, ptr, this->FIELD_GAME_STATUS);
         this->CheckCollision();
+    }
+    for (int i = 0; i < ptr.GetSize(); i++)
+    {
+        ptr[i]->Action(window);
+        if (ptr[i]->GetType() != "CherryBomb")
+            ptr[i]->drawPlant(window);
+
+
     }
     sun.DrawSun(window, money);
     // Currency Text

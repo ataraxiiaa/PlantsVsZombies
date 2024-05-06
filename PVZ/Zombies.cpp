@@ -40,10 +40,12 @@ void Zombie::doDamage(Vector<Plants*>& ptr, bool** set)
 		ptr[index]->SetLives(ptr[index]->GetLives() - damage);
 	else if (ptr[index]->GetLives() == 0)
 	{
-		ptr[index]->SetExistence(false);
-		set[ptr[index]->getI()][ptr[index]->getJ()] = false;
-		ptr.Destroy(index);
-		cout << "destroyed" << endl;
+		if (ptr[index]->GetType() != "CherryBomb") {
+			ptr[index]->SetExistence(false);
+			set[ptr[index]->getI()][ptr[index]->getJ()] = false;
+			ptr.Destroy(index);
+			cout << "destroyed" << endl;
+		}
 	}
 }
 void Zombie::moveZombie(Vector<Plants*>& ptr, bool** set)
