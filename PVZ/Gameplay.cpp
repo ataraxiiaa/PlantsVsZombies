@@ -173,9 +173,8 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             money -= ptr.back()->GetCost();
                             spawned = true;
                         }
-                        else if (id[index] == "CherryBomb" && money >= 50) {
+                        else if (id[index] == "cherrybomb" && money >= 50) {
                             ptr.push_back(new CherryBomb);
-                            cout << "created" << endl;
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
