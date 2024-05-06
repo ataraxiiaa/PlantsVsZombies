@@ -1,4 +1,6 @@
 #pragma once
+#ifndef Explosive_H
+#define Explosive_H
 
 #include "Plants.h" // Include neceassary header file(s)
 #include "Animation.h"
@@ -14,9 +16,12 @@ protected:
 	bool explode;
 	Clock explosionClock;
 	Coordinates ExplosionPosition;
+
 public:
 	Explosive(); // Default constructor to load sprties
 	void DrawExplosion(RenderWindow& window, Coordinates position); // Draws the explosions
 	void CheckExplosionCollision(Vector<Zombie*>& Zombie);
 };
 
+
+#endif // Explosive_H 

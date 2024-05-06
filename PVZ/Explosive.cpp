@@ -28,10 +28,11 @@ void Explosive::CheckExplosionCollision(Vector<Zombie*>& Zombie) {
 		for (int j = 0; j < Zombie.GetSize(); ++j) {
 			if (ExplosionPosition.GetX() - Zombie[j]->GetPosition().GetX() >= -100 &&
 				ExplosionPosition.GetX() - Zombie[j]->GetPosition().GetX() <= 100 &&
-				ExplosionPosition.GetY() - Zombie[j]->GetPosition().GetY() >= -100 &&
-				ExplosionPosition.GetY() - Zombie[j]->GetPosition().GetY() <= 100 &&
+				ExplosionPosition.GetY() - Zombie[j]->GetPosition().GetY() >= -150 &&
+				ExplosionPosition.GetY() - Zombie[j]->GetPosition().GetY() <= 150 &&
 				Zombie[j]->GetExistance())
 			{
+				
 				Zombie[j]->setExists(false);
 				Zombie.Destroy(j);
 				cout << "zombie destroyed" << endl;
