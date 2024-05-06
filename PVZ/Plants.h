@@ -3,6 +3,7 @@
 #ifndef Plants_H
 #define Plants_H 
 
+#include <SFML/Audio.hpp>
 #include "Entity.h" // Include necessary header files
 #include "Animation.h"
 
@@ -19,6 +20,8 @@ protected:
 	int j;
 	bool shooterType;
 	string Type;
+
+
 public:
 	Plants() { shooterType = false; }
 	// Getters

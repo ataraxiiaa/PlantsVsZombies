@@ -1,7 +1,9 @@
 #pragma once
 
+#ifndef CherryBomb_H
+#define CherryBomb_H
+
 #include "Explosive.h" // Include neceassary header file(s)
-#include "Animation.h"
 
 class CherryBomb : public Explosive // Inherit explosive class
 {
@@ -13,3 +15,5 @@ public:
 };
 
 
+
+#endif // CherryBomb_H

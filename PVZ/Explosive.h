@@ -1,9 +1,9 @@
 #pragma once
+
 #ifndef Explosive_H
 #define Explosive_H
 
 #include "Plants.h" // Include neceassary header file(s)
-#include "Animation.h"
 #include "Vector.h"
 #include "Zombies.h"
 
