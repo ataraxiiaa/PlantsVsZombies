@@ -109,9 +109,9 @@ void Game::Start_Game()
 			// Create the grid
 			createGrid(window);
 			if (pause.getCollect())
-				sun.SetAutoCollect(true);
+				gamep.GetSun().SetAutoCollect(true);
 			else
-				sun.SetAutoCollect(false);
+				gamep.GetSun().SetAutoCollect(false);
 
 			gamep.StartGamePlay(window);
 

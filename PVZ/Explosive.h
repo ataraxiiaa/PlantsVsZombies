@@ -8,7 +8,6 @@ protected:
 	// Adding Graphics
 	Sprite ExplosionSprite;
 	Texture ExplosionTexture;
-	Animation* animate;
 	bool explode;
 	Coordinates position;
 public:

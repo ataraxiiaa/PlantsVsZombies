@@ -42,7 +42,7 @@ public:
 	~Gameplay(); // Destructor 
 	// Creating functions for Gameplay
 	void checkShopClick(RenderWindow& window);
-
+	Sun GetSun() { return this->sun; }
 	void dropToGrid(RenderWindow& window);
 
 	bool** getFieldStatus() { return FIELD_GAME_STATUS; }

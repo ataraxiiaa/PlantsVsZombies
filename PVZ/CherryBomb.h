@@ -5,7 +5,6 @@
 
 class CherryBomb : public Explosive // Inherit explosive class
 {
-	Animation* animate;
 	Clock clock;
 public:
 	CherryBomb();

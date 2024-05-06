@@ -3,7 +3,7 @@
 CherryBomb::CherryBomb()
 {
 	exists = true;
-	texture.loadFromFile("../Images/CherryBomb2.png");
+	texture.loadFromFile("../Images/Cherrybomb3.png");
 	sprite.setTexture(texture);
 	animate = new Animation;
 	animate->SetSheet(0.2, 6, texture, 6, 1);
