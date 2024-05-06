@@ -18,11 +18,19 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     rectangle.setFillColor(sf::Color::Transparent);
     rectangle.setOutlineThickness(5);
     this->money = 1000; // Set accordingly
+    int yPositions[5];
+    yPositions[0] = 97.5 - 40;
+    yPositions[1] = 203 - 40;
+    yPositions[2] = 309 - 40;
+    yPositions[3] = 415 - 30;
+    yPositions[4] = 521 - 20;
     for (int i = 0; i < 5; ++i) {
         Guardians.push_back(new HouseGuardian("../Images/LawnMower.png"));
-        Coordinates pos(200-(i*3), (i * 120) + 80);
-        Guardians.back()->SetSprtePos(pos);
-        Guardians.back()->SetCoordinates(pos);
+        Coordinates pos1(200-(i*3), (i * 120) + 95);
+        Coordinates pos2(200 - (i * 3), yPositions[i]);
+        Guardians.back()->SetSpritePosGuard(pos1);
+        Guardians.back()->SetSprtePos(pos1);
+        Guardians.back()->SetCoordinates(pos2);
     }
 
 }
@@ -200,9 +208,9 @@ void Gameplay::CheckCollision() {
 }
 void Gameplay::StartGamePlay(RenderWindow& window) {
     for (int i = 0; i < Guardians.GetSize(); ++i) {
+        Guardians[i]->CheckCollision(this->zptr);
         if (Guardians[i]->GetExistance())
             window.draw(Guardians[i]->GetSprite());
-        Guardians[i]->CheckCollision(this->zptr);
     }
     shop.DrawShop(window);
     this->checkShopClick(window);

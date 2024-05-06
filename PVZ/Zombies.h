@@ -17,8 +17,8 @@ public:
 		yPositions[0] = 97.5 - 40;
 		yPositions[1] = 203 - 40;
 		yPositions[2] = 309 - 40;
-		yPositions[3] = 415 - 40;
-		yPositions[4] = 521 - 40;
+		yPositions[3] = 415 - 30;
+		yPositions[4] = 521 - 20;
 		fly = false;
 	}
 	float getDamage() { return this->damage; }
