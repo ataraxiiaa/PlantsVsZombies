@@ -13,6 +13,7 @@ protected:
 	Texture ExplosionTexture;
 	bool explode;
 	Clock explosionClock;
+	Coordinates ExplosionPosition;
 public:
 	Explosive(); // Default constructor to load sprties
 	void DrawExplosion(RenderWindow& window, Coordinates position); // Draws the explosions

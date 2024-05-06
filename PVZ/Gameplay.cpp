@@ -205,6 +205,10 @@ void Gameplay::CheckCollision() {
             Shooter* shooter = (Shooter*)(plant);
             shooter->CheckBulletCollision(zptr);
         }
+        if (plant->GetType() == "CherryBomb") {
+            Explosive* shooter = (Explosive*)(plant);
+            shooter->CheckExplosionCollision(zptr);
+        }
     }
 }
 void Gameplay::StartGamePlay(RenderWindow& window) {
