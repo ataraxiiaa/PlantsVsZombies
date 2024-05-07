@@ -264,7 +264,7 @@ void Gameplay::spawnZombies(int level)
     //zptr.push_back(new FootballZombie);
     zptr.push_back(new DancingZombie);
     zptr[0]->setX(1100);
-    zptr[0]->setY(zptr[0]->getYPositions()[0]);
+    zptr[0]->setY(zptr[0]->getYPositions()[4]);
     //zptr[1]->setX(1100);
     //zptr[1]->setY(zptr[1]->getYPositions()[1]);
     /*
