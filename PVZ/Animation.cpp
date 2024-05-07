@@ -53,3 +53,6 @@ void Animation::DrawAnimation(sf::RenderWindow& window, Coordinates positon)
 	sprite.setPosition(positon.GetX(), positon.GetY());
 	window.draw(sprite);
 }
+void Animation::ChangeScale(int Xfactor, int Yfactor) {
+	sprite.setScale(Xfactor, Yfactor);
+}
