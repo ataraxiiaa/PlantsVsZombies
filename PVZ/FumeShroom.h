@@ -11,6 +11,7 @@ protected:
 
 public:
 	FumeShroom();
+	virtual void Action(sf::RenderWindow& window);
 };
 
 

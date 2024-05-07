@@ -174,9 +174,9 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             spawned = true;
                         }
                         else if (id[index] == "cherrybomb" && money >= 50) {
-                            ptr.push_back(new CherryBomb);
-                            ptr.back()->setX(xPos);
-                            ptr.back()->setY(yPos - 30);
+                            ptr.push_back(new FumeShroom);
+                            ptr.back()->setX(xPos-10);
+                            ptr.back()->setY(yPos - 20);
                             money -= ptr.back()->GetCost();
                             spawned = true;
                         }
@@ -201,7 +201,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
 void Gameplay::CheckCollision() {
     for (int i = 0; i < ptr.GetSize(); ++i) {
         Plants* plant = ptr[i];
-        if (plant->GetType() == "PeaShooter" || plant->GetType()=="Repeater" || plant->GetType() == "Snowpea") {
+        if (plant->GetType() == "PeaShooter" || plant->GetType()=="Repeater" || plant->GetType() == "Snowpea" || plant->GetType()=="FumeShroom") {
             Shooter* shooter = (Shooter*)(plant);
             shooter->CheckBulletCollision(zptr);
         }
@@ -233,7 +233,16 @@ void Gameplay::StartGamePlay(RenderWindow& window) {
     }
     for (int i = 0; i < ptr.GetSize(); i++)
     {
-        ptr[i]->Action(window);
+        if (ptr[i]->GetType() == "FumeShroom") {
+            Plants* plant = ptr[i];
+            RangedShooter* ranged = (RangedShooter*)ptr[i];
+            if (ranged->CheckRange(this->zptr)) {
+                ptr[i]->Action(window);
+            }
+        }
+        else {
+            ptr[i]->Action(window);
+        }
         if (ptr[i]->GetType() != "CherryBomb")
             ptr[i]->drawPlant(window);
 
@@ -252,7 +261,7 @@ void Gameplay::StartGamePlay(RenderWindow& window) {
 
 void Gameplay::spawnZombies(int level)
 {
-    /*
+    
     for (int i = 0, j=0; i < level * 5; i++, j++)
     {
         if (j == 5)
@@ -260,14 +269,14 @@ void Gameplay::spawnZombies(int level)
         zptr.push_back(new NormalZombie);
         zptr[i]->setY(zptr[i]->getYPositions()[j]);
     }
-    */
+    
     //zptr.push_back(new FootballZombie);
-    zptr.push_back(new DancingZombie);
+    //zptr.push_back(new DancingZombie);
     zptr[0]->setX(1100);
     zptr[0]->setY(zptr[0]->getYPositions()[4]);
-    //zptr[1]->setX(1100);
-    //zptr[1]->setY(zptr[1]->getYPositions()[1]);
-    /*
+    zptr[1]->setX(1100);
+    zptr[1]->setY(zptr[1]->getYPositions()[1]);
+    
     zptr[2]->setX(2250);
     zptr[3]->setX(2500);  
     zptr[4]->setX(2750);
@@ -276,9 +285,9 @@ void Gameplay::spawnZombies(int level)
     zptr[7]->setX(3150);
     zptr[8]->setX(3300);
     zptr[9]->setX(3350);
-    zptr[10]->setX(1200);
-    zptr[10]->setY(zptr[0]->getYPositions()[0]);
-    zptr[11]->setX(1200);
-    zptr[11]->setY(zptr[0]->getYPositions()[1]);
-    */
+    //zptr[10]->setX(1200);
+    //zptr[10]->setY(zptr[0]->getYPositions()[0]);
+    //zptr[11]->setX(1200);
+    //zptr[11]->setY(zptr[0]->getYPositions()[1]);
+    
 }

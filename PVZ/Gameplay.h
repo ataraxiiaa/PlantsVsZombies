@@ -17,6 +17,7 @@
 #include "DancingZombie.h"
 #include "Vector.h"
 #include "HouseGuardian.h"
+#include "FumeShroom.h"
 #include <iostream>
 
 class Gameplay
