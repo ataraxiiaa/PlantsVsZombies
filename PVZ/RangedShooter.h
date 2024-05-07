@@ -7,9 +7,10 @@
 class RangedShooter : public Shooter // This class would handla ny range based shooters
 {
 protected:
-	
+	bool shoot;
 public:
-	RangedShooter() = default;
+	RangedShooter();
+	void Action(sf::RenderWindow window);
 };
 
 
