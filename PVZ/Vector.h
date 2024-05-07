@@ -94,9 +94,6 @@ public:
 		return ptr[index]; 
 	}
 	void Destroy(int index) {
-		if (index < 0 || index > currSize)
-			exit(0);
-
 		if (index == currSize - 1) {
 			--currSize;
 		}
