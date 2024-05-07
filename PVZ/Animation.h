@@ -27,7 +27,7 @@ public:
 	void Update(bool end = false);
 	void DrawAnimation(sf::RenderWindow& window, Coordinates positon);
 	int GetCurrFrame()const { return currFrame; }
-
+	void ChangeScale(float Xfactor, float Yfactor);
 	Sprite getSprite()const { return sprite; }
 };
 
