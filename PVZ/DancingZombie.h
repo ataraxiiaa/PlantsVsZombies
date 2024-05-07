@@ -8,7 +8,7 @@ class DancingZombie :public Zombie {
 public:
 	DancingZombie();
 	string getType() { return this->type; }
-	void spawnZombies(Vector<Zombie*> ptr)
+	virtual void spawnBackupZombies(Vector<Zombie*>& ptr)
 	{
 		if (!spawningZombies)
 		{
@@ -29,11 +29,25 @@ public:
 				for (int j = 0; j < 5; j++)
 					if (ptr[ptr.GetSize() - 1]->getYPositions()[j] == this->position.GetY())
 						y = this->position.GetY();
-				cout << y << endl;
+				if (y > 0)
+				{
+					ptr.push_back(new NormalZombie);
+					ptr.back()->setX(this->position.GetX());
+					ptr.back()->setY(this->getYPositions()[y - 1]);
+				}
+				if (y < 4)
+				{
+					ptr.push_back(new NormalZombie);
+					ptr.back()->setX(this->position.GetX());
+					ptr.back()->setY(this->getYPositions()[y + 1]);
+				}
 				ptr.push_back(new NormalZombie);
-				ptr.back()->setY(57.5);
-				ptr.back()->setX(1100);
-				cout << ptr.back()->GetPosition().GetY() << endl;
+				ptr.back()->setX(this->position.GetX() + 92);
+				ptr.back()->setY(this->position.GetY());
+				ptr.push_back(new NormalZombie);
+				ptr.back()->setX(this->position.GetX());
+				ptr.back()->setX(this->position.GetX() - 92);
+				ptr.back()->setY(this->position.GetY());
 				this->speed = 0.5;
 				spawningZombies = false;
 				clock.restart();
