@@ -14,6 +14,7 @@
 #include "NormalZombie.h"
 #include "FootballZombie.h"
 #include "FlyingZombie.h"
+#include "DancingZombie.h"
 #include "Vector.h"
 #include "HouseGuardian.h"
 #include <iostream>

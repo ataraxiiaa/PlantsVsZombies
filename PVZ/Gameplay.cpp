@@ -222,6 +222,7 @@ void Gameplay::StartGamePlay(RenderWindow& window) {
     this->dropToGrid(window);
 
     for (int i = 0; i < zptr.GetSize(); i++) {
+        zptr[i]->spawnZombies(zptr);
         zptr[i]->action(window, ptr, this->FIELD_GAME_STATUS);
         this->CheckCollision();
     }
@@ -246,6 +247,7 @@ void Gameplay::StartGamePlay(RenderWindow& window) {
 
 void Gameplay::spawnZombies(int level)
 {
+    /*
     for (int i = 0, j=0; i < level * 5; i++, j++)
     {
         if (j == 5)
@@ -253,10 +255,14 @@ void Gameplay::spawnZombies(int level)
         zptr.push_back(new NormalZombie);
         zptr[i]->setY(zptr[i]->getYPositions()[j]);
     }
+    */
     zptr.push_back(new FootballZombie);
-    zptr.push_back(new FlyingZombie);
+    zptr.push_back(new DancingZombie);
     zptr[0]->setX(1400);
-    zptr[1]->setX(2000);
+    zptr[0]->setY(zptr[0]->getYPositions()[0]);
+    zptr[1]->setX(1100);
+    zptr[1]->setY(zptr[1]->getYPositions()[1]);
+    /*
     zptr[2]->setX(2250);
     zptr[3]->setX(2500);  
     zptr[4]->setX(2750);
@@ -269,4 +275,5 @@ void Gameplay::spawnZombies(int level)
     zptr[10]->setY(zptr[0]->getYPositions()[0]);
     zptr[11]->setX(1200);
     zptr[11]->setY(zptr[0]->getYPositions()[1]);
+    */
 }

@@ -11,6 +11,7 @@ protected:
 	Animation* animate;
 	int yPositions[5];
 	bool fly;
+	string type;
 public:
 	Zombie() 
 	{
@@ -20,11 +21,13 @@ public:
 		yPositions[3] = 415 - 30;
 		yPositions[4] = 521 - 20;
 		fly = false;
+		type = "no";
 	}
 	float getDamage() { return this->damage; }
 	float getSpeed() { return this->speed; }
 	float getLives() { return this->lives; }
 	bool getFly() { return this->fly; }
+	virtual string getType() { return this->type; }
 	void setDamage(float damage) { this->damage = damage; }
 	void setSpeed(float speed) { this->speed = speed; }
 	void setLives(float lives) { this->lives = lives; }
@@ -39,5 +42,6 @@ public:
 	virtual void setY(int y) { this->position.SetY(y); }
 	virtual void setX(int x) { this->position.SetX(x); }
 	Coordinates GetPosition()const { return this->position; }
+	virtual void spawnZombies(Vector<Zombie*> ptr) {}
 	
 };
