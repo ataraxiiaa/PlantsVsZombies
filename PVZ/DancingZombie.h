@@ -28,7 +28,8 @@ public:
 				int y;
 				for (int j = 0; j < 5; j++)
 					if (ptr[ptr.GetSize() - 1]->getYPositions()[j] == this->position.GetY())
-						y = this->position.GetY();
+						y = j;
+				cout << "y: " << y << endl;
 				if (y > 0)
 				{
 					ptr.push_back(new NormalZombie);
