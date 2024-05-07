@@ -96,6 +96,12 @@
     <ClCompile Include="FlyingZombie.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="RangedShooter.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FumeShroom.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -180,6 +186,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HouseGuardian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RangedShooter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FumeShroom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

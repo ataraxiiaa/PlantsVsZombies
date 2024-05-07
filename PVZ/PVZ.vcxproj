@@ -27,6 +27,7 @@
     <ClCompile Include="Explosive.cpp" />
     <ClCompile Include="FlyingZombie.cpp" />
     <ClCompile Include="FootballZombie.cpp" />
+    <ClCompile Include="FumeShroom.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Gameplay.cpp" />
     <ClCompile Include="HouseGuardian.cpp" />
@@ -36,6 +37,7 @@
     <ClCompile Include="Pea.cpp" />
     <ClCompile Include="PeaShooter.cpp" />
     <ClCompile Include="Plants.cpp" />
+    <ClCompile Include="RangedShooter.cpp" />
     <ClCompile Include="Repeater.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="Shop.cpp" />
@@ -57,6 +59,7 @@
     <ClInclude Include="Explosive.h" />
     <ClInclude Include="FlyingZombie.h" />
     <ClInclude Include="FootballZombie.h" />
+    <ClInclude Include="FumeShroom.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Gameplay.h" />
     <ClInclude Include="HouseGuardian.h" />
@@ -67,6 +70,7 @@
     <ClInclude Include="Pea.h" />
     <ClInclude Include="PeaShooter.h" />
     <ClInclude Include="Plants.h" />
+    <ClInclude Include="RangedShooter.h" />
     <ClInclude Include="Repeater.h" />
     <ClInclude Include="Shooter.h" />
     <ClInclude Include="Shop.h" />

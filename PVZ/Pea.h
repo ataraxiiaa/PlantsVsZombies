@@ -33,6 +33,11 @@ public:
 	void DrawPea(sf::RenderWindow& window);
 
 	bool CheckForCollision(Zombie*& ptr);
+
+	Texture GetTexture() { return bulletTexture; }
+	Sprite GetSprite() { return bulletSprite; }
+
+	void SetSprite(Texture texture) { this->bulletSprite.setTexture(texture); }
 };
 
 
