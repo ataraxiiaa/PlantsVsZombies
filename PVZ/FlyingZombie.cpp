@@ -7,9 +7,10 @@ FlyingZombie::FlyingZombie() {
 	this->speed = 0.5;
 	this->damage = 5;
 	this->lives = 4;
-	this->texture.loadFromFile("../Images/Zombie2.png");
-	this->sprite.setTexture(this->texture);
-	sprite.setTextureRect(IntRect(0, 0, texture.getSize().x / 8, texture.getSize().y / 1));
+	this->texture.loadFromFile("../Images/bz.png");
+	this->animate = new Animation;
+	animate->SetSheet(0.5f, 5, texture, 8, 1);
+	animate->ChangeScale(3, 3);
 	this->exists = true;
 	this->position.SetX(700);
 	this->position.SetY((550 - (rand() % 5) * 110));
@@ -22,8 +23,8 @@ void FlyingZombie::moveZombie() {
 	}
 }
 void FlyingZombie::drawZombie(sf::RenderWindow& window) {
-	this->sprite.setPosition(this->position.GetX(), this->position.GetY());
-	window.draw(this->sprite);
+	animate->Update();
+	animate->DrawAnimation(window, this->position);
 }
 void FlyingZombie::action(sf::RenderWindow& window, Vector<Plants*>& ptr, bool** set) {
 	moveZombie();
