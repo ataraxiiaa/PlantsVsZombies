@@ -50,6 +50,7 @@ void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie) {
                 bullet[i].GetPosition().GetY() == Zombie[j]->GetPosition().GetY() + 40 &&
                 Zombie[j]->GetExistance() && bullet[i].ShowFire() && !Zombie[j]->getFly())
             {
+ 
                 cout << "Collided" << endl;
                 cout << getDamage() << endl;
                 if (Zombie[j]->getLives() > 0) {
