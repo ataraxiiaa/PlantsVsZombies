@@ -25,8 +25,8 @@ class Game
 	Shop shop;
 	//DolphinRiderZombie dolphin;
 	//Plants** ptr;
-	Vector<Plants*> ptr;
-	Vector<Zombie*> zptr;
+	//Vector<Plants*> ptr;
+	//Vector<Zombie*> zptr;
 	CherryBomb bomb;
 	Repeater repeat;
 	WallNut nutty;
@@ -36,6 +36,7 @@ class Game
 	Text text;
 	Gameplay gamep;
 	int level;
+	//Clock clock;
 public:
 	Game(); // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp

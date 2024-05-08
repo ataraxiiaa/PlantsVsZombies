@@ -4,15 +4,16 @@
 
 class DancingZombie :public Zombie {
 	bool spawningZombies;
+	bool spawned;
 	Clock clock;
 public:
 	DancingZombie();
 	string getType() { return this->type; }
 	virtual void spawnBackupZombies(Vector<Zombie*>& ptr)
 	{
-		if (!spawningZombies)
+		if (!spawningZombies && !spawned)
 		{
-			if (clock.getElapsedTime().asSeconds() >= 5)
+			if (clock.getElapsedTime().asSeconds() >= 10)
 			{
 				cout << "mario" << endl;
 				spawningZombies = true;
@@ -20,9 +21,9 @@ public:
 				clock.restart();
 			}
 		}
-		else if (spawningZombies)
+		else if (spawningZombies && !spawned)
 		{
-			if (clock.getElapsedTime().asSeconds() >= 2)
+			if (clock.getElapsedTime().asSeconds() >= 4)
 			{
 				//find y pos
 				int y;
@@ -51,7 +52,8 @@ public:
 				ptr.back()->setY(this->position.GetY());
 				this->speed = 0.5;
 				spawningZombies = false;
-				clock.restart();
+				spawned = true;
+				//clock.restart();
 				cout << "luigi" << endl;
 			}
 		}

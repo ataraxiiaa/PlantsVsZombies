@@ -14,4 +14,6 @@ DancingZombie::DancingZombie() {
 	this->position.SetX(700);
 	this->position.SetY((550 - (rand() % 5) * 110));
 	this->type = "dancing";
+	this->spawningZombies = false;
+	this->spawned = false;
 }

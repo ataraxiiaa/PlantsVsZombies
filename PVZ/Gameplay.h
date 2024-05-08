@@ -36,9 +36,10 @@ class Gameplay
 	bool firstClick;
 	bool hover, dragging;
 	sf::RectangleShape rectangle;
-	
+	float initialTime;
+	float timeInterval;
 	int money;
-
+	int zombiesSpawned;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
@@ -51,7 +52,7 @@ public:
 
 	void checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse);
 	void CheckCollision();
-	void spawnZombies(int level);
+	void spawnZombies(int level);// , Clock clock);
 	void StartGamePlay(RenderWindow& window);
 
 	

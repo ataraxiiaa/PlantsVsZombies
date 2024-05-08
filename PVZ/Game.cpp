@@ -6,7 +6,7 @@ Game::Game()
 	//ptr = new Plants * [45];
 	//for (int i = 0; i < 45; i++)
 		//ptr[i] = nullptr;
-	level = 2;
+	level = 1;
 	
 }
 void Game::createBack(RenderWindow& window)
@@ -75,7 +75,6 @@ void Game::Start_Game()
 
 	Clock timeMoney;
 	Clock clock;
-	gamep.spawnZombies(level);
 
 	while (window.isOpen())
 	{
@@ -114,6 +113,7 @@ void Game::Start_Game()
 				gamep.GetSun().SetAutoCollect(false);
 
 			gamep.StartGamePlay(window);
+			gamep.spawnZombies(level);// , clock);
 
 
 			window.draw(text);

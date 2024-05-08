@@ -18,6 +18,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     rectangle.setFillColor(sf::Color::Transparent);
     rectangle.setOutlineThickness(5);
     this->money = 1000; // Set accordingly
+    this->zombiesSpawned = 0;
     int yPositions[5];
     yPositions[0] = 97.5 - 40;
     yPositions[1] = 203 - 40;
@@ -259,9 +260,37 @@ void Gameplay::StartGamePlay(RenderWindow& window) {
     window.draw(text);
 }
 
-void Gameplay::spawnZombies(int level)
+void Gameplay::spawnZombies(int level)// , Clock clock)
 {
-    
+    static Clock clock;
+    initialTime = 20 - 2 * (level - 1);
+    //initialTime = 1;
+    timeInterval = initialTime / 2 + 3;
+    //cout << clock.getElapsedTime().asSeconds() << endl;
+    if (zombiesSpawned == 0)
+    {
+        if (clock.getElapsedTime().asSeconds() >= initialTime)
+        {
+            cout << "0" << endl;
+            zptr.push_back(new NormalZombie);
+            zptr[zptr.GetSize() - 1]->setX(1200);
+            zptr[zptr.GetSize() - 1]->setY(zptr[0]->getYPositions()[rand() % 5]);
+            zombiesSpawned++;
+            clock.restart();
+        }
+    }
+    else if (zombiesSpawned < level * 5)
+        if (clock.getElapsedTime().asSeconds() >= timeInterval)
+        {
+            cout << zptr.GetSize() - 1 << endl;
+            zptr.push_back(new NormalZombie);
+            zptr[zptr.GetSize() - 1]->setX(1250);
+            zptr[zptr.GetSize() - 1]->setY(zptr[0]->getYPositions()[rand() % 5]);
+            zombiesSpawned++;
+            clock.restart();
+        }
+
+    /*
     for (int i = 0, j=0; i < level * 5; i++, j++)
     {
         if (j == 5)
@@ -269,14 +298,14 @@ void Gameplay::spawnZombies(int level)
         zptr.push_back(new NormalZombie);
         zptr[i]->setY(zptr[i]->getYPositions()[j]);
     }
-    
+    */
     //zptr.push_back(new FootballZombie);
     //zptr.push_back(new DancingZombie);
-    zptr[0]->setX(1100);
-    zptr[0]->setY(zptr[0]->getYPositions()[4]);
-    zptr[1]->setX(1100);
-    zptr[1]->setY(zptr[1]->getYPositions()[1]);
-    
+    //zptr[0]->setX(1100);
+    //zptr[0]->setY(zptr[0]->getYPositions()[2]);
+    //zptr[1]->setX(1100);
+    //zptr[1]->setY(zptr[1]->getYPositions()[1]);
+    /*
     zptr[2]->setX(2250);
     zptr[3]->setX(2500);  
     zptr[4]->setX(2750);
@@ -289,5 +318,5 @@ void Gameplay::spawnZombies(int level)
     //zptr[10]->setY(zptr[0]->getYPositions()[0]);
     //zptr[11]->setX(1200);
     //zptr[11]->setY(zptr[0]->getYPositions()[1]);
-    
+    */
 }
