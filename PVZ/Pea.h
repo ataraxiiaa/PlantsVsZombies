@@ -23,6 +23,7 @@ public:
 	Coordinates GetPosition()const { return position; }
 	void SetPosition(Coordinates pos) { this->position = pos; }
 
+	void SetSprite(Sprite sprite) { this->bulletSprite = sprite; }
 	bool ShowFire()const { return fire; }
 	float GetSpeed()const { return speed; }
 
@@ -37,7 +38,7 @@ public:
 	Texture GetTexture() { return bulletTexture; }
 	Sprite GetSprite() { return bulletSprite; }
 
-	void SetSprite(Texture texture) { this->bulletSprite.setTexture(texture); }
+	void SetSprite(Texture& texture) { this->bulletSprite.setTexture(texture); }
 };
 
 

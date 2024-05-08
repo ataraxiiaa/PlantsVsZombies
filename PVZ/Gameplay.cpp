@@ -175,8 +175,8 @@ void Gameplay::dropToGrid(RenderWindow& window)
                         }
                         else if (id[index] == "cherrybomb" && money >= 50) {
                             ptr.push_back(new FumeShroom);
-                            ptr.back()->setX(xPos-10);
-                            ptr.back()->setY(yPos - 20);
+                            ptr.back()->setX(xPos);
+                            ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
                             spawned = true;
                         }
