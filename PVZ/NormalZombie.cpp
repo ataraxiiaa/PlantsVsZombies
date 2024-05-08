@@ -11,5 +11,4 @@ NormalZombie::NormalZombie() {
 	this->exists = true;
 	this->position.SetX(1150);
 	this->position.SetY(yPositions[rand() % 5]);
-
 }

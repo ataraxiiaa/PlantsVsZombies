@@ -17,3 +17,85 @@ DancingZombie::DancingZombie() {
 	this->spawningZombies = false;
 	this->spawned = false;
 }
+
+void DancingZombie::spawnBackupZombies(Vector<Zombie*>& ptr)
+
+{
+	if (!spawningZombies && !spawned)
+	{
+		if (clock.getElapsedTime().asSeconds() >= 10)
+		{
+			cout << "mario" << endl;
+			spawningZombies = true;
+			this->speed = 0;
+			clock.restart();
+		}
+	}
+	else if (spawningZombies && !spawned)
+	{
+		if (clock.getElapsedTime().asSeconds() >= 4)
+		{
+			//find y pos
+			int y;
+			for (int j = 0; j < 5; j++)
+				if (ptr[ptr.GetSize() - 1]->getYPositions()[j] == this->position.GetY())
+					y = j;
+			cout << "y: " << y << endl;
+			if (y > 0)
+			{
+				ptr.push_back(new NormalZombie);
+				ptr.back()->setX(this->position.GetX());
+				ptr.back()->setY(this->getYPositions()[y - 1]);
+			}
+			if (y < 4)
+			{
+				ptr.push_back(new NormalZombie);
+				ptr.back()->setX(this->position.GetX());
+				ptr.back()->setY(this->getYPositions()[y + 1]);
+			}
+			ptr.push_back(new NormalZombie);
+			ptr.back()->setX(this->position.GetX() + 92);
+			ptr.back()->setY(this->position.GetY());
+			ptr.push_back(new NormalZombie);
+			ptr.back()->setX(this->position.GetX());
+			ptr.back()->setX(this->position.GetX() - 92);
+			ptr.back()->setY(this->position.GetY());
+			this->speed = 0.5;
+			spawningZombies = false;
+			spawned = true;
+			//clock.restart();
+			cout << "luigi" << endl;
+		}
+	}
+}
+
+void DancingZombie::moveZombie(Vector<Plants*>& ptr, bool** set)
+{
+	static Clock clock;
+	srand((unsigned)time(0));
+	int random = rand() % 5;
+	if (clock.getElapsedTime().asSeconds() >= 5)
+	{
+		if (random == 0 && this->position.GetY() > 57.5)
+		{
+			cout << "up" << endl;
+			this->position.SetY(this->position.GetY() - 106);
+			clock.restart();
+		}
+		else if (random == 1 && this->position.GetY() < 501)
+		{
+			cout << "down" << endl;
+			this->position.SetY(this->position.GetY() + 106);
+			clock.restart();
+		}
+	}
+	if (!checkIfPlantAhead(ptr))
+	{
+		if (position.GetX() > 0)
+			this->position.SetX(position.GetX() - speed);
+	}
+	else
+	{
+		doDamage(ptr, set);
+	}
+}
