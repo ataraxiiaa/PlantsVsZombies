@@ -12,6 +12,9 @@ FumeShroom::FumeShroom() :RangedShooter(6) {
 }
 void FumeShroom::Action(sf::RenderWindow& window) {
 	for (int i = 0; i < totalBullets; ++i) {
+		if (!CheckBulletRange()) {
+			bullet[0].SetFire(false);
+		}
 		Shooter::Fire(window, this->position);
 	}
 }

@@ -13,6 +13,7 @@ protected:
 public:
 	RangedShooter(int totalBullets=1);
 	bool CheckRange(Vector<Zombie*>& Zptr);
+	bool CheckBulletRange();
 	//void Action(sf::RenderWindow& window);
 };
 
