@@ -6,13 +6,13 @@ HouseGuardian::HouseGuardian(string std_path) {
 	this->sprite.setTexture(this->texture);
 	this->lives = 1;
 	exists = true;
-	speed = 5.0f;
+	speed = 15.0f;
 	destroyed = false;
 }
 void HouseGuardian::CheckCollision(Vector<Zombie*>& Zptr) {
 	for (int i = 0; i < Zptr.GetSize(); ++i) {
-		if (position.GetX() - Zptr[i]->GetPosition().GetX() >= -10 &&
-			position.GetX() - Zptr[i]->GetPosition().GetX() <= 10 &&
+		if (position.GetX() - Zptr[i]->GetPosition().GetX() >= -50 &&
+			position.GetX() - Zptr[i]->GetPosition().GetX() <= 50 &&
 			position.GetY() - Zptr[i]->GetPosition().GetY() >= -30 &&
 			position.GetY() - Zptr[i]->GetPosition().GetY() <= 30 &&
 			Zptr[i]->GetExistance() && this->exists)
