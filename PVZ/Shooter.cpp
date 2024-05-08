@@ -47,12 +47,12 @@ void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie) {
         for (int j = 0; j < Zombie.GetSize(); ++j) {
             if (bullet[i].GetPosition().GetX() - Zombie[j]->GetPosition().GetX() >= -10 &&
                 bullet[i].GetPosition().GetX() - Zombie[j]->GetPosition().GetX() <= 10 &&
-                bullet[i].GetPosition().GetY() == Zombie[j]->GetPosition().GetY() + 40 &&
-                Zombie[j]->GetExistance() && bullet[i].ShowFire() && !Zombie[j]->getFly())
+                bullet[i].GetPosition().GetY() - Zombie[j]->GetPosition().GetY() >= -70 &&
+                bullet[i].GetPosition().GetY() - Zombie[j]->GetPosition().GetY() <= 70 &&
+                Zombie[j]->GetExistance() && bullet[i].ShowFire() && !Zombie[j]->getFly()
+                )
             {
- 
-                cout << "Collided" << endl;
-                cout << getDamage() << endl;
+                cout << "Hit" << endl;
                 if (Zombie[j]->getLives() > 0) {
                     Zombie[j]->setLives(Zombie[j]->getLives() - getDamage());
                 }
@@ -60,9 +60,9 @@ void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie) {
                 {
                     Zombie[j]->setExists(false);
                     Zombie.Destroy(j);
-                    cout << "dead" << endl;
                 }
-                bullet[i].SetFire(false);
+                if(this->Type != "FumeShroom")
+                    bullet[i].SetFire(false);
                 return;
             }
         }
