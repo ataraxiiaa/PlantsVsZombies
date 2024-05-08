@@ -262,6 +262,7 @@ void Gameplay::StartGamePlay(RenderWindow& window) {
 
 void Gameplay::spawnZombies(int level)// , Clock clock)
 {
+    static int x = 0;
     static Clock clock;
     initialTime = 20 - 2 * (level - 1);
     //initialTime = 1;
@@ -282,14 +283,21 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
     else if (zombiesSpawned < level * 5)
         if (clock.getElapsedTime().asSeconds() >= timeInterval)
         {
-            cout << zptr.GetSize() - 1 << endl;
+            cout << zptr.GetSize() << endl;
             zptr.push_back(new NormalZombie);
             zptr[zptr.GetSize() - 1]->setX(1250);
             zptr[zptr.GetSize() - 1]->setY(zptr[0]->getYPositions()[rand() % 5]);
             zombiesSpawned++;
             clock.restart();
         }
-
+    if (x == 0)
+    {
+        zptr.push_back(new FootballZombie);
+        zptr[zptr.GetSize() - 1]->setX(1250);
+        zptr[zptr.GetSize() - 1]->setY(zptr[0]->getYPositions()[rand() % 5]);
+        zombiesSpawned++;
+        x = 1;
+    }
     /*
     for (int i = 0, j=0; i < level * 5; i++, j++)
     {

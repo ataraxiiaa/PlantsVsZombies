@@ -8,7 +8,7 @@ FumeShroom::FumeShroom() :RangedShooter(6) {
 	animate->ChangeScale(2.8, 2.8);
 	this->Type = "FumeShroom";
 	this->exists = true;
-	this->damage = 0.01f;
+	this->damage = 0.05f;
 
 }
 void FumeShroom::Action(sf::RenderWindow& window) {
