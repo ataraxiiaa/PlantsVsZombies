@@ -23,9 +23,6 @@ void FumeShroom::Action(sf::RenderWindow& window) {
 		if (!CheckBulletRange()) {
 			bullet[0].SetFire(false);
 		}
-		if (clock.getElapsedTime().asSeconds() >= 1) {
-			clock.restart();
-		}
 		Shooter::Fire(window, this->position);
 	}
 }
