@@ -2,9 +2,7 @@
 
 Game::Game()
 {
-	money = 150;
-	level = 2;
-	
+	level = 1;	
 }
 void Game::createBack(RenderWindow& window)
 {

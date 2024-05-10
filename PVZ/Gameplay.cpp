@@ -17,7 +17,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     rectangle.setOutlineColor(sf::Color::White);
     rectangle.setFillColor(sf::Color::Transparent);
     rectangle.setOutlineThickness(5);
-    this->money = 1000; // Set accordingly
+    this->money = 150; // Set accordingly
     this->zombiesSpawned = 0;
     int yPositions[5];
     yPositions[0] = 97.5 - 40;
@@ -267,7 +267,7 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
     initialTime = 20 - 2 * (level - 1);
     //initialTime = 1;
     timeInterval = initialTime / 2 + 3;
-    cout << clock.getElapsedTime().asSeconds() << endl;
+    //cout << clock.getElapsedTime().asSeconds() << endl;
     if (zombiesSpawned == 0)
     {
         if (clock.getElapsedTime().asSeconds() >= initialTime)
@@ -315,5 +315,13 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
             zombiesSpawned++;
             clock.restart();
         }
+    if (x == 0)
+    {
+        zptr.push_back(new FlyingZombie);
+        zptr[zptr.GetSize() - 1]->setX(1100);
+        zptr[zptr.GetSize() - 1]->setY(zptr[0]->getYPositions()[0]);
+        cout << zptr[zptr.GetSize() - 1]->GetPosition().GetY() << endl;
+        x = 1;
+    }
  
 }

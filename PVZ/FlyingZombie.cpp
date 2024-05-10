@@ -12,8 +12,8 @@ FlyingZombie::FlyingZombie() {
 	animate->SetSheet(0.5f, 5, texture, 8, 1);
 	animate->ChangeScale(3, 3);
 	this->exists = true;
-	this->position.SetX(700);
-	this->position.SetY((550 - (rand() % 5) * 110));
+	//this->position.SetX(700);
+	//this->position.SetY((550 - (rand() % 5) * 110));
 	this->fly = true;
 }
 void FlyingZombie::moveZombie() {
