@@ -23,7 +23,7 @@ void DancingZombie::spawnBackupZombies(Vector<Zombie*>& ptr)
 {
 	if (!spawningZombies && !spawned)
 	{
-		if (clock.getElapsedTime().asSeconds() >= 10)
+		if (clock.getElapsedTime().asSeconds() >= 20)
 		{
 			cout << "mario" << endl;
 			spawningZombies = true;

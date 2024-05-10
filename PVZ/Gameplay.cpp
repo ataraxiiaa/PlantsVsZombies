@@ -267,7 +267,7 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
     initialTime = 20 - 2 * (level - 1);
     //initialTime = 1;
     timeInterval = initialTime / 2 + 3;
-    //cout << clock.getElapsedTime().asSeconds() << endl;
+    cout << clock.getElapsedTime().asSeconds() << endl;
     if (zombiesSpawned == 0)
     {
         if (clock.getElapsedTime().asSeconds() >= initialTime)
@@ -284,47 +284,36 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
         if (clock.getElapsedTime().asSeconds() >= timeInterval)
         {
             cout << zptr.GetSize() << endl;
-            zptr.push_back(new NormalZombie);
+            if (level > 1)
+            {
+                srand((unsigned)time(0));
+                int check = rand() % 4;
+
+                if (check == 0)
+                {
+                    zptr.push_back(new NormalZombie);
+                    cout << "normal" << endl;
+                }
+                else if (check == 1) {
+                    zptr.push_back(new FootballZombie);
+                    cout << "football" << endl;
+                }
+                else if (check == 2) {
+                    zptr.push_back(new DancingZombie);
+                    cout << "dnacing" << endl;
+                }
+                else if (check == 3) {
+                    zptr.push_back(new FlyingZombie);
+                    cout << "flying" << endl;
+                }
+            }
+            else
+                zptr.push_back(new NormalZombie);
+
             zptr[zptr.GetSize() - 1]->setX(1250);
             zptr[zptr.GetSize() - 1]->setY(zptr[0]->getYPositions()[rand() % 5]);
             zombiesSpawned++;
             clock.restart();
         }
-    if (x == 0)
-    {
-        zptr.push_back(new FootballZombie);
-        zptr[zptr.GetSize() - 1]->setX(1250);
-        zptr[zptr.GetSize() - 1]->setY(zptr[0]->getYPositions()[rand() % 5]);
-        zombiesSpawned++;
-        x = 1;
-    }
-    /*
-    for (int i = 0, j=0; i < level * 5; i++, j++)
-    {
-        if (j == 5)
-            j = 0;
-        zptr.push_back(new NormalZombie);
-        zptr[i]->setY(zptr[i]->getYPositions()[j]);
-    }
-    */
-    //zptr.push_back(new FootballZombie);
-    //zptr.push_back(new DancingZombie);
-    //zptr[0]->setX(1100);
-    //zptr[0]->setY(zptr[0]->getYPositions()[2]);
-    //zptr[1]->setX(1100);
-    //zptr[1]->setY(zptr[1]->getYPositions()[1]);
-    /*
-    zptr[2]->setX(2250);
-    zptr[3]->setX(2500);  
-    zptr[4]->setX(2750);
-    zptr[5]->setX(2900);
-    zptr[6]->setX(3100);
-    zptr[7]->setX(3150);
-    zptr[8]->setX(3300);
-    zptr[9]->setX(3350);
-    //zptr[10]->setX(1200);
-    //zptr[10]->setY(zptr[0]->getYPositions()[0]);
-    //zptr[11]->setX(1200);
-    //zptr[11]->setY(zptr[0]->getYPositions()[1]);
-    */
+ 
 }

@@ -3,10 +3,7 @@
 Game::Game()
 {
 	money = 150;
-	//ptr = new Plants * [45];
-	//for (int i = 0; i < 45; i++)
-		//ptr[i] = nullptr;
-	level = 1;
+	level = 2;
 	
 }
 void Game::createBack(RenderWindow& window)
