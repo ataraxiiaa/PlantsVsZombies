@@ -7,6 +7,7 @@
 #include "Sun.h"
 #include "Shop.h"
 #include "Paused.h"
+#include "Level.h"
 #include "Gameplay.h"
 #include "Vector.h"
 #include <string>
@@ -17,6 +18,7 @@ class Game
 {
 	MainMenu menu;
 	Paused pause;
+	Level level;
 	PeaShooter peaShooter;
 	//NormalZombie normal;
 	//FootballZombie football;
@@ -35,7 +37,7 @@ class Game
 	Font font;
 	Text text;
 	Gameplay gamep;
-	int level;
+	int levels;
 	//Clock clock;
 public:
 	Game(); // (Default for now will change later on)

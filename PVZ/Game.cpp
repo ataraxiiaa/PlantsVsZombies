@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-	level = 1;	
+	levels = 1;	
 }
 void Game::createBack(RenderWindow& window)
 {
@@ -79,7 +79,7 @@ void Game::Start_Game()
 			pause.setState(false);
 		}
 		
-		if (!menu.ShowState() && !pause.ShowState())
+		if (!menu.ShowState() && !pause.ShowState() && level.getStart())
 		{
 			float time = clock.getElapsedTime().asMicroseconds();
 			float moneyTime = timeMoney.getElapsedTime().asSeconds();
@@ -108,17 +108,18 @@ void Game::Start_Game()
 				gamep.GetSun().SetAutoCollect(false);
 
 			gamep.StartGamePlay(window);
-			gamep.spawnZombies(level);// , clock);
+			gamep.spawnZombies(levels);// , clock);
 
 
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
-				
-				
-		}
-		else if (!menu.ShowState() && pause.ShowState())
-			pause.displayPausedMenu(window);
 
+
+		}
+		else if (!menu.ShowState() && pause.ShowState() && level.getStart())
+			pause.displayPausedMenu(window);
+		else if (!menu.ShowState() && !pause.ShowState() && !level.getStart())
+			level.displayLevel(window, levels);
 		window.display();
 	}
 }

@@ -63,6 +63,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Gameplay.h" />
     <ClInclude Include="HouseGuardian.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MovePlant.h" />
     <ClInclude Include="NormalZombie.h" />
