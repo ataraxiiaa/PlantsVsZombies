@@ -20,7 +20,7 @@ protected:
 public:
 	Explosive(); // Default constructor to load sprties
 	void DrawExplosion(RenderWindow& window, Coordinates position); // Draws the explosions
-	void CheckExplosionCollision(Vector<Zombie*>& Zombie);
+	void CheckExplosionCollision(Vector<Zombie*>& Zombie, int& killed);
 };
 
 

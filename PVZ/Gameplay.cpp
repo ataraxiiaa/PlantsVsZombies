@@ -19,6 +19,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     rectangle.setOutlineThickness(5);
     this->money = 150; // Set accordingly
     this->zombiesSpawned = 0;
+    this->zombiesKilled = 0;
     int yPositions[5];
     yPositions[0] = 97.5 - 40;
     yPositions[1] = 203 - 40;
@@ -204,11 +205,11 @@ void Gameplay::CheckCollision() {
         Plants* plant = ptr[i];
         if (plant->GetType() == "PeaShooter" || plant->GetType()=="Repeater" || plant->GetType() == "Snowpea" || plant->GetType()=="FumeShroom") {
             Shooter* shooter = (Shooter*)(plant);
-            shooter->CheckBulletCollision(zptr);
+            shooter->CheckBulletCollision(zptr, zombiesKilled);
         }
         if (plant->GetType() == "CherryBomb") {
             Explosive* shooter = (Explosive*)(plant);
-            shooter->CheckExplosionCollision(zptr);
+            shooter->CheckExplosionCollision(zptr, zombiesKilled);
         }
     }
 }
@@ -315,13 +316,5 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
             zombiesSpawned++;
             clock.restart();
         }
-    if (x == 0)
-    {
-        zptr.push_back(new FlyingZombie);
-        zptr[zptr.GetSize() - 1]->setX(1100);
-        zptr[zptr.GetSize() - 1]->setY(zptr[0]->getYPositions()[0]);
-        cout << zptr[zptr.GetSize() - 1]->GetPosition().GetY() << endl;
-        x = 1;
-    }
  
 }

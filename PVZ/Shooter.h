@@ -20,7 +20,7 @@ public:
 	Shooter(int totalBullets=1);
 	//void SetBullet();
 	void Fire(sf::RenderWindow& window, Coordinates PlantCoords,int index=0);
-	void CheckBulletCollision(Vector<Zombie*>& Zombie);
+	void CheckBulletCollision(Vector<Zombie*>& Zombie, int& killed);
 	void Action(RenderWindow& window)
 	{
 		Fire(window, this->position);

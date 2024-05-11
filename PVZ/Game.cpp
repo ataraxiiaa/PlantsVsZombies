@@ -107,6 +107,13 @@ void Game::Start_Game()
 			else
 				gamep.GetSun().SetAutoCollect(false);
 
+			if (gamep.getKilled() == levels * 5)
+			{
+				level.setStart(false);
+				level.setLevel(levels + 1);
+				levels++;
+			}
+
 			gamep.StartGamePlay(window);
 			gamep.spawnZombies(levels);// , clock);
 

@@ -40,6 +40,7 @@ class Gameplay
 	float timeInterval;
 	int money;
 	int zombiesSpawned;
+	int zombiesKilled;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
@@ -54,7 +55,10 @@ public:
 	void CheckCollision();
 	void spawnZombies(int level);// , Clock clock);
 	void StartGamePlay(RenderWindow& window);
-
+	int getKilled() { return this->zombiesKilled; }
+	void setKilled(int killed) { this->zombiesSpawned = killed; }
+	int getSpawned() { return this->zombiesKilled; }
+	void setSpawned(int spawned) { this->zombiesSpawned = spawned; }
 	
 
 

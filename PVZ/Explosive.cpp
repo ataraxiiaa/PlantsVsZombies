@@ -23,7 +23,7 @@ void Explosive::DrawExplosion(RenderWindow& window, Coordinates position) // For
 		
 	}
 }
-void Explosive::CheckExplosionCollision(Vector<Zombie*>& Zombie) {
+void Explosive::CheckExplosionCollision(Vector<Zombie*>& Zombie, int& killed) {
 	if (explode) {
 		for (int j = 0; j < Zombie.GetSize(); ++j) {
 			if (ExplosionPosition.GetX() - Zombie[j]->GetPosition().GetX() >= -150 &&
@@ -32,7 +32,7 @@ void Explosive::CheckExplosionCollision(Vector<Zombie*>& Zombie) {
 				ExplosionPosition.GetY() - Zombie[j]->GetPosition().GetY() <= 150 &&
 				Zombie[j]->GetExistance())
 			{
-				
+				killed++;
 				Zombie[j]->setExists(false);
 				Zombie.Destroy(j);
 				cout << "zombie destroyed" << endl;

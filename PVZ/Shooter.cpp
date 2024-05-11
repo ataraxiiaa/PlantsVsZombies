@@ -42,7 +42,7 @@ void Shooter::Fire(sf::RenderWindow& window,Coordinates PlantCoords,int index) /
 
 }
 // CHecking collision with bullet of zombie
-void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie) {
+void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie, int& killed) {
     for (int i = 0; i < totalBullets; ++i) {
         for (int j = 0; j < Zombie.GetSize(); ++j) {
             if (bullet[i].GetPosition().GetX() - Zombie[j]->GetPosition().GetX() >= -10 &&
@@ -58,6 +58,7 @@ void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie) {
                 }
                 else
                 {
+                    killed++;
                     Zombie[j]->setExists(false);
                     Zombie.Destroy(j);
                 }

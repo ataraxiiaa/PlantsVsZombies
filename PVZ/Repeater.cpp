@@ -10,6 +10,7 @@ Repeater::Repeater() : Shooter(2) // A repeater would shoot 2 bullets so set tha
 	this->position = pos;
 	animate->SetSheet(0.15, 3, texture, 5, 1);
 	Type = "Repeater";
+	this->damage = 0.4;
 }
 void Repeater::Action(RenderWindow& window)
 {
