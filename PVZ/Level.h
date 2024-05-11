@@ -9,11 +9,15 @@
 
 class Level { // Abstract class
 protected:
+	Vector<Sprite> transition;
 	Gameplay gamePlay;
 	Texture levelTexture;
 	Sprite levelSprite;
 	bool start;
 	int level;
+	Clock clock;
+	Texture texture;
+	bool transitioning;
 public:
 	Level(int level = 1);
 	//void displayLevel(RenderWindow& window, int level);
@@ -24,6 +28,7 @@ public:
 	void startGamePlay(RenderWindow& window);
 	Gameplay& GetGamePlay() { return this->gamePlay; }
 
+	void CreateTransition(RenderWindow& window);
 	//virtual void DrawLevels(RenderWindow& window); 
 };
 

@@ -163,6 +163,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             spawned = true;
                         }
                         else if (id[index] == "wallnut" && money >= 50) {
+                            cout << "1" << endl;
                             ptr.push_back(new WallNut);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
@@ -268,11 +269,11 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level) {
     window.draw(text);
 }
 
-void Gameplay::spawnZombies(int level)// , Clock clock)
+void Gameplay::spawnZombies(int level)
 {
     static int x = 0;
     //static Clock clock;
-    initialTime = 20 - 2 * (level - 1);
+    initialTime = 5 - 2 * (level - 1);
     //initialTime = 1;
     timeInterval = initialTime / 1.5 + 3;
     //cout << clock.getElapsedTime().asSeconds() << endl;
@@ -360,4 +361,7 @@ void Gameplay::resetGame()
     }
     clock.restart();
     restart = false;
+}
+bool Gameplay::CheckTransitionCondition() {
+
 }

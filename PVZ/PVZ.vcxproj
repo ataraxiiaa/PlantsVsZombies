@@ -49,6 +49,7 @@
     <ClCompile Include="SunFlower.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WallNut.cpp" />
+    <ClCompile Include="ZombieOutskirts.cpp" />
     <ClCompile Include="Zombies.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +84,7 @@
     <ClInclude Include="SunFlower.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="WallNut.h" />
+    <ClInclude Include="ZombieOutskirts.h" />
     <ClInclude Include="Zombies.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

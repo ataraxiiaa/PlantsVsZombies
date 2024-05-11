@@ -61,6 +61,7 @@ public:
 	void setKilled(int killed) { this->zombiesSpawned = killed; }
 	int getSpawned() { return this->zombiesKilled; }
 	void setSpawned(int spawned) { this->zombiesSpawned = spawned; }
+	bool CheckTransitionCondition();
 	void resetGame();
 };
 
