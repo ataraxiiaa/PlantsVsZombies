@@ -226,7 +226,6 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level) {
         shop.setShop(level);
         restart = true;
     }
-    shop.setShop(level);
     shop.DrawShop(window);
     this->checkShopClick(window);
     this->dropToGrid(window);
@@ -340,7 +339,6 @@ void Gameplay::resetGame()
     for (int i = 0; i < ptr.GetSize(); i++)
     {
         ptr[i]->SetExistence(false);
-        //ptr.Destroy(i);
     }
     for (int i = 0; i < gridRows; i++)
         for (int j = 0; j < gridCols; j++)
@@ -359,12 +357,13 @@ void Gameplay::resetGame()
         Guardians[i]->SetCoordinates(pos2);
         Guardians[i]->setExistence(true);
     }
+    zombiesKilled = 0;
     clock.restart();
     restart = false;
 }
 bool Gameplay::CheckTransitionCondition(int levels) {
 
-    if (zombiesKilled == levels * 5 + 1)
+    if (zombiesKilled == 1)
         return true;
     return false;
 }

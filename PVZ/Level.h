@@ -13,6 +13,8 @@ protected:
 	Gameplay gamePlay;
 	Texture levelTexture;
 	Sprite levelSprite;
+	Text text;
+	Font font;
 	bool start;
 	int level;
 	Clock clock;

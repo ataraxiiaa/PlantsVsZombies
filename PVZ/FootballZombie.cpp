@@ -9,8 +9,8 @@ FootballZombie::FootballZombie() {
 	this->lives = 4;
 	this->texture.loadFromFile("../Images/FBZ.png");
 	this->animate = new Animation;
-	this->animate->SetSheet(0.125, 6, texture, 8, 1);
-	this->animate->ChangeScale(1.25, 1.25);
+	this->animate->SetSheet(0.125, 3,texture, 5, 5);
+	this->animate->ChangeScale(2.3, 2.3);
 	//Coordinates pos(700, 350);
 	//this->position = pos;
 }

@@ -5,6 +5,11 @@ Level::Level(int level) {
 	start = false;
 	srand(time(0));
 	transitioning = false;
+	font.loadFromFile("../fonts/logofont.otf");
+	text.setFont(font);
+	text.setFillColor(sf::Color::Yellow);
+	text.setCharacterSize(30);
+	text.setPosition(1000, 30);
 	//option = 0;
 	//max = 2;
 	//font.loadFromFile("../fonts/logofont.otf");
@@ -27,7 +32,7 @@ void Level::CreateTransition(RenderWindow& window) {
 				sprite[i].setScale(1, 1);
 			}
 
-			if (clock.getElapsedTime().asSeconds() <= 1) {
+			if (clock.getElapsedTime().asSeconds() <= 5) {
 				for (int i = 0; i < 15; ++i) {
 					window.draw(sprite[i]);
 				}
@@ -38,7 +43,9 @@ void Level::CreateTransition(RenderWindow& window) {
 	}
 }
 void Level::startGamePlay(RenderWindow& window) {
+	text.setString("Level " + to_string(level));
 	gamePlay.StartGamePlay(window, this->level);
+	window.draw(text);
 }
 //void Level::displayLevel(RenderWindow& window, int level) {
 //	static Clock clock;
