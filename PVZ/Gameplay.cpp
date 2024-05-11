@@ -17,9 +17,10 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     rectangle.setOutlineColor(sf::Color::White);
     rectangle.setFillColor(sf::Color::Transparent);
     rectangle.setOutlineThickness(5);
-    this->money = 150; // Set accordingly
+    this->money = 1500; // Set accordingly
     this->zombiesSpawned = 0;
     this->zombiesKilled = 0;
+    restart = false;
     int yPositions[5];
     yPositions[0] = 97.5 - 40;
     yPositions[1] = 203 - 40;
@@ -79,9 +80,9 @@ void Gameplay::checkShopClick(RenderWindow& window)
 		sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		Sprite* sprites = shop.getSprite();
 		sf::FloatRect* bounds = new sf::FloatRect[6];
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < shop.getElement(); i++)
 			bounds[i] = sprites[i].getGlobalBounds();
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < shop.getElement(); i++)
 		{
 			if (bounds[i].contains(mouse))
 			{
@@ -213,11 +214,15 @@ void Gameplay::CheckCollision() {
         }
     }
 }
-void Gameplay::StartGamePlay(RenderWindow& window) {
+void Gameplay::StartGamePlay(RenderWindow& window, int level) {
     for (int i = 0; i < Guardians.GetSize(); ++i) {
         Guardians[i]->CheckCollision(this->zptr);
         if (Guardians[i]->GetExistance())
             window.draw(Guardians[i]->GetSprite());
+    }
+    if (!restart) {
+        shop.setShop(level);
+        restart = true;
     }
     shop.DrawShop(window);
     this->checkShopClick(window);
@@ -264,16 +269,25 @@ void Gameplay::StartGamePlay(RenderWindow& window) {
 void Gameplay::spawnZombies(int level)// , Clock clock)
 {
     static int x = 0;
-    static Clock clock;
+    //static Clock clock;
     initialTime = 20 - 2 * (level - 1);
     //initialTime = 1;
-    timeInterval = initialTime / 2 + 3;
+    timeInterval = initialTime / 1.5 + 3;
     //cout << clock.getElapsedTime().asSeconds() << endl;
     if (zombiesSpawned == 0)
     {
+        if (clock.getElapsedTime().asSeconds() >= initialTime) {
+            cout << clock.getElapsedTime().asSeconds() << endl;
+            clock.restart();
+            zombiesSpawned++;
+        }
+    }
+    else if (zombiesSpawned==1){
         if (clock.getElapsedTime().asSeconds() >= initialTime)
         {
-            cout << "0" << endl;
+            //cout << "0" << endl;
+            cout << clock.getElapsedTime().asSeconds() << endl;
+
             zptr.push_back(new NormalZombie);
             zptr[zptr.GetSize() - 1]->setX(1200);
             zptr[zptr.GetSize() - 1]->setY(zptr[0]->getYPositions()[rand() % 5]);
@@ -281,10 +295,10 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
             clock.restart();
         }
     }
-    else if (zombiesSpawned < level * 5)
+    else if (zombiesSpawned < level * 5 + 1)
         if (clock.getElapsedTime().asSeconds() >= timeInterval)
         {
-            cout << zptr.GetSize() << endl;
+            cout << clock.getElapsedTime().asSeconds() << endl;
             if (level > 1)
             {
                 srand((unsigned)time(0));
@@ -317,4 +331,33 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
             clock.restart();
         }
  
+}
+
+void Gameplay::resetGame()
+{
+    cout << ptr.GetSize() << endl;
+    for (int i = 0; i < ptr.GetSize(); i++)
+    {
+        ptr[i]->SetExistence(false);
+        //ptr.Destroy(i);
+    }
+    for (int i = 0; i < gridRows; i++)
+        for (int j = 0; j < gridCols; j++)
+            FIELD_GAME_STATUS[i][j] = false;
+    int yPositions[5];
+    yPositions[0] = 97.5 - 40;
+    yPositions[1] = 203 - 40;
+    yPositions[2] = 309 - 40;
+    yPositions[3] = 415 - 30;
+    yPositions[4] = 521 - 20;
+    for (int i = 0; i < 5; ++i) {
+        Coordinates pos1(200 - (i * 3), (i * 120) + 95);
+        Coordinates pos2(200 - (i * 3), yPositions[i]);
+        Guardians[i]->SetSpritePosGuard(pos1);
+        Guardians[i]->SetSprtePos(pos1);
+        Guardians[i]->SetCoordinates(pos2);
+        Guardians[i]->setExistence(true);
+    }
+    clock.restart();
+    restart = false;
 }

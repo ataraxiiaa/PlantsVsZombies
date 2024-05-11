@@ -112,10 +112,12 @@ void Game::Start_Game()
 				level.setStart(false);
 				level.setLevel(levels + 1);
 				levels++;
+				gamep.resetGame();
+				clock.restart();
 			}
 
-			gamep.StartGamePlay(window);
-			gamep.spawnZombies(levels);// , clock);
+			gamep.StartGamePlay(window, levels);
+			gamep.spawnZombies(levels); // , clock);
 
 
 			window.draw(text);
@@ -125,8 +127,9 @@ void Game::Start_Game()
 		}
 		else if (!menu.ShowState() && pause.ShowState() && level.getStart())
 			pause.displayPausedMenu(window);
-		else if (!menu.ShowState() && !pause.ShowState() && !level.getStart())
+		else if (!menu.ShowState() && !pause.ShowState() && !level.getStart()) {
 			level.displayLevel(window, levels);
+		}
 		window.display();
 	}
 }

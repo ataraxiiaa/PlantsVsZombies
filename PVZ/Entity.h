@@ -20,7 +20,7 @@ public:
 	Coordinates GetPosition()const { return position; }
 	void SetCoordinates(Coordinates position) { this->position = position; }
 	bool GetExistance()const { return exists; }
-	
+	void setExistence(bool exists) { this->exists = exists; }
 	void SetSprtePos(Coordinates pos) {
 		sprite.setPosition(pos.GetX(), pos.GetY());
 	}

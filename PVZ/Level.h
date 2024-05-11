@@ -32,7 +32,7 @@ public:
 			{
 				if (e.type == sf::Event::Closed) // Checks if main window is closed or not
 					window.close();
-				if (e.key.code == sf::Keyboard::Enter && e.type == sf::Event::KeyPressed)
+				if (e.key.code == sf::Keyboard::Enter && e.type == sf::Event::KeyPressed || clock.getElapsedTime().asSeconds() >= 2)
 					start = true;
 			}
 

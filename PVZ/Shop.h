@@ -10,6 +10,7 @@ using namespace sf;
 
 class Shop
 {
+	int elements;
 protected:
 	Vector<Sprite> selectedSprite;
 	Sprite* sprite;
@@ -20,7 +21,8 @@ public:
 	void DrawShop(sf::RenderWindow& window);
 	Sprite* getSprite() { return sprite; }
 	string* getIds() { return ids; }
-	
+	void setShop(int level);
+	int getElement() { return this->elements; }
 	Vector<Sprite> getSelectedSprite()const { return selectedSprite; }
 };
 

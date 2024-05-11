@@ -31,7 +31,7 @@ void Shooter::Fire(sf::RenderWindow& window,Coordinates PlantCoords,int index) /
             bullet[i].SetPosition(pos);
 
             // Check if the bullet has gone off the screen
-            if (bullet[i].GetPosition().GetX() >= 1200)
+            if (bullet[i].GetPosition().GetX() >= 1150)
             {
                 bullet[i].SetFire(false); // Hide the bullet
             }

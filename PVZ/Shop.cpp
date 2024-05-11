@@ -3,7 +3,7 @@
 
 Shop::Shop() // Initiallizes every sprite
 {
-
+	elements = 1;
 	sprite = new Sprite[6]; // Adding sprites
 	texture = new Texture[6]; // Adding textures
 	// Sunflower
@@ -30,11 +30,11 @@ Shop::Shop() // Initiallizes every sprite
 	selectedSprite.back().setTextureRect(sf::IntRect(100, 0, 200, 84));
 	selectedSprite.back().setPosition(13, 240);
 	// CherryBomb
-	texture[4].loadFromFile("../Images/CherryBombShop.png");
-	sprite[4].setTexture(texture[4]);
-	sprite[4].setTextureRect(sf::IntRect(0, 0, 75, 100));
-	sprite[4].setPosition(15, 300);
-	selectedSprite.push_back(sprite[4]);
+	texture[3].loadFromFile("../Images/CherryBombShop.png");
+	sprite[3].setTexture(texture[4]);
+	sprite[3].setTextureRect(sf::IntRect(0, 0, 75, 100));
+	sprite[3].setPosition(15, 300);
+	selectedSprite.push_back(sprite[3]);
 	selectedSprite.back().setTextureRect(sf::IntRect(82, 0, 160, 100));
 	selectedSprite.back().setPosition(20, 300);
 	// Setting up ID pointer to keep track of what item to set 
@@ -48,8 +48,12 @@ Shop::Shop() // Initiallizes every sprite
 }
 void Shop::DrawShop(sf::RenderWindow& window)
 {
-	window.draw(sprite[0]); // SunFlower shop image
-	window.draw(sprite[1]); // PeaShooter shop image
-	window.draw(sprite[2]); // Repeater
-	window.draw(sprite[4]);
+	for (int i=0; i<elements; i++)
+		window.draw(sprite[i]); // SunFlower shop image
+}
+
+void Shop::setShop(int level)
+{
+	elements += 1;
+	cout << "elements: " << elements << endl;
 }

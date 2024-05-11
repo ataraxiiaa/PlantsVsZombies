@@ -41,6 +41,8 @@ class Gameplay
 	int money;
 	int zombiesSpawned;
 	int zombiesKilled;
+	Clock clock;
+	bool restart;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
@@ -53,15 +55,13 @@ public:
 
 	void checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse);
 	void CheckCollision();
-	void spawnZombies(int level);// , Clock clock);
-	void StartGamePlay(RenderWindow& window);
+	void spawnZombies(int level); // , Clock& clock);
+	void StartGamePlay(RenderWindow& window, int level);
 	int getKilled() { return this->zombiesKilled; }
 	void setKilled(int killed) { this->zombiesSpawned = killed; }
 	int getSpawned() { return this->zombiesKilled; }
 	void setSpawned(int spawned) { this->zombiesSpawned = spawned; }
-	
-
-
+	void resetGame();
 };
 
 
