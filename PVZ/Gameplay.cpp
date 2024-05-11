@@ -309,19 +309,19 @@ void Gameplay::spawnZombies(int level)
                 if (check == 0)
                 {
                     zptr.push_back(new NormalZombie);
-                    cout << "normal" << endl;
+                    //cout << "normal" << endl;
                 }
                 else if (check == 1) {
                     zptr.push_back(new FootballZombie);
-                    cout << "football" << endl;
+                    //cout << "football" << endl;
                 }
                 else if (check == 2) {
                     zptr.push_back(new DancingZombie);
-                    cout << "dnacing" << endl;
+                   // cout << "dnacing" << endl;
                 }
                 else if (check == 3) {
                     zptr.push_back(new FlyingZombie);
-                    cout << "flying" << endl;
+                    //cout << "flying" << endl;
                 }
             }
             else
@@ -362,6 +362,9 @@ void Gameplay::resetGame()
     clock.restart();
     restart = false;
 }
-bool Gameplay::CheckTransitionCondition() {
+bool Gameplay::CheckTransitionCondition(int levels) {
 
+    if (zombiesKilled == levels * 5 + 1)
+        return true;
+    return false;
 }

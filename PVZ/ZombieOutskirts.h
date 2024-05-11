@@ -9,7 +9,7 @@ class ZombieOutskirts : public Level
 {
 
 public:
-	ZombieOutskirts():Level(2){}
+	ZombieOutskirts();
 };
 
 

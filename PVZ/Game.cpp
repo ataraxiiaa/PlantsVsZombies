@@ -118,6 +118,7 @@ void Game::Start_Game()
 
 			level.startGamePlay(window);
 			level.GetGamePlay().spawnZombies(levels); // , clock);
+			level.CreateTransition(window);
 
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
