@@ -81,7 +81,7 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 	Texture BackgroundT;
 	Sprite BackgroundS;
 	Texture texture;
-	texture.loadFromFile("C:/Users/Ali Abdullah/Downloads/instructions6.png");
+	texture.loadFromFile("../Images/instructions6.png");
 	Sprite sprite(texture);
 	sprite.setScale(1, 0.79);
 
