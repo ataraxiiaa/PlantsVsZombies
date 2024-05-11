@@ -404,10 +404,11 @@ void Gameplay::resetGame()
     zombiesKilled = 0;
     clock.restart();
     restart = false;
+    sun.setExists(false);
 }
 bool Gameplay::CheckTransitionCondition(int levels) {
 
-    if (zombiesKilled >= levels*5)
+    if (zombiesKilled >= 1)
         return true;
     return false;
 }

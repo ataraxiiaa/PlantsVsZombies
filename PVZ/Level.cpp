@@ -5,11 +5,11 @@ Level::Level(int level) {
 	start = false;
 	srand(time(0));
 	transitioning = false;
-	this->font.loadFromFile("../fonts/logofont.otf");
-	this->text.setFont(font);
-	this->text.setFillColor(sf::Color::Yellow);
-	this->text.setCharacterSize(30);
-	this->text.setPosition(1000, 30);
+	font.loadFromFile("../fonts/logofont.otf");
+	text.setFont(font);
+	text.setFillColor(sf::Color::Yellow);
+	text.setCharacterSize(30);
+	text.setPosition(1000, 30);
 	//option = 0;
 	//max = 2;
 	//font.loadFromFile("../fonts/logofont.otf");
@@ -22,13 +22,11 @@ Level::Level(int level) {
 }
 void Level::CreateTransition(RenderWindow& window) {
 	if (gamePlay.CheckTransitionCondition(this->level)) {
-		static Clock clock;
-		if (clock.getElapsedTime().asSeconds() <= 15) {
+		if (clock.getElapsedTime().asSeconds()<=15)
 			drawTransition(window);
-			clock.restart();
-		}
 		gamePlay.resetGame();
 		this->level += 1;
+		clock.restart();
 	}
 }
 void Level::drawTransition(RenderWindow& window)
@@ -41,9 +39,9 @@ void Level::drawTransition(RenderWindow& window)
 	window.draw(sprite);
 }
 void Level::startGamePlay(RenderWindow& window) {
-	this->text.setString("Level " + to_string(this->level));
+	text.setString("Level " + to_string(level));
 	gamePlay.StartGamePlay(window, this->level);
-	window.draw(this->text);
+	window.draw(text);
 }
 /*		texture.loadFromFile("../Images/boom.png");
 		Sprite sprite[15];

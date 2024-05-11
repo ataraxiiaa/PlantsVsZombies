@@ -17,9 +17,10 @@ protected:
 	Font font;
 	bool start;
 	int level;
-	Clock clock;
+	Clock clock,clock2;
 	Texture texture;
 	bool transitioning;
+
 public:
 	Level(int level = 1);
 	//void displayLevel(RenderWindow& window, int level);
