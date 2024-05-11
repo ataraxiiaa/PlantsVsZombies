@@ -22,9 +22,22 @@ Level::Level(int level) {
 }
 void Level::CreateTransition(RenderWindow& window) {
 	if (gamePlay.CheckTransitionCondition(this->level)) {
+		static Clock clock;
+		if (clock.getElapsedTime().asSeconds()<=15)
+			drawTransition(window);
 		gamePlay.resetGame();
 		this->level += 1;
+		clock.restart();
 	}
+}
+void Level::drawTransition(RenderWindow& window)
+{
+	Texture texture;
+	Sprite sprite;
+	texture.loadFromFile("../Images/transition.png");
+	sprite.setTexture(texture);
+	sprite.setPosition(350, 50);
+	window.draw(sprite);
 }
 void Level::startGamePlay(RenderWindow& window) {
 	text.setString("Level " + to_string(level));

@@ -59,7 +59,7 @@ Shop::Shop() // Initiallizes every sprite
 }
 void Shop::DrawShop(sf::RenderWindow& window)
 {
-	for (int i = 0; i < elements; i++) {
+	for (int i = 0; i < elements && i<6; i++) {
 		window.draw(sprite[i]); // SunFlower shop image
 	}
 }

@@ -363,7 +363,7 @@ void Gameplay::resetGame()
 }
 bool Gameplay::CheckTransitionCondition(int levels) {
 
-    if (zombiesKilled >= levels*5)
+    if (zombiesKilled >= levels * 5)
         return true;
     return false;
 }
