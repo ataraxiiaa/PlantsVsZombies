@@ -47,8 +47,8 @@ void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie, int& killed) {
         for (int j = 0; j < Zombie.GetSize(); ++j) {
             if (bullet[i].GetPosition().GetX() - Zombie[j]->GetPosition().GetX() >= -10 &&
                 bullet[i].GetPosition().GetX() - Zombie[j]->GetPosition().GetX() <= 10 &&
-                bullet[i].GetPosition().GetY() - Zombie[j]->GetPosition().GetY() >= -70 &&
-                bullet[i].GetPosition().GetY() - Zombie[j]->GetPosition().GetY() <= 70 &&
+                bullet[i].GetPosition().GetY() - Zombie[j]->GetPosition().GetY() >= -60 &&
+                bullet[i].GetPosition().GetY() - Zombie[j]->GetPosition().GetY() <= 60 &&
                 Zombie[j]->GetExistance() && bullet[i].ShowFire()
                 )
             {
