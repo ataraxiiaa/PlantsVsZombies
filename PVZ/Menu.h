@@ -15,6 +15,7 @@ protected:
 	Sprite sprite;
 	Text text[3]; // for creating text for Screens
 	bool currentState; // For tracking what Menu is open right now
+	bool Settings;
 public:
 	bool ShowState()const { return currentState; } // Getter for state
 	void setState(bool state) { this->currentState = state; } //setter for state

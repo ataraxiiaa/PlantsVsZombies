@@ -49,16 +49,16 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 	{
 		if (e.type == sf::Event::Closed) // Checks if main window is closed or not
 			window.close();
-		if (e.key.code == sf::Keyboard::Enter)
+		if (sf::Mouse::isButtonPressed(Mouse::Button::Left))
 		{
 			if (option == 0) // Enters into the game
 			{
 				this->currentState = false; // Exists menu into the game
 			}
-		}
-		if (option == 0) 
-		{
-			text[0].setFillColor(sf::Color::Yellow);
+			if (option == 1)
+			{
+				this->Settings = true;
+			}
 		}
 		if (e.type == sf::Event::KeyReleased)
 		{
@@ -80,13 +80,43 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 	// Loading Main backgorund png
 	Texture BackgroundT;
 	Sprite BackgroundS;
+	Texture texture;
+	texture.loadFromFile("C:/Users/Ali Abdullah/Downloads/instructions6.png");
+	Sprite sprite(texture);
+	sprite.setScale(1, 0.79);
+
+	sf::Vector2i mouse = sf::Mouse::getPosition(window);
 
 	BackgroundT.loadFromFile("../Images/Main2.png");
 	BackgroundS.setTexture(BackgroundT);
-	
+	BackgroundS.setColor(sf::Color(255, 255, 255, 200));
+	for (int i = 0; i < 3; ++i)
+	{
+		//		if (sunBounds.contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+		if (text[i].getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) 
+		{
+			text[i].setFillColor(sf::Color::Yellow);
+			option = i; // Update current option based on mouse hover
+		}
+		else
+		{
+			text[i].setFillColor(sf::Color::White);
+		}
+	}
 	window.clear();
-	window.draw(BackgroundS); // Draws Main menus background
-	window.draw(text[0]); // Drawing texts
-	window.draw(text[1]);
-	window.draw(text[2]);
+	if (Settings) {
+		BackgroundS.setColor(sf::Color(255, 255, 255, 150));
+		window.draw(BackgroundS);
+		window.draw(sprite);
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+			Settings = false;
+		}
+	}
+		
+	else {
+		window.draw(BackgroundS); // Draws Main menus background
+		window.draw(text[0]); // Drawing texts
+		window.draw(text[1]);
+		window.draw(text[2]);
+	}
 }
