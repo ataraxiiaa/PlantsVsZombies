@@ -44,6 +44,7 @@ class Gameplay
 	Clock clock;
 	Clock* cooldown;
 	Texture* texture;
+	Texture* original;
 	bool restart;
 public:
 	Gameplay(); // Default Constructor
