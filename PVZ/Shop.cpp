@@ -65,6 +65,6 @@ void Shop::DrawShop(sf::RenderWindow& window)
 }
 void Shop::setShop(int level)
 {
-	elements += 4;
+	elements += 1;
 	//cout << "elements: " << elements << endl;
 }
