@@ -13,6 +13,7 @@ class Shop
 	int elements;
 protected:
 	Vector<Sprite> selectedSprite;
+	Vector<Sprite> shopSprite;
 	Sprite* sprite;
 	Texture* texture;
 	string* ids;
@@ -24,6 +25,7 @@ public:
 	void setShop(int level);
 	int getElement() { return this->elements; }
 	Vector<Sprite> getSelectedSprite()const { return selectedSprite; }
+	Vector<Sprite> getShopSprite()const { return shopSprite; }
 };
 
 

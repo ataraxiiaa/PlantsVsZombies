@@ -10,6 +10,7 @@
 #include "Level.h"
 #include "Gameplay.h"
 #include "Vector.h"
+#include "BeginnersGarden.h"
 #include <string>
 using namespace sf;
 using namespace std;
@@ -36,7 +37,7 @@ class Game
 	int money;
 	Font font;
 	Text text;
-	Gameplay gamep;
+	//Gameplay gamep;
 	int levels;
 	//Clock clock;
 public:

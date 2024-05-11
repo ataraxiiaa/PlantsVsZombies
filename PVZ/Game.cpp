@@ -79,7 +79,7 @@ void Game::Start_Game()
 			pause.setState(false);
 		}
 		
-		if (!menu.ShowState() && !pause.ShowState() && level.getStart())
+		if (!menu.ShowState() && !pause.ShowState() /*&& level.getStart()*/)
 		{
 			float time = clock.getElapsedTime().asMicroseconds();
 			float moneyTime = timeMoney.getElapsedTime().asSeconds();
@@ -103,21 +103,21 @@ void Game::Start_Game()
 			// Create the grid
 			createGrid(window);
 			if (pause.getCollect())
-				gamep.GetSun().SetAutoCollect(true);
+				level.GetGamePlay().GetSun().SetAutoCollect(true);
 			else
-				gamep.GetSun().SetAutoCollect(false);
+				level.GetGamePlay().GetSun().SetAutoCollect(false);
 
-			if (gamep.getKilled() == levels * 5)
+			/*if (gamep.getKilled() == levels * 5)
 			{
 				level.setStart(false);
 				level.setLevel(levels + 1);
 				levels++;
 				gamep.resetGame();
 				clock.restart();
-			}
+			}*/
 
-			gamep.StartGamePlay(window, levels);
-			gamep.spawnZombies(levels); // , clock);
+			level.startGamePlay(window);
+			level.GetGamePlay().spawnZombies(levels); // , clock);
 
 
 			window.draw(text);
@@ -125,11 +125,11 @@ void Game::Start_Game()
 
 
 		}
-		else if (!menu.ShowState() && pause.ShowState() && level.getStart())
+		else if (!menu.ShowState() && pause.ShowState() /*&& level.getStart()*/)
 			pause.displayPausedMenu(window);
-		else if (!menu.ShowState() && !pause.ShowState() && !level.getStart()) {
+		/*else if (!menu.ShowState() && !pause.ShowState() && !level.getStart()) {
 			level.displayLevel(window, levels);
-		}
+		}*/
 		window.display();
 	}
 }

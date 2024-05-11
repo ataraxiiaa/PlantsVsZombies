@@ -177,7 +177,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             spawned = true;
                         }
                         else if (id[index] == "cherrybomb" && money >= 50) {
-                            ptr.push_back(new FumeShroom);
+                            ptr.push_back(new CherryBomb);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
@@ -215,6 +215,7 @@ void Gameplay::CheckCollision() {
     }
 }
 void Gameplay::StartGamePlay(RenderWindow& window, int level) {
+    spawnZombies(level);
     for (int i = 0; i < Guardians.GetSize(); ++i) {
         Guardians[i]->CheckCollision(this->zptr);
         if (Guardians[i]->GetExistance())
@@ -224,6 +225,7 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level) {
         shop.setShop(level);
         restart = true;
     }
+    shop.setShop(level);
     shop.DrawShop(window);
     this->checkShopClick(window);
     this->dropToGrid(window);
@@ -298,7 +300,6 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
     else if (zombiesSpawned < level * 5 + 1)
         if (clock.getElapsedTime().asSeconds() >= timeInterval)
         {
-            cout << clock.getElapsedTime().asSeconds() << endl;
             if (level > 1)
             {
                 srand((unsigned)time(0));
@@ -335,7 +336,6 @@ void Gameplay::spawnZombies(int level)// , Clock clock)
 
 void Gameplay::resetGame()
 {
-    cout << ptr.GetSize() << endl;
     for (int i = 0; i < ptr.GetSize(); i++)
     {
         ptr[i]->SetExistence(false);
