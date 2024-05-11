@@ -22,8 +22,7 @@ Level::Level(int level) {
 }
 void Level::CreateTransition(RenderWindow& window) {
 	if (gamePlay.CheckTransitionCondition(this->level)) {
-		if (clock.getElapsedTime().asSeconds()<=15)
-			drawTransition(window);
+		drawTransition(window);
 		gamePlay.resetGame();
 		this->level += 1;
 		clock.restart();

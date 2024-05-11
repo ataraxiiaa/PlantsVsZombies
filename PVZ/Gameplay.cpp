@@ -405,6 +405,8 @@ void Gameplay::resetGame()
     clock.restart();
     restart = false;
     sun.setExists(false);
+    for (int i = 0; i < 5; ++i)
+        cooldown[i].restart();
 }
 bool Gameplay::CheckTransitionCondition(int levels) {
 
