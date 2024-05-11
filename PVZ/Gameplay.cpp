@@ -215,7 +215,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             money -= ptr.back()->GetCost();
                             spawned = true;
                             cooldown[4].restart();
-                            sprites[4].setTexture(texture[3]);
+                            sprites[4].setTexture(texture[4]);
                             sprites[4].setTextureRect(sf::IntRect(79, 0, 75, 100));
                         }
                         else if (id[index] == "cherrybomb" && money >= 50 && cooldown[3].getElapsedTime().asSeconds() >= 5) {
@@ -225,7 +225,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             money -= ptr.back()->GetCost();
                             spawned = true;
                             cooldown[3].restart();
-                            sprites[3].setTexture(texture[4]);
+                            sprites[3].setTexture(texture[3]);
                             sprites[3].setTextureRect(sf::IntRect(94, 0, 100, 101));
                         }
                         if (spawned)
