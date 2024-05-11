@@ -31,6 +31,7 @@ public:
 	Gameplay& GetGamePlay() { return this->gamePlay; }
 
 	void CreateTransition(RenderWindow& window);
+	void drawTransition(RenderWindow& window);
 	//virtual void DrawLevels(RenderWindow& window); 
 };
 
