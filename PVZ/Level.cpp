@@ -40,7 +40,7 @@ void Level::drawTransition(RenderWindow& window)
 	window.draw(sprite);
 }
 void Level::startGamePlay(RenderWindow& window) {
-	text.setString("Level " + to_string(level));
+	text.setString("Level " + to_string(this->level));
 	gamePlay.StartGamePlay(window, this->level);
 	window.draw(text);
 }
