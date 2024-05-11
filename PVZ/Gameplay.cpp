@@ -12,6 +12,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
 			FIELD_GAME_STATUS[i][j] = false;
 	firstClick = true;
 	dragging = false;
+    cooldown = new Clock[5];
     // Setting up rectange
     rectangle.setSize(sf::Vector2f(50, 100));
     rectangle.setOutlineColor(sf::Color::White);
@@ -21,6 +22,23 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     this->zombiesSpawned = 0;
     this->zombiesKilled = 0;
     restart = false;
+    texture = new Texture[5];
+    texture[0].loadFromFile("../Images/SunFlowerShop2.png");
+    //grey[0].setTexture(texture);
+    //grey[0].setTextureRect(sf::IntRect(100, 0, 85, 101));
+    texture[1].loadFromFile("../Images/PeaShooterShop2.png");
+    //grey[1].setTexture(texture);
+    //grey[1].setTextureRect(sf::IntRect(87, 0, 85, 101));
+    texture[2].loadFromFile("../Images/potshape.png");
+    //grey[2].setTexture(texture);
+    //grey[2].setTextureRect(sf::IntRect(91, 0, 85, 101));
+    texture[3].loadFromFile("../Images/CherryBombShop.png");
+    //grey[3].setTexture(texture);
+    //grey[3].setTextureRect(sf::IntRect(79, 0, 85, 101));
+    texture[4].loadFromFile("../Images/RepeaterShop.png");
+    //grey[4].setTexture(texture);
+    //grey[4].setTextureRect(sf::IntRect(94, 0, 85, 101));
+    
     int yPositions[5];
     yPositions[0] = 97.5 - 40;
     yPositions[1] = 203 - 40;
@@ -147,42 +165,58 @@ void Gameplay::dropToGrid(RenderWindow& window)
                         bool spawned = false;
 
                         // Place the needed plant on the grid
-                        if (id[index] == "sunflower" && money >= 50) {
+                        if (id[index] == "sunflower" && money >= 50 && cooldown[0].getElapsedTime().asSeconds() >= 5) {
                             ptr.push_back(new SunFlower(money));
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
                             spawned = true;
+                            cooldown[0].restart();
+                            sprites[0].setTexture(texture[0]);
+                            sprites[0].setTextureRect(sf::IntRect(100, 0, 90, 101));
                         }
-                        else if (id[index] == "peashooter" && money >= 100) {
+
+                        else if (id[index] == "peashooter" && money >= 100 && cooldown[1].getElapsedTime().asSeconds() >= 5) {
                             ptr.push_back(new PeaShooter);
                             cout << "1" << endl;
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
                             spawned = true;
+                            cooldown[1].restart();
+                            sprites[1].setTexture(texture[1]);
+                            sprites[1].setTextureRect(sf::IntRect(87, 0, 85, 101));
                         }
-                        else if (id[index] == "wallnut" && money >= 50) {
+                        else if (id[index] == "wallnut" && money >= 50 && cooldown[2].getElapsedTime().asSeconds() >= 5) {
                             cout << "1" << endl;
                             ptr.push_back(new WallNut);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
                             spawned = true;
+                            cooldown[2].restart();
+                            sprites[2].setTexture(texture[2]);
+                            sprites[2].setTextureRect(sf::IntRect(91, 0, 85, 101));
                         }
-                        else if (id[index] == "repeater" && money >= 50) {
+                        else if (id[index] == "repeater" && money >= 50 && cooldown[3].getElapsedTime().asSeconds() >= 5) {
                             ptr.push_back(new Repeater);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
                             spawned = true;
+                            cooldown[3].restart();
+                            sprites[3].setTexture(texture[3]);
+                            sprites[3].setTextureRect(sf::IntRect(79, 0, 85, 101));
                         }
-                        else if (id[index] == "cherrybomb" && money >= 50) {
+                        else if (id[index] == "cherrybomb" && money >= 50 && cooldown[4].getElapsedTime().asSeconds() >= 5) {
                             ptr.push_back(new CherryBomb);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
                             spawned = true;
+                            cooldown[4].restart();
+                            sprites[4].setTexture(texture[4]);
+                            sprites[4].setTextureRect(sf::IntRect(94, 0, 85, 101));
                         }
                         if (spawned)
                         {

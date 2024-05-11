@@ -42,6 +42,8 @@ class Gameplay
 	int zombiesSpawned;
 	int zombiesKilled;
 	Clock clock;
+	Clock* cooldown;
+	Texture* texture;
 	bool restart;
 public:
 	Gameplay(); // Default Constructor
