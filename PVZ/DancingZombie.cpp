@@ -76,16 +76,24 @@ void DancingZombie::moveZombie(Vector<Plants*>& ptr, bool** set)
 	int random = rand() % 5;
 	if (clock.getElapsedTime().asSeconds() >= 5)
 	{
-		if (random == 0 && this->position.GetY() > 57.5)
+		//check y position
+		int y = 0;
+		for (int i = 0; i < 5; i++)
+			if (this->yPositions[i] == this->position.GetY())
+			{
+				y = i;
+				break;
+			}
+		if (random == 0 && y > 0)
 		{
 			cout << "up" << endl;
-			this->position.SetY(this->position.GetY() - 106);
+			this->position.SetY(this->yPositions[y - 1]);
 			clock.restart();
 		}
-		else if (random == 1 && this->position.GetY() < 501)
+		else if (random == 1 && y < 4)
 		{
 			cout << "down" << endl;
-			this->position.SetY(this->position.GetY() + 106);
+			this->position.SetY(this->yPositions[y + 1]);
 			clock.restart();
 		}
 	}
