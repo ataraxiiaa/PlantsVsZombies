@@ -33,7 +33,12 @@ public:
 
 	void CreateTransition(RenderWindow& window);
 	void drawTransition(RenderWindow& window);
-	//virtual void DrawLevels(RenderWindow& window); 
+
+	virtual Sprite GetSprite() { return levelSprite; }
+
+	virtual void DrawLevels(RenderWindow& window) {
+		window.draw(levelSprite);
+	}
 };
 
 

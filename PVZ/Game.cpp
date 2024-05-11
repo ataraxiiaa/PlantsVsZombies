@@ -3,21 +3,22 @@
 Game::Game()
 {
 	levels = 1;	
+	level = new BeginnersGarden;
 }
-void Game::createBack(RenderWindow& window)
+void Game::createBack(RenderWindow& window,Sprite sprite)
 {
 	//Drawing the background
-	Image map_image;
-	//Will have to change the path to run it properly ig for this too
-	map_image.loadFromFile("../Images/Background3.jpg");
-	Texture map;
-	map.loadFromImage(map_image);
-	Sprite s_map;
-	s_map.setTexture(map);
-	s_map.setPosition(0, 0);
-	window.draw(s_map);
+	//Image map_image;
+	////Will have to change the path to run it properly ig for this too
+	//map_image.loadFromFile("../Images/Background3.jpg");
+	//Texture map;
+	//map.loadFromImage(map_image);
+	//Sprite s_map;
+	//s_map.setTexture(map);
+	//s_map.setPosition(0, 0);
+	window.draw(sprite);
 }
-void Game::createMap(RenderWindow& window) {
+void Game::createMap(RenderWindow& window, Sprite sprite) {
 	//Drawing a map
 	Image map_image;
 	//Will have to change the path to run it properly ig for this too
@@ -96,30 +97,25 @@ void Game::Start_Game()
 				pause.setState(true);
 
 
-
-			//Create a background
-			createBack(window);
-			createMap(window);
-			// Create the grid
 			createGrid(window);
+			//Create a background
+			createBack(window,level->GetSprite());
+			createMap(window,level->GetSprite());
+			if (level->GetLevel() == 1) {
+				createGrid(window);
+			}
+			// Create the grid
 			if (pause.getCollect())
-				level.GetGamePlay().GetSun().SetAutoCollect(true);
+				level->GetGamePlay().GetSun().SetAutoCollect(true);
 			else
-				level.GetGamePlay().GetSun().SetAutoCollect(false);
+				level->GetGamePlay().GetSun().SetAutoCollect(false);
 
-			/*if (gamep.getKilled() == levels * 5)
-			{
-				level.setStart(false);
-				level.setLevel(levels + 1);
-				levels++;
-				gamep.resetGame();
-				clock.restart();
-			}*/
-
-			level.startGamePlay(window);
-			level.GetGamePlay().spawnZombies(levels); // , clock);
-			level.CreateTransition(window);
-
+			level->startGamePlay(window);
+			level->GetGamePlay().spawnZombies(levels); // , clock);
+			level->CreateTransition(window);
+			if (level->GetLevel() == 2) {
+				level = &zombieOutSkirts;
+			}
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
 			

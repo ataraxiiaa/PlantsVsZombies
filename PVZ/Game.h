@@ -11,6 +11,7 @@
 #include "Gameplay.h"
 #include "Vector.h"
 #include "BeginnersGarden.h"
+#include "ZombieOutskirts.h"
 #include <string>
 using namespace sf;
 using namespace std;
@@ -19,8 +20,9 @@ class Game
 {
 	MainMenu menu;
 	Paused pause;
-	Level level;
+	Level* level;
 	PeaShooter peaShooter;
+	ZombieOutskirts zombieOutSkirts;
 	//NormalZombie normal;
 	//FootballZombie football;
 	//FlyingZombie flying;
@@ -43,8 +45,8 @@ class Game
 public:
 	Game(); // (Default for now will change later on)
 	// Function prototypes that are defined in Game.cpp
-	void createBack(RenderWindow& window); // Creating Background
-	void createMap(RenderWindow& window); // Creating window
+	void createBack(RenderWindow& window, Sprite sprite); // Creating Background
+	void createMap(RenderWindow& window, Sprite sprite); // Creating window
 	void createGrid(RenderWindow& window); // Creating a grid
 	void Start_Game(); // Starts the Game window when called
 };

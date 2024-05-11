@@ -10,6 +10,7 @@ class ZombieOutskirts : public Level
 
 public:
 	ZombieOutskirts();
+
 };
 
 

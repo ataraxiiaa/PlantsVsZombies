@@ -262,7 +262,7 @@ void Gameplay::CheckCollision() {
 void Gameplay::StartGamePlay(RenderWindow& window, int level) {
     spawnZombies(level);
     for (int i = 0; i < Guardians.GetSize(); ++i) {
-        Guardians[i]->CheckCollision(this->zptr);
+        Guardians[i]->CheckCollision(this->zptr,zombiesKilled);
         if (Guardians[i]->GetExistance())
             window.draw(Guardians[i]->GetSprite());
     }
@@ -380,6 +380,9 @@ void Gameplay::spawnZombies(int level)
 
 void Gameplay::resetGame()
 {
+    for (int i = 0; i < zptr.GetSize(); ++i) {
+        zptr[i]->setExistence(false);
+    }
     for (int i = 0; i < ptr.GetSize(); i++)
     {
         ptr[i]->SetExistence(false);

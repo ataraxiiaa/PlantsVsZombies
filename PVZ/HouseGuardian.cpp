@@ -9,7 +9,7 @@ HouseGuardian::HouseGuardian(string std_path) {
 	speed = 15.0f;
 	destroyed = false;
 }
-void HouseGuardian::CheckCollision(Vector<Zombie*>& Zptr) {
+void HouseGuardian::CheckCollision(Vector<Zombie*>& Zptr,int& zombiesKilled) {
 	for (int i = 0; i < Zptr.GetSize(); ++i) {
 		if (position.GetX() - Zptr[i]->GetPosition().GetX() >= -50 &&
 			position.GetX() - Zptr[i]->GetPosition().GetX() <= 50 &&
@@ -17,6 +17,7 @@ void HouseGuardian::CheckCollision(Vector<Zombie*>& Zptr) {
 			position.GetY() - Zptr[i]->GetPosition().GetY() <= 30 &&
 			Zptr[i]->GetExistance() && this->exists)
 		{	
+			zombiesKilled++;
 			Zptr[i]->setExists(false);
 			Zptr.Destroy(i);	
 			cout << "Collided" << endl;

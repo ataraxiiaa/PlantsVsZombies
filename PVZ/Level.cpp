@@ -23,6 +23,8 @@ Level::Level(int level) {
 void Level::CreateTransition(RenderWindow& window) {
 	if (gamePlay.CheckTransitionCondition(this->level)) {
 		drawTransition(window);
+
+
 		gamePlay.resetGame();
 		this->level += 1;
 		clock.restart();
@@ -42,22 +44,7 @@ void Level::startGamePlay(RenderWindow& window) {
 	gamePlay.StartGamePlay(window, this->level);
 	window.draw(text);
 }
-/*		texture.loadFromFile("../Images/boom.png");
-		Sprite sprite[15];
-			for (int i = 0; i < 15; ++i) {
-				int x = rand() % 1100 + 50;
-				int y = rand() % 680 + 10;
-				sprite[i].setTexture(texture);
-				sprite[i].setPosition(x, y);
-				sprite[i].setScale(1, 1);
-			}
 
-			if (clock.getElapsedTime().asSeconds() <= 5) {
-				for (int i = 0; i < 15; ++i) {
-					window.draw(sprite[i]);
-				}
-				clock.restart();
-			}*/
 //void Level::displayLevel(RenderWindow& window, int level) {
 //	static Clock clock;
 //	//if (clock.getElapsedTime().asSeconds() >= 10) 
