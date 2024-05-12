@@ -31,6 +31,7 @@ class Gameplay
 	Sun sun;
 	Font font;
 	Text text;
+	Text lives;
 	const int gridCols, gridRows; // Making Grid
 	bool** FIELD_GAME_STATUS; // Bool to track Grid movement
 	bool selected;

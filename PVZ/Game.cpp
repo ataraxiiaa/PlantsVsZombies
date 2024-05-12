@@ -83,7 +83,7 @@ void Game::Start_Game()
 			//menu.ShowGameOVer(window, 50);
 		}
 		
-		if (!menu.ShowState() && !pause.ShowState() && !level->GetGamePlay().checkEnd(level->GetLevel())/*&& level.getStart()*/)
+		if (!menu.ShowState() && !pause.ShowState() && !level->GetGamePlay().checkEnd(level->GetLevel(), playerLives)/*&& level.getStart()*/)
 		{
 			
 				float time = clock.getElapsedTime().asMicroseconds();
@@ -126,7 +126,7 @@ void Game::Start_Game()
 				window.draw(text);
 				window.setSize(sf::Vector2u(1100, 680));
 		}
-		else if (!menu.ShowState() && !pause.ShowState() && level->GetGamePlay().checkEnd(level->GetLevel())) {
+		else if (!menu.ShowState() && !pause.ShowState() && level->GetGamePlay().checkEnd(level->GetLevel(), playerLives)) {
 			menu.ShowGameOVer(window, 50);
 			menu.DisplayMain(window);
 		}
