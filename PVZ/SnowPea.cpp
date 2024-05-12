@@ -11,6 +11,7 @@ SnowPea::SnowPea()
 	bullet->SetTexture(BulletTexture);
 
 	animate = new Animation;
+	this->lives = 40;
 	animate->SetSheet(0.125, 6, texture, 8, 1);
 	Coordinates pos(400, 300);
 	this->position = pos;
