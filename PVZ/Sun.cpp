@@ -21,7 +21,7 @@ void Sun::DrawSun(sf::RenderWindow& window, int& money)
 {
 	srand(time(0));
 	int randomTime = rand() % 30 + 10; // Set accordingly 
-	if (clock.getElapsedTime().asSeconds() >= randomTime && !exist) {
+	if (clock.getElapsedTime().asSeconds() >= 10 && !exist) {
 		this->exist = true;
 		// Handling random movement of position
 		this->position.SetY(0);
