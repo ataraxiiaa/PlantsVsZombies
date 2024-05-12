@@ -45,6 +45,8 @@ class Game
 	int levels;
 	int score;
 	int playerLives;
+	sf::SoundBuffer buffer;
+	sf::Sound sound;
 	//Clock clock;
 public:
 	Game(); // (Default for now will change later on)
