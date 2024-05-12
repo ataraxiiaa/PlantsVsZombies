@@ -156,6 +156,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
     if (cooldown[0].getElapsedTime().asSeconds() >= 5) {
         sprites[0].setTexture(texture[0]);
         sprites[0].setTextureRect(sf::IntRect(0, 0, 114, 101));
+        sprites[0].setPosition(-10, 50);
     }
     if (cooldown[1].getElapsedTime().asSeconds() >= 5) {
         sprites[1].setTexture(texture[1]);
@@ -232,7 +233,8 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             spawned = true;
                             cooldown[0].restart();
                             sprites[0].setTexture(texture[0]);
-                            sprites[0].setTextureRect(sf::IntRect(100, 0, 114, 101));
+                            sprites[0].setTextureRect(sf::IntRect(110, 0, 114, 101));
+                            sprites[0].setPosition(10, 50);
                         }
 
                         else if (id[index] == "peashooter" && money >= 100 && cooldown[1].getElapsedTime().asSeconds() >= 5) {
