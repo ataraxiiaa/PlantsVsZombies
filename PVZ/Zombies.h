@@ -12,6 +12,8 @@ protected:
 	int yPositions[5];
 	bool fly;
 	string type;
+	Clock clock;
+	bool slowed;
 public:
 	Zombie() 
 	{
@@ -43,4 +45,5 @@ public:
 	virtual void setX(int x) { this->position.SetX(x); }
 	Coordinates GetPosition()const { return this->position; }
 	virtual void spawnBackupZombies(Vector<Zombie*>& ptr) { cout << "here" << endl; }
+	void slowDown();
 };

@@ -72,6 +72,17 @@ void Zombie::drawZombie(sf::RenderWindow& window)
 
 void Zombie::action(sf::RenderWindow& window, Vector<Plants*>& ptr, bool** set)
 {
+	if (slowed && clock.getElapsedTime().asSeconds() >= 4) {
+		this->speed += 0.2;
+		slowed = false;
+	}
 	this->moveZombie(ptr, set);
 	this->drawZombie(window);
+}
+
+void Zombie::slowDown()
+{
+	clock.restart();
+	this->speed = this->speed - 0.2;
+	slowed = true;
 }

@@ -83,7 +83,7 @@ void Game::Start_Game()
 			//menu.ShowGameOVer(window, 50);
 		}
 		while (menu.getGameOver()) {
-			menu.ShowGameOVer(window, 50);
+			menu.ShowGameOVer(window, score);
 			/*if (menu.getGameOver() == false) {
 				menu.setState(true);
 			}*/
@@ -106,10 +106,10 @@ void Game::Start_Game()
 				pause.setState(true);
 
 
-			createGrid(window);
 			//Create a background
 			createBack(window, level->GetSprite());
 			createMap(window, level->GetSprite());
+			createGrid(window);
 			if (level->GetLevel() == 1) {
 				createGrid(window);
 			}

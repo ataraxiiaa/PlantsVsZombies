@@ -47,9 +47,9 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     this->zombiesKilled = 0;
     font.loadFromFile("../fonts/comicsans.ttf");
     text.setFont(font);
-    text.setCharacterSize(40);
+    text.setCharacterSize(25);
     text.setFillColor(sf::Color::Yellow);
-    text.setPosition(160, 8);
+    text.setPosition(130, 20);
     font.loadFromFile("../fonts/logofont.otf");
     lives.setFont(font);
     lives.setCharacterSize(30);
@@ -279,7 +279,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
                         }
                         if (spawned)
                         {
-                            if (ptr.back()->GetType() != "CherryBomb") {
+                            if (ptr.back()->GetType() != "CherryBomb" && ptr.back()->GetType()!="Wallnut") {
                                 FIELD_GAME_STATUS[row][col] = true;
                                 ptr.back()->setI(row);
                                 ptr.back()->setJ(col);
@@ -477,14 +477,14 @@ void Gameplay::resetGame()
 }
 bool Gameplay::CheckTransitionCondition(int levels) {
 
-    if (zombiesKilled >= 1)
+    if (zombiesKilled >= levels * 5)
         return true;
     return false;
 }
 
 bool Gameplay::checkEnd(int levels, int playerLives)
 {
-    if (levels < 4 || playerLives==0)
+    if (levels < 4 && playerLives>0)
         return false;
     return true;
 }
