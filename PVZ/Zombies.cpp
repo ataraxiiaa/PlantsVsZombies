@@ -1,6 +1,6 @@
 #include "Zombies.h"
 
-bool Zombie::checkIfPlantAhead(Vector<Plants*>& plant)
+bool Zombie::checkIfPlantAhead(Vector<Plants*>& plant) //checks if plant is infront of zombie
 {
 	for (int i = 0; i < plant.GetSize(); i++)
 	{
@@ -18,7 +18,7 @@ bool Zombie::checkIfPlantAhead(Vector<Plants*>& plant)
 	}
 	return false;
 }
-int Zombie::findIndex(Vector<Plants*> plant)
+int Zombie::findIndex(Vector<Plants*> plant) //finds plant index which is to be damaged
 {
 	for (int i = 0; i < plant.GetSize(); i++)
 	{
@@ -36,12 +36,12 @@ int Zombie::findIndex(Vector<Plants*> plant)
 }
 void Zombie::doDamage(Vector<Plants*>& ptr, bool** set)
 {
-	int index = findIndex(ptr);
+	int index = findIndex(ptr); //finds which plant to damage
 
 	if (ptr[index]->GetLives() > 0) {
-		ptr[index]->SetLives(ptr[index]->GetLives() - damage);
+		ptr[index]->SetLives(ptr[index]->GetLives() - damage); //hits plant according to damage
 	}
-	else if (ptr[index]->GetLives() == 0)
+	else if (ptr[index]->GetLives() == 0) //kills plant if lives finished
 	{
 		if (ptr[index]->GetType() != "CherryBomb") {
 			ptr[index]->SetExistence(false);
@@ -72,7 +72,7 @@ void Zombie::drawZombie(sf::RenderWindow& window)
 
 void Zombie::action(sf::RenderWindow& window, Vector<Plants*>& ptr, bool** set)
 {
-	if (slowed && clock.getElapsedTime().asSeconds() >= 4) {
+	if (slowed && clock.getElapsedTime().asSeconds() >= 4) { //checks time to reset zombie speed 
 		this->speed += 0.2;
 		slowed = false;
 	}
@@ -80,7 +80,7 @@ void Zombie::action(sf::RenderWindow& window, Vector<Plants*>& ptr, bool** set)
 	this->drawZombie(window);
 }
 
-void Zombie::slowDown()
+void Zombie::slowDown() //slows down zombie if hit by snowpea
 {
 	clock.restart();
 	this->speed = this->speed - 0.2;

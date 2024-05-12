@@ -10,6 +10,6 @@ protected:
 public:
 	MovePlant();
 	void MovingPlant(); // Moving any plant in general
-	void CheckCollision(Vector<Zombie*>& Zombie, int& killed);
+	void CheckCollision(Vector<Zombie*>& Zombie, int& killed); //checks collision with any zombies while rolling
 };
 

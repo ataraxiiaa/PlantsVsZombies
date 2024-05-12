@@ -35,6 +35,8 @@ public:
 	int getI() { return i; }
 	int getJ() { return j; }
 	bool getShooterType() { return this->shooterType; }
+	Animation* getAnimation() { return animate; }
+	virtual string GetType()const { return Type; }
 	// Setters
 	void SetCoolDown(float coolDown) { this->coolDown = coolDown; }
 	void SetCost(int cost) { this->cost = cost; }
@@ -46,9 +48,7 @@ public:
 	void setI(int i) { this->i = i; }
 	void setJ(int j) { this->j = j; }
 	
-	Animation* getAnimation() { return animate; }
 	// Action each plant performs
-	virtual string GetType()const { return Type; }
 	virtual void Action(RenderWindow& window) = 0; // Abstract function
 
 };

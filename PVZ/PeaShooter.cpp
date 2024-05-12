@@ -14,5 +14,5 @@ PeaShooter::PeaShooter()
 }
 void PeaShooter::Action(RenderWindow& window)
 {
-	Fire(window, this->position);
+	Fire(window, this->position); //fires bullet
 }

@@ -23,6 +23,6 @@ void SnowPea::Action(RenderWindow& window, int& money)
 {
 	if (exists)
 	{
-		Fire(window, this->position);
+		Fire(window, this->position); //fires bullet
 	}
 }

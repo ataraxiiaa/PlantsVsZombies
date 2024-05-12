@@ -9,7 +9,7 @@ HouseGuardian::HouseGuardian(string std_path) {
 	speed = 15.0f;
 	destroyed = false;
 }
-void HouseGuardian::CheckCollision(Vector<Zombie*>& Zptr,int& zombiesKilled) {
+void HouseGuardian::CheckCollision(Vector<Zombie*>& Zptr,int& zombiesKilled) { //checks collision of guardian with zombie
 	for (int i = 0; i < Zptr.GetSize(); ++i) {
 		if (position.GetX() - Zptr[i]->GetPosition().GetX() >= -50 &&
 			position.GetX() - Zptr[i]->GetPosition().GetX() <= 50 &&
@@ -17,16 +17,15 @@ void HouseGuardian::CheckCollision(Vector<Zombie*>& Zptr,int& zombiesKilled) {
 			position.GetY() - Zptr[i]->GetPosition().GetY() <= 30 &&
 			Zptr[i]->GetExistance() && this->exists)
 		{	
+			//kills zombie if in path of guardian
 			zombiesKilled++;
 			Zptr[i]->setExists(false);
 			Zptr.Destroy(i);	
-			cout << "Collided" << endl;
-			//this->exists = false;
 			destroyed = true;
 		}
 	}
 	if (destroyed)
-		MoveGuardian();
+		MoveGuardian(); //moves guardian to end of grid
 }
 void HouseGuardian::MoveGuardian() {
 	if (this->exists) {
@@ -34,6 +33,6 @@ void HouseGuardian::MoveGuardian() {
 		sprite.setPosition(position.GetX(), spritePos.GetY());
 
 		if(position.GetX() >= 1150)
-			this->exists = false;
+			this->exists = false; //despawns guardian when it reaches end of grid
 	}
 }

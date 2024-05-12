@@ -7,8 +7,8 @@ class DancingZombie :public Zombie {
 	bool spawned;
 	Clock clock;
 public:
-	DancingZombie();
-	string getType() { return this->type; }
-	virtual void moveZombie(Vector<Plants*>& ptr, bool** set);
-	virtual void spawnBackupZombies(Vector<Zombie*>& ptr);
+	DancingZombie(); //Default constructor
+	string getType() { return this->type; } //returns type of zombie
+	virtual void moveZombie(Vector<Plants*>& ptr, bool** set); //moves dancing zombie
+	virtual void spawnBackupZombies(Vector<Zombie*>& ptr, int& end); //spawns backup zombies 
 };

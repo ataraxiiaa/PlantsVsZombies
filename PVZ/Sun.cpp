@@ -65,16 +65,14 @@ void Sun::CollectSun(sf::RenderWindow& window, int& money)
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
 		sf::FloatRect sunBounds(position.GetX(), position.GetY(),75,77);
-		// IDk what to do with this 
-		// will need a discussion on this leaving it just like this for now
-		if (sunBounds.contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+		if (sunBounds.contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) //checks if sun sprite is clicked
 		{
 			exist = false;
 			money += 25;
 		}
 	}
-	if (autoCollect)
-		if (position.GetY() > 300)
+	if (autoCollect) //autocollects sun
+		if (position.GetY() > 200)
 		{
 			exist = false;
 			money += 25;

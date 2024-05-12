@@ -3,6 +3,7 @@
 Gameplay::Gameplay(): gridCols(9), gridRows(5)
 {
     xRange = 1100;
+    endZombies = 0;
 	FIELD_GAME_STATUS = new bool*[gridRows];
 	for (int i = 0; i < gridRows; ++i)
 	{
@@ -65,12 +66,11 @@ Gameplay::~Gameplay() {
         delete[] FIELD_GAME_STATUS;
 }
 
-void Gameplay::checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse)
+void Gameplay::checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse) //function to check where player clicks with mouse
 {
     mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-    if (mouse.x > 270 && mouse.x < xRange && mouse.y > 80 && mouse.y < 680)
+    if (mouse.x > 270 && mouse.x < xRange && mouse.y > 80 && mouse.y < 680) //legal area for game
     {
-        //cout << xRange << endl;
         mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
         for (int i = 270, j = 0; i < xRange && j < 9; i += 92, j++)
         {
@@ -95,7 +95,7 @@ void Gameplay::checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWin
     }
 }
 
-void Gameplay::checkShopClick(RenderWindow& window)
+void Gameplay::checkShopClick(RenderWindow& window) //function to check which sprite from shop is clicked
 {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
@@ -109,14 +109,14 @@ void Gameplay::checkShopClick(RenderWindow& window)
             if (bounds[i].contains(mouse))
             {
                 selected = true;
-                index = i;
+                index = i; //sets index of shop sprite that is clicked
             }
         }
 
     }
 }
 
-void Gameplay::checkRemoverClick(RenderWindow& window)
+void Gameplay::checkRemoverClick(RenderWindow& window) //function to check if remover sprite is clicked
 {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
@@ -124,22 +124,22 @@ void Gameplay::checkRemoverClick(RenderWindow& window)
         Sprite sprites = shovel.getSprite();
         sf::FloatRect bounds;
         bounds = sprites.getGlobalBounds();
-        if (bounds.contains(mouse)) {
+        if (bounds.contains(mouse)) { //if clicked, toggles removers selected bool
             shovel.setSelect(!shovel.getSelect());
         }
     }
 }
 
-void Gameplay::removePlant(RenderWindow& window) {
-    if (shovel.getSelect())
+void Gameplay::removePlant(RenderWindow& window) { //function to remove plant with remover
+    if (shovel.getSelect()) //checks if remover is selected
     {
         int row = 0, col = 0;
         Event e;
         float xPos = 0, yPos = 0;
         sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-        checkGrid(row, col, xPos, yPos, window, mouse);
+        checkGrid(row, col, xPos, yPos, window, mouse); //checks which index of grid is clicked
         for (int i = 0; i < ptr.GetSize(); i++) {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) //if left button is clicked, removes plant with same coordinates if it exists
             {
                 if (ptr[i]->GetPosition().GetX() == xPos && ptr[i]->GetPosition().GetY() == yPos - 30
                     && ptr[i]->CheckExistance() && FIELD_GAME_STATUS[row][col])
@@ -153,10 +153,11 @@ void Gameplay::removePlant(RenderWindow& window) {
 
     }
 }
-void Gameplay::dropToGrid(RenderWindow& window)
+void Gameplay::dropToGrid(RenderWindow& window) //function to drop plant from shop to grid
 {
     Sprite* sprites = shop.getSprite();
     Vector<Sprite> SelectedSprite = shop.getSelectedSprite(); 
+    //sets shop sprites to greyed out ones to give effect of cooldown
     if (cooldown[0].getElapsedTime().asSeconds() >= 5) {
         sprites[0].setTexture(texture[0]);
         sprites[0].setTextureRect(sf::IntRect(0, 0, 114, 101));
@@ -186,7 +187,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
         sprites[6].setTexture(texture[6]);
         sprites[6].setTextureRect(sf::IntRect(0, 0, 110, 101));
     }
-    if (selected)
+    if (selected) //checks if shop sprite is clicked
     {
         sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
@@ -235,7 +236,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
                     {
                         bool spawned = false;
 
-                        // Place the needed plant on the grid
+                        // Place the needed plant on the grid and checks if player has money to place plant
                         if (id[index] == "sunflower" && money >= 100 && cooldown[0].getElapsedTime().asSeconds() >= 5) {
                             ptr.push_back(new SunFlower(money));
                             ptr.back()->setX(xPos);
@@ -250,7 +251,6 @@ void Gameplay::dropToGrid(RenderWindow& window)
 
                         else if (id[index] == "peashooter" && money >= 100 && cooldown[1].getElapsedTime().asSeconds() >= 5) {
                             ptr.push_back(new PeaShooter);
-                            cout << "1" << endl;
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
                             money -= ptr.back()->GetCost();
@@ -260,7 +260,6 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             sprites[1].setTextureRect(sf::IntRect(87, 0, 85, 101));
                         }
                         else if (id[index] == "wallnut" && money >= 50 && cooldown[2].getElapsedTime().asSeconds() >= 5) {
-                            cout << "1" << endl;
                             ptr.push_back(new WallNut);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
@@ -332,6 +331,7 @@ void Gameplay::CheckCollision() {
     for (int i = 0; i < ptr.GetSize(); ++i) {
         int temp=0;
         Plants* plant = ptr[i];
+        //checks if attacking plants hit zombies
         if (plant->GetType() == "PeaShooter" || plant->GetType()=="Repeater" || plant->GetType() == "Snowpea" || plant->GetType()=="FumeShroom") {
             Shooter* shooter = (Shooter*)(plant);
             shooter->CheckBulletCollision(zptr, zombiesKilled);
@@ -348,8 +348,8 @@ void Gameplay::CheckCollision() {
 }
 
 
-void Gameplay::StartGamePlay(RenderWindow& window, int level, int& playerLives) {
-    spawnZombies(level);
+void Gameplay::StartGamePlay(RenderWindow& window, int level, int& playerLives) { //starts game
+    spawnZombies(level);//spawns zombies
     for (int i = 0; i < Guardians.GetSize(); ++i) {
         Guardians[i]->CheckCollision(this->zptr, zombiesKilled);
         if (Guardians[i]->GetExistance())
@@ -359,24 +359,24 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level, int& playerLives) 
         shop.setShop(level);
         restart = true;
     }
-    shop.DrawShop(window);
-    this->checkShopClick(window);
-    this->dropToGrid(window);
+    if (endZombies == 0)
+        endZombies = level * 5;
+    shop.DrawShop(window); //draws available plants in shop
+    this->checkShopClick(window); //checks shop click
+    this->dropToGrid(window); //checks if plant is dropped to grid
 
     for (int i = 0; i < zptr.GetSize(); i++) {
         if (zptr[i]->getType() == "dancing") {
-            //cout << "dancing" << endl;
-            zptr[i]->spawnBackupZombies(zptr);
+            zptr[i]->spawnBackupZombies(zptr, endZombies); //spawns backup zombies for dancing zombie
         }
-        //if (zptr[i]->GetExistance())
-            //cout << "exists" << i << endl;
-        zptr[i]->action(window, ptr, this->FIELD_GAME_STATUS);
+        zptr[i]->action(window, ptr, this->FIELD_GAME_STATUS); //moves and draws all zombies
         this->CheckCollision();
-        if (zptr[i]->GetPosition().GetX() <= 150)
+        if (zptr[i]->GetPosition().GetX() <= 150 && zptr[i]->GetExistance()) //deducts player life if zombies reach home
         {
             zptr[i]->setExistence(false);
             zptr.Destroy(i);
             playerLives--;
+            zombiesKilled++;
         }
     }
     for (int i = 0; i < ptr.GetSize(); i++)
@@ -384,8 +384,8 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level, int& playerLives) 
         if (ptr[i]->GetType() == "FumeShroom") {
             Plants* plant = ptr[i];
             RangedShooter* ranged = (RangedShooter*)ptr[i];
-            if (ranged->CheckRange(this->zptr)) {
-                ptr[i]->Action(window);
+            if (ranged->CheckRange(this->zptr)) { //shoots bullets of fumeshroom
+                ptr[i]->Action(window); //function that shoots bullets if attacking plant
             }
         }
         else {
@@ -397,28 +397,24 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level, int& playerLives) 
 
     }
     sun.DrawSun(window, money);
-    // Currency Text
-
-    this->checkRemoverClick(window);
-    this->removePlant(window);
+    this->checkRemoverClick(window); //checks if remover clicked
+    this->removePlant(window); //removes plants
+    shovel.drawRemover(window);
+    //currency text
     text.setString(to_string(money));
     window.draw(text);
-    shovel.drawRemover(window);
 
 }
 
 void Gameplay::spawnZombies(int level)
 {
     static int x = 0;
-    //static Clock clock;
-    initialTime = 5 - 2 * (level - 1);
-    //initialTime = 1;
+    initialTime = 5 - 2 * (level - 1); 
     timeInterval = initialTime / 1.5 + 3;
-    //cout << clock.getElapsedTime().asSeconds() << endl;
+    //spawns zombies with delay and until max zombies for level are reached
     if (zombiesSpawned == 0)
     {
         if (clock.getElapsedTime().asSeconds() >= initialTime) {
-            cout << clock.getElapsedTime().asSeconds() << endl;
             clock.restart();
             zombiesSpawned++;
         }
@@ -426,8 +422,6 @@ void Gameplay::spawnZombies(int level)
     else if (zombiesSpawned==1){
         if (clock.getElapsedTime().asSeconds() >= initialTime)
         {
-            //cout << "0" << endl;
-            cout << clock.getElapsedTime().asSeconds() << endl;
 
             zptr.push_back(new NormalZombie);
             zptr[zptr.GetSize() - 1]->setX(1200);
@@ -447,19 +441,15 @@ void Gameplay::spawnZombies(int level)
                 if (check == 0)
                 {
                     zptr.push_back(new NormalZombie);
-                    //cout << "normal" << endl;
                 }
                 else if (check == 1) {
                     zptr.push_back(new FootballZombie);
-                    //cout << "football" << endl;
                 }
                 else if (check == 2) {
                     zptr.push_back(new DancingZombie);
-                   // cout << "dnacing" << endl;
                 }
                 else if (check == 3) {
                     zptr.push_back(new FlyingZombie);
-                    //cout << "flying" << endl;
                 }
             }
             else
@@ -475,6 +465,7 @@ void Gameplay::spawnZombies(int level)
 
 void Gameplay::resetGame()
 {
+    //resets game, destroying any plants and zombies
     for (int i = 0; i < zptr.GetSize(); ++i) {
         zptr[i]->setExistence(false);
     }
@@ -498,6 +489,7 @@ void Gameplay::resetGame()
         Guardians[i]->SetSprtePos(pos1);
         Guardians[i]->SetCoordinates(pos2);
         Guardians[i]->setExistence(true);
+        Guardians[i]->setDestroyed(false);
     }
     zombiesKilled = 0;
     clock.restart();
@@ -506,17 +498,19 @@ void Gameplay::resetGame()
     for (int i = 0; i < 7; ++i) {
         cooldown[i].restart();
     }
+    endZombies = 0;
+    money = 1500;
 }
 bool Gameplay::CheckTransitionCondition(int levels) {
 
-    if (zombiesKilled >= 1)
+    if (zombiesKilled == endZombies) //checks if level is to be changed
         return true;
     return false;
 }
 
 bool Gameplay::checkEnd(int levels, int playerLives)
 {
-    if (levels < 4 && playerLives>0)
+    if (levels < 6 && playerLives>0) //checks game ending condition
         return false;
     return true;
 }

@@ -17,7 +17,7 @@ bool RangedShooter::CheckRange(Vector<Zombie*>& Zptr) {
 	}
 	return false;
 }
-bool RangedShooter::CheckBulletRange() {
+bool RangedShooter::CheckBulletRange() { //checks if bullet sprite reaches end of range
 	if (this->bullet[0].GetPosition().GetX() >= this->position.GetX() + 300) {
 		shoot = false;
 		return false;

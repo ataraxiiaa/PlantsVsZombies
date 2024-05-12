@@ -27,9 +27,7 @@ Level::Level(int level) {
 }
 void Level::CreateTransition(RenderWindow& window) {
 	if (gamePlay.CheckTransitionCondition(this->level)) {
-		drawTransition(window);
-
-
+		drawTransition(window); //draws transition and resets grid when transition condition is met
 		gamePlay.resetGame();
 		this->level += 1;
 		clock.restart();
@@ -48,7 +46,7 @@ void Level::drawTransition(RenderWindow& window)
 void Level::startGamePlay(RenderWindow& window,int &score, int& playerLives) {
 	int temp = gamePlay.getKilled();
 	text.setString("Level " + to_string(level));
-	gamePlay.StartGamePlay(window, this->level, playerLives);
+	gamePlay.StartGamePlay(window, this->level, playerLives); //starts game 
 	if (temp < gamePlay.getKilled()) {
 		score += 20;
 	}
@@ -56,41 +54,3 @@ void Level::startGamePlay(RenderWindow& window,int &score, int& playerLives) {
 	window.draw(scoreText);
 	window.draw(text);
 }
-
-//void Level::displayLevel(RenderWindow& window, int level) {
-//	static Clock clock;
-//	//if (clock.getElapsedTime().asSeconds() >= 10) 
-//	//{
-//	sf::Event e;
-//	while (window.pollEvent(e))
-//	{
-//		if (e.type == sf::Event::Closed) // Checks if main window is closed or not
-//			window.close();
-//		if (e.key.code == sf::Keyboard::Enter && e.type == sf::Event::KeyPressed || clock.getElapsedTime().asSeconds() >= 2)
-//			start = true;
-//	}
-//
-//	// Setting text
-//	text[0].setString("Level " + to_string(level));
-//	text[0].setPosition(470, 300);
-//	text[1].setString("Press Enter");
-//	text[1].setPosition(330, 400);
-//
-//	// Loading Main backgorund png
-//	Texture BackgroundT;
-//	Sprite BackgroundS;
-//
-//	BackgroundT.loadFromFile("../Images/Main2.png");
-//	BackgroundS.setTexture(BackgroundT);
-//
-//	window.clear();
-//	window.draw(BackgroundS); // Draws Main menus background
-//	window.draw(text[0]); // Drawing texts
-//	window.draw(text[1]); // Drawing texts
-//	//}
-//	//else
-//	//{
-//		//start = true;
-//		//clock.restart();
-//	//}
-//}

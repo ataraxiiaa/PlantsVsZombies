@@ -23,19 +23,18 @@ void Explosive::DrawExplosion(RenderWindow& window, Coordinates position) // For
 		
 	}
 }
-void Explosive::CheckExplosionCollision(Vector<Zombie*>& Zombie, int& killed) {
+void Explosive::CheckExplosionCollision(Vector<Zombie*>& Zombie, int& killed) { 
 	if (explode) {
 		for (int j = 0; j < Zombie.GetSize(); ++j) {
-			if (ExplosionPosition.GetX() - Zombie[j]->GetPosition().GetX() >= -150 &&
+			if (ExplosionPosition.GetX() - Zombie[j]->GetPosition().GetX() >= -150 && //checks if any zombie is in vicinity of explosion
 				ExplosionPosition.GetX() - Zombie[j]->GetPosition().GetX() <= 150 &&
 				ExplosionPosition.GetY() - Zombie[j]->GetPosition().GetY() >= -150 &&
 				ExplosionPosition.GetY() - Zombie[j]->GetPosition().GetY() <= 150 &&
 				Zombie[j]->GetExistance())
 			{
-				killed++;
+				killed++; //kills zombie in vicinity of explosion
 				Zombie[j]->setExists(false);
 				Zombie.Destroy(j);
-				cout << "zombie destroyed" << endl;
 			}
 		}
 	}

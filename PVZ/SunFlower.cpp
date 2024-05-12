@@ -20,7 +20,7 @@ SunFlower::SunFlower(int &money)
 void SunFlower::drawPlant(sf::RenderWindow& window)
 {
 	if (exists)
-		Plants::drawPlant(window);
+		Plants::drawPlant(window); //draws sunflower if it exists
 }
 void SunFlower::ProduceSun(RenderWindow& window) 
 {
@@ -35,10 +35,9 @@ void SunFlower::Action(RenderWindow& window)
 {
 	if (!sun.getExists() && this->exists)
 	{
-		//cout << "nigga" << endl;
 		if (clock.getElapsedTime().asSeconds() >= this->time)
 		{
-			ProduceSun(window);
+			ProduceSun(window); //produces sun
 		}
 	}
 	else if (sun.getExists() && this->exists)

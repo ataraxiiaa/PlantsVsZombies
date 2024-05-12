@@ -12,8 +12,8 @@ protected:
 	int totalBullets;
 public:
 	RangedShooter(int totalBullets=1);
-	bool CheckRange(Vector<Zombie*>& Zptr);
-	bool CheckBulletRange();
+	bool CheckRange(Vector<Zombie*>& Zptr); //checks if zombie is within range of fire
+	bool CheckBulletRange(); //checks where bullet range ends
 	//void Action(sf::RenderWindow& window);
 };
 

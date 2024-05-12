@@ -44,7 +44,7 @@ public:
 				}
 				else if (option == 1)
 				{
-					collect = !collect;
+					collect = !collect; //toggles autocollect sun option
 				}
 				else if (option == 3) 
 				{

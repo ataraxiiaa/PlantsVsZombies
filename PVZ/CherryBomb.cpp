@@ -12,16 +12,16 @@ CherryBomb::CherryBomb()
 }
 void CherryBomb::Action(RenderWindow& window) {
 	if (this->exists) {
-		if (clock.getElapsedTime().asSeconds() >= 0.5) {
+		if (clock.getElapsedTime().asSeconds() >= 0.5) { //checks time for explosion
 			exists = false;
 			clock.restart();
 		}
-		else {
+		else { //increases size of sprite to give effect of explosion
 			sprite.setScale(this->scale+=0.03, this->scale+=0.03);
 			sprite.setPosition(this->position.GetX(), this->position.GetY());
 			window.draw(sprite);
 		}
 	}
 	if(!exists)
-		DrawExplosion(window, this->position);
+		DrawExplosion(window, this->position); //draws explosion when time is up
 }

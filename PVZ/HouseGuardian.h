@@ -17,8 +17,8 @@ public:
 	HouseGuardian() = default; // Default constructor 
 
 	HouseGuardian(string std_path);
-	void CheckCollision(Vector<Zombie*>& Zptr,int &zombiesKilled);
-	void MoveGuardian();
+	void CheckCollision(Vector<Zombie*>& Zptr,int &zombiesKilled); //checks collision with zombie
+	void MoveGuardian(); //moves guardian towards end of the game grid
 	void SetSpritePosGuard(Coordinates pos) {
 		spritePos.SetX(pos.GetX());
 		spritePos.SetY(pos.GetY());
@@ -26,6 +26,7 @@ public:
 	void Action() {
 		
 	}
+	void setDestroyed(bool des) { this->destroyed = des; }
 
 };
 

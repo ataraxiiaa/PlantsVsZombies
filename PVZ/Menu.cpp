@@ -36,7 +36,7 @@ MainMenu::MainMenu()
 	this->currentState = true;
 	this->startGame = false;
 }
-void MainMenu::DisplayScore(RenderWindow& window) {
+void MainMenu::DisplayScore(RenderWindow& window) { //displays highscore screen
 	Event e;
 	while (window.pollEvent(e)) {
 		if (e.type == sf::Event::Closed)
@@ -59,7 +59,7 @@ void MainMenu::DisplayScore(RenderWindow& window) {
 
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 2; ++j) {
-				if (scores[j + 1] > scores[j]) {
+				if (scores[j + 1] > scores[j]) { //sorts highest scores
 					int temp = scores[j + 1];
 					string tempName = names[j + 1];
 
@@ -70,7 +70,7 @@ void MainMenu::DisplayScore(RenderWindow& window) {
 				}
 			}
 		}
-
+		//displays top 3 scores and player names
 		for (int i = 0; i < 3; ++i) {
 			scoreText[i].setString(names[i] + "  " + to_string(scores[i]));
 			scoreText[i].setPosition(450, 300 + (i * 100));
@@ -84,7 +84,7 @@ void MainMenu::DisplayScore(RenderWindow& window) {
 		file.close();
 	}
 }
-void MainMenu::ShowGameOVer(RenderWindow& window, int score) {
+void MainMenu::ShowGameOVer(RenderWindow& window, int score) { //shows gameover screen
 	text2[0].setString("Enter your Name: ");
 	text2[0].setCharacterSize(30);
 	text2[0].setPosition(100, 350);
@@ -166,7 +166,7 @@ void MainMenu::ShowGameOVer(RenderWindow& window, int score) {
 	}
 	window.display();
 }
-void MainMenu::DisplayMain(sf::RenderWindow& window)
+void MainMenu::DisplayMain(sf::RenderWindow& window) //displays mainmenu
 {
 	window.clear();
 	this->setGameOver(false);

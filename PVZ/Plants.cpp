@@ -1,6 +1,6 @@
 #include "Plants.h"
 
-void Plants::drawPlant(RenderWindow& window)
+void Plants::drawPlant(RenderWindow& window) //draws plant if it exists
 {
 	if (exists)
 	{

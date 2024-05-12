@@ -8,7 +8,7 @@ WallNut::WallNut()
 	animate = new Animation;
 	animate->SetSheet(0.3, 6, texture, 8, 1);
 	exists = true;
-	this->lives = 10;
+	this->lives = 10000;
 	this->damage = 1000;
 	Type = "Wallnut";
 }

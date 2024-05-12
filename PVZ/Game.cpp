@@ -3,9 +3,9 @@
 Game::Game()
 {
 	levels = 1;	
-	level = new BeginnersGarden;
-	score = 0;
-	playerLives = 3;
+	level = new BeginnersGarden; //sets first levels sprite
+	score = 0; 
+	playerLives = 3; //set lives for player
 	playerLivesTexture.loadFromFile("../Images/soul.png");
 	for (int i = 0; i < 3; ++i) {
 		playerLivesSprite[i].setTexture(playerLivesTexture);
@@ -16,24 +16,18 @@ Game::Game()
 	}
 	buffer.loadFromFile("../Sounds/music1.mp3");
 	sound.setBuffer(buffer);
+<<<<<<< HEAD
+=======
+	sound.setVolume(0);
+>>>>>>> a191319e87b8c29edad9595e7dd6186a38b7796e
 }
 void Game::createBack(RenderWindow& window,Sprite sprite)
 {
-	//Drawing the background
-	//Image map_image;
-	////Will have to change the path to run it properly ig for this too
-	//map_image.loadFromFile("../Images/Background3.jpg");
-	//Texture map;
-	//map.loadFromImage(map_image);
-	//Sprite s_map;
-	//s_map.setTexture(map);
-	//s_map.setPosition(0, 0);
 	window.draw(sprite);
 }
 void Game::createMap(RenderWindow& window, Sprite sprite) {
 	//Drawing a map
 	Image map_image;
-	//Will have to change the path to run it properly ig for this too
 	map_image.loadFromFile("../Images/backwindow2.jpg");//load the file for the map
 	Texture map;
 	map.loadFromImage(map_image);
@@ -58,28 +52,11 @@ void Game::Start_Game()
 	RenderWindow window(VideoMode(1200, 700), "Plants Vs Zombies");
 	//Game icon
 	Image icon;
-	//Will have to change the path to run it properly ig
 	if (!icon.loadFromFile("../Images/backwindow.jpg")) 
 	{
 		return;
 	}
 	window.setIcon(32, 32, icon.getPixelsPtr());
-
-	///////////////////////////////////////
-
-	//Game field (5*9)
-	//Point 137*79 - leftmost point
-	//length 41; width 53
-	/*const int ROWS = 5;
-	const int COLS = 9;
-
-	bool FIELD_GAME_STATUS[ROWS][COLS];
-
-	for (int i = 0; i < ROWS; i++) {
-		for (int j = 0; j < COLS; j++) {
-			FIELD_GAME_STATUS[i][j] = true;
-		}
-	}*/
 
 	Clock timeMoney;
 	Clock clock;
@@ -87,19 +64,19 @@ void Game::Start_Game()
 	sound.play();
 	while (window.isOpen())
 	{
-		if (menu.ShowState() == true)
+		if (menu.ShowState() == true) //display start menu if not entered into game
 		{
-			menu.DisplayMain(window);
+			menu.DisplayMain(window); 
 			pause.setState(false);
 			//menu.ShowGameOVer(window, 50);
 		}
-		while (menu.getGameOver()) {
+		while (menu.getGameOver()) { //display end screen when game ended
 			menu.ShowGameOVer(window, score);
 			/*if (menu.getGameOver() == false) {
 				menu.setState(true);
 			}*/
 		}
-		if (pause.restartGame()) {
+		if (pause.restartGame()) { //restarts game if option selected
 			level->GetGamePlay().resetGame();
 			delete level;
 			level = new BeginnersGarden;
@@ -108,7 +85,7 @@ void Game::Start_Game()
 			this->playerLives = 3;
 			pause.setResetGame(false);
 		}
-		if (!menu.ShowState() && !pause.ShowState() && menu.showGame())
+		if (!menu.ShowState() && !pause.ShowState() && menu.showGame()) //enters into game
 		{
 			float time = clock.getElapsedTime().asMicroseconds();
 			float moneyTime = timeMoney.getElapsedTime().asSeconds();
@@ -121,7 +98,7 @@ void Game::Start_Game()
 				if (event.type == Event::Closed)
 					window.close();
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) //displays pause screen if escape pressed
 				pause.setState(true);
 
 
@@ -129,7 +106,7 @@ void Game::Start_Game()
 			//Create a background
 			createBack(window, level->GetSprite());
 			createMap(window, level->GetSprite());
-			if (level->GetLevel() == 1 || level->GetLevel()==3) {
+			if (level->GetLevel() == 1 || level->GetLevel()>=3) {
 				createGrid(window);
 			}
 			// Create the grid
@@ -138,10 +115,10 @@ void Game::Start_Game()
 			else
 				level->GetGamePlay().GetSun().SetAutoCollect(false);
 
-			level->startGamePlay(window, this->score,playerLives);
-			level->GetGamePlay().spawnZombies(levels); // , clock);
-			level->CreateTransition(window);
-			int x = level->GetLevel();
+			level->startGamePlay(window, this->score,playerLives); //starts game 
+			level->GetGamePlay().spawnZombies(levels); // , clock); //spawns zombies
+			level->CreateTransition(window); //creates transition to next level
+			int x = level->GetLevel(); //sets background sprite according to level
 			if (x == 2) {
 				level = &zombieOutSkirts;
 				level->Action(window);
@@ -157,16 +134,12 @@ void Game::Start_Game()
 			window.setSize(sf::Vector2u(1100, 680));
 		}
 		int x = level->GetLevel();
-		if (level->GetGamePlay().checkEnd(x,playerLives) && menu.getGameOver() == false) {
-			//menu.ShowGameOVer(window, 50);
+		if (level->GetGamePlay().checkEnd(x,playerLives) && menu.getGameOver() == false) { //checks ending condition of game 
 			menu.setGameOver(true);
 			menu.setShowGame(false);
 		}
 		if (!menu.ShowState() && pause.ShowState())
-			pause.displayPausedMenu(window);
-		/*else if (!menu.ShowState() && !pause.ShowState() && !level.getStart()) {
-			level.displayLevel(window, levels);
-		}*/
+			pause.displayPausedMenu(window); //displays pause screen
 		window.display();
 	}
 }

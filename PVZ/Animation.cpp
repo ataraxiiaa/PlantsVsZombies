@@ -27,15 +27,15 @@ void Animation::SetSheet(float Delay, int totalFrames,Texture& spriteSheet, int 
 void Animation::Update(bool end)
 {
 	timer += 0.1f;
-		if (timer >= animationDelay)
+		if (timer >= animationDelay) //checks time for refreshing frame
 		{
-			if (currFrame < imagesPerRow)
+			if (currFrame < imagesPerRow) //changes to next frame
 			{
 				sprite.setTextureRect(sf::IntRect(currFrame * frameWidth, 0, frameWidth, frameHeight));
 				timer = 0.0f;
 				currFrame++;
 			}
-			if (currFrame >= imagesPerRow)
+			if (currFrame >= imagesPerRow) //moves frame downwards in sprite sheet
 			{
 				int col = currFrame % imagesPerRow;
 				int row = currFrame / imagesPerRow;
