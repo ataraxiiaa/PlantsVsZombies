@@ -4,9 +4,9 @@ FootballZombie::FootballZombie() {
 	srand((unsigned)time(0));
 	rand();
 	this->exists = true;
-	this->speed = 3;
-	this->damage = 0.5;
-	this->lives = 4;
+	this->speed = 0.7;
+	this->damage = 1;
+	this->lives = 16;
 	this->texture.loadFromFile("../Images/FBZ.png");
 	this->animate = new Animation;
 	this->animate->SetSheet(0.125, 3,texture, 5, 5);

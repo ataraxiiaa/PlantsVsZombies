@@ -3,8 +3,8 @@
 NormalZombie::NormalZombie() {
 	srand((unsigned)time(0));
 	this->speed = 0.5;
-	this->lives = 0.1;
-	this->damage = 0.5;
+	this->lives = 8;
+	this->damage = 1;
 	this->texture.loadFromFile("../Images/Zombie2.png");
 	this->animate = new Animation;
 	this->animate->SetSheet(0.4, 5, texture, 7, 1);

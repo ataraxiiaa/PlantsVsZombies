@@ -22,7 +22,7 @@ protected:
 	bool transitioning;
 	int score;
 public:
-	Level(int level = 3);
+	Level(int level = 1);
 	//void displayLevel(RenderWindow& window, int level);
 	bool getStart() { return this->start; }
 	void setStart(bool start) { this->start = start; }

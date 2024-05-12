@@ -4,9 +4,9 @@ FlyingZombie::FlyingZombie() {
 	srand((unsigned)time(0));
 	rand();
 	rand();
-	this->speed = 0.5;
-	this->damage = 5;
-	this->lives = 4;
+	this->speed = 0.6;
+	this->damage = 1;
+	this->lives = 8;
 	this->texture.loadFromFile("../Images/bz.png");
 	this->animate = new Animation;
 	animate->SetSheet(0.5f, 5, texture, 8, 1);

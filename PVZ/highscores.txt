@@ -1,4 +1,4 @@
-bye 50
-basit 50
-kyspls 50
-basit 50
+basit 80
+basit 80
+basit 80
+basit 40

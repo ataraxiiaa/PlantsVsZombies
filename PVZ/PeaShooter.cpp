@@ -8,9 +8,9 @@ PeaShooter::PeaShooter()
 	texture.loadFromFile("../Images/PeaShooter3.png");
 	animate = new Animation;
 	animate->SetSheet(0.125, 6, texture, 8, 1);
-	this->lives = 10;
+	this->lives = 40;
 	Type = "PeaShooter";
-	this->damage = 0.4;
+	this->damage = 4;
 }
 void PeaShooter::Action(RenderWindow& window)
 {

@@ -57,6 +57,8 @@ void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie, int& killed) {
                 cout << "Hit" << endl;
                 if (Zombie[j]->getLives() > 0) {
                     Zombie[j]->setLives(Zombie[j]->getLives() - getDamage());
+                    if (this->Type == "Snowpea")
+                        Zombie[i]->slowDown();
                 }
                 else
                 {

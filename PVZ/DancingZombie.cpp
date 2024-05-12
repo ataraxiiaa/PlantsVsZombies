@@ -5,8 +5,9 @@ DancingZombie::DancingZombie() {
 	rand();
 	rand();
 	rand();
-	this->speed = 0.5;
-	this->damage = 5;
+	this->speed = 0.85;
+	this->damage = 1;
+	this->lives = 24;
 	this->texture.loadFromFile("../Images/dancingZombie2.png");
 	animate = new Animation;
 	animate->SetSheet(0.5, 4, texture, 6, 6);
