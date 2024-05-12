@@ -7,6 +7,7 @@
 
 class WallNut : public MovePlant // Inherit plant class
 {
+
 public:
 	WallNut(); // Default constructor 
 	

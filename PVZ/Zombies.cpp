@@ -38,15 +38,19 @@ void Zombie::doDamage(Vector<Plants*>& ptr, bool** set)
 {
 	int index = findIndex(ptr);
 
-	if (ptr[index]->GetLives() > 0)
+	if (ptr[index]->GetLives() > 0) {
 		ptr[index]->SetLives(ptr[index]->GetLives() - damage);
+	}
+	if (ptr[index]->GetType() == "Wallnut") {
+		this->setExists(false);
+		this->setLives(0);
+	}
 	else if (ptr[index]->GetLives() == 0)
 	{
 		if (ptr[index]->GetType() != "CherryBomb") {
 			ptr[index]->SetExistence(false);
 			set[ptr[index]->getI()][ptr[index]->getJ()] = false;
 			ptr.Destroy(index);
-			cout << "destroyed" << endl;
 		}
 	}
 }
@@ -64,8 +68,10 @@ void Zombie::moveZombie(Vector<Plants*>& ptr, bool** set)
 }
 void Zombie::drawZombie(sf::RenderWindow& window)
 {
-	this->animate->Update();
-	this->animate->DrawAnimation(window, this->position);
+	if (this->exists) {
+		this->animate->Update();
+		this->animate->DrawAnimation(window, this->position);
+	}
 }
 
 void Zombie::action(sf::RenderWindow& window, Vector<Plants*>& ptr, bool** set)
