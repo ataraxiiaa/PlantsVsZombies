@@ -23,12 +23,13 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     this->zombiesSpawned = 0;
     this->zombiesKilled = 0;
     restart = false;
-    texture = new Texture[5];
+    texture = new Texture[6];
     texture[0].loadFromFile("../Images/SunFlowerShop2.png");
     texture[1].loadFromFile("../Images/PeaShooterShop2.png");
     texture[2].loadFromFile("../Images/potshape.png");
     texture[3].loadFromFile("../Images/CherryBombShop.png");
     texture[4].loadFromFile("../Images/RepeaterShop.png");
+    texture[5].loadFromFile("../Images/snowPeaShop.png");
     
     int yPositions[5];
     yPositions[0] = 97.5 - 40;
@@ -55,10 +56,12 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     font.loadFromFile("../fonts/logofont.otf");
 }
 Gameplay::~Gameplay() {
-    for (int i = 0; i < gridRows; ++i)
+    for (int i = 0; i < gridRows; ++i) {
+        if(FIELD_GAME_STATUS[i] != nullptr)
         delete[] FIELD_GAME_STATUS[i];
-
-    delete[] FIELD_GAME_STATUS;
+    }
+    if (FIELD_GAME_STATUS != nullptr)
+        delete[] FIELD_GAME_STATUS;
 }
 
 void Gameplay::checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse)
@@ -174,6 +177,10 @@ void Gameplay::dropToGrid(RenderWindow& window)
         sprites[4].setTexture(texture[4]);
         sprites[4].setTextureRect(sf::IntRect(0, 0, 100, 101));
     }
+    if (cooldown[5].getElapsedTime().asSeconds() >= 5) {
+        sprites[5].setTexture(texture[5]);
+        sprites[5].setTextureRect(sf::IntRect(0, 0, 120, 101));
+    }
     if (selected)
     {
         sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
@@ -278,6 +285,16 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             cooldown[3].restart();
                             sprites[3].setTexture(texture[3]);
                             sprites[3].setTextureRect(sf::IntRect(75, 0, 160, 100));
+                        }
+                        else if (id[index] == "snowpea" && money >= 200 && cooldown[4].getElapsedTime().asSeconds() >= 5) {
+                            ptr.push_back(new SnowPea);
+                            ptr.back()->setX(xPos);
+                            ptr.back()->setY(yPos - 30);
+                            money -= ptr.back()->GetCost();
+                            spawned = true;
+                            cooldown[5].restart();
+                            sprites[5].setTexture(texture[5]);
+                            sprites[5].setTextureRect(sf::IntRect(120, 0, 240, 101));
                         }
                         if (spawned)
                         {
@@ -477,7 +494,7 @@ void Gameplay::resetGame()
 }
 bool Gameplay::CheckTransitionCondition(int levels) {
 
-    if (zombiesKilled >= levels*5)
+    if (zombiesKilled >= 1)
         return true;
     return false;
 }

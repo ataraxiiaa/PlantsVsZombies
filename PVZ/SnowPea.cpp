@@ -17,6 +17,7 @@ SnowPea::SnowPea()
 	this->position = pos;
 	Ice = true;
 	Type = "Snowpea";
+	this->damage = 4;
 }
 void SnowPea::Action(RenderWindow& window, int& money)
 {

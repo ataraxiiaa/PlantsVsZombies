@@ -3,7 +3,7 @@
 
 Shop::Shop() // Initiallizes every sprite
 {
-	elements = 1;
+	elements = 6;
 	sprite = new Sprite[6]; // Adding sprites
 	texture = new Texture[6]; // Adding textures
 	// Sunflower
@@ -47,6 +47,16 @@ Shop::Shop() // Initiallizes every sprite
 	selectedSprite.push_back(sprite[4]);
 	selectedSprite.back().setTextureRect(sf::IntRect(100, 0, 200, 84));
 	selectedSprite.back().setPosition(13, 400);
+	// Snowpea
+	texture[5].loadFromFile("../Images/snowPeaShop.png");
+	sprite[5].setTexture(texture[5]);
+	sprite[5].setTextureRect(sf::IntRect(0, 0, 120, 101));
+	sprite[5].setPosition(13, 480);
+	sprite[5].setScale(0.8, 0.8);
+	selectedSprite.push_back(sprite[5]);
+	selectedSprite.back().setTextureRect(sf::IntRect(120, 0, 240, 101));
+	selectedSprite.back().setPosition(13, 480);
+	selectedSprite.back().setScale(0.8, 0.8);
 	// Setting up ID pointer to keep track of what item to set 
 	ids = new string[6];
 	ids[0] = "sunflower";
@@ -65,6 +75,6 @@ void Shop::DrawShop(sf::RenderWindow& window)
 }
 void Shop::setShop(int level)
 {
-	elements += 1;
+	elements +=0;
 	//cout << "elements: " << elements << endl;
 }

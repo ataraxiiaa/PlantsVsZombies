@@ -5,7 +5,6 @@
 
 class SnowPea : public Shooter
 {
-	Animation* animate;
 	bool Ice;
 public:
 	SnowPea(); // Default constructor 
