@@ -14,6 +14,9 @@ Game::Game()
 		playerLivesSprite[i].setPosition(230 + (i * 50), -200);
 		playerLivesSprite[i].setScale(1, 1);
 	}
+	buffer.loadFromFile("C:/Users/Ali Abdullah/Downloads/music1.mp3");
+	sound.setBuffer(buffer);
+
 
 }
 void Game::createBack(RenderWindow& window,Sprite sprite)
@@ -83,6 +86,7 @@ void Game::Start_Game()
 	Clock timeMoney;
 	Clock clock;
 	int i = 0;
+	sound.play();
 	while (window.isOpen())
 	{
 		if (menu.ShowState() == true)
