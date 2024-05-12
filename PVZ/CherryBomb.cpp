@@ -8,6 +8,7 @@ CherryBomb::CherryBomb()
 	this->scale = 0.0;
 	sprite.setScale(scale, scale);
 	Type = "CherryBomb";
+	this->cost = 150;
 }
 void CherryBomb::Action(RenderWindow& window) {
 	if (this->exists) {

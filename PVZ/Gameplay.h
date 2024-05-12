@@ -67,6 +67,7 @@ public:
 	void setSpawned(int spawned) { this->zombiesSpawned = spawned; }
 	bool CheckTransitionCondition(int levels);
 	void resetGame();
+	bool checkEnd(int levels);
 
 };
 
