@@ -14,32 +14,8 @@ MainMenu::MainMenu()
 		text[i].setCharacterSize(50); // Loading fonts and setting their sizes
 	}
 }
-void MainMenu::MoveUp()
-{
-	if (option == 0) {
-		text[option].setFillColor(sf::Color::White);
-		option = max - 1;
-		text[option].setFillColor(sf::Color::Yellow);
-	}
-	else if (option > 0) {
-		text[option].setFillColor(sf::Color::White);
-		text[--option].setFillColor(sf::Color::Yellow);
-	}
-}
-void MainMenu::MoveDown()
-{
-	if (option == max - 1)
-	{
-		text[0].setFillColor(sf::Color::Yellow);
-		text[option].setFillColor(sf::Color::White);
-		option = 0;
-	}
-	else if (option < max - 1)
-	{
-		text[option].setFillColor(sf::Color::White);
-		text[++option].setFillColor(sf::Color::Yellow);
-		
-	}
+void MainMenu::DisplayScore(RenderWindow& window) {
+
 }
 
 void MainMenu::DisplayMain(sf::RenderWindow& window)
@@ -59,13 +35,9 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 			{
 				this->Settings = true;
 			}
-		}
-		if (e.type == sf::Event::KeyReleased)
-		{
-			if (e.key.code == sf::Keyboard::Down) // tracks keyboard up and down
-				MoveDown();
-			if (e.key.code == sf::Keyboard::Up)
-				MoveUp();
+			if (option == 2) {
+				exit(0);
+			}
 		}
 	}
 
@@ -74,7 +46,7 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 	text[0].setPosition(470, 300);
 	text[1].setString("Settings");
 	text[1].setPosition(380, 400);
-	text[2].setString("Help");
+	text[2].setString("Exit");
 	text[2].setPosition(470, 500);
 
 	// Loading Main backgorund png
@@ -85,7 +57,7 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 	Sprite sprite(texture);
 	sprite.setScale(1, 0.79);
 
-	sf::Vector2i mouse = sf::Mouse::getPosition(window);
+	//sf::Vector2i mouse = sf::Mouse::getPosition(window);
 
 	BackgroundT.loadFromFile("../Images/Main2.png");
 	BackgroundS.setTexture(BackgroundT);

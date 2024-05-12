@@ -7,34 +7,26 @@
 #include <ctime>
 using namespace sf;
 using namespace std;
-class Menu
+
+class MainMenu 
 {
 protected:
+	int option; // used to track what option we are on
+	int max; // maxiumum options in main
 	Font font;    // Used in other Menus
 	Texture texture;
 	Sprite sprite;
 	Text text[3]; // for creating text for Screens
 	bool currentState; // For tracking what Menu is open right now
 	bool Settings;
-public:
-	bool ShowState()const { return currentState; } // Getter for state
-	void setState(bool state) { this->currentState = state; } //setter for state
-
-};
-
-
-// Main Menu Class 
-class MainMenu : public Menu
-{
-protected:
-	int option; // used to track what option we are on
-	int max; // maxiumum options in main
+	int scores[3];
 public:
 	MainMenu();
 	void DisplayMain(sf::RenderWindow& window);
-	void MoveDown();
-	void MoveUp();
+	bool ShowState()const { return currentState; } // Getter for state
+	void setState(bool state) { this->currentState = state; } //setter for state
+	void DisplayScore(RenderWindow& window);
 };
 
 
-#endif Menu_H // Menu_H
+#endif // Menu_H

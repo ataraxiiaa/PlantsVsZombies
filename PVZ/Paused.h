@@ -7,6 +7,7 @@
 class Paused: public MainMenu{
 	bool collect;
 	bool temp;
+	bool On, Off;
 public:
 	Paused()
 	{
@@ -29,7 +30,7 @@ public:
 		{
 			if (e.type == sf::Event::Closed) // Checks if main window is closed or not
 				window.close();
-			if (e.key.code == sf::Keyboard::Enter && e.type==sf::Event::KeyPressed)
+			if (sf::Mouse::isButtonPressed(Mouse::Button::Left))
 			{
 				if (option == 0) // Enters into the game
 				{
@@ -39,47 +40,65 @@ public:
 				{
 					window.close();
 				}
-				else
+				else if (option == 1)
 				{
 					collect = !collect;
 				}
-			}
-			if (option == 0)
-			{
-				text[0].setFillColor(sf::Color::Yellow);
-			}
-			if (e.type == sf::Event::KeyReleased)
-			{
-				if (e.key.code == sf::Keyboard::Down) // tracks keyboard up and down
-					MoveDown();
-				if (e.key.code == sf::Keyboard::Up)
-					MoveUp();
 			}
 		}
 
 		// Setting text
 		text[0].setString("Return");
 		text[0].setPosition(470, 300);
-		text[1].setString("Auto Collect Sun");
-		if (collect)
-		{
-			text[1].setFillColor(sf::Color::Red);
-		}
-		text[1].setPosition(260, 400);
+		text[1].setString("Auto Collect Sun : ");
+
+		Text texton;
+		texton.setFont(font);
+		texton.setCharacterSize(50);
+		texton.setString("ON");
+		texton.setPosition(1000, 400);
+		Text textoff;
+		textoff.setFont(font);
+		textoff.setCharacterSize(50);
+		textoff.setString("OFF");
+		textoff.setPosition(1000, 400);
+
+		text[1].setPosition(200, 400);
 		text[2].setString("Exit");
 		text[2].setPosition(470, 500);
-
+		//sf::Vector2i mouse = sf::Mouse::getPosition(window);
+		for (int i = 0; i < 3; ++i)
+		{
+			//		if (sunBounds.contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+			if (text[i].getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+			{
+				text[i].setFillColor(sf::Color::Yellow);
+				option = i; 
+			}
+			else
+			{
+				text[i].setFillColor(sf::Color::White);
+			}
+		}
 		// Loading Main backgorund png
 		Texture BackgroundT;
 		Sprite BackgroundS;
 
 		BackgroundT.loadFromFile("../Images/Main2.png");
 		BackgroundS.setTexture(BackgroundT);
-
 		window.clear();
 		window.draw(BackgroundS); // Draws Main menus background
 		window.draw(text[0]); // Drawing texts
 		window.draw(text[1]);
+		if (collect) {
+			//window.clear();
+			window.draw(texton);
+		}
+		else {
+			//window.clear();
+			window.draw(textoff);
+		}
+
 		window.draw(text[2]);
 	}
 	bool getCollect() { return this->collect; }
