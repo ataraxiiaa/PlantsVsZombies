@@ -212,5 +212,8 @@
     <ClInclude Include="ZombieOutskirts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlantRemover.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
