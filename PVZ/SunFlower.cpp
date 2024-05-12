@@ -6,7 +6,7 @@ SunFlower::SunFlower(int &money)
 	this->exists = true;
 	this->time = 10;//placeholder time 
 	this->coolDown = 10;
-	this->cost = 50;
+	this->cost = 100;
 	this->texture.loadFromFile("../Images/SunFlower.png");
 	animate = new Animation;
 	this->position.SetX(310);

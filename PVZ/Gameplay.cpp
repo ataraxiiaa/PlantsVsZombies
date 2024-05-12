@@ -224,7 +224,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
                         bool spawned = false;
 
                         // Place the needed plant on the grid
-                        if (id[index] == "sunflower" && money >= 50 && cooldown[0].getElapsedTime().asSeconds() >= 5) {
+                        if (id[index] == "sunflower" && money >= 100 && cooldown[0].getElapsedTime().asSeconds() >= 5) {
                             ptr.push_back(new SunFlower(money));
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
