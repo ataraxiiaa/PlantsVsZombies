@@ -28,7 +28,7 @@ public:
 	void setStart(bool start) { this->start = start; }
 	void setLevel(int level) { this->level = level; }
 	int GetLevel() { return this->level; }
-	void startGamePlay(RenderWindow& window, int& score);
+	void startGamePlay(RenderWindow& window, int& score, int& playerLives);
 	Gameplay& GetGamePlay() { return this->gamePlay; }
 
 	void CreateTransition(RenderWindow& window);

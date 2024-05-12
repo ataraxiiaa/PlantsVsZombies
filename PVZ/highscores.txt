@@ -1,1 +1,2 @@
 bye 50
+basit 50

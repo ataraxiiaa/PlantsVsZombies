@@ -5,7 +5,7 @@ MainMenu::MainMenu()
 {
 	option = 0; // For tracking which button we are on
 	max = 4; // Maximum options in Main menu
-	currentState = true; 
+	currentState = true;
 	font.loadFromFile("../fonts/logofont.otf");
 	font2.loadFromFile("../fonts/Impostograph-Regular.ttf");
 	for (int i = 0; i < 4; ++i)
@@ -52,7 +52,7 @@ void MainMenu::DisplayScore(RenderWindow& window) {
 	if (file.is_open()) {
 		int index = 0;
 		while (index < 3) {
-			file >> names[index]; 
+			file >> names[index];
 			file >> scores[index];
 			++index;
 		}
@@ -84,8 +84,7 @@ void MainMenu::DisplayScore(RenderWindow& window) {
 		file.close();
 	}
 }
-void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
-	//window.clear();
+void MainMenu::ShowGameOVer(RenderWindow& window, int score) {
 	text2[0].setString("Enter your Name: ");
 	text2[0].setCharacterSize(30);
 	text2[0].setPosition(100, 350);
@@ -96,10 +95,11 @@ void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
 	text2[1].setPosition(800, 350);
 	text2[1].setFillColor(sf::Color::White);
 
+	window.clear();
 
 	sf::Event e;
 	char temp;
-	
+
 	while (window.pollEvent(e)) {
 		if (e.type == sf::Event::Closed) {
 			window.close();
@@ -135,7 +135,7 @@ void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
 			tempscore[index] = saveScore;
 			index++;
 		}
-		if (index < 3 || score > scores[index - 1]) 
+		if (index < 3 || score > scores[index - 1])
 		{
 			tempscore[index] = score;
 			tempname[index] = name;
@@ -155,7 +155,7 @@ void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
 			}
 			file.close();
 			file.open("../PVZ/highscores.txt", ios::out | ios::trunc);
-			for (int i = 0; i < index+1 ; i++) {
+			for (int i = 0; i < index + 1; i++) {
 				file << tempname[i] << " " << tempscore[i] << endl;
 			}
 		}
@@ -223,7 +223,7 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 	for (int i = 0; i < 4; ++i)
 	{
 		//		if (sunBounds.contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
-		if (text[i].getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) 
+		if (text[i].getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
 		{
 			text[i].setFillColor(sf::Color::Yellow);
 			option = i; // Update current option based on mouse hover
@@ -238,7 +238,7 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 		BackgroundS.setColor(sf::Color(255, 255, 255, 150));
 		window.draw(BackgroundS);
 		window.draw(sprite);
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 			Settings = false;
 		}
 	}
@@ -248,8 +248,8 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 		window.draw(BackgroundS);
 		DisplayScore(window);
 	}
-		
-	else if(!showScoreBord && !Settings)
+
+	else if (!showScoreBord && !Settings)
 	{
 		window.draw(BackgroundS); // Draws Main menus background
 		window.draw(text[0]); // Drawing texts
