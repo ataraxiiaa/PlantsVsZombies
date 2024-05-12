@@ -84,6 +84,7 @@ void MainMenu::DisplayScore(RenderWindow& window) {
 	}
 }
 void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
+	//window.clear();
 	text2[0].setString("Enter your Name: ");
 	text2[0].setCharacterSize(30);
 	text2[0].setPosition(100, 350);
@@ -94,7 +95,6 @@ void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
 	text2[1].setPosition(500, 350);
 	text2[1].setFillColor(sf::Color::White);
 
-	window.clear();
 
 	sf::Event e;
 	char temp;

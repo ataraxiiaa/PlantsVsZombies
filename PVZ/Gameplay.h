@@ -18,6 +18,7 @@
 #include "Vector.h"
 #include "HouseGuardian.h"
 #include "FumeShroom.h"
+#include "PlantRemover.h"
 #include <iostream>
 
 class Gameplay
@@ -26,6 +27,7 @@ class Gameplay
 	Vector<Plants*> ptr;
 	Vector<Zombie*> zptr;
 	Vector<HouseGuardian*> Guardians;
+	PlantRemover shovel;
 	Sun sun;
 	Font font;
 	Text text;
@@ -68,6 +70,8 @@ public:
 	bool CheckTransitionCondition(int levels);
 	void resetGame();
 	bool checkEnd(int levels);
+	void checkRemoverClick(RenderWindow& window);
+	void removePlant(RenderWindow& window);
 
 };
 

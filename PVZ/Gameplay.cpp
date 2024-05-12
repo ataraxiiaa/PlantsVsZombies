@@ -37,7 +37,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     yPositions[4] = 521 - 20;
     for (int i = 0; i < 5; ++i) {
         Guardians.push_back(new HouseGuardian("../Images/LawnMower.png"));
-        Coordinates pos1(200-(i*3), (i * 120) + 95);
+        Coordinates pos1(200 - (i * 3), (i * 120) + 95);
         Coordinates pos2(200 - (i * 3), yPositions[i]);
         Guardians.back()->SetSpritePosGuard(pos1);
         Guardians.back()->SetSprtePos(pos1);
@@ -53,60 +53,98 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
 
 }
 Gameplay::~Gameplay() {
-	for (int i = 0; i < gridRows; ++i)
-		delete[] FIELD_GAME_STATUS[i];
+    for (int i = 0; i < gridRows; ++i)
+        delete[] FIELD_GAME_STATUS[i];
 
-	delete[] FIELD_GAME_STATUS;
+    delete[] FIELD_GAME_STATUS;
 }
 
 void Gameplay::checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse)
 {
-	mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-	if (mouse.x > 270 && mouse.x < 1100 && mouse.y > 80 && mouse.y < 680)
-	{
-		mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-		for (int i = 270, j = 0; i < 1100 && j < 9; i += 92, j++)
-		{
-			mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-			//check which jth index of grid is selected by mouse
-			if (mouse.x >= i && mouse.x <= i + 92)
-			{
-				col = j;
-				xPos = (2 * i + 80) / 2;
-			}
-		}
-		for (int i = 80, j = 0; i < 680 && j < 5; i += 106, j++)
-		{
-			mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-			//check which ith index of grid is selected by mouse
-			if (mouse.y >= i && mouse.y <= i + 106)
-			{
-				row = j;
-				yPos = (2 * i + 95) / 2;
-			}
-		}
-	}
+    mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+    if (mouse.x > 270 && mouse.x < 1100 && mouse.y > 80 && mouse.y < 680)
+    {
+        mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+        for (int i = 270, j = 0; i < 1100 && j < 9; i += 92, j++)
+        {
+            mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+            //check which jth index of grid is selected by mouse
+            if (mouse.x >= i && mouse.x <= i + 92)
+            {
+                col = j;
+                xPos = (2 * i + 80) / 2;
+            }
+        }
+        for (int i = 80, j = 0; i < 680 && j < 5; i += 106, j++)
+        {
+            mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+            //check which ith index of grid is selected by mouse
+            if (mouse.y >= i && mouse.y <= i + 106)
+            {
+                row = j;
+                yPos = (2 * i + 95) / 2;
+            }
+        }
+    }
 }
 
 void Gameplay::checkShopClick(RenderWindow& window)
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-		Sprite* sprites = shop.getSprite();
-		sf::FloatRect* bounds = new sf::FloatRect[6];
-		for (int i = 0; i < shop.getElement(); i++)
-			bounds[i] = sprites[i].getGlobalBounds();
-		for (int i = 0; i < shop.getElement(); i++)
-		{
-			if (bounds[i].contains(mouse))
-			{
-				selected = true;
-				index = i;
-			}
-		}
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+        Sprite* sprites = shop.getSprite();
+        sf::FloatRect* bounds = new sf::FloatRect[6];
+        for (int i = 0; i < shop.getElement(); i++)
+            bounds[i] = sprites[i].getGlobalBounds();
+        for (int i = 0; i < shop.getElement(); i++)
+        {
+            if (bounds[i].contains(mouse))
+            {
+                selected = true;
+                index = i;
+            }
+        }
 
-	}
+    }
+}
+
+void Gameplay::checkRemoverClick(RenderWindow& window)
+{
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+        Sprite sprites = shovel.getSprite();
+        sf::FloatRect bounds;
+        bounds = sprites.getGlobalBounds();
+        if (bounds.contains(mouse)) {
+            shovel.setSelect(!shovel.getSelect());
+        }
+    }
+}
+
+void Gameplay::removePlant(RenderWindow& window) {
+    if (shovel.getSelect())
+    {
+        int row = 0, col = 0;
+        Event e;
+        float xPos = 0, yPos = 0;
+        sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+        checkGrid(row, col, xPos, yPos, window, mouse);
+        for (int i = 0; i < ptr.GetSize(); i++) {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                if (ptr[i]->GetPosition().GetX() == xPos && ptr[i]->GetPosition().GetY() == yPos - 30
+                    && ptr[i]->CheckExistance() && FIELD_GAME_STATUS[row][col])
+                {
+                    ptr[i]->setExistence(false);
+                    ptr.Destroy(i);
+                    shovel.setSelect(false);
+                }
+            }
+        }
+
+    }
 }
 void Gameplay::dropToGrid(RenderWindow& window)
 {
@@ -316,9 +354,11 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level) {
     sun.DrawSun(window, money);
     // Currency Text
 
-
+    this->checkRemoverClick(window);
+    this->removePlant(window);
     text.setString(to_string(money));
     window.draw(text);
+    shovel.drawRemover(window);
 
 }
 
