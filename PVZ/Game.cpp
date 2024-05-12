@@ -16,8 +16,6 @@ Game::Game()
 	}
 	buffer.loadFromFile("../Sounds/music1.mp3");
 	sound.setBuffer(buffer);
-
-
 }
 void Game::createBack(RenderWindow& window,Sprite sprite)
 {
