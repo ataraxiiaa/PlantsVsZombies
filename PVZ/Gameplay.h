@@ -62,14 +62,14 @@ public:
 	void checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse);
 	void CheckCollision();
 	void spawnZombies(int level); // , Clock& clock);
-	void StartGamePlay(RenderWindow& window, int level);
+	void StartGamePlay(RenderWindow& window, int level, int& playerLives);
 	int getKilled() { return this->zombiesKilled; }
 	void setKilled(int killed) { this->zombiesSpawned = killed; }
 	int getSpawned() { return this->zombiesKilled; }
 	void setSpawned(int spawned) { this->zombiesSpawned = spawned; }
 	bool CheckTransitionCondition(int levels);
 	void resetGame();
-	bool checkEnd(int levels);
+	bool checkEnd(int levels, int playerLives);
 	void checkRemoverClick(RenderWindow& window);
 	void removePlant(RenderWindow& window);
 

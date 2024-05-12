@@ -309,7 +309,9 @@ void Gameplay::CheckCollision() {
         }
     }
 }
-void Gameplay::StartGamePlay(RenderWindow& window, int level) {
+
+
+void Gameplay::StartGamePlay(RenderWindow& window, int level, int& playerLives) {
     spawnZombies(level);
     for (int i = 0; i < Guardians.GetSize(); ++i) {
         Guardians[i]->CheckCollision(this->zptr, zombiesKilled);
@@ -333,6 +335,12 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level) {
             //cout << "exists" << i << endl;
         zptr[i]->action(window, ptr, this->FIELD_GAME_STATUS);
         this->CheckCollision();
+        if (zptr[i]->GetPosition().GetX() <= 150)
+        {
+            zptr[i]->setExistence(false);
+            zptr.Destroy(i);
+            playerLives--;
+        }
     }
     for (int i = 0; i < ptr.GetSize(); i++)
     {
@@ -468,9 +476,9 @@ bool Gameplay::CheckTransitionCondition(int levels) {
     return false;
 }
 
-bool Gameplay::checkEnd(int levels)
+bool Gameplay::checkEnd(int levels, int playerLives)
 {
-    if (levels < 4)
+    if (levels < 4 || playerLives==0)
         return false;
     return true;
 }

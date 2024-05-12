@@ -5,6 +5,7 @@ Game::Game()
 	levels = 1;	
 	level = new BeginnersGarden;
 	score = 0;
+	playerLives = 3;
 }
 void Game::createBack(RenderWindow& window,Sprite sprite)
 {
@@ -113,7 +114,7 @@ void Game::Start_Game()
 				else
 					level->GetGamePlay().GetSun().SetAutoCollect(false);
 
-				level->startGamePlay(window, this->score);
+				level->startGamePlay(window, this->score, playerLives);
 				level->GetGamePlay().spawnZombies(levels); // , clock);
 				level->CreateTransition(window);
 				if (level->GetLevel() == 2) {
