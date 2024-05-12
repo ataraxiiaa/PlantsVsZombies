@@ -24,6 +24,7 @@ class Game
 	Level* level;
 	PeaShooter peaShooter;
 	ZombieOutskirts zombieOutSkirts;
+	BeginnersGarden beginner;
 	SunflowerFields sunflower;
 	Texture playerLivesTexture;
 	Sprite playerLivesSprite[3];

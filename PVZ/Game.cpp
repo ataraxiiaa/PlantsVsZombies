@@ -16,10 +16,7 @@ Game::Game()
 	}
 	buffer.loadFromFile("../Sounds/music1.mp3");
 	sound.setBuffer(buffer);
-<<<<<<< HEAD
-=======
 	sound.setVolume(0);
->>>>>>> a191319e87b8c29edad9595e7dd6186a38b7796e
 }
 void Game::createBack(RenderWindow& window,Sprite sprite)
 {
@@ -126,6 +123,9 @@ void Game::Start_Game()
 			if (x == 3) {
 				level = &sunflower;
 				level->Action(window);
+			}
+			if (x > 3) {
+				level = &beginner;
 			}
 			for (int i = 0; i < playerLives; ++i) {
 				window.draw(playerLivesSprite[i]);
