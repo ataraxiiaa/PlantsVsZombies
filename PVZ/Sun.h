@@ -19,6 +19,7 @@ class Sun
 	Clock clock;
 	bool autoCollect;
 	int money;
+	bool stopProduction;
 protected:
 	
 public:
@@ -31,6 +32,8 @@ public:
 	void setExists(bool exists) { this->exist = exists; }
 	void SetPosition(Coordinates position) { this->position = position; }
 	bool getExists() { return this->exist; }
+	void setStopProduction(bool i) { stopProduction = i; }
+	bool getStopProduction() { return stopProduction; }
 };
 
 

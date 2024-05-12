@@ -23,6 +23,9 @@ public:
 		spritePos.SetX(pos.GetX());
 		spritePos.SetY(pos.GetY());
 	}
+	void Action() {
+		
+	}
 
 };
 

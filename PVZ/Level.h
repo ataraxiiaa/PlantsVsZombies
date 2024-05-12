@@ -39,6 +39,7 @@ public:
 	virtual void DrawLevels(RenderWindow& window) {
 		window.draw(levelSprite);
 	}
+	virtual void Action() = 0;
 };
 
 

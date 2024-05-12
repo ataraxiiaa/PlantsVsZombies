@@ -12,6 +12,7 @@
 #include "Vector.h"
 #include "BeginnersGarden.h"
 #include "ZombieOutskirts.h"
+#include "SunflowerFields.h"
 #include <string>
 using namespace sf;
 using namespace std;
@@ -23,6 +24,7 @@ class Game
 	Level* level;
 	PeaShooter peaShooter;
 	ZombieOutskirts zombieOutSkirts;
+	SunflowerFields sunflower;
 	Texture playerLivesTexture;
 	Sprite playerLivesSprite[3];
 	//NormalZombie normal;

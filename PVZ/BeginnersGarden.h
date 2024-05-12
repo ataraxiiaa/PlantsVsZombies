@@ -10,6 +10,9 @@ class BeginnersGarden : public Level
 
 public:
 	BeginnersGarden();
+	void Action() {
+
+	}
 };
 
 

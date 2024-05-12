@@ -47,6 +47,7 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="SunFlower.cpp" />
+    <ClCompile Include="SunflowerFields.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WallNut.cpp" />
     <ClCompile Include="ZombieOutskirts.cpp" />
@@ -83,6 +84,7 @@
     <ClInclude Include="SnowPea.h" />
     <ClInclude Include="Sun.h" />
     <ClInclude Include="SunFlower.h" />
+    <ClInclude Include="SunflowerFields.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="WallNut.h" />
     <ClInclude Include="ZombieOutskirts.h" />

@@ -146,9 +146,10 @@ void Game::Start_Game()
 			int x = level->GetLevel();
 			if (x == 2) {
 				level = &zombieOutSkirts;
+				level->Action();
 			} 
 			if (x == 3) {
-
+				level = &sunflower;
 			}
 			for (int i = 0; i < playerLives; ++i) {
 				window.draw(playerLivesSprite[i]);

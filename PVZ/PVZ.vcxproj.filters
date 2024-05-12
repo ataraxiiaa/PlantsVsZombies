@@ -111,6 +111,9 @@
     <ClCompile Include="ZombieOutskirts.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="SunflowerFields.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -213,6 +216,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlantRemover.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SunflowerFields.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

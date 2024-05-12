@@ -16,40 +16,45 @@ Sun::Sun()
 	sunSprite.setTextureRect(sf::IntRect(0, 0, 75, 77));
 	exist = false;
 	fallSpeed = 5.0f; // Speed by which sun falls down the screen
+	stopProduction = false;
 }
 void Sun::DrawSun(sf::RenderWindow& window, int& money)
 {
-	srand(time(0));
-	int randomTime = rand() % 30 + 10; // Set accordingly 
-	if (clock.getElapsedTime().asSeconds() >= 10 && !exist) {
-		this->exist = true;
-		// Handling random movement of position
-		this->position.SetY(0);
-		int RandomNum = rand() % 700 + 200; // Random number to decide where on the screen sun drops
-		this->position.SetX(RandomNum);
-		clock.restart();
-	}
+	if (!stopProduction) {
+		srand(time(0));
+		int randomTime = rand() % 30 + 10; // Set accordingly 
+		if (clock.getElapsedTime().asSeconds() >= 10 && !exist) {
+			this->exist = true;
+			// Handling random movement of position
+			this->position.SetY(0);
+			int RandomNum = rand() % 700 + 200; // Random number to decide where on the screen sun drops
+			this->position.SetX(RandomNum);
+			clock.restart();
+		}
 
-	if (exist) {
-		CollectSun(window, money);
-		sunSprite.setPosition(this->position.GetX(), this->position.GetY());
-		if (this->exist)
-			window.draw(sunSprite); // Drawing Sun
-		DropSun();
+		if (exist) {
+			CollectSun(window, money);
+			sunSprite.setPosition(this->position.GetX(), this->position.GetY());
+			if (this->exist)
+				window.draw(sunSprite); // Drawing Sun
+			DropSun();
+		}
 	}
 	// Drawing Sun at the shop
-	window.draw(sunSpriteShop);
 	window.draw(sunSprite2);
+	window.draw(sunSpriteShop);
 }
 
 void Sun::DrawSun(RenderWindow& window)
 {
-	this->sunSprite.setPosition(this->position.GetX(), this->position.GetY());
-	window.draw(sunSprite);
+	if (this->exist && !stopProduction) {
+		this->sunSprite.setPosition(this->position.GetX(), this->position.GetY());
+		window.draw(sunSprite);
+	}
 }
 void Sun::DropSun()
 {
-	if (exist) {
+	if (exist && !stopProduction) {
 		this->position.SetY(this->position.GetY() + fallSpeed);
 		if (this->position.GetY() > 1100)
 				exist = false;
