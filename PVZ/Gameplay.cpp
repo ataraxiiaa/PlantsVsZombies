@@ -43,6 +43,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
         Guardians.back()->SetSprtePos(pos1);
         Guardians.back()->SetCoordinates(pos2);
     }
+
     this->score = 0;
     this->zombiesKilled = 0;
     font.loadFromFile("../fonts/comicsans.ttf");

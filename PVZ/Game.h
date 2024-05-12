@@ -23,6 +23,8 @@ class Game
 	Level* level;
 	PeaShooter peaShooter;
 	ZombieOutskirts zombieOutSkirts;
+	Texture playerLivesTexture;
+	Sprite playerLivesSprite[3];
 	//NormalZombie normal;
 	//FootballZombie football;
 	//FlyingZombie flying;

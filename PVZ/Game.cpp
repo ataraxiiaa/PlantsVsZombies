@@ -6,6 +6,15 @@ Game::Game()
 	level = new BeginnersGarden;
 	score = 0;
 	playerLives = 3;
+	playerLivesTexture.loadFromFile("../Images/soul.png");
+	for (int i = 0; i < 3; ++i) {
+		playerLivesSprite[i].setTexture(playerLivesTexture);
+	}
+	for (int i = 0; i < 3; ++i) {
+		playerLivesSprite[i].setPosition(230 + (i * 50), -200);
+		playerLivesSprite[i].setScale(1, 1);
+	}
+
 }
 void Game::createBack(RenderWindow& window,Sprite sprite)
 {
@@ -132,6 +141,9 @@ void Game::Start_Game()
 			level->CreateTransition(window);
 			if (this->levels == 2) {
 				level = &zombieOutSkirts;
+			}
+			for (int i = 0; i < playerLives; ++i) {
+				window.draw(playerLivesSprite[i]);
 			}
 			window.draw(text);
 			window.setSize(sf::Vector2u(1100, 680));
