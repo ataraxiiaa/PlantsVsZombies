@@ -23,7 +23,6 @@ public:
 		yPositions[3] = 415 - 30;
 		yPositions[4] = 521 - 20;
 		fly = false;
-		type = "no";
 	}
 	float getDamage() { return this->damage; }
 	float getSpeed() { return this->speed; }
