@@ -33,6 +33,7 @@ MainMenu::MainMenu()
 	templateSprite.setTexture(templateTexture);
 	templateSprite.setPosition(300, 200);
 	gameOver = false;
+	this->currentState = true;
 }
 void MainMenu::DisplayScore(RenderWindow& window) {
 	Event e;

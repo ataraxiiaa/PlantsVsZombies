@@ -118,6 +118,9 @@ void Game::Start_Game()
 				if (level->GetLevel() == 2) {
 					level = &zombieOutSkirts;
 				}
+				if (level->GetLevel() == 1) {
+					menu.ShowGameOVer(window, 50);
+				}
 				window.draw(text);
 				window.setSize(sf::Vector2u(1100, 680));
 			}
