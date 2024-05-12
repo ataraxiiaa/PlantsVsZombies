@@ -45,6 +45,11 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     }
     this->score = 0;
     this->zombiesKilled = 0;
+    font.loadFromFile("../fonts/comicsans.ttf");
+    text.setFont(font);
+    text.setCharacterSize(40);
+    text.setFillColor(sf::Color::Yellow);
+    text.setPosition(160, 8);
 
 }
 Gameplay::~Gameplay() {
@@ -210,7 +215,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             sprites[2].setTexture(texture[2]);
                             sprites[2].setTextureRect(sf::IntRect(91, 0, 94, 95));
                         }
-                        else if (id[index] == "repeater" && money >= 50 && cooldown[4].getElapsedTime().asSeconds() >= 5) {
+                        else if (id[index] == "repeater" && money >= 200 && cooldown[4].getElapsedTime().asSeconds() >= 5) {
                             ptr.push_back(new Repeater);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
@@ -220,7 +225,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             sprites[4].setTexture(texture[4]);
                             sprites[4].setTextureRect(sf::IntRect(100, 0, 200, 84));
                         }
-                        else if (id[index] == "cherrybomb" && money >= 50 && cooldown[3].getElapsedTime().asSeconds() >= 5) {
+                        else if (id[index] == "cherrybomb" && money >= 150 && cooldown[3].getElapsedTime().asSeconds() >= 5) {
                             ptr.push_back(new CherryBomb);
                             ptr.back()->setX(xPos);
                             ptr.back()->setY(yPos - 30);
@@ -269,7 +274,7 @@ void Gameplay::CheckCollision() {
 void Gameplay::StartGamePlay(RenderWindow& window, int level) {
     spawnZombies(level);
     for (int i = 0; i < Guardians.GetSize(); ++i) {
-        Guardians[i]->CheckCollision(this->zptr,zombiesKilled);
+        Guardians[i]->CheckCollision(this->zptr, zombiesKilled);
         if (Guardians[i]->GetExistance())
             window.draw(Guardians[i]->GetSprite());
     }
@@ -310,14 +315,11 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level) {
     }
     sun.DrawSun(window, money);
     // Currency Text
-    font.loadFromFile("../fonts/comicsans.ttf");
-    text.setFont(font);
-    text.setCharacterSize(40);
-    text.setString(to_string(money));
-    text.setFillColor(sf::Color::Yellow);
-    text.setPosition(160, 8);
 
+
+    text.setString(to_string(money));
     window.draw(text);
+
 }
 
 void Gameplay::spawnZombies(int level)
@@ -424,4 +426,11 @@ bool Gameplay::CheckTransitionCondition(int levels) {
     if (zombiesKilled >= 1)
         return true;
     return false;
+}
+
+bool Gameplay::checkEnd(int levels)
+{
+    if (levels < 4)
+        return false;
+    return true;
 }

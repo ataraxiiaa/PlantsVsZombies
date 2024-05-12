@@ -83,44 +83,48 @@ void Game::Start_Game()
 		
 		if (!menu.ShowState() && !pause.ShowState() /*&& level.getStart()*/)
 		{
-			float time = clock.getElapsedTime().asMicroseconds();
-			float moneyTime = timeMoney.getElapsedTime().asSeconds();
+			if (!level->GetGamePlay().checkEnd(levels)) {
+				float time = clock.getElapsedTime().asMicroseconds();
+				float moneyTime = timeMoney.getElapsedTime().asSeconds();
 
-			clock.restart();
-			time = time / 800;
+				clock.restart();
+				time = time / 800;
 
-			Event event;
-			while (window.pollEvent(event))
-				if (event.type == Event::Closed)
-					window.close();
+				Event event;
+				while (window.pollEvent(event))
+					if (event.type == Event::Closed)
+						window.close();
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-				pause.setState(true);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+					pause.setState(true);
 
 
-			createGrid(window);
-			//Create a background
-			createBack(window,level->GetSprite());
-			createMap(window,level->GetSprite());
-			if (level->GetLevel() == 1) {
 				createGrid(window);
+				//Create a background
+				createBack(window, level->GetSprite());
+				createMap(window, level->GetSprite());
+				if (level->GetLevel() == 1) {
+					createGrid(window);
+				}
+				// Create the grid
+				if (pause.getCollect())
+					level->GetGamePlay().GetSun().SetAutoCollect(true);
+				else
+					level->GetGamePlay().GetSun().SetAutoCollect(false);
+
+				level->startGamePlay(window, this->score);
+				level->GetGamePlay().spawnZombies(levels); // , clock);
+				level->CreateTransition(window);
+				if (level->GetLevel() == 2) {
+					level = &zombieOutSkirts;
+				}
+				window.draw(text);
+				window.setSize(sf::Vector2u(1100, 680));
 			}
-			// Create the grid
-			if (pause.getCollect())
-				level->GetGamePlay().GetSun().SetAutoCollect(true);
 			else
-				level->GetGamePlay().GetSun().SetAutoCollect(false);
+			{
 
-			level->startGamePlay(window,this->score);
-			level->GetGamePlay().spawnZombies(levels); // , clock);
-			level->CreateTransition(window);
-			if (level->GetLevel() == 2) {
-				level = &zombieOutSkirts;
 			}
-			window.draw(text);
-			window.setSize(sf::Vector2u(1100, 680));
-			
-
 		}
 		else if (!menu.ShowState() && pause.ShowState() /*&& level.getStart()*/)
 			pause.displayPausedMenu(window);

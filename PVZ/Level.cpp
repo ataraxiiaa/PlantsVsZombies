@@ -10,6 +10,11 @@ Level::Level(int level) {
 	text.setFillColor(sf::Color::Yellow);
 	text.setCharacterSize(30);
 	text.setPosition(1000, 20);
+	scoreFont.loadFromFile("../fonts/logofont.otf");
+	scoreText.setFont(scoreFont);
+	scoreText.setCharacterSize(30);
+	scoreText.setPosition(700, 20);
+	scoreText.setFillColor(sf::Color::Yellow);
 	//option = 0;
 	//max = 2;
 	//font.loadFromFile("../fonts/logofont.otf");
@@ -47,12 +52,7 @@ void Level::startGamePlay(RenderWindow& window,int &score) {
 	if (temp < gamePlay.getKilled()) {
 		score += 20;
 	}
-	scoreFont.loadFromFile("../fonts/logofont.otf");
-	scoreText.setFont(scoreFont);
-	scoreText.setCharacterSize(30);
 	scoreText.setString("Score " + to_string(score));
-	scoreText.setPosition(700, 20);
-	scoreText.setFillColor(sf::Color::Yellow);
 	window.draw(scoreText);
 	window.draw(text);
 }
