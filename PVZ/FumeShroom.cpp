@@ -20,9 +20,9 @@ void FumeShroom::Action(sf::RenderWindow& window) {
 	bullet[0].SetSprite(sprite);
 	bullet->setSpeed(3);
 	for (int i = 0; i < totalBullets; ++i) {
-		if (!CheckBulletRange()) {
+		if (!CheckBulletRange()) { //checks bullet is in range of fire
 			bullet[0].SetFire(false);
 		}
-		Shooter::Fire(window, this->position);
+		Shooter::Fire(window, this->position); //fires bullet
 	}
 }

@@ -1,9 +1,6 @@
 #include "FlyingZombie.h"
 
 FlyingZombie::FlyingZombie() {
-	srand((unsigned)time(0));
-	rand();
-	rand();
 	this->speed = 0.6;
 	this->damage = 1;
 	this->lives = 8;
@@ -12,14 +9,13 @@ FlyingZombie::FlyingZombie() {
 	animate->SetSheet(0.5f, 5, texture, 8, 1);
 	animate->ChangeScale(3, 3);
 	this->exists = true;
-	//this->position.SetX(700);
-	//this->position.SetY((550 - (rand() % 5) * 110));
 	this->fly = true;
+	this->type = "flying";
 }
 void FlyingZombie::moveZombie() {
 	if (position.GetX() > 0)
 	{
-		this->position.SetX(position.GetX() - speed);
+		this->position.SetX(position.GetX() - speed); //moves zombie irrespective of if any plant is infront of it
 	}
 }
 void FlyingZombie::drawZombie(sf::RenderWindow& window) {
@@ -27,6 +23,8 @@ void FlyingZombie::drawZombie(sf::RenderWindow& window) {
 	animate->DrawAnimation(window, this->position);
 }
 void FlyingZombie::action(sf::RenderWindow& window, Vector<Plants*>& ptr, bool** set) {
-	moveZombie();
-	drawZombie(window);
+	if (exists) {
+		moveZombie();
+		drawZombie(window);
+	}
 }

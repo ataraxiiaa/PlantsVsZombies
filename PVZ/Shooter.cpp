@@ -54,7 +54,6 @@ void Shooter::CheckBulletCollision(Vector<Zombie*>& Zombie, int& killed) {
                 Zombie[j]->GetExistance() && bullet[i].ShowFire()
                 )
             {
-                cout << "Hit" << endl;
                 if (Zombie[j]->getLives() > 0) {
                     Zombie[j]->setLives(Zombie[j]->getLives() - getDamage());
                     if (this->Type == "Snowpea")

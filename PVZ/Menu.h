@@ -32,15 +32,15 @@ protected:
 	bool startGame;
 public:
 	MainMenu();
-	void DisplayMain(sf::RenderWindow& window);
+	void DisplayMain(sf::RenderWindow& window); //displays main menu
 	bool ShowState()const { return currentState; } // Getter for state
 	void setState(bool state) { this->currentState = state; } //setter for state
-	void DisplayScore(RenderWindow& window);
-	void ShowGameOVer(RenderWindow& window,int score);
-	bool getGameOver()const { return gameOver; }
-	void setGameOver(bool i) { gameOver = i; }
-	bool showGame() { return startGame; }
-	void setShowGame(bool i) { startGame = i; }
+	void DisplayScore(RenderWindow& window); //displays highscore
+	void ShowGameOVer(RenderWindow& window,int score); //prompts player to enter name when game is over
+	bool getGameOver()const { return gameOver; } //getter for gameOver
+	void setGameOver(bool i) { gameOver = i; } //setter for gameOver
+	bool showGame() { return startGame; } //getter for startGame
+	void setShowGame(bool i) { startGame = i; } //setter for startGame
 
 };
 

@@ -20,12 +20,14 @@ public:
 		position.SetY(8);
 		selected = false;
 	}
-	void drawRemover(RenderWindow& window)
+	void drawRemover(RenderWindow& window) //draws remover sprite
 	{
 		sprite.setPosition(position.GetX(), position.GetY());
 		window.draw(sprite);
 	}
+	//getters
 	Sprite getSprite() { return this->sprite; }
-	void setSelect(bool select) { this->selected = select; }
 	bool getSelect() { return this->selected; }
+	//setter
+	void setSelect(bool select) { this->selected = select; }
 };

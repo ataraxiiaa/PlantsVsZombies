@@ -10,9 +10,7 @@ class BeginnersGarden : public Level
 
 public:
 	BeginnersGarden();
-	void Action(RenderWindow& window) {
-
-	}
+	void Action(RenderWindow& window) {}
 };
 
 

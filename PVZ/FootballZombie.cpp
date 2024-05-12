@@ -4,15 +4,14 @@ FootballZombie::FootballZombie() {
 	srand((unsigned)time(0));
 	rand();
 	this->exists = true;
-	this->speed = 0.7;
+	this->speed = 1.2;
 	this->damage = 1;
 	this->lives = 16;
 	this->texture.loadFromFile("../Images/FBZ.png");
 	this->animate = new Animation;
 	this->animate->SetSheet(0.125, 3,texture, 5, 5);
 	this->animate->ChangeScale(2.3, 2.3);
-	//Coordinates pos(700, 350);
-	//this->position = pos;
+	this->type = "football";
 }
 
 void FootballZombie::moveZombie(Vector<Plants*>& ptr, bool** set)
@@ -30,20 +29,18 @@ void FootballZombie::moveZombie(Vector<Plants*>& ptr, bool** set)
 				y = i;
 				break;
 			}
-		if (random == 0 && y > 0)
+		if (random == 0 && y > 0) //moves zombie into below row
 		{
-			cout << "up" << endl;
 			this->position.SetY(this->yPositions[y - 1]);
 			clock.restart();
 		}
-		else if (random == 1 && y < 4)
+		else if (random == 1 && y < 4) //moves zombie into above row
 		{
-			cout << "down" << endl;
 			this->position.SetY(this->yPositions[y + 1]);
 			clock.restart();
 		}
 	}
-	if (!checkIfPlantAhead(ptr))
+	if (!checkIfPlantAhead(ptr)) //moves zombie if no plant infront of it
 	{
 		if (position.GetX() > 0)
 			this->position.SetX(position.GetX() - speed);

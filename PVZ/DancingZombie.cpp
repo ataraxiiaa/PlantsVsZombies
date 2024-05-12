@@ -1,13 +1,9 @@
 #include "DancingZombie.h"
 
 DancingZombie::DancingZombie() {
-	srand((unsigned)time(0));
-	rand();
-	rand();
-	rand();
-	this->speed = 0.85;
+	this->speed = 1;
 	this->damage = 1;
-	this->lives = 24;
+	this->lives = 16;
 	this->texture.loadFromFile("../Images/dancingZombie2.png");
 	animate = new Animation;
 	animate->SetSheet(0.5, 4, texture, 6, 6);
@@ -19,92 +15,94 @@ DancingZombie::DancingZombie() {
 	this->spawned = false;
 }
 
-void DancingZombie::spawnBackupZombies(Vector<Zombie*>& ptr)
-
+void DancingZombie::spawnBackupZombies(Vector<Zombie*>& ptr, int& end)
 {
-	if (!spawningZombies && !spawned)
-	{
-		if (clock.getElapsedTime().asSeconds() >= 20)
+	if (exists) {
+		if (!spawningZombies && !spawned)
 		{
-			cout << "mario" << endl;
-			spawningZombies = true;
-			this->speed = 0;
-			clock.restart();
+			if (clock.getElapsedTime().asSeconds() >= 15) //checks time for spawning backup zombies
+			{
+				spawningZombies = true;
+				this->speed = 0; //stops zombie in place to spawn backup zombies
+				clock.restart(); //resets clock to space out spawning of backup zombies
+			}
 		}
-	}
-	else if (spawningZombies && !spawned)
-	{
-		if (clock.getElapsedTime().asSeconds() >= 4)
+		else if (spawningZombies && !spawned)
 		{
-			//find y pos
-			int y;
-			for (int j = 0; j < 5; j++)
-				if (ptr[ptr.GetSize() - 1]->getYPositions()[j] == this->position.GetY())
-					y = j;
-			cout << "y: " << y << endl;
-			if (y > 0)
+			if (clock.getElapsedTime().asSeconds() >= 4)
 			{
+				//find y pos
+				int y;
+				for (int j = 0; j < 5; j++)
+					if (ptr[ptr.GetSize() - 1]->getYPositions()[j] == this->position.GetY())
+						y = j;
+				//checks if in top row
+				if (y > 0)
+				{
+					ptr.push_back(new NormalZombie);
+					ptr.back()->setX(this->position.GetX());
+					ptr.back()->setY(this->getYPositions()[y - 1]);
+					end++;
+				}
+				//checks if last row
+				if (y < 4)
+				{
+					ptr.push_back(new NormalZombie);
+					ptr.back()->setX(this->position.GetX());
+					ptr.back()->setY(this->getYPositions()[y + 1]);
+					end++;
+				}
+				ptr.push_back(new NormalZombie);
+				ptr.back()->setX(this->position.GetX() + 92); //spawns zombie behind dancing zombie
+				ptr.back()->setY(this->position.GetY());
 				ptr.push_back(new NormalZombie);
 				ptr.back()->setX(this->position.GetX());
-				ptr.back()->setY(this->getYPositions()[y - 1]);
+				ptr.back()->setX(this->position.GetX() - 92); //spawns zombie infront of dancing zombie
+				ptr.back()->setY(this->position.GetY());
+				this->speed = 0.5;
+				spawningZombies = false;
+				end += 2;
+				spawned = true; //sets bool to true to stop further spawning
 			}
-			if (y < 4)
-			{
-				ptr.push_back(new NormalZombie);
-				ptr.back()->setX(this->position.GetX());
-				ptr.back()->setY(this->getYPositions()[y + 1]);
-			}
-			ptr.push_back(new NormalZombie);
-			ptr.back()->setX(this->position.GetX() + 92);
-			ptr.back()->setY(this->position.GetY());
-			ptr.push_back(new NormalZombie);
-			ptr.back()->setX(this->position.GetX());
-			ptr.back()->setX(this->position.GetX() - 92);
-			ptr.back()->setY(this->position.GetY());
-			this->speed = 0.5;
-			spawningZombies = false;
-			spawned = true;
-			//clock.restart();
-			cout << "luigi" << endl;
 		}
 	}
 }
 
 void DancingZombie::moveZombie(Vector<Plants*>& ptr, bool** set)
 {
-	static Clock clock;
-	srand((unsigned)time(0));
-	int random = rand() % 5;
-	if (clock.getElapsedTime().asSeconds() >= 5)
-	{
-		//check y position
-		int y = 0;
-		for (int i = 0; i < 5; i++)
-			if (this->yPositions[i] == this->position.GetY())
+	if (exists) {
+		static Clock clock;
+		srand((unsigned)time(0));
+		int random = rand() % 5;
+		if (clock.getElapsedTime().asSeconds() >= 5)
+		{
+			//check y position
+			int y = 0;
+			for (int i = 0; i < 5; i++)
+				if (this->yPositions[i] == this->position.GetY())
+				{
+					y = i;
+					break;
+				}
+			if (random == 0 && y > 0) //moves zombie into above row
 			{
-				y = i;
-				break;
+				this->position.SetY(this->yPositions[y - 1]);
+				clock.restart();
 			}
-		if (random == 0 && y > 0)
-		{
-			cout << "up" << endl;
-			this->position.SetY(this->yPositions[y - 1]);
-			clock.restart();
+			else if (random == 1 && y < 4) //moves zombie into below row
+			{
+				this->position.SetY(this->yPositions[y + 1]);
+				clock.restart();
+			}
 		}
-		else if (random == 1 && y < 4)
+		if (!checkIfPlantAhead(ptr)) //checks if any plant is infront of zombie
 		{
-			cout << "down" << endl;
-			this->position.SetY(this->yPositions[y + 1]);
-			clock.restart();
+			if (position.GetX() > 0)
+				this->position.SetX(position.GetX() - speed);
 		}
-	}
-	if (!checkIfPlantAhead(ptr))
-	{
-		if (position.GetX() > 0)
-			this->position.SetX(position.GetX() - speed);
-	}
-	else
-	{
-		doDamage(ptr, set);
+		else
+		{
+			doDamage(ptr, set);
+		}
 	}
 }

@@ -80,11 +80,11 @@ Shop::Shop() // Initiallizes every sprite
 }
 void Shop::DrawShop(sf::RenderWindow& window)
 {
-	for (int i = 0; i < this->elements; i++) {
+	for (int i = 0; i < this->elements && i < 7; i++) {
 		window.draw(sprite[i]); // SunFlower shop image
 	}
 }
 void Shop::setShop(int level)
 {
-	this->elements = level+1;
+	this->elements = level+1; //displays new plants available in new round
 }

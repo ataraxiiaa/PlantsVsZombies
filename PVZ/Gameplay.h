@@ -50,6 +50,7 @@ class Gameplay
 	bool restart;
 	int score;
 	int xRange;
+	int endZombies;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 

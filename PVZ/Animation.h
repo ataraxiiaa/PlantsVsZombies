@@ -22,13 +22,12 @@ class Animation
 
 public:
 	Animation(float animationDelay=10); // Default constructor
-
-	void SetSheet(float Delay,int totalFrames,Texture& spriteSheet, int imagesPerRow,int imagesPerCol);
-	void Update(bool end = false);
-	void DrawAnimation(sf::RenderWindow& window, Coordinates positon);
-	int GetCurrFrame()const { return currFrame; }
-	void ChangeScale(float Xfactor, float Yfactor);
-	Sprite getSprite()const { return sprite; }
+	void SetSheet(float Delay,int totalFrames,Texture& spriteSheet, int imagesPerRow,int imagesPerCol); //sets frames of spritesheet 
+	void Update(bool end = false); //updates frame of spritesheet
+	void DrawAnimation(sf::RenderWindow& window, Coordinates positon); //draws current frame
+	int GetCurrFrame()const { return currFrame; } //returns current frame index
+	void ChangeScale(float Xfactor, float Yfactor); //same as setScale for sfml window
+	Sprite getSprite()const { return sprite; } //getter for sprite
 };
 
 

@@ -27,15 +27,7 @@ class Game
 	SunflowerFields sunflower;
 	Texture playerLivesTexture;
 	Sprite playerLivesSprite[3];
-	//NormalZombie normal;
-	//FootballZombie football;
-	//FlyingZombie flying;
-	//DancingZombie dancing;
 	Shop shop;
-	//DolphinRiderZombie dolphin;
-	//Plants** ptr;
-	//Vector<Plants*> ptr;
-	//Vector<Zombie*> zptr;
 	CherryBomb bomb;
 	Repeater repeat;
 	WallNut nutty;
@@ -43,15 +35,13 @@ class Game
 	int money;
 	Font font;
 	Text text;
-	//Gameplay gamep;
 	int levels;
 	int score;
 	int playerLives;
 	sf::SoundBuffer buffer;
 	sf::Sound sound;
-	//Clock clock;
 public:
-	Game(); // (Default for now will change later on)
+	Game(); 
 	// Function prototypes that are defined in Game.cpp
 	void createBack(RenderWindow& window, Sprite sprite); // Creating Background
 	void createMap(RenderWindow& window, Sprite sprite); // Creating window

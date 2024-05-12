@@ -44,6 +44,6 @@ public:
 	virtual void setY(int y) { this->position.SetY(y); }
 	virtual void setX(int x) { this->position.SetX(x); }
 	Coordinates GetPosition()const { return this->position; }
-	virtual void spawnBackupZombies(Vector<Zombie*>& ptr) { cout << "here" << endl; }
+	virtual void spawnBackupZombies(Vector<Zombie*>& ptr, int& end) {}
 	void slowDown();
 };

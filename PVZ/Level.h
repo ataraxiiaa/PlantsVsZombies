@@ -23,20 +23,21 @@ protected:
 	int score;
 public:
 	Level(int level = 1);
-	//void displayLevel(RenderWindow& window, int level);
+	//getters
 	bool getStart() { return this->start; }
+	virtual int GetLevel() { return this->level; }
+	Gameplay& GetGamePlay() { return this->gamePlay; }
+	virtual Sprite GetSprite() { return levelSprite; }
+	//setters
 	void setStart(bool start) { this->start = start; }
 	void setLevel(int level) { this->level = level; }
-	virtual int GetLevel() { return this->level; }
-	void startGamePlay(RenderWindow& window, int& score, int& playerLives);
-	Gameplay& GetGamePlay() { return this->gamePlay; }
 
-	void CreateTransition(RenderWindow& window);
-	void drawTransition(RenderWindow& window);
+	void startGamePlay(RenderWindow& window, int& score, int& playerLives);//starts game
 
-	virtual Sprite GetSprite() { return levelSprite; }
-
-	virtual void DrawLevels(RenderWindow& window) {
+	void CreateTransition(RenderWindow& window); //creates a transition between levels
+	void drawTransition(RenderWindow& window); //draws the transition
+	
+	virtual void DrawLevels(RenderWindow& window) { //draws the levels sprite
 		window.draw(levelSprite);
 	}
 	virtual void Action(RenderWindow& window) = 0;
