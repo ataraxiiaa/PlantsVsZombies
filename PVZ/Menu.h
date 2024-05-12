@@ -29,6 +29,7 @@ protected:
 	Sprite rankingSprite[3];
 	bool nameEntered;
 	bool gameOver;
+	bool startGame;
 public:
 	MainMenu();
 	void DisplayMain(sf::RenderWindow& window);
@@ -36,6 +37,10 @@ public:
 	void setState(bool state) { this->currentState = state; } //setter for state
 	void DisplayScore(RenderWindow& window);
 	void ShowGameOVer(RenderWindow& window,int score);
+	bool getGameOver()const { return gameOver; }
+	void setGameOver(bool i) { gameOver = i; }
+	bool showGame() { return startGame; }
+	void setShowGame(bool i) { startGame = i; }
 };
 
 

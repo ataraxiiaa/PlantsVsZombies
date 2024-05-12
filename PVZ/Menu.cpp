@@ -34,6 +34,7 @@ MainMenu::MainMenu()
 	templateSprite.setPosition(300, 200);
 	gameOver = false;
 	this->currentState = true;
+	this->startGame = false;
 }
 void MainMenu::DisplayScore(RenderWindow& window) {
 	Event e;
@@ -91,7 +92,7 @@ void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
 
 	text2[1].setString("");
 	text2[1].setCharacterSize(30);
-	text2[1].setPosition(500, 350);
+	text2[1].setPosition(800, 350);
 	text2[1].setFillColor(sf::Color::White);
 
 	window.clear();
@@ -122,8 +123,8 @@ void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
 	window.draw(text2[1]);
 
 	if (nameEntered) {
-		string tempname[3]{};
-		int tempscore[3]{};
+		string tempname[4]{};
+		int tempscore[4]{};
 		int index = 0;
 		int saveScore;
 		string saveName;
@@ -134,7 +135,8 @@ void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
 			tempscore[index] = saveScore;
 			index++;
 		}
-		if (index < 3 || score > scores[index - 1]) {
+		if (index < 3 || score > scores[index - 1]) 
+		{
 			tempscore[index] = score;
 			tempname[index] = name;
 
@@ -153,10 +155,12 @@ void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
 			}
 			file.close();
 			file.open("../PVZ/highscores.txt", ios::out | ios::trunc);
-			for (int i = 0; i < index + 1; i++) {
+			for (int i = 0; i < index+1 ; i++) {
 				file << tempname[i] << " " << tempscore[i] << endl;
 			}
 		}
+		this->gameOver = false;
+		this->startGame = false;
 		this->currentState = true;
 		file.close();
 	}
@@ -164,6 +168,8 @@ void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
 }
 void MainMenu::DisplayMain(sf::RenderWindow& window)
 {
+	window.clear();
+	this->setGameOver(false);
 	sf::Event e;
 	while (window.pollEvent(e))
 	{
@@ -174,6 +180,7 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 			if (option == 0) // Enters into the game
 			{
 				this->currentState = false; // Exists menu into the game
+				this->startGame = true;
 			}
 			if (option == 1) {
 				this->showScoreBord = true;
@@ -226,7 +233,7 @@ void MainMenu::DisplayMain(sf::RenderWindow& window)
 			text[i].setFillColor(sf::Color::White);
 		}
 	}
-	window.clear();
+	//window.clear();
 	if (Settings) {
 		BackgroundS.setColor(sf::Color(255, 255, 255, 150));
 		window.draw(BackgroundS);

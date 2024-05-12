@@ -72,7 +72,7 @@ void Game::Start_Game()
 
 	Clock timeMoney;
 	Clock clock;
-
+	int i = 0;
 	while (window.isOpen())
 	{
 		if (menu.ShowState() == true)
@@ -80,10 +80,15 @@ void Game::Start_Game()
 			menu.DisplayMain(window);
 			pause.setState(false);
 		}
+		while (menu.getGameOver()) {
+			menu.ShowGameOVer(window, 50);
+			/*if (menu.getGameOver() == false) {
+				menu.setState(true);
+			}*/
+		}
 		
-		if (!menu.ShowState() && !pause.ShowState() /*&& level.getStart()*/)
+		if (!menu.ShowState() && !pause.ShowState() && menu.showGame())
 		{
-			if (!level->GetGamePlay().checkEnd(levels)) {
 				float time = clock.getElapsedTime().asMicroseconds();
 				float moneyTime = timeMoney.getElapsedTime().asSeconds();
 
@@ -118,18 +123,16 @@ void Game::Start_Game()
 				if (level->GetLevel() == 2) {
 					level = &zombieOutSkirts;
 				}
-				if (level->GetLevel() == 1) {
-					menu.ShowGameOVer(window, 50);
-				}
 				window.draw(text);
 				window.setSize(sf::Vector2u(1100, 680));
-			}
-			else
-			{
-
-			}
 		}
-		else if (!menu.ShowState() && pause.ShowState() /*&& level.getStart()*/)
+		int x = level->GetLevel();
+		if (level->GetGamePlay().checkEnd(x) && menu.getGameOver() == false) {
+			//menu.ShowGameOVer(window, 50);
+			menu.setGameOver(true);
+			menu.setShowGame(false);
+		}
+		if (!menu.ShowState() && pause.ShowState())
 			pause.displayPausedMenu(window);
 		/*else if (!menu.ShowState() && !pause.ShowState() && !level.getStart()) {
 			level.displayLevel(window, levels);

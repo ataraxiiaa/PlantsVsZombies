@@ -1,7 +1,7 @@
 #include "ZombieOutskirts.h"
 
 
-ZombieOutskirts::ZombieOutskirts():Level(2) {
+ZombieOutskirts::ZombieOutskirts() {
 	levelTexture.loadFromFile("../Images/Night.png");
 	levelSprite.setTexture(levelTexture);
 	levelSprite.setPosition(-20, -80);
