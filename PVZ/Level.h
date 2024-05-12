@@ -13,14 +13,14 @@ protected:
 	Gameplay gamePlay;
 	Texture levelTexture;
 	Sprite levelSprite;
-	Text text;
-	Font font;
+	Text text, scoreText;
+	Font font, scoreFont;
 	bool start;
 	int level;
 	Clock clock,clock2;
 	Texture texture;
 	bool transitioning;
-
+	int score;
 public:
 	Level(int level = 1);
 	//void displayLevel(RenderWindow& window, int level);
@@ -28,7 +28,7 @@ public:
 	void setStart(bool start) { this->start = start; }
 	void setLevel(int level) { this->level = level; }
 	int GetLevel() { return this->level; }
-	void startGamePlay(RenderWindow& window);
+	void startGamePlay(RenderWindow& window, int& score);
 	Gameplay& GetGamePlay() { return this->gamePlay; }
 
 	void CreateTransition(RenderWindow& window);

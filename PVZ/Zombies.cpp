@@ -41,10 +41,6 @@ void Zombie::doDamage(Vector<Plants*>& ptr, bool** set)
 	if (ptr[index]->GetLives() > 0) {
 		ptr[index]->SetLives(ptr[index]->GetLives() - damage);
 	}
-	if (ptr[index]->GetType() == "Wallnut") {
-		this->setExists(false);
-		this->setLives(0);
-	}
 	else if (ptr[index]->GetLives() == 0)
 	{
 		if (ptr[index]->GetType() != "CherryBomb") {

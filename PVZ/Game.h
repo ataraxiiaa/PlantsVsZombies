@@ -41,6 +41,7 @@ class Game
 	Text text;
 	//Gameplay gamep;
 	int levels;
+	int score;
 	//Clock clock;
 public:
 	Game(); // (Default for now will change later on)

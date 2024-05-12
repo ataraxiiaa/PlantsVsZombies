@@ -46,6 +46,7 @@ class Gameplay
 	Texture* texture;
 	Texture* original;
 	bool restart;
+	int score;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
@@ -66,6 +67,7 @@ public:
 	void setSpawned(int spawned) { this->zombiesSpawned = spawned; }
 	bool CheckTransitionCondition(int levels);
 	void resetGame();
+
 };
 
 

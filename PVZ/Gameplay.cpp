@@ -43,6 +43,8 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
         Guardians.back()->SetSprtePos(pos1);
         Guardians.back()->SetCoordinates(pos2);
     }
+    this->score = 0;
+    this->zombiesKilled = 0;
 
 }
 Gameplay::~Gameplay() {
@@ -248,6 +250,7 @@ void Gameplay::dropToGrid(RenderWindow& window)
 }
 void Gameplay::CheckCollision() {
     for (int i = 0; i < ptr.GetSize(); ++i) {
+        int temp=0;
         Plants* plant = ptr[i];
         if (plant->GetType() == "PeaShooter" || plant->GetType()=="Repeater" || plant->GetType() == "Snowpea" || plant->GetType()=="FumeShroom") {
             Shooter* shooter = (Shooter*)(plant);
@@ -256,6 +259,10 @@ void Gameplay::CheckCollision() {
         if (plant->GetType() == "CherryBomb") {
             Explosive* shooter = (Explosive*)(plant);
             shooter->CheckExplosionCollision(zptr, zombiesKilled);
+        } 
+        if (plant->GetType() == "Wallnut") {
+            WallNut* moveplant = (WallNut*)(plant);
+            moveplant->CheckCollision(zptr, zombiesKilled);
         }
     }
 }
@@ -309,6 +316,7 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level) {
     text.setString(to_string(money));
     text.setFillColor(sf::Color::Yellow);
     text.setPosition(160, 8);
+
     window.draw(text);
 }
 

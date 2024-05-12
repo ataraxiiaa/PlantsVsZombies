@@ -9,7 +9,7 @@ Level::Level(int level) {
 	text.setFont(font);
 	text.setFillColor(sf::Color::Yellow);
 	text.setCharacterSize(30);
-	text.setPosition(1000, 30);
+	text.setPosition(1000, 20);
 	//option = 0;
 	//max = 2;
 	//font.loadFromFile("../fonts/logofont.otf");
@@ -29,6 +29,7 @@ void Level::CreateTransition(RenderWindow& window) {
 		this->level += 1;
 		clock.restart();
 	}
+	this->score = 0;
 }
 void Level::drawTransition(RenderWindow& window)
 {
@@ -39,9 +40,20 @@ void Level::drawTransition(RenderWindow& window)
 	sprite.setPosition(350, 50);
 	window.draw(sprite);
 }
-void Level::startGamePlay(RenderWindow& window) {
+void Level::startGamePlay(RenderWindow& window,int &score) {
+	int temp = gamePlay.getKilled();
 	text.setString("Level " + to_string(level));
 	gamePlay.StartGamePlay(window, this->level);
+	if (temp < gamePlay.getKilled()) {
+		score += 20;
+	}
+	scoreFont.loadFromFile("../fonts/logofont.otf");
+	scoreText.setFont(scoreFont);
+	scoreText.setCharacterSize(30);
+	scoreText.setString("Score " + to_string(score));
+	scoreText.setPosition(700, 20);
+	scoreText.setFillColor(sf::Color::Yellow);
+	window.draw(scoreText);
 	window.draw(text);
 }
 
