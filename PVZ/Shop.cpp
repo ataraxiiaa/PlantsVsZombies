@@ -3,7 +3,7 @@
 
 Shop::Shop() // Initiallizes every sprite
 {
-	elements = 3;
+	elements = 1;
 	sprite = new Sprite[6]; // Adding sprites
 	texture = new Texture[6]; // Adding textures
 	// Sunflower
