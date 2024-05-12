@@ -44,12 +44,16 @@ public:
 				{
 					collect = !collect;
 				}
+				else if (option == 3) 
+				{
+					restart = true;
+				}
 			}
 		}
 
 		// Setting text
 		text[0].setString("Return");
-		text[0].setPosition(470, 300);
+		text[0].setPosition(400, 300);
 		text[1].setString("Auto Collect Sun : ");
 
 		Text texton;
@@ -63,11 +67,13 @@ public:
 		textoff.setString("OFF");
 		textoff.setPosition(1000, 400);
 
-		text[1].setPosition(200, 400);
+		text[1].setPosition(150, 400);
 		text[2].setString("Exit");
-		text[2].setPosition(470, 500);
+		text[2].setPosition(470, 600);
+		text[3].setString("Restart");
+		text[3].setPosition(400, 500);
 		//sf::Vector2i mouse = sf::Mouse::getPosition(window);
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < 4; ++i)
 		{
 			//		if (sunBounds.contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
 			if (text[i].getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
@@ -100,6 +106,7 @@ public:
 		}
 
 		window.draw(text[2]);
+		window.draw(text[3]);
 	}
 	bool getCollect() { return this->collect; }
 };

@@ -88,7 +88,10 @@ void Game::Start_Game()
 				menu.setState(true);
 			}*/
 		}
-
+		if (menu.restartGame()) {
+			level->GetGamePlay().resetGame();
+			menu.setResetGame(false);
+		}
 		if (!menu.ShowState() && !pause.ShowState() && menu.showGame())
 		{
 			float time = clock.getElapsedTime().asMicroseconds();

@@ -35,6 +35,7 @@ MainMenu::MainMenu()
 	gameOver = false;
 	this->currentState = true;
 	this->startGame = false;
+	this->restart = false;
 }
 void MainMenu::DisplayScore(RenderWindow& window) {
 	Event e;
