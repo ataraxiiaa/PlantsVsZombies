@@ -3,7 +3,7 @@
 
 Shop::Shop() // Initiallizes every sprite
 {
-	elements = 6;
+	elements = 1;
 	sprite = new Sprite[6]; // Adding sprites
 	texture = new Texture[6]; // Adding textures
 	// Sunflower
@@ -75,6 +75,6 @@ void Shop::DrawShop(sf::RenderWindow& window)
 }
 void Shop::setShop(int level)
 {
-	elements +=0;
+	elements +=1;
 	//cout << "elements: " << elements << endl;
 }
