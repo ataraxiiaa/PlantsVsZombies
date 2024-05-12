@@ -13,7 +13,7 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
 			FIELD_GAME_STATUS[i][j] = false;
 	firstClick = true;
 	dragging = false;
-    cooldown = new Clock[5];
+    cooldown = new Clock[7];
     // Setting up rectange
     rectangle.setSize(sf::Vector2f(50, 100));
     rectangle.setOutlineColor(sf::Color::White);
@@ -23,14 +23,15 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     this->zombiesSpawned = 0;
     this->zombiesKilled = 0;
     restart = false;
-    texture = new Texture[6];
+    texture = new Texture[7];
     texture[0].loadFromFile("../Images/SunFlowerShop2.png");
     texture[1].loadFromFile("../Images/PeaShooterShop2.png");
     texture[2].loadFromFile("../Images/potshape.png");
     texture[3].loadFromFile("../Images/CherryBombShop.png");
     texture[4].loadFromFile("../Images/RepeaterShop.png");
     texture[5].loadFromFile("../Images/snowPeaShop.png");
-    
+    texture[6].loadFromFile("../Images/fumeshroomshop.png");
+
     int yPositions[5];
     yPositions[0] = 97.5 - 40;
     yPositions[1] = 203 - 40;
@@ -100,7 +101,7 @@ void Gameplay::checkShopClick(RenderWindow& window)
     {
         sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
         Sprite* sprites = shop.getSprite();
-        sf::FloatRect* bounds = new sf::FloatRect[6];
+        sf::FloatRect* bounds = new sf::FloatRect[7];
         for (int i = 0; i < shop.getElement(); i++)
             bounds[i] = sprites[i].getGlobalBounds();
         for (int i = 0; i < shop.getElement(); i++)
@@ -181,6 +182,10 @@ void Gameplay::dropToGrid(RenderWindow& window)
         sprites[5].setTexture(texture[5]);
         sprites[5].setTextureRect(sf::IntRect(0, 0, 120, 101));
     }
+    if (cooldown[6].getElapsedTime().asSeconds() >= 5) {
+        sprites[6].setTexture(texture[6]);
+        sprites[6].setTextureRect(sf::IntRect(0, 0, 110, 101));
+    }
     if (selected)
     {
         sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
@@ -224,7 +229,6 @@ void Gameplay::dropToGrid(RenderWindow& window)
                 // Check if the mouse is within the playable grid area
                 if (mouse.x > 270 && mouse.x < xRange && mouse.y > 80 && mouse.y <= 700)
                 {
-                    cout << xRange << endl;
                     checkGrid(row, col, xPos, yPos, window, mouse);
                     // Check if the target grid cell is empty
                     if (!FIELD_GAME_STATUS[row][col])
@@ -295,6 +299,16 @@ void Gameplay::dropToGrid(RenderWindow& window)
                             cooldown[5].restart();
                             sprites[5].setTexture(texture[5]);
                             sprites[5].setTextureRect(sf::IntRect(120, 0, 240, 101));
+                        }
+                        else if (id[index] == "fume" && money >= 200 && cooldown[6].getElapsedTime().asSeconds() >= 5) {
+                            ptr.push_back(new FumeShroom);
+                            ptr.back()->setX(xPos);
+                            ptr.back()->setY(yPos - 30);
+                            money -= ptr.back()->GetCost();
+                            spawned = true;
+                            cooldown[6].restart();
+                            sprites[6].setTexture(texture[6]);
+                            sprites[6].setTextureRect(sf::IntRect(110, 0, 220, 101));
                         }
                         if (spawned)
                         {
@@ -489,12 +503,13 @@ void Gameplay::resetGame()
     clock.restart();
     restart = false;
     sun.setExists(false);
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < 7; ++i) {
         cooldown[i].restart();
+    }
 }
 bool Gameplay::CheckTransitionCondition(int levels) {
 
-    if (zombiesKilled >= levels*5)
+    if (zombiesKilled >= 1)
         return true;
     return false;
 }

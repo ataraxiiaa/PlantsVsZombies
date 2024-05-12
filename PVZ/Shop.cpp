@@ -4,8 +4,8 @@
 Shop::Shop() // Initiallizes every sprite
 {
 	elements = 1;
-	sprite = new Sprite[6]; // Adding sprites
-	texture = new Texture[6]; // Adding textures
+	sprite = new Sprite[7]; // Adding sprites
+	texture = new Texture[7]; // Adding textures
 	// Sunflower
 	texture[0].loadFromFile("../Images/SunFlowerShop2.png");
 	sprite[0].setTexture(texture[0]);
@@ -57,24 +57,34 @@ Shop::Shop() // Initiallizes every sprite
 	selectedSprite.back().setTextureRect(sf::IntRect(120, 0, 240, 101));
 	selectedSprite.back().setPosition(13, 480);
 	selectedSprite.back().setScale(0.8, 0.8);
+	// Fumeshroom
+	texture[6].loadFromFile("../Images/fumeshroomshop.png");
+	sprite[6].setTexture(texture[6]);
+	sprite[6].setTextureRect(sf::IntRect(0, 0, 110, 101));
+	sprite[6].setPosition(18, 560);
+	sprite[6].setScale(0.8, 0.8);
+	selectedSprite.push_back(sprite[6]);
+	selectedSprite.back().setTextureRect(sf::IntRect(110, 0, 220, 101));
+	selectedSprite.back().setPosition(18, 560);
+	selectedSprite.back().setScale(0.8, 0.8);
 	// Setting up ID pointer to keep track of what item to set 
-	ids = new string[6];
+	ids = new string[7];
 	ids[0] = "sunflower";
 	ids[1] = "peashooter";
 	ids[2] = "wallnut";
 	ids[3] = "cherrybomb";
 	ids[4] = "repeater";
 	ids[5] = "snowpea";
+	ids[6] = "fume";
 	
 }
 void Shop::DrawShop(sf::RenderWindow& window)
 {
-	for (int i = 0; i < elements && i<6; i++) {
+	for (int i = 0; i < this->elements; i++) {
 		window.draw(sprite[i]); // SunFlower shop image
 	}
 }
 void Shop::setShop(int level)
 {
-	elements +=1;
-	//cout << "elements: " << elements << endl;
+	this->elements = level+1;
 }
