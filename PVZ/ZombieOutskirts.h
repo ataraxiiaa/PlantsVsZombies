@@ -10,7 +10,7 @@ class ZombieOutskirts : public Level
 
 public:
 	ZombieOutskirts();
-	void Action() {
+	void Action(RenderWindow& window) {
 		this->gamePlay.GetSun().setStopProduction(true);
 	}
 };

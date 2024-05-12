@@ -4,11 +4,9 @@
 
 class SunflowerFields : public Level
 {
-
+	RectangleShape rectangle;
 public:
 	SunflowerFields();
-	void Action() {
-		
-	}
+	void Action(RenderWindow& window);
 };
 

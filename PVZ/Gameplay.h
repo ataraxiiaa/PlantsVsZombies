@@ -49,6 +49,7 @@ class Gameplay
 	Texture* original;
 	bool restart;
 	int score;
+	int xRange;
 public:
 	Gameplay(); // Default Constructor
 	~Gameplay(); // Destructor 
@@ -72,6 +73,7 @@ public:
 	bool checkEnd(int levels, int playerLives);
 	void checkRemoverClick(RenderWindow& window);
 	void removePlant(RenderWindow& window);
+	void setxRange(int x) { this->xRange = x; }
 
 };
 

@@ -131,7 +131,7 @@ void Game::Start_Game()
 			//Create a background
 			createBack(window, level->GetSprite());
 			createMap(window, level->GetSprite());
-			if (level->GetLevel() == 1) {
+			if (level->GetLevel() == 1 || level->GetLevel()==3) {
 				createGrid(window);
 			}
 			// Create the grid
@@ -146,10 +146,11 @@ void Game::Start_Game()
 			int x = level->GetLevel();
 			if (x == 2) {
 				level = &zombieOutSkirts;
-				level->Action();
+				level->Action(window);
 			} 
 			if (x == 3) {
 				level = &sunflower;
+				level->Action(window);
 			}
 			for (int i = 0; i < playerLives; ++i) {
 				window.draw(playerLivesSprite[i]);

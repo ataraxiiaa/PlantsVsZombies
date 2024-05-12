@@ -2,6 +2,7 @@
 
 Gameplay::Gameplay(): gridCols(9), gridRows(5)
 {
+    xRange = 1100;
 	FIELD_GAME_STATUS = new bool*[gridRows];
 	for (int i = 0; i < gridRows; ++i)
 	{
@@ -63,10 +64,11 @@ Gameplay::~Gameplay() {
 void Gameplay::checkGrid(int& row, int& col, float& xPos, float& yPos, RenderWindow& window, sf::Vector2f& mouse)
 {
     mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-    if (mouse.x > 270 && mouse.x < 1100 && mouse.y > 80 && mouse.y < 680)
+    if (mouse.x > 270 && mouse.x < xRange && mouse.y > 80 && mouse.y < 680)
     {
+        //cout << xRange << endl;
         mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-        for (int i = 270, j = 0; i < 1100 && j < 9; i += 92, j++)
+        for (int i = 270, j = 0; i < xRange && j < 9; i += 92, j++)
         {
             mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
             //check which jth index of grid is selected by mouse
@@ -212,8 +214,9 @@ void Gameplay::dropToGrid(RenderWindow& window)
                 string* id = shop.getIds();
 
                 // Check if the mouse is within the playable grid area
-                if (mouse.x > 270 && mouse.x < 1100 && mouse.y > 80 && mouse.y <= 700)
+                if (mouse.x > 270 && mouse.x < xRange && mouse.y > 80 && mouse.y <= 700)
                 {
+                    cout << xRange << endl;
                     checkGrid(row, col, xPos, yPos, window, mouse);
                     // Check if the target grid cell is empty
                     if (!FIELD_GAME_STATUS[row][col])
@@ -472,7 +475,7 @@ void Gameplay::resetGame()
 }
 bool Gameplay::CheckTransitionCondition(int levels) {
 
-    if (zombiesKilled >= 1)
+    if (zombiesKilled >= levels*5)
         return true;
     return false;
 }
