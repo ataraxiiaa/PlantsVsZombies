@@ -52,10 +52,6 @@ Gameplay::Gameplay(): gridCols(9), gridRows(5)
     text.setFillColor(sf::Color::Yellow);
     text.setPosition(130, 20);
     font.loadFromFile("../fonts/logofont.otf");
-    lives.setFont(font);
-    lives.setCharacterSize(30);
-    lives.setFillColor(sf::Color::Yellow);
-    lives.setPosition(340, 20);
 }
 Gameplay::~Gameplay() {
     for (int i = 0; i < gridRows; ++i)
@@ -371,8 +367,6 @@ void Gameplay::StartGamePlay(RenderWindow& window, int level, int& playerLives) 
     this->removePlant(window);
     text.setString(to_string(money));
     window.draw(text);
-    lives.setString("LIVES " + to_string(playerLives));
-    window.draw(lives);
     shovel.drawRemover(window);
 
 }
