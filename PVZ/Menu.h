@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
+#include <fstream>
 #include <ctime>
 using namespace sf;
 using namespace std;
@@ -13,13 +14,18 @@ class MainMenu
 protected:
 	int option; // used to track what option we are on
 	int max; // maxiumum options in main
-	Font font;    // Used in other Menus
-	Texture texture;
-	Sprite sprite;
-	Text text[3]; // for creating text for Screens
+	Font font,font2;    // Used in other Menus
+	Texture texture,templateTexture;
+	Sprite sprite, templateSprite;
+	Text text[4]; // for creating text for Screens
 	bool currentState; // For tracking what Menu is open right now
 	bool Settings;
 	int scores[3];
+	bool showScoreBord;
+	Text scoreText[3];
+	string names[3];
+	Texture ranking[3];
+	Sprite rankingSprite[3];
 public:
 	MainMenu();
 	void DisplayMain(sf::RenderWindow& window);
