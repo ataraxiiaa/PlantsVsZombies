@@ -14,11 +14,13 @@ MainMenu::MainMenu()
 		text[i].setFillColor(sf::Color::White);
 		text[i].setCharacterSize(50); // Loading fonts and setting their sizes
 	}
+	for (int i = 0; i < 2; ++i)
+		text2[i].setFont(font);
 	for (int i = 0; i < 3; ++i) {
 		scoreText[i].setFont(font);
 		scoreText[i].setFillColor(sf::Color::White);
 		scoreText[i].setCharacterSize(50);
-		scores[i] = 0;
+		//scores[i] = 0;
 	}
 	showScoreBord = false;
 	ranking[0].loadFromFile("../Images/gold.png");
@@ -30,6 +32,7 @@ MainMenu::MainMenu()
 	templateTexture.loadFromFile("../Images/template.png");
 	templateSprite.setTexture(templateTexture);
 	templateSprite.setPosition(300, 200);
+	gameOver = false;
 }
 void MainMenu::DisplayScore(RenderWindow& window) {
 	Event e;
@@ -43,7 +46,7 @@ void MainMenu::DisplayScore(RenderWindow& window) {
 	}
 	templateSprite.setScale(1.2, 1);
 	window.draw(templateSprite);
-	ifstream file("../PVZ/highscore.txt");
+	ifstream file("../PVZ/highscores.txt");
 	if (file.is_open()) {
 		int index = 0;
 		while (index < 3) {
@@ -79,7 +82,85 @@ void MainMenu::DisplayScore(RenderWindow& window) {
 		file.close();
 	}
 }
+void MainMenu::ShowGameOVer(RenderWindow& window,int score) {
+	text2[0].setString("Enter your Name: ");
+	text2[0].setCharacterSize(30);
+	text2[0].setPosition(100, 350);
+	text2[0].setFillColor(sf::Color::White);
 
+	text2[1].setString("");
+	text2[1].setCharacterSize(30);
+	text2[1].setPosition(500, 350);
+	text2[1].setFillColor(sf::Color::White);
+
+	window.clear();
+
+	sf::Event e;
+	char temp;
+	
+	while (window.pollEvent(e)) {
+		if (e.type == sf::Event::Closed) {
+			window.close();
+		}
+		if (e.type == sf::Event::TextEntered) {
+			if (e.text.unicode <= 122 && e.text.unicode >= 65) {
+				temp = e.text.unicode;
+				name += temp;
+			}
+			if (e.text.unicode == 8 && name != "\0")
+				name.pop_back();
+
+		}
+		if (e.type == sf::Event::KeyReleased) {
+			if (e.key.code == sf::Keyboard::Enter)
+				nameEntered = true;
+		}
+	}
+	text2[1].setString(name);
+	window.draw(text2[0]);
+	window.draw(text2[1]);
+
+	if (nameEntered) {
+		string tempname[3]{};
+		int tempscore[3]{};
+		int index = 0;
+		int saveScore;
+		string saveName;
+
+		fstream file("../PVZ/highscores.txt", ios::in | ios::out);
+		while (file >> saveName >> saveScore && index < 3) {
+			tempname[index] = saveName;
+			tempscore[index] = saveScore;
+			index++;
+		}
+		if (index < 3 || score > scores[index - 1]) {
+			tempscore[index] = score;
+			tempname[index] = name;
+
+			for (int i = 0; i < index; ++i) {
+				for (int j = index; j > 0; --j) {
+					if (tempscore[j] > tempscore[j - 1]) {
+						int temp = tempscore[j];
+						string tempName = tempname[j];
+
+						tempscore[j] = tempscore[j - 1];
+						tempname[j] = tempname[j - 1];
+						tempscore[j - 1] = temp;
+						tempname[j - 1] = tempName;
+					}
+				}
+			}
+			file.close();
+			file.open("../PVZ/highscores.txt", ios::out | ios::trunc);
+			for (int i = 0; i < index + 1; i++) {
+				file << tempname[i] << " " << tempscore[i] << endl;
+			}
+		}
+		this->currentState = true;
+		file.close();
+	}
+	window.display();
+}
 void MainMenu::DisplayMain(sf::RenderWindow& window)
 {
 	sf::Event e;
