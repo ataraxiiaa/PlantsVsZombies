@@ -42,6 +42,7 @@ class Game
 	//Gameplay gamep;
 	int levels;
 	int score;
+	int playerLives;
 	//Clock clock;
 public:
 	Game(); // (Default for now will change later on)

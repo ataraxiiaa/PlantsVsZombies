@@ -27,7 +27,7 @@ public:
 	bool getStart() { return this->start; }
 	void setStart(bool start) { this->start = start; }
 	void setLevel(int level) { this->level = level; }
-	int& GetLevel() { return this->level; }
+	int GetLevel() { return this->level; }
 	void startGamePlay(RenderWindow& window, int& score);
 	Gameplay& GetGamePlay() { return this->gamePlay; }
 

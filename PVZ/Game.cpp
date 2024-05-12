@@ -5,6 +5,7 @@ Game::Game()
 	levels = 1;	
 	level = new BeginnersGarden;
 	score = 0;
+	playerLives = 3;
 }
 void Game::createBack(RenderWindow& window,Sprite sprite)
 {
@@ -79,6 +80,7 @@ void Game::Start_Game()
 		{
 			menu.DisplayMain(window);
 			pause.setState(false);
+			//menu.ShowGameOVer(window, 50);
 		}
 		while (menu.getGameOver()) {
 			menu.ShowGameOVer(window, 50);
@@ -87,8 +89,9 @@ void Game::Start_Game()
 			}*/
 		}
 		
-		if (!menu.ShowState() && !pause.ShowState() && menu.showGame())
+		if (!menu.ShowState() && !pause.ShowState() /*&& level.getStart()*/)
 		{
+			if (!level->GetGamePlay().checkEnd(levels)) {
 				float time = clock.getElapsedTime().asMicroseconds();
 				float moneyTime = timeMoney.getElapsedTime().asSeconds();
 
@@ -117,20 +120,22 @@ void Game::Start_Game()
 				else
 					level->GetGamePlay().GetSun().SetAutoCollect(false);
 
-				level->startGamePlay(window, this->score);
+				level->startGamePlay(window, this->score, playerLives);
 				level->GetGamePlay().spawnZombies(levels); // , clock);
 				level->CreateTransition(window);
 				if (level->GetLevel() == 2) {
 					level = &zombieOutSkirts;
 				}
+				if (level->GetLevel() == 1) {
+					menu.ShowGameOVer(window, 50);
+				}
 				window.draw(text);
 				window.setSize(sf::Vector2u(1100, 680));
-		}
-		int x = level->GetLevel();
-		if (level->GetGamePlay().checkEnd(x) && menu.getGameOver() == false) {
-			//menu.ShowGameOVer(window, 50);
-			menu.setGameOver(true);
-			menu.setShowGame(false);
+			}
+			else
+			{
+
+			}
 		}
 		if (!menu.ShowState() && pause.ShowState())
 			pause.displayPausedMenu(window);

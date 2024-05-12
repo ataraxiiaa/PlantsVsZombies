@@ -74,6 +74,7 @@
     <ClInclude Include="Paused.h" />
     <ClInclude Include="Pea.h" />
     <ClInclude Include="PeaShooter.h" />
+    <ClInclude Include="PlantRemover.h" />
     <ClInclude Include="Plants.h" />
     <ClInclude Include="RangedShooter.h" />
     <ClInclude Include="Repeater.h" />

@@ -45,10 +45,10 @@ void Level::drawTransition(RenderWindow& window)
 	sprite.setPosition(350, 50);
 	window.draw(sprite);
 }
-void Level::startGamePlay(RenderWindow& window,int &score) {
+void Level::startGamePlay(RenderWindow& window,int &score, int& playerLives) {
 	int temp = gamePlay.getKilled();
 	text.setString("Level " + to_string(level));
-	gamePlay.StartGamePlay(window, this->level);
+	gamePlay.StartGamePlay(window, this->level, playerLives);
 	if (temp < gamePlay.getKilled()) {
 		score += 20;
 	}
