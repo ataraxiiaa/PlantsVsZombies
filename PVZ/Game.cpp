@@ -14,7 +14,7 @@ Game::Game()
 		playerLivesSprite[i].setPosition(230 + (i * 50), -200);
 		playerLivesSprite[i].setScale(1, 1);
 	}
-	buffer.loadFromFile("../Music/music1.mp3");
+	buffer.loadFromFile("C:/Users/Ali Abdullah/Downloads/music1.mp3");
 	sound.setBuffer(buffer);
 
 
