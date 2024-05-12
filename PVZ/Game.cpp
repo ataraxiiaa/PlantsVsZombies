@@ -127,10 +127,10 @@ void Game::Start_Game()
 				pause.setState(true);
 
 
+			createGrid(window);
 			//Create a background
 			createBack(window, level->GetSprite());
 			createMap(window, level->GetSprite());
-			createGrid(window);
 			if (level->GetLevel() == 1) {
 				createGrid(window);
 			}
@@ -143,8 +143,12 @@ void Game::Start_Game()
 			level->startGamePlay(window, this->score,playerLives);
 			level->GetGamePlay().spawnZombies(levels); // , clock);
 			level->CreateTransition(window);
-			if (this->levels == 2) {
+			int x = level->GetLevel();
+			if (x == 2) {
 				level = &zombieOutSkirts;
+			} 
+			if (x == 3) {
+
 			}
 			for (int i = 0; i < playerLives; ++i) {
 				window.draw(playerLivesSprite[i]);

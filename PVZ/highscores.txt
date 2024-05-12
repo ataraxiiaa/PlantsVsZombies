@@ -1,4 +1,4 @@
 basit 80
 basit 80
 basit 80
-basit 40
+done 60
