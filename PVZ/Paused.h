@@ -8,6 +8,7 @@ class Paused: public MainMenu{
 	bool collect;
 	bool temp;
 	bool On, Off;
+	bool restart;
 public:
 	Paused()
 	{
@@ -22,6 +23,7 @@ public:
 			text[i].setFillColor(sf::Color::White);
 			text[i].setCharacterSize(50); // Loading fonts and setting their sizes
 		}
+		this->restart = false;
 	}
 	void displayPausedMenu(RenderWindow& window)
 	{
@@ -46,7 +48,9 @@ public:
 				}
 				else if (option == 3) 
 				{
-					restart = true;
+					this->restart = true;
+					this->startGame = true;
+					currentState = false;
 				}
 			}
 		}
@@ -109,4 +113,6 @@ public:
 		window.draw(text[3]);
 	}
 	bool getCollect() { return this->collect; }
+	bool restartGame() { return restart; }
+	void setResetGame(bool i) { this->restart = i; }
 };

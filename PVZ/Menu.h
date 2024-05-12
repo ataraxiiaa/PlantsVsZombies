@@ -30,7 +30,6 @@ protected:
 	bool nameEntered;
 	bool gameOver;
 	bool startGame;
-	bool restart;
 public:
 	MainMenu();
 	void DisplayMain(sf::RenderWindow& window);
@@ -42,8 +41,7 @@ public:
 	void setGameOver(bool i) { gameOver = i; }
 	bool showGame() { return startGame; }
 	void setShowGame(bool i) { startGame = i; }
-	bool restartGame() { return restart; }
-	void setResetGame(bool i) { this->restart = i; }
+
 };
 
 

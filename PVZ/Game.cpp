@@ -88,9 +88,14 @@ void Game::Start_Game()
 				menu.setState(true);
 			}*/
 		}
-		if (menu.restartGame()) {
+		if (pause.restartGame()) {
 			level->GetGamePlay().resetGame();
-			menu.setResetGame(false);
+			delete level;
+			level = new BeginnersGarden;
+			levels = 0;
+			this->score = 0;
+			this->playerLives = 3;
+			pause.setResetGame(false);
 		}
 		if (!menu.ShowState() && !pause.ShowState() && menu.showGame())
 		{
@@ -125,7 +130,7 @@ void Game::Start_Game()
 			level->startGamePlay(window, this->score,playerLives);
 			level->GetGamePlay().spawnZombies(levels); // , clock);
 			level->CreateTransition(window);
-			if (level->GetLevel() == 2) {
+			if (this->levels == 2) {
 				level = &zombieOutSkirts;
 			}
 			window.draw(text);
